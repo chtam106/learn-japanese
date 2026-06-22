@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -34,6 +35,17 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /
+
+      - name: Verify build output
+        run: |
+          if grep -q '/src/main.tsx' dist/index.html; then
+            echo 'dist/index.html still references /src/main.tsx — Vite build did not run correctly'
+            exit 1
+          fi
+          if ! grep -q '/assets/' dist/index.html; then
+            echo 'dist/index.html has no bundled /assets/ scripts'
+            exit 1
+          fi
 
       - name: Setup SPA fallback for client-side routing
         run: cp dist/index.html dist/404.html
