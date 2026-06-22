@@ -43,7 +43,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         labelKey: 'nav.exercise',
-        path: routes.alphabet.exercise,
+        path: routes.alphabet.exercise.index,
         icon: QuizOutlinedIcon,
       },
     ],
@@ -55,5 +55,7 @@ export function isNavGroupActive(group: NavGroup, pathname: string) {
     return true
   }
 
-  return group.children.some((child) => child.path === pathname)
+  return group.children.some(
+    (child) => child.path === pathname || pathname.startsWith(`${child.path}/`),
+  )
 }

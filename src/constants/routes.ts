@@ -4,6 +4,12 @@ export const routes = {
     index: '/alphabet',
     hiragana: '/alphabet/hiragana',
     katakana: '/alphabet/katakana',
-    exercise: '/alphabet/exercise',
+    exercise: {
+      index: '/alphabet/exercise',
+      romaji: '/alphabet/exercise/romaji',
+      character: '/alphabet/exercise/character',
+      listen: '/alphabet/exercise/listen',
+      scriptPair: '/alphabet/exercise/script-pair',
+    },
   },
 } as const

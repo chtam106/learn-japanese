@@ -1,6 +1,6 @@
 import { AlphabetChartPage } from '@/pages/alphabet/alphabet-chart.tsx'
 import { hiraganaChartRows, hiraganaYoonChartRows } from '@/constants/alphabet-charts.ts'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 
 function HiraganaPage() {
   const { t } = useTranslation()

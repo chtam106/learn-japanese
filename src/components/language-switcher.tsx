@@ -1,6 +1,6 @@
 import LanguageIcon from '@mui/icons-material/Language'
 import { Box, ButtonBase, Typography } from '@mui/material'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 import type { Locale } from '@/i18n/translations.ts'
 
 const locales: { code: Locale; shortLabel: string; labelKey: 'language.en' | 'language.vi' }[] = [
@@ -21,8 +21,7 @@ export function LanguageSwitcher() {
         gap: 0.25,
         p: 0.375,
         borderRadius: 999,
-        bgcolor: (theme) =>
-          theme.palette.mode === 'light' ? 'grey.100' : 'action.selected',
+        bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.100' : 'action.selected'),
         border: 1,
         borderColor: 'divider',
       }}

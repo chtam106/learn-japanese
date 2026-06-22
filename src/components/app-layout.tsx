@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -19,16 +19,10 @@ import {
   useTheme,
 } from '@mui/material'
 import { LanguageSwitcher } from '@/components/language-switcher.tsx'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 import { isNavGroupActive, navGroups, type NavItem } from '@/constants/nav-items.ts'
 
 const drawerWidth = 240
-
-function getInitialExpandedGroups(pathname: string) {
-  return Object.fromEntries(
-    navGroups.map((group) => [group.path, isNavGroupActive(group, pathname)]),
-  )
-}
 
 function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
   const Icon = item.icon
@@ -44,34 +38,41 @@ function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
   )
 }
 
+function getGroupToggleKey(groupPath: string, pathname: string) {
+  return `${groupPath}:${pathname}`
+}
+
 function AppLayout() {
   const location = useLocation()
   const theme = useTheme()
   const { t } = useTranslation()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
-    getInitialExpandedGroups(location.pathname),
+  const [groupToggleState, setGroupToggleState] = useState<Record<string, boolean>>({})
+
+  const expandedGroups = useMemo(
+    () =>
+      Object.fromEntries(
+        navGroups.map((group) => {
+          const toggleKey = getGroupToggleKey(group.path, location.pathname)
+          const toggled = groupToggleState[toggleKey]
+
+          if (toggled !== undefined) {
+            return [group.path, toggled]
+          }
+
+          return [group.path, isNavGroupActive(group, location.pathname)]
+        }),
+      ),
+    [groupToggleState, location.pathname],
   )
 
-  useEffect(() => {
-    setExpandedGroups((previous) => {
-      const next = { ...previous }
-
-      for (const group of navGroups) {
-        if (isNavGroupActive(group, location.pathname)) {
-          next[group.path] = true
-        }
-      }
-
-      return next
-    })
-  }, [location.pathname])
-
   const toggleGroup = (path: string) => {
-    setExpandedGroups((previous) => ({
+    const toggleKey = getGroupToggleKey(path, location.pathname)
+
+    setGroupToggleState((previous) => ({
       ...previous,
-      [path]: !previous[path],
+      [toggleKey]: !expandedGroups[path],
     }))
   }
 
@@ -143,7 +144,11 @@ function AppLayout() {
                       '&:hover': { bgcolor: 'transparent' },
                     }}
                   >
-                    {isExpanded ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />}
+                    {isExpanded ? (
+                      <ExpandLessIcon fontSize="small" />
+                    ) : (
+                      <ExpandMoreIcon fontSize="small" />
+                    )}
                   </IconButton>
                 </Box>
               ) : (
@@ -169,7 +174,10 @@ function AppLayout() {
                         key={child.path}
                         component={NavLink}
                         to={child.path}
-                        selected={location.pathname === child.path}
+                        selected={
+                          location.pathname === child.path ||
+                          location.pathname.startsWith(`${child.path}/`)
+                        }
                         onClick={() => setMobileOpen(false)}
                         sx={{ pl: 4, borderRadius: 1, mb: 0.5 }}
                       >
@@ -226,7 +234,11 @@ function AppLayout() {
           }}
         >
           <Toolbar sx={{ gap: 1 }}>
-            <IconButton edge="start" onClick={() => setMobileOpen(true)} aria-label={t('nav.openMenu')}>
+            <IconButton
+              edge="start"
+              onClick={() => setMobileOpen(true)}
+              aria-label={t('nav.openMenu')}
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="p" noWrap sx={{ flex: 1 }}>

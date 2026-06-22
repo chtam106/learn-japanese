@@ -146,13 +146,7 @@ const bilingualChartRows: BilingualChartRow[] = [
     ],
   },
   {
-    seion: [
-      { romaji: 'n', hiragana: 'ん', katakana: 'ン' },
-      null,
-      null,
-      null,
-      null,
-    ],
+    seion: [{ romaji: 'n', hiragana: 'ん', katakana: 'ン' }, null, null, null, null],
   },
 ]
 
@@ -474,7 +468,9 @@ export function getExerciseOverviewScopeOptions(t: TranslateFn): AlphabetRowOpti
 export function getExerciseRowScopeOptions(t: TranslateFn): AlphabetRowOption[] {
   return [
     ...bilingualChartRows.flatMap((row, index) => {
-      const options: AlphabetRowOption[] = [{ value: `row-${index}`, label: formatRowLabel(row, t) }]
+      const options: AlphabetRowOption[] = [
+        { value: `row-${index}`, label: formatRowLabel(row, t) },
+      ]
 
       if (row.dakuten) {
         options.push({
@@ -544,6 +540,8 @@ export function getExerciseRowScopeOptionsForOverview(
       return exerciseRowScopeOptions.filter((option) => /^row-\d+-handakuten$/.test(option.value))
     case 'yoon':
       return exerciseRowScopeOptions.filter((option) => option.value.startsWith('yoon-row-'))
+    default:
+      return []
   }
 }
 

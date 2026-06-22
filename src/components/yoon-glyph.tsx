@@ -22,11 +22,7 @@ export function YoonGlyph({ base, suffix, compact = false, large = false }: Yoon
         lineHeight: 1,
       }}
     >
-      <Typography
-        component="span"
-        variant={baseVariant}
-        sx={{ lineHeight: 1, fontWeight: 400 }}
-      >
+      <Typography component="span" variant={baseVariant} sx={{ lineHeight: 1, fontWeight: 400 }}>
         {base}
       </Typography>
       <Typography

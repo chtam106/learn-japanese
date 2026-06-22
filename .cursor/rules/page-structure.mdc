@@ -1,0 +1,37 @@
+---
+description: Page folder structure mirrors URL routes; each page uses index.tsx
+globs: src/pages/**/*
+alwaysApply: false
+---
+
+# Page folder structure
+
+Routes map to folders under `src/pages/`. The page component file is always `index.tsx`.
+
+## Mapping
+
+| Route | File |
+|-------|------|
+| `/` | `src/pages/index.tsx` |
+| `/alphabet` | `src/pages/alphabet/index.tsx` |
+| `/alphabet/hiragana` | `src/pages/alphabet/hiragana/index.tsx` |
+| `/alphabet/katakana` | `src/pages/alphabet/katakana/index.tsx` |
+| `/alphabet/exercise` | `src/pages/alphabet/exercise/index.tsx` |
+| `/alphabet/exercise/romaji` | `src/pages/alphabet/exercise/romaji/index.tsx` |
+| `/alphabet/exercise/character` | `src/pages/alphabet/exercise/character/index.tsx` |
+| `/alphabet/exercise/listen` | `src/pages/alphabet/exercise/listen/index.tsx` |
+| `/alphabet/exercise/script-pair` | `src/pages/alphabet/exercise/script-pair/index.tsx` |
+
+## Colocation
+
+- Put route-specific helpers next to the page (e.g. `exercise/exercise-quiz.ts`).
+- Shared code for a route segment stays in that segment folder (e.g. `alphabet/alphabet-chart.tsx` for hiragana + katakana).
+- Reusable UI stays in `src/components/`.
+
+## New pages
+
+When adding a route `/foo/bar`, create `src/pages/foo/bar/index.tsx` and register it in `src/constants/routes.ts` and `src/app.tsx`.
+
+## Imports
+
+Prefer `@/pages/...` path aliases. Use relative imports only for siblings in the same route folder.

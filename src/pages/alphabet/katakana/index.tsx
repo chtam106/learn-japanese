@@ -1,6 +1,6 @@
 import { AlphabetChartPage } from '@/pages/alphabet/alphabet-chart.tsx'
 import { katakanaChartRows, katakanaYoonChartRows } from '@/constants/alphabet-charts.ts'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 
 function KatakanaPage() {
   const { t } = useTranslation()

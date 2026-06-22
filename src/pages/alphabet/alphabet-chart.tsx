@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import { playKanaAudio } from '@/utils/kana-audio.ts'
 import { KanaDisplay } from '@/components/kana-display.tsx'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 import { getChartSectionLabels } from '@/i18n/translations.ts'
 
 export type AlphabetCell = {
@@ -253,9 +253,7 @@ function AlphabetChartTable({
   const cellSize = getCellSize(compact)
   const columnCount = rows[0]?.seion.length ?? 5
   const tableRows = hideEmptyRows
-    ? rows.filter((row) =>
-        variant === 'seion' ? hasAnyCell(row.seion) : hasVoicedContent(row),
-      )
+    ? rows.filter((row) => (variant === 'seion' ? hasAnyCell(row.seion) : hasVoicedContent(row)))
     : rows
 
   return (

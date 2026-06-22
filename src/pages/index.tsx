@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts'
 import { routes } from '@/constants/routes.ts'
-import { useTranslation } from '@/i18n/context.tsx'
+import { useTranslation } from '@/i18n/use-translation.ts'
 
 function HomePage() {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ function HomePage() {
       description: t('home.katakanaDescription'),
     },
     {
-      to: routes.alphabet.exercise,
+      to: routes.alphabet.exercise.index,
       title: t('nav.exercise'),
       icon: QuizOutlinedIcon,
       description: t('home.exerciseDescription'),
@@ -56,10 +56,20 @@ function HomePage() {
         </Box>
 
         <Stack direction="row" spacing={1.5} useFlexGap sx={{ flexWrap: 'wrap' }}>
-          <Button component={RouterLink} to={routes.alphabet.hiragana} variant="contained" size="large">
+          <Button
+            component={RouterLink}
+            to={routes.alphabet.hiragana}
+            variant="contained"
+            size="large"
+          >
             {t('home.startHiragana')}
           </Button>
-          <Button component={RouterLink} to={routes.alphabet.exercise} variant="outlined" size="large">
+          <Button
+            component={RouterLink}
+            to={routes.alphabet.exercise.index}
+            variant="outlined"
+            size="large"
+          >
             {t('home.jumpExercise')}
           </Button>
         </Stack>

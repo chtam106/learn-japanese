@@ -1,31 +1,13 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react'
+import { useCallback, useMemo, useState, type ReactNode } from 'react'
 import {
   DEFAULT_LOCALE,
   LOCALE_STORAGE_KEY,
   translations,
   type Locale,
-  type TranslationParams,
-  type TranslationTree,
 } from '@/i18n/translations.ts'
+import { LanguageContext, type TranslateFn } from '@/i18n/language-context.ts'
 
-type TranslateFn = (key: string, params?: TranslationParams) => string
-
-type LanguageContextValue = {
-  locale: Locale
-  setLocale: (locale: Locale) => void
-  t: TranslateFn
-}
-
-const LanguageContext = createContext<LanguageContextValue | null>(null)
-
-function getNestedValue(tree: TranslationTree, key: string): string | undefined {
+function getNestedValue(tree: typeof translations.en, key: string): string | undefined {
   const value = key.split('.').reduce<unknown>((current, part) => {
     if (current && typeof current === 'object' && part in current) {
       return (current as Record<string, unknown>)[part]
@@ -37,7 +19,7 @@ function getNestedValue(tree: TranslationTree, key: string): string | undefined 
   return typeof value === 'string' ? value : undefined
 }
 
-function interpolate(template: string, params?: TranslationParams) {
+function interpolate(template: string, params?: Record<string, string | number>) {
   if (!params) {
     return template
   }
@@ -76,14 +58,4 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const value = useMemo(() => ({ locale, setLocale, t }), [locale, setLocale, t])
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
-}
-
-export function useTranslation() {
-  const context = useContext(LanguageContext)
-
-  if (!context) {
-    throw new Error('useTranslation must be used within LanguageProvider')
-  }
-
-  return context
 }
