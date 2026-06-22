@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_PATH: /learn-japanese/
+          VITE_BASE_PATH: /
 
       - name: Setup SPA fallback for client-side routing
         run: cp dist/index.html dist/404.html
