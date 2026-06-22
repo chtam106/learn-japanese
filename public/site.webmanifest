@@ -1,0 +1,19 @@
+{
+  "name": "Langwish - Learn Japanese",
+  "short_name": "Langwish",
+  "description": "Learn Japanese hiragana and katakana with interactive charts, audio, and quizzes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#faf7f0",
+  "theme_color": "#aa3bff",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

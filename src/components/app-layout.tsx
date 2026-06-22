@@ -19,6 +19,7 @@ import {
   useTheme,
 } from '@mui/material'
 import { LanguageSwitcher } from '@/components/language-switcher.tsx'
+import { PageMeta } from '@/components/page-meta.tsx'
 import { useTranslation } from '@/i18n/use-translation.ts'
 import { isNavGroupActive, navGroups, type NavItem } from '@/constants/nav-items.ts'
 
@@ -221,6 +222,7 @@ function AppLayout() {
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      <PageMeta />
       {isMobile && (
         <AppBar
           position="fixed"
@@ -249,7 +251,7 @@ function AppLayout() {
         </AppBar>
       )}
 
-      <Box component="nav" sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}>
+      <Box component="nav" aria-label={t('nav.mainNavigation')} sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}>
         <Drawer
           variant={isMobile ? 'temporary' : 'permanent'}
           open={isMobile ? mobileOpen : true}

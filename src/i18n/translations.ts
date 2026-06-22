@@ -8,6 +8,56 @@ const en: TranslationTree = {
   app: {
     title: 'Learn Japanese',
   },
+  seo: {
+    defaultTitle: 'Langwish - Learn Japanese Hiragana, Katakana & Kana Quiz',
+    defaultDescription:
+      'Free interactive app to learn Japanese hiragana and katakana. Browse kana charts, listen to native audio, and practice with quizzes.',
+    home: {
+      title: 'Learn Japanese Hiragana & Katakana',
+      description:
+        'Start learning Japanese kana with interactive hiragana and katakana charts, native audio, and free practice quizzes.',
+    },
+    alphabet: {
+      title: 'Japanese Alphabet - Hiragana & Katakana',
+      description:
+        'Explore hiragana and katakana writing systems with complete charts, pronunciation audio, and guided exercises.',
+    },
+    hiragana: {
+      title: 'Hiragana Chart & Practice (ひらがな)',
+      description:
+        'Learn hiragana with an interactive chart covering seion, dakuten, handakuten, and yoon. Tap any character to hear native audio.',
+    },
+    katakana: {
+      title: 'Katakana Chart & Practice (カタカナ)',
+      description:
+        'Master katakana with a full interactive chart, native pronunciation, and practice exercises for loanwords and emphasis.',
+    },
+    exercise: {
+      title: 'Japanese Kana Exercises & Quizzes',
+      description:
+        'Practice hiragana and katakana with romaji, character, listening, and script-matching quizzes.',
+    },
+    exerciseRomaji: {
+      title: 'Romaji Quiz - Hiragana & Katakana Practice',
+      description:
+        'See a kana character and choose the correct romaji. Practice hiragana and katakana reading step by step.',
+    },
+    exerciseCharacter: {
+      title: 'Choose the Kana Character Quiz',
+      description:
+        'See romaji and pick the matching hiragana or katakana character. Build kana recognition with instant feedback.',
+    },
+    exerciseListen: {
+      title: 'Listen & Choose Kana Quiz',
+      description:
+        'Train your ear with native audio and pick the correct hiragana or katakana character.',
+    },
+    exerciseScriptPair: {
+      title: 'Hiragana ↔ Katakana Matching Quiz',
+      description:
+        'Match hiragana and katakana pairs to strengthen both Japanese syllabaries at once.',
+    },
+  },
   language: {
     label: 'Language',
     en: 'English',
@@ -20,6 +70,7 @@ const en: TranslationTree = {
     katakana: 'Katakana',
     exercise: 'Exercise',
     openMenu: 'Open menu',
+    mainNavigation: 'Main navigation',
     collapse: 'Collapse {{label}}',
     expand: 'Expand {{label}}',
   },
@@ -106,6 +157,56 @@ const vi: TranslationTree = {
   app: {
     title: 'Học tiếng Nhật',
   },
+  seo: {
+    defaultTitle: 'Langwish - Học Hiragana, Katakana & Luyện Kana',
+    defaultDescription:
+      'Ứng dụng miễn phí học hiragana và katakana. Xem bảng chữ tương tác, nghe phát âm chuẩn và luyện tập qua bài quiz.',
+    home: {
+      title: 'Học Hiragana & Katakana tiếng Nhật',
+      description:
+        'Bắt đầu học bảng chữ kana với hiragana, katakana, audio bản xứ và bài luyện tập miễn phí.',
+    },
+    alphabet: {
+      title: 'Bảng chữ cái tiếng Nhật - Hiragana & Katakana',
+      description:
+        'Khám phá hiragana và katakana với bảng chữ đầy đủ, phát âm chuẩn và bài tập có hướng dẫn.',
+    },
+    hiragana: {
+      title: 'Bảng Hiragana & Luyện tập (ひらがな)',
+      description:
+        'Học hiragana qua bảng tương tác gồm seion, dakuten, handakuten và yoon. Chạm để nghe phát âm chuẩn.',
+    },
+    katakana: {
+      title: 'Bảng Katakana & Luyện tập (カタカナ)',
+      description:
+        'Luyện katakana với bảng chữ đầy đủ, phát âm bản xứ và bài tập cho từ mượn và nhấn mạnh.',
+    },
+    exercise: {
+      title: 'Bài tập & Quiz Kana tiếng Nhật',
+      description:
+        'Luyện hiragana và katakana qua quiz romaji, chọn chữ, nghe chọn chữ và ghép cặp bảng chữ.',
+    },
+    exerciseRomaji: {
+      title: 'Quiz Romaji - Luyện Hiragana & Katakana',
+      description:
+        'Nhìn chữ kana và chọn romaji đúng. Luyện đọc hiragana và katakana từng bước.',
+    },
+    exerciseCharacter: {
+      title: 'Quiz Chọn chữ Kana',
+      description:
+        'Nhìn romaji và chọn chữ hiragana hoặc katakana đúng. Rèn nhận diện kana với phản hồi tức thì.',
+    },
+    exerciseListen: {
+      title: 'Quiz Nghe & Chọn chữ Kana',
+      description:
+        'Nghe phát âm chuẩn và chọn đúng chữ hiragana hoặc katakana.',
+    },
+    exerciseScriptPair: {
+      title: 'Quiz Ghép Hiragana ↔ Katakana',
+      description:
+        'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.',
+    },
+  },
   language: {
     label: 'Ngôn ngữ',
     en: 'English',
@@ -118,6 +219,7 @@ const vi: TranslationTree = {
     katakana: 'Katakana',
     exercise: 'Luyện tập',
     openMenu: 'Mở menu',
+    mainNavigation: 'Điều hướng chính',
     collapse: 'Thu gọn {{label}}',
     expand: 'Mở rộng {{label}}',
   },
