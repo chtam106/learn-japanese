@@ -116,7 +116,11 @@ function AppLayout() {
                       flex: 1,
                       borderRadius: 1,
                       bgcolor: 'transparent',
-                      '&:hover': { bgcolor: 'transparent' },
+                      '&:hover': {
+                        bgcolor: 'transparent',
+                        '& .MuiListItemText-primary': { color: 'primary.main' },
+                        '& .MuiListItemIcon-root': { color: 'primary.main' },
+                      },
                       '&.Mui-selected': {
                         bgcolor: 'transparent',
                         '& .MuiListItemText-primary': { color: 'primary.main' },
@@ -161,7 +165,11 @@ function AppLayout() {
                   onClick={() => setMobileOpen(false)}
                   sx={{
                     borderRadius: 1,
-                    '&:hover': { bgcolor: 'transparent' },
+                    '&:hover': {
+                      bgcolor: 'transparent',
+                      '& .MuiListItemText-primary': { color: 'primary.main' },
+                      '& .MuiListItemIcon-root': { color: 'primary.main' },
+                    },
                     '&.Mui-selected': {
                       bgcolor: 'transparent',
                       '& .MuiListItemText-primary': { color: 'primary.main' },
@@ -218,7 +226,11 @@ function AppLayout() {
                           py: 0.5,
                           borderRadius: 1,
                           minHeight: 56,
-                          '&:hover': { bgcolor: 'transparent' },
+                          '&:hover': {
+                            bgcolor: 'transparent',
+                            '& .MuiListItemText-primary': { color: 'primary.main' },
+                            '& .MuiListItemIcon-root': { color: 'primary.main' },
+                          },
                           '&.Mui-selected': {
                             bgcolor: 'transparent',
                             '& .MuiListItemText-primary': { color: 'primary.main' },
