@@ -1,7 +1,9 @@
+import { Link as RouterLink } from 'react-router-dom'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import {
   Box,
-  Container,
+  Button,
   IconButton,
   Paper,
   Table,
@@ -15,6 +17,8 @@ import {
 } from '@mui/material'
 import { playKanaAudio } from '@/utils/kana-audio.ts'
 import { KanaDisplay } from '@/components/kana-display.tsx'
+import { PageContainer } from '@/components/page-container.tsx'
+import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
 import { getChartSectionLabels } from '@/i18n/translations.ts'
 
@@ -409,7 +413,16 @@ export function AlphabetChartPage({
   const sectionLabels = getChartSectionLabels(t)
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 2, md: 4 }, px: { xs: 1.5, sm: 3 } }}>
+    <PageContainer>
+      <Button
+        component={RouterLink}
+        to={routes.alphabet.index}
+        startIcon={<ArrowBackIcon />}
+        sx={{ mb: 2, ml: -1 }}
+      >
+        {t('alphabet.back')}
+      </Button>
+
       <Typography
         variant="h4"
         component="h1"
@@ -437,6 +450,6 @@ export function AlphabetChartPage({
         </Typography>
         <ChartSection chartRows={yoonChartRows} />
       </Box>
-    </Container>
+    </PageContainer>
   )
 }

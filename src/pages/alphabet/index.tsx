@@ -1,7 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Container, Link, List, ListItem, Paper, Typography } from '@mui/material'
+import { Link, List, ListItem, Paper, Typography } from '@mui/material'
+import { PageContainer } from '@/components/page-container.tsx'
 import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
+import { elevatedSurfaceSx } from '@/theme/surfaces.ts'
 
 function AlphabetPage() {
   const { t } = useTranslation()
@@ -25,7 +27,7 @@ function AlphabetPage() {
   ]
 
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
+    <PageContainer>
       <Typography variant="h4" component="h1" gutterBottom>
         {t('alphabet.title')}
       </Typography>
@@ -33,7 +35,7 @@ function AlphabetPage() {
         {t('alphabet.subtitle')}
       </Typography>
 
-      <Paper elevation={2}>
+      <Paper elevation={0} sx={elevatedSurfaceSx}>
         <List disablePadding>
           {alphabetLinks.map((item, index) => (
             <ListItem key={item.to} divider={index < alphabetLinks.length - 1} sx={{ p: 0 }}>
@@ -59,7 +61,7 @@ function AlphabetPage() {
           ))}
         </List>
       </Paper>
-    </Container>
+    </PageContainer>
   )
 }
 

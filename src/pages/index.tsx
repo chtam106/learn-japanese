@@ -1,20 +1,14 @@
 import { Link as RouterLink } from 'react-router-dom'
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined'
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined'
-import {
-  Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  Container,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material'
+import { PageContainer } from '@/components/page-container.tsx'
 import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts'
 import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
+import { interactiveSurfaceSx } from '@/theme/surfaces.ts'
 
 function HomePage() {
   const { t } = useTranslation()
@@ -38,10 +32,16 @@ function HomePage() {
       icon: QuizOutlinedIcon,
       description: t('home.exerciseDescription'),
     },
+    {
+      to: routes.n5.index,
+      title: t('nav.n5'),
+      icon: SchoolOutlinedIcon,
+      description: t('n5.subtitle'),
+    },
   ]
 
   return (
-    <Container maxWidth="md" sx={{ py: { xs: 3, md: 5 } }}>
+    <PageContainer>
       <Stack spacing={4}>
         <Box>
           <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 600 }}>
@@ -77,7 +77,7 @@ function HomePage() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
             gap: 2,
           }}
         >
@@ -85,7 +85,7 @@ function HomePage() {
             const Icon = card.icon
 
             return (
-              <Card key={card.to} variant="outlined" sx={{ height: '100%' }}>
+              <Card key={card.to} elevation={0} sx={[interactiveSurfaceSx, { height: '100%' }]}>
                 <CardActionArea
                   component={RouterLink}
                   to={card.to}
@@ -138,7 +138,7 @@ function HomePage() {
           </Stack>
         </Stack>
       </Stack>
-    </Container>
+    </PageContainer>
   )
 }
 

@@ -1,7 +1,16 @@
+import {
+  N5_LESSON_EXERCISE_PATHS,
+  N5_LESSON_LISTENING_PATHS,
+  N5_LESSON_PATHS,
+} from '@/constants/n5-course.ts'
+
 type RouteNode = string | { readonly [key: string]: RouteNode }
 
 export const routes = {
   home: '/',
+  n5: {
+    index: '/n5',
+  },
   alphabet: {
     index: '/alphabet',
     hiragana: '/alphabet/hiragana',
@@ -39,12 +48,21 @@ function collectRouteEntries(node: RouteNode, keyPath: string[] = []): RouteEntr
 
 export const routeEntries = collectRouteEntries(routes)
 
-export const SITEMAP_PATHS = routeEntries.map((entry) => entry.path)
+export const SITEMAP_PATHS = [
+  ...routeEntries.map((entry) => entry.path),
+  ...N5_LESSON_PATHS,
+  ...N5_LESSON_EXERCISE_PATHS,
+  ...N5_LESSON_LISTENING_PATHS,
+]
 
 const pathToSeoKey = Object.fromEntries(routeEntries.map((entry) => [entry.path, entry.seoKey]))
 
 export type SeoRouteKey = (typeof routeEntries)[number]['seoKey']
 
 export function getSeoRouteKey(pathname: string): SeoRouteKey {
+  if (pathname.startsWith(`${routes.n5.index}/`)) {
+    return 'n5' as SeoRouteKey
+  }
+
   return (pathToSeoKey[pathname] as SeoRouteKey | undefined) ?? 'home'
 }

@@ -1,0 +1,45 @@
+---
+description: Core dev workflow, i18n, audio and lint conventions for Langwish
+alwaysApply: true
+---
+
+# Langwish conventions
+
+## Dev tooling (IMPORTANT)
+- The repo requires Node 24 (`.nvmrc`). The default shell may resolve `node` to v12, which breaks `pnpm`. Always prefix commands:
+  `export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm ...`
+- Validate changes with `pnpm run typecheck`, `pnpm run lint`, `pnpm run format` (or `pnpm run check`).
+- `pnpm-lock.yaml` is in `.prettierignore` — never let `pnpm run format` reformat it (it caused a huge spurious diff once). Don't commit lockfile changes unless `package.json` actually changed.
+
+## Lint rules to respect
+- `react-hooks/set-state-in-effect`: do NOT call `setState` inside `useEffect`. To reset component state when a prop/route/locale changes, remount via `key` (e.g. `<Quiz key={`${id}:${locale}`} />`) and reset on user actions in event handlers instead.
+- `useEffect` is fine for syncing with external systems (e.g. calling `speakJapanese`), just not for setting React state.
+
+## i18n
+- UI chrome text lives in `src/i18n/translations.ts` as nested keys; both `en` and `vi` MUST be kept in sync. Read via `const { t, locale } = useTranslation()`.
+- Bilingual CONTENT data (Japanese + meanings) is stored in data files as `Record<Locale, string>` (type `Bilingual`) and rendered with `value[locale]`, not as translation keys.
+
+## Audio / pronunciation
+- Japanese is spoken via the Web Speech API: `speakJapanese(text)` in `src/utils/speech.ts` (lang `ja-JP`). Voice + speed are user-configurable (persisted in localStorage) via `<AudioSettings />` in the header; voices load async (use `subscribeVoices`).
+- Anywhere Japanese text is shown, add `<SpeakButton text={...} />` (`src/components/speak-button.tsx`). Pass kana for single words, full sentence for examples. Do NOT add it to quiz answer options (would leak the answer) or to grammar patterns containing `N` placeholders.
+
+## Surfaces & cards (Material style) — ALWAYS follow
+- Prefer elevation/tonal surfaces over borders. Do NOT use `variant="outlined"` for content cards/papers.
+- Do NOT use heavy MUI default elevations (`elevation={2}` etc.) — their default shadow has a sharp bottom edge that looks like a thick bottom border. Always use `elevation={0}` + a helper.
+- Helpers in `src/theme/surfaces.ts`, applied as `elevation={0}` with `sx={[helper, { ...overrides }]}`:
+  - `elevatedSurfaceSx` / `interactiveSurfaceSx` — white + soft shadow (cards, lists, quiz panels; interactive adds hover lift).
+  - `subtleSurfaceSx` — neutral grey tonal (secondary/low-emphasis boxes).
+  - `tonalSurfaceSx` — primary-tinted tonal (call-to-action surfaces).
+- Chrome regions (header, drawer, footer) separate by a soft shadow only — NO background tint and NO divider lines. Header casts the shadow downward, the drawer to the right, the footer upward.
+- Buttons/Chips may keep `variant="outlined"` — those are controls, not content surfaces.
+
+## Page layout
+- Wrap every page's content in the shared `<PageContainer>` (`src/components/page-container.tsx`) — do NOT use `<Container>` directly in pages. It is full-width and left-aligned (`maxWidth={false}`); width/padding live in `PageContainer` + the `MuiContainer` theme overrides in `main.tsx`. Never center content in a narrow fixed-width column.
+- Page headers: put the back button on its own row (wrapped in a `Box`), then the lesson/section chip, then the title — never let the back button and chip share a line.
+
+## MUI icons
+- Import by exact file name (often the `Outlined` suffix, e.g. `CheckCircleOutlined` not `CheckCircleOutline`). If unsure, check `node_modules/@mui/icons-material/`.
+
+## Routing & sitemap
+- Routes map to `src/pages/**/index.tsx`. Static routes live in `src/constants/routes.ts`; dynamic param routes are registered in `src/app.tsx`.
+- For dynamic pages, export path arrays from the data file and append them to `SITEMAP_PATHS` in `routes.ts`.

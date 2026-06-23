@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
+import { PageContainer } from '@/components/page-container.tsx'
 import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
 
@@ -21,7 +22,7 @@ export function ExercisePageLayout({
   const { t } = useTranslation()
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <PageContainer>
       <Button
         component={RouterLink}
         to={routes.alphabet.exercise.index}
@@ -53,6 +54,6 @@ export function ExercisePageLayout({
       </Box>
 
       {children}
-    </Container>
+    </PageContainer>
   )
 }

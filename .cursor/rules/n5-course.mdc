@@ -1,0 +1,23 @@
+---
+description: Structure of the JLPT N5 course feature (lessons, exercise, listening)
+globs: src/pages/n5/**,src/constants/n5-course.ts
+alwaysApply: false
+---
+
+# N5 course
+
+## Data
+- All lesson content lives in `src/constants/n5-course.ts`: types `Bilingual`, `VocabItem`, `GrammarPoint`, `GrammarExample`, `N5Lesson`, and the `n5Lessons` array. Each lesson has `vocab` + `grammar` (grammar points carry `pattern`, `title`, `explanation`, `examples`). Content is bilingual (`{ en, vi }`).
+- Path helpers + sitemap arrays live here too: `n5LessonPath`, `n5LessonExercisePath`, `n5LessonListeningPath` and `N5_LESSON_PATHS` / `N5_LESSON_EXERCISE_PATHS` / `N5_LESSON_LISTENING_PATHS` (appended to `SITEMAP_PATHS` in `routes.ts`).
+
+## Pages (under `src/pages/n5/`)
+- `index.tsx` – course overview (lesson list).
+- `lesson/index.tsx` – lesson detail (vocab + grammar, with `SpeakButton`s) and CTAs to practice/listening.
+- `lesson/exercise/` – mixed quiz. `n5-quiz.ts` builds `ChoiceQuestion` (multiple choice) + `InputQuestion` (type-the-missing-particle cloze, romaji, lenient via `normalizeAnswer`).
+- `lesson/listening/` – audio quiz. `n5-listening.ts` builds choice questions; the page plays `audioText` with `speakJapanese` (autoplay in `useEffect`, plus replay button).
+
+## Wiring
+- Routes registered in `src/app.tsx`: `/n5`, `/n5/lesson/:lessonId`, `.../exercise`, `.../listening`.
+- `getSeoRouteKey` in `routes.ts` maps any `/n5/...` path to the `n5` SEO key.
+- Lessons appear as children of the "N5 Course" group in `src/constants/nav-items.ts`, using a bilingual `label` (NavItem supports `label?: Bilingual` in addition to `labelKey`); `app-layout.tsx` renders `child.label[locale]`.
+- All N5 UI strings are under the `n5.*` key namespace in `translations.ts` (en + vi).

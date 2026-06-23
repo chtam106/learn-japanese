@@ -9,6 +9,10 @@ import ListenExercisePage from '@/pages/alphabet/exercise/listen/index.tsx'
 import RomajiExercisePage from '@/pages/alphabet/exercise/romaji/index.tsx'
 import ScriptPairExercisePage from '@/pages/alphabet/exercise/script-pair/index.tsx'
 import HomePage from '@/pages/index.tsx'
+import N5CoursePage from '@/pages/n5/index.tsx'
+import N5LessonPage from '@/pages/n5/lesson/index.tsx'
+import N5LessonExercisePage from '@/pages/n5/lesson/exercise/index.tsx'
+import N5LessonListeningPage from '@/pages/n5/lesson/listening/index.tsx'
 import { routes } from '@/constants/routes.ts'
 
 function App() {
@@ -16,6 +20,16 @@ function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route path={routes.home} element={<HomePage />} />
+        <Route path={routes.n5.index} element={<N5CoursePage />} />
+        <Route path={`${routes.n5.index}/lesson/:lessonId`} element={<N5LessonPage />} />
+        <Route
+          path={`${routes.n5.index}/lesson/:lessonId/exercise`}
+          element={<N5LessonExercisePage />}
+        />
+        <Route
+          path={`${routes.n5.index}/lesson/:lessonId/listening`}
+          element={<N5LessonListeningPage />}
+        />
         <Route path={routes.alphabet.index} element={<AlphabetPage />} />
         <Route path={routes.alphabet.hiragana} element={<HiraganaPage />} />
         <Route path={routes.alphabet.katakana} element={<KatakanaPage />} />

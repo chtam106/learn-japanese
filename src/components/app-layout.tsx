@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import CloseIcon from '@mui/icons-material/Close'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -18,12 +19,16 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
+import { alpha } from '@mui/material/styles'
+import { AudioSettings } from '@/components/audio-settings.tsx'
+import { Brand } from '@/components/brand.tsx'
 import { LanguageSwitcher } from '@/components/language-switcher.tsx'
 import { PageMeta } from '@/components/page-meta.tsx'
+import { SiteFooter } from '@/components/site-footer.tsx'
 import { useTranslation } from '@/i18n/use-translation.ts'
 import { isNavGroupActive, navGroups, type NavItem } from '@/constants/nav-items.ts'
 
-const drawerWidth = 240
+const drawerWidth = 320
 
 function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
   const Icon = item.icon
@@ -46,7 +51,7 @@ function getGroupToggleKey(groupPath: string, pathname: string) {
 function AppLayout() {
   const location = useLocation()
   const theme = useTheme()
-  const { t } = useTranslation()
+  const { locale, t } = useTranslation()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [mobileOpen, setMobileOpen] = useState(false)
   const [groupToggleState, setGroupToggleState] = useState<Record<string, boolean>>({})
@@ -79,11 +84,7 @@ function AppLayout() {
 
   const drawerContent = (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <Toolbar sx={{ px: 2 }}>
-        <Typography variant="h6" component="p" noWrap>
-          {t('app.title')}
-        </Typography>
-      </Toolbar>
+      <Toolbar />
 
       <List sx={{ px: 1, flex: 1 }}>
         {navGroups.map((group) => {
@@ -180,12 +181,15 @@ function AppLayout() {
                           location.pathname.startsWith(`${child.path}/`)
                         }
                         onClick={() => setMobileOpen(false)}
-                        sx={{ pl: 4, borderRadius: 1, mb: 0.5 }}
+                        sx={{ pl: 3, py: 0.5, borderRadius: 1, mb: 0.25 }}
                       >
-                        <ListItemIcon sx={{ minWidth: 36 }}>
+                        <ListItemIcon sx={{ minWidth: 30 }}>
                           <NavItemIcon item={child} />
                         </ListItemIcon>
-                        <ListItemText primary={t(child.labelKey)} />
+                        <ListItemText
+                          primary={child.label ? child.label[locale] : t(child.labelKey ?? '')}
+                          slotProps={{ primary: { variant: 'body2' } }}
+                        />
                       </ListItemButton>
                     ))}
                   </List>
@@ -198,58 +202,39 @@ function AppLayout() {
     </Box>
   )
 
-  const headerBar = (
-    <Box
-      component="header"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        gap: 1,
-        px: { xs: 1.5, sm: 2, md: 3 },
-        py: { xs: 1, md: 1.5 },
-        borderBottom: 1,
-        borderColor: 'divider',
-        bgcolor: 'background.paper',
-        position: 'sticky',
-        top: 0,
-        zIndex: (muiTheme) => muiTheme.zIndex.appBar - 1,
-      }}
-    >
-      <LanguageSwitcher />
-    </Box>
-  )
-
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
       <PageMeta />
-      {isMobile && (
-        <AppBar
-          position="fixed"
-          elevation={0}
-          sx={{
-            zIndex: (muiTheme) => muiTheme.zIndex.drawer + 1,
-            borderBottom: 1,
-            borderColor: 'divider',
-            bgcolor: 'background.paper',
-            color: 'text.primary',
-          }}
-        >
-          <Toolbar sx={{ gap: 1 }}>
+
+      <AppBar
+        position="fixed"
+        elevation={0}
+        sx={{
+          zIndex: (muiTheme) => muiTheme.zIndex.drawer + 1,
+          color: 'text.primary',
+          bgcolor: (muiTheme) => alpha(muiTheme.palette.background.paper, 0.85),
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04)',
+        }}
+      >
+        <Toolbar sx={{ gap: 1.5 }}>
+          {isMobile ? (
             <IconButton
               edge="start"
-              onClick={() => setMobileOpen(true)}
-              aria-label={t('nav.openMenu')}
+              onClick={() => setMobileOpen((previous) => !previous)}
+              aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+              aria-expanded={mobileOpen}
             >
-              <MenuIcon />
+              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
-            <Typography variant="h6" component="p" noWrap sx={{ flex: 1 }}>
-              {t('app.title')}
-            </Typography>
-            <LanguageSwitcher />
-          </Toolbar>
-        </AppBar>
-      )}
+          ) : null}
+          <Brand showTagline={!isMobile} showLogo={!isMobile} />
+          <Box sx={{ flexGrow: 1 }} />
+          <AudioSettings />
+          <LanguageSwitcher />
+        </Toolbar>
+      </AppBar>
 
       <Box
         component="nav"
@@ -265,8 +250,8 @@ function AppLayout() {
             '& .MuiDrawer-paper': {
               width: drawerWidth,
               boxSizing: 'border-box',
-              borderRight: 1,
-              borderColor: 'divider',
+              border: 'none',
+              boxShadow: '1px 0 2px rgba(0, 0, 0, 0.06), 2px 0 8px rgba(0, 0, 0, 0.04)',
             },
           }}
         >
@@ -279,14 +264,14 @@ function AppLayout() {
         sx={{
           flexGrow: 1,
           width: { md: `calc(100% - ${drawerWidth}px)` },
-          mt: { xs: 8, md: 0 },
           minWidth: 0,
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-        {!isMobile && headerBar}
+        <Toolbar />
         <Outlet />
+        <SiteFooter />
       </Box>
     </Box>
   )

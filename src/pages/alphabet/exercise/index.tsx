@@ -1,7 +1,10 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Container, Link, List, ListItem, Paper, Typography } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Button, Link, List, ListItem, Paper, Typography } from '@mui/material'
+import { PageContainer } from '@/components/page-container.tsx'
 import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
+import { elevatedSurfaceSx } from '@/theme/surfaces.ts'
 
 function ExerciseHubPage() {
   const { t } = useTranslation()
@@ -30,7 +33,16 @@ function ExerciseHubPage() {
   ]
 
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
+    <PageContainer>
+      <Button
+        component={RouterLink}
+        to={routes.alphabet.index}
+        startIcon={<ArrowBackIcon />}
+        sx={{ mb: 2, ml: -1 }}
+      >
+        {t('alphabet.back')}
+      </Button>
+
       <Typography variant="h4" component="h1" gutterBottom>
         {t('exercise.title')}
       </Typography>
@@ -38,7 +50,7 @@ function ExerciseHubPage() {
         {t('exercise.hubSubtitle')}
       </Typography>
 
-      <Paper elevation={2}>
+      <Paper elevation={0} sx={elevatedSurfaceSx}>
         <List disablePadding>
           {exerciseLinks.map((item, index) => (
             <ListItem key={item.to} divider={index < exerciseLinks.length - 1} sx={{ p: 0 }}>
@@ -64,7 +76,7 @@ function ExerciseHubPage() {
           ))}
         </List>
       </Paper>
-    </Container>
+    </PageContainer>
   )
 }
 
