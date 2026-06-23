@@ -1,8 +1,9 @@
 import { Box, Container, Typography } from '@mui/material'
-import { useTranslation } from '@/i18n/use-translation.ts'
+
+// The footer copy stays in English regardless of the selected locale.
+const FOOTER_VIBE = 'Vibe-coded by CHT, pair-programming with an AI that never sleeps.'
 
 export function SiteFooter() {
-  const { t } = useTranslation()
   const year = new Date().getFullYear()
 
   return (
@@ -18,10 +19,10 @@ export function SiteFooter() {
     >
       <Container maxWidth="md" disableGutters>
         <Typography variant="body2" color="text.secondary">
-          {t('footer.vibe')}
+          {FOOTER_VIBE}
         </Typography>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-          {t('footer.note', { year })}
+          © {year} Langwish · All rights not reserved.
         </Typography>
       </Container>
     </Box>

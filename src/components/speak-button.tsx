@@ -23,12 +23,7 @@ export function SpeakButton({ text, size = 'small' }: SpeakButtonProps) {
   }
 
   return (
-    <IconButton
-      onClick={handleClick}
-      size={size}
-      color="primary"
-      aria-label={t('common.playAudio')}
-    >
+    <IconButton onClick={handleClick} size={size} aria-label={t('common.playAudio')}>
       <VolumeUpIcon fontSize="inherit" />
     </IconButton>
   )

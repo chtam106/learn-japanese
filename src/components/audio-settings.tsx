@@ -15,6 +15,7 @@ import {
 import { useTranslation } from '@/i18n/use-translation.ts'
 import {
   cancelSpeech,
+  getDefaultJapaneseVoice,
   getJapaneseVoices,
   getPreferredVoiceURI,
   getSpeechRate,
@@ -61,7 +62,10 @@ export function AudioSettings() {
     speakJapanese(SAMPLE_TEXT, value)
   }
 
-  const selectedVoice = voices.some((voice) => voice.voiceURI === voiceURI) ? voiceURI : ''
+  const defaultVoiceURI = getDefaultJapaneseVoice(voices)?.voiceURI ?? ''
+  const selectedVoice = voices.some((voice) => voice.voiceURI === voiceURI)
+    ? voiceURI
+    : defaultVoiceURI
 
   return (
     <>

@@ -5,17 +5,7 @@ import FitnessCenterOutlinedIcon from '@mui/icons-material/FitnessCenterOutlined
 import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined'
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Divider,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { Box, Button, Card, CardContent, Chip, Paper, Stack, Typography } from '@mui/material'
 import {
   getN5Lesson,
   n5Lessons,
@@ -60,51 +50,48 @@ function VocabularySection({ lesson }: { lesson: N5Lesson }) {
         </Typography>
       </Stack>
 
-      <Paper elevation={0} sx={elevatedSurfaceSx}>
-        <Stack divider={<Divider />}>
-          {lesson.vocab.map((item) => (
-            <Box
-              key={`${item.kana}-${item.romaji}`}
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                gap: { xs: 0.5, sm: 2 },
-                px: 2,
-                py: 1.5,
-              }}
-            >
-              <Stack direction="row" spacing={0.5} sx={{ alignItems: 'flex-start' }}>
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography variant="h6" component="span" lang="ja">
-                    {item.kanji ?? item.kana}
-                  </Typography>
-                  {item.kanji ? (
-                    <Typography
-                      variant="body2"
-                      component="span"
-                      color="text.secondary"
-                      sx={{ ml: 1 }}
-                      lang="ja"
-                    >
-                      {item.kana}
-                    </Typography>
-                  ) : null}
-                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                    {item.romaji}
-                  </Typography>
-                </Box>
-                <SpeakButton text={item.kana} />
-              </Stack>
-              <Typography
-                variant="body1"
-                sx={{ alignSelf: 'center', textAlign: { xs: 'left', sm: 'right' } }}
-              >
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+          gap: 1.5,
+        }}
+      >
+        {lesson.vocab.map((item) => (
+          <Paper
+            key={`${item.kana}-${item.romaji}`}
+            elevation={0}
+            sx={[
+              elevatedSurfaceSx,
+              { p: 1.5, display: 'flex', gap: 0.5, alignItems: 'flex-start' },
+            ]}
+          >
+            <SpeakButton text={item.kana} />
+            <Box sx={{ minWidth: 0 }}>
+              <Typography variant="subtitle1" component="span" lang="ja" sx={{ fontWeight: 600 }}>
+                {item.kanji ?? item.kana}
+              </Typography>
+              {item.kanji ? (
+                <Typography
+                  variant="body2"
+                  component="span"
+                  color="text.secondary"
+                  sx={{ ml: 1 }}
+                  lang="ja"
+                >
+                  {item.kana}
+                </Typography>
+              ) : null}
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                {item.romaji}
+              </Typography>
+              <Typography variant="body2" sx={{ mt: 0.5 }}>
                 {item.meaning[locale]}
               </Typography>
             </Box>
-          ))}
-        </Stack>
-      </Paper>
+          </Paper>
+        ))}
+      </Box>
     </Box>
   )
 }
@@ -147,17 +134,23 @@ function GrammarSection({ lesson }: { lesson: N5Lesson }) {
                     sx={{ borderLeft: 3, borderColor: 'primary.main', pl: 1.5 }}
                   >
                     <Stack direction="row" spacing={0.5} sx={{ alignItems: 'flex-start' }}>
-                      <Typography variant="body1" lang="ja" sx={{ flex: 1, fontWeight: 500 }}>
-                        {example.jp}
-                      </Typography>
                       <SpeakButton text={example.jp} />
+                      <Box sx={{ flex: 1, minWidth: 0 }}>
+                        <Typography variant="body1" lang="ja" sx={{ fontWeight: 500 }}>
+                          {example.jp}
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          sx={{ display: 'block' }}
+                        >
+                          {example.romaji}
+                        </Typography>
+                        <Typography variant="body2" sx={{ mt: 0.25 }}>
+                          {example.meaning[locale]}
+                        </Typography>
+                      </Box>
                     </Stack>
-                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                      {example.romaji}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mt: 0.25 }}>
-                      {example.meaning[locale]}
-                    </Typography>
                   </Box>
                 ))}
               </Stack>
@@ -267,8 +260,6 @@ function N5LessonPage() {
             </Button>
           </Stack>
         </Paper>
-
-        <Divider />
 
         <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }}>

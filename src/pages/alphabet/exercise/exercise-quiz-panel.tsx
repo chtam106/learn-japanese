@@ -11,6 +11,7 @@ import { resultBorderSx } from '@/pages/alphabet/exercise/exercise-ui.ts'
 import { KanaDisplay } from '@/components/kana-display.tsx'
 import { useTranslation } from '@/i18n/use-translation.ts'
 import { playKanaAudio } from '@/utils/kana-audio.ts'
+import { elevatedSurfaceSx } from '@/theme/surfaces.ts'
 
 type ExerciseQuizPanelProps = {
   mode: ExerciseMode
@@ -53,15 +54,7 @@ export function ExerciseQuizPanel({
   const characterOptions = usesCharacterOptions(mode)
 
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        p: 3,
-        border: 1,
-        borderColor: 'divider',
-        textAlign: 'center',
-      }}
-    >
+    <Paper elevation={0} sx={[elevatedSurfaceSx, { p: 3, textAlign: 'center' }]}>
       <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 2 }}>
         {getQuestionLabel(mode, scriptLabel, t, question.pairDirection)}
       </Typography>

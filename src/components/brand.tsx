@@ -3,7 +3,9 @@ import { Box, Stack, Typography } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import { routes } from '@/constants/routes.ts'
 import { SITE_NAME } from '@/constants/site.ts'
-import { useTranslation } from '@/i18n/use-translation.ts'
+
+// The brand slogan stays in English regardless of the selected locale.
+const SLOGAN = 'Learn Japanese'
 
 type BrandProps = {
   showTagline?: boolean
@@ -11,8 +13,6 @@ type BrandProps = {
 }
 
 export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
-  const { t } = useTranslation()
-
   return (
     <Stack
       component={RouterLink}
@@ -71,7 +71,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
             sx={{ display: 'block', lineHeight: 1.2 }}
             noWrap
           >
-            {t('app.tagline')}
+            {SLOGAN}
           </Typography>
         ) : null}
       </Box>
