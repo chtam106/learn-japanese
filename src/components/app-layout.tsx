@@ -251,7 +251,11 @@ function AppLayout() {
         </AppBar>
       )}
 
-      <Box component="nav" aria-label={t('nav.mainNavigation')} sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}>
+      <Box
+        component="nav"
+        aria-label={t('nav.mainNavigation')}
+        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
+      >
         <Drawer
           variant={isMobile ? 'temporary' : 'permanent'}
           open={isMobile ? mobileOpen : true}

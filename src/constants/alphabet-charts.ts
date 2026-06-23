@@ -667,9 +667,7 @@ export function buildRowRangeScopeFromFirst(
     .map((option) => parseRowScope(option.value as ExerciseRowScope))
     .filter(
       (parsed): parsed is ParsedRowScope =>
-        parsed !== null &&
-        parsed.family === toParsed.family &&
-        parsed.variant === toParsed.variant,
+        parsed !== null && parsed.family === toParsed.family && parsed.variant === toParsed.variant,
     )
 
   if (sameFamily.length === 0) {
@@ -712,9 +710,7 @@ function getRowRangeItems(
   scope: ExerciseScope,
   prefix: 'row-range' | 'yoon-row-range',
 ): AlphabetCell[] {
-  const rangeMatch = scope.match(
-    new RegExp(`^${prefix}-(\\d+)-(\\d+)(?:-(dakuten|handakuten))?$`),
-  )
+  const rangeMatch = scope.match(new RegExp(`^${prefix}-(\\d+)-(\\d+)(?:-(dakuten|handakuten))?$`))
 
   if (!rangeMatch) {
     return []

@@ -24,7 +24,7 @@ type RouteEntry = {
 function buildSeoKey(keyPath: readonly string[]) {
   const joined = keyPath.join('.')
 
-  return joined.endsWith('.index') ? joined.slice(0, -('.index'.length)) : joined
+  return joined.endsWith('.index') ? joined.slice(0, -'.index'.length) : joined
 }
 
 function collectRouteEntries(node: RouteNode, keyPath: string[] = []): RouteEntry[] {
@@ -32,7 +32,9 @@ function collectRouteEntries(node: RouteNode, keyPath: string[] = []): RouteEntr
     return [{ path: node, seoKey: buildSeoKey(keyPath) }]
   }
 
-  return Object.entries(node).flatMap(([key, value]) => collectRouteEntries(value, [...keyPath, key]))
+  return Object.entries(node).flatMap(([key, value]) =>
+    collectRouteEntries(value, [...keyPath, key]),
+  )
 }
 
 export const routeEntries = collectRouteEntries(routes)

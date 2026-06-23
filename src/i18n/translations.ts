@@ -198,13 +198,11 @@ const vi: TranslationTree = {
         },
         listen: {
           title: 'Quiz Nghe & Chọn chữ Kana',
-          description:
-            'Nghe phát âm chuẩn và chọn đúng chữ hiragana hoặc katakana.',
+          description: 'Nghe phát âm chuẩn và chọn đúng chữ hiragana hoặc katakana.',
         },
         scriptPair: {
           title: 'Quiz Ghép Hiragana ↔ Katakana',
-          description:
-            'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.',
+          description: 'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.',
         },
       },
     },
