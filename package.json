@@ -2,6 +2,7 @@
   "name": "learn-japanese",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@10.6.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +14,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
-    "check": "npm run typecheck && npm run lint && npm run lint:style && npm run format:check",
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run lint:style && pnpm run format:check",
     "download:audio": "node scripts/download-kana-audio.mjs",
     "download:audio:force": "node scripts/download-kana-audio.mjs --force",
     "preview": "vite preview"
@@ -48,5 +49,18 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@ffmpeg-installer/darwin-arm64",
+      "@ffmpeg-installer/darwin-x64",
+      "@ffmpeg-installer/linux-arm",
+      "@ffmpeg-installer/linux-arm64",
+      "@ffmpeg-installer/linux-ia32",
+      "@ffmpeg-installer/linux-x64",
+      "@ffmpeg-installer/win32-ia32",
+      "@ffmpeg-installer/win32-x64"
+    ]
   }
 }
