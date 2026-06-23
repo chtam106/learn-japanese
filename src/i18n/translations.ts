@@ -7,7 +7,6 @@ export type TranslationParams = Record<string, string | number>
 const en: TranslationTree = {
   app: {
     title: 'Langwish',
-    tagline: 'Learn Japanese',
   },
   common: {
     playAudio: 'Play pronunciation',
@@ -19,10 +18,6 @@ const en: TranslationTree = {
     speed: 'Speed',
     test: 'Test voice',
     noVoices: 'No Japanese voice was found in your browser.',
-  },
-  footer: {
-    vibe: 'Vibe-coded by CHT, pair-programming with an AI that never sleeps.',
-    note: '© {{year}} Langwish · All rights not reserved.',
   },
   seo: {
     defaultTitle: 'Langwish - Learn Japanese Hiragana, Katakana & Kana Quiz',
@@ -230,7 +225,6 @@ const en: TranslationTree = {
 const vi: TranslationTree = {
   app: {
     title: 'Langwish',
-    tagline: 'Học tiếng Nhật',
   },
   common: {
     playAudio: 'Nghe phát âm',
@@ -242,10 +236,6 @@ const vi: TranslationTree = {
     speed: 'Tốc độ',
     test: 'Nghe thử',
     noVoices: 'Trình duyệt của bạn không có giọng tiếng Nhật.',
-  },
-  footer: {
-    vibe: 'Vibe code bởi CHT, kết đôi cùng một con AI không bao giờ ngủ.',
-    note: '© {{year}} Langwish · Mọi quyền không được bảo lưu.',
   },
   seo: {
     defaultTitle: 'Langwish - Học Hiragana, Katakana & Luyện Kana',

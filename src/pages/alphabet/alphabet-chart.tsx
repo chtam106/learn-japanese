@@ -68,27 +68,17 @@ function getRowHeight(tall: boolean, cellSize: number) {
   return tall ? cellSize * 2 : cellSize
 }
 
-function getCellSx(
-  tall: boolean,
-  isLastRow: boolean,
-  isLastCol: boolean,
-  cellSize: number,
-  columnCount: number,
-) {
+function getCellSx(tall: boolean, cellSize: number, columnCount: number) {
   const height = getRowHeight(tall, cellSize)
 
   return {
     width: `${100 / columnCount}%`,
     height,
     minHeight: height,
-    p: { xs: 0.5, md: 1 },
+    p: { xs: 0.375, md: 0.5 },
     verticalAlign: 'middle' as const,
     boxSizing: 'border-box' as const,
-    borderTop: 0,
-    borderLeft: 0,
-    borderRight: isLastCol ? 0 : '1px solid',
-    borderBottom: isLastRow ? 0 : '1px solid',
-    borderColor: 'divider',
+    border: 0,
   }
 }
 
@@ -139,8 +129,14 @@ function PlayableChartCell({ cell, compact = false }: { cell: AlphabetCell; comp
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 1,
+        borderRadius: 2,
         cursor: 'pointer',
+        bgcolor: 'action.hover',
+        transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
+        '&:hover': {
+          bgcolor: 'action.selected',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12)',
+        },
         '&:hover .speaker-button': { opacity: 1 },
         '&:focus-within .speaker-button': { opacity: 1 },
         '@media (hover: none)': {
@@ -277,9 +273,8 @@ function AlphabetChartTable({
           tableLayout: 'fixed',
           width: '100%',
           minWidth: columnCount * cellSize,
-          borderCollapse: 'collapse',
-          border: '1px solid',
-          borderColor: 'divider',
+          borderCollapse: 'separate',
+          borderSpacing: 0,
         }}
       >
         <TableBody>
@@ -296,13 +291,7 @@ function AlphabetChartTable({
                   <TableCell
                     key={`${variant}-${rowIndex}-${colIndex}`}
                     align="center"
-                    sx={getCellSx(
-                      tall,
-                      rowIndex === tableRows.length - 1,
-                      colIndex === cells.length - 1,
-                      cellSize,
-                      columnCount,
-                    )}
+                    sx={getCellSx(tall, cellSize, columnCount)}
                   >
                     {variant === 'seion' ? (
                       <BaseChartCell

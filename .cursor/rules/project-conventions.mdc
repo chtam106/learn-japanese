@@ -5,6 +5,9 @@ alwaysApply: true
 
 # Langwish conventions
 
+## Git (IMPORTANT)
+- NEVER commit or push on your own. Only run `git commit` / `git push` when the user explicitly asks. Make and validate changes in the working tree and wait for the user's go-ahead before committing.
+
 ## Dev tooling (IMPORTANT)
 - The repo requires Node 24 (`.nvmrc`). The default shell may resolve `node` to v12, which breaks `pnpm`. Always prefix commands:
   `export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm ...`
@@ -18,10 +21,12 @@ alwaysApply: true
 ## i18n
 - UI chrome text lives in `src/i18n/translations.ts` as nested keys; both `en` and `vi` MUST be kept in sync. Read via `const { t, locale } = useTranslation()`.
 - Bilingual CONTENT data (Japanese + meanings) is stored in data files as `Record<Locale, string>` (type `Bilingual`) and rendered with `value[locale]`, not as translation keys.
+- The header slogan (Brand tagline) and the site footer text stay in ENGLISH regardless of locale — hardcode them in the component, do not run them through `t()`.
 
 ## Audio / pronunciation
 - Japanese is spoken via the Web Speech API: `speakJapanese(text)` in `src/utils/speech.ts` (lang `ja-JP`). Voice + speed are user-configurable (persisted in localStorage) via `<AudioSettings />` in the header; voices load async (use `subscribeVoices`).
 - Anywhere Japanese text is shown, add `<SpeakButton text={...} />` (`src/components/speak-button.tsx`). Pass kana for single words, full sentence for examples. Do NOT add it to quiz answer options (would leak the answer) or to grammar patterns containing `N` placeholders.
+- Default voice: prefer the macOS "O-ren" voice when no user choice is stored (`getDefaultJapaneseVoice` in `src/utils/speech.ts`, matches name containing `o-ren`, else first Japanese voice). Only display/play it — do NOT pin it to localStorage so the default stays adaptive per device.
 
 ## Surfaces & cards (Material style) — ALWAYS follow
 - Prefer elevation/tonal surfaces over borders. Do NOT use `variant="outlined"` for content cards/papers.

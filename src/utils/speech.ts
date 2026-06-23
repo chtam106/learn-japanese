@@ -55,11 +55,23 @@ export function setSpeechRate(rate: number): void {
   window.localStorage.setItem(RATE_STORAGE_KEY, String(rate))
 }
 
+export function getDefaultJapaneseVoice(
+  voices: SpeechSynthesisVoice[] = getJapaneseVoices(),
+): SpeechSynthesisVoice | undefined {
+  // On macOS the "O-ren" voice sounds the most natural, so prefer it by default.
+  const oren = voices.find((voice) => voice.name.toLowerCase().includes('o-ren'))
+
+  return oren ?? voices[0]
+}
+
 function resolveVoice(): SpeechSynthesisVoice | undefined {
   const voices = getJapaneseVoices()
   const preferred = getPreferredVoiceURI()
 
-  return (preferred ? voices.find((voice) => voice.voiceURI === preferred) : undefined) ?? voices[0]
+  return (
+    (preferred ? voices.find((voice) => voice.voiceURI === preferred) : undefined) ??
+    getDefaultJapaneseVoice(voices)
+  )
 }
 
 export function speakJapanese(text: string, rate = getSpeechRate()): void {
