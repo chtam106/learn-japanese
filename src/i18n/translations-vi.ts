@@ -86,20 +86,14 @@ export const viTranslations: TranslationTree = {
     expand: 'Mở rộng {{label}}'
   },
   home: {
-    subtitle: 'Bắt đầu với bảng chữ cái - hiragana và katakana.',
+    title: 'Học tiếng Nhật cùng Langwish',
     intro:
-      'Ứng dụng giúp bạn đọc và luyện kana từng bước: xem bảng tương tác, nghe phát âm, và tự kiểm tra qua bài tập.',
-    startHiragana: 'Bắt đầu với Hiragana',
-    jumpExercise: 'Vào Luyện tập',
+      'Đọc và luyện kana từng bước, rồi học tiếp với các khóa JLPT N5–N1 và tiếng Nhật frontend có lộ trình — bảng chữ tương tác, audio, quiz và luyện viết.',
     hiraganaDescription: 'Học bảng âm cơ bản dùng cho từ tiếng Nhật thuần.',
     katakanaDescription: 'Học bảng chữ dùng cho từ mượn và nhấn mạnh.',
     exerciseDescription: 'Tự kiểm tra romaji và chữ kana, có phản hồi âm thanh.',
-    featuresTitle: 'Bạn có thể làm gì ở đây',
-    featureCharts:
-      'Xem bảng seion, dakuten ({{dakuten}}), handakuten ({{handakuten}}) và yoon cho hiragana và katakana.',
-    featureAudio: 'Chạm vào chữ để nghe phát âm kiểu NHK.',
-    featureQuiz:
-      'Luyện tập qua câu hỏi - chọn romaji, chọn chữ, nghe chọn chữ, ghép hiragana và katakana, hoặc luyện viết theo thứ tự nét.'
+    alphabetSection: 'Bảng chữ cái & luyện tập',
+    coursesSection: 'Khóa học'
   },
   alphabet: {
     title: 'Bảng chữ cái',

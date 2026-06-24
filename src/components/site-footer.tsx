@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
 
 // The footer copy stays in English regardless of the selected locale.
-const FOOTER_VIBE = 'Vibe-coded by CHT, pair-programming with an AI that never sleeps.';
+const FOOTER_VIBE = 'Designed by CHT, coded with AI.';
 
 export function SiteFooter() {
   const year = new Date().getFullYear();

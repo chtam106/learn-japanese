@@ -92,20 +92,14 @@ const en: TranslationTree = {
     expand: 'Expand {{label}}'
   },
   home: {
-    subtitle: 'Start with the alphabet - hiragana and katakana.',
+    title: 'Learn Japanese with Langwish',
     intro:
-      'This app helps you read and practice kana step by step: browse interactive charts, listen to native pronunciation, and test yourself with exercises.',
-    startHiragana: 'Start with Hiragana',
-    jumpExercise: 'Jump to Exercise',
+      'Read and practice kana step by step, then keep going with structured JLPT N5–N1 and frontend Japanese courses — interactive charts, audio, quizzes, and writing practice.',
     hiraganaDescription: 'Learn the basic syllabary used for native Japanese words.',
     katakanaDescription: 'Learn the script used for loanwords and emphasis.',
     exerciseDescription: 'Quiz yourself on romaji and characters with audio feedback.',
-    featuresTitle: 'What you can do here',
-    featureCharts:
-      'View seion, dakuten ({{dakuten}}), handakuten ({{handakuten}}), and yoon charts for hiragana and katakana.',
-    featureAudio: 'Tap any character to hear NHK-style audio pronunciation.',
-    featureQuiz:
-      'Practice with quizzes - choose romaji, choose the character, listen and pick, match hiragana and katakana, or trace strokes in writing practice.'
+    alphabetSection: 'Alphabet & practice',
+    coursesSection: 'Courses'
   },
   alphabet: {
     title: 'Alphabet',
