@@ -62,7 +62,7 @@ function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => s
     const courseSeo = getCourseSeo(routeKey);
 
     return {
-      title: `${courseSeo.seoTitle[locale]} | ${SITE_NAME}`,
+      title: `${SITE_NAME} | ${courseSeo.seoTitle[locale]}`,
       description: courseSeo.seoDescription[locale]
     };
   }
@@ -79,7 +79,7 @@ function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => s
   const title = t(`seo.${routeKey}.title`);
 
   return {
-    title: `${title} | ${SITE_NAME}`,
+    title: `${SITE_NAME} | ${title}`,
     description
   };
 }
