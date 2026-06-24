@@ -7,7 +7,8 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined'
 import { Box, Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material'
 import { PageContainer } from '@/components/page-container.tsx'
-import { courseList, coursePath } from '@/constants/courses/index.ts'
+import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts'
+import { coursePath } from '@/constants/courses/levels.ts'
 import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts'
 import { routes } from '@/constants/routes.ts'
 import { useTranslation } from '@/i18n/use-translation.ts'
@@ -43,7 +44,7 @@ function HomePage() {
       icon: QuizOutlinedIcon,
       description: t('home.exerciseDescription'),
     },
-    ...courseList.map((course) => ({
+    ...COURSE_SUMMARIES.map((course) => ({
       to: coursePath(course.level),
       title: course.name[locale],
       icon: SchoolOutlinedIcon,

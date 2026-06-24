@@ -1,4 +1,4 @@
-import { COURSE_LEVELS, COURSE_SITEMAP_PATHS, coursePath } from '@/constants/courses/index.ts'
+import { COURSE_LEVELS, coursePath } from '@/constants/courses/levels.ts'
 
 type RouteNode = string | { readonly [key: string]: RouteNode }
 
@@ -59,9 +59,7 @@ function collectRouteEntries(node: RouteNode, keyPath: string[] = []): RouteEntr
 
 export const routeEntries = collectRouteEntries(routes)
 
-export const SITEMAP_PATHS = Array.from(
-  new Set([...routeEntries.map((entry) => entry.path), ...COURSE_SITEMAP_PATHS]),
-)
+export const SITEMAP_PATHS = routeEntries.map((entry) => entry.path)
 
 const pathToSeoKey = Object.fromEntries(routeEntries.map((entry) => [entry.path, entry.seoKey]))
 

@@ -1,273 +1,48 @@
-import { useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Suspense, lazy, useEffect, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import CloseIcon from '@mui/icons-material/Close'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
   AppBar,
   Box,
-  Collapse,
   Drawer,
   IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Stack,
   Toolbar,
-  Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
-import { AudioSettings } from '@/components/audio-settings.tsx'
 import { Brand } from '@/components/brand.tsx'
-import { LanguageSwitcher } from '@/components/language-switcher.tsx'
 import { PageMeta } from '@/components/page-meta.tsx'
 import { SiteFooter } from '@/components/site-footer.tsx'
 import { useTranslation } from '@/i18n/use-translation.ts'
-import { isNavGroupActive, navGroups, type NavItem } from '@/constants/nav-items.ts'
+import { loadJapaneseUiFont } from '@/theme/fonts.ts'
 
 const drawerWidth = 320
-
-function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
-  const Icon = item.icon
-
-  if (Icon) {
-    return <Icon fontSize="small" />
-  }
-
-  return (
-    <Typography variant="body1" component="span" sx={{ fontWeight: 600 }}>
-      {item.symbol}
-    </Typography>
-  )
-}
+const AppDrawerContent = lazy(() => import('@/components/app-drawer-content.tsx'))
+const AudioSettings = lazy(() =>
+  import('@/components/audio-settings.tsx').then((module) => ({ default: module.AudioSettings })),
+)
+const LanguageSwitcher = lazy(() =>
+  import('@/components/language-switcher.tsx').then((module) => ({
+    default: module.LanguageSwitcher,
+  })),
+)
 
 function AppLayout() {
   const location = useLocation()
   const theme = useTheme()
-  const { locale, t } = useTranslation()
+  const { t } = useTranslation()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(
-      navGroups.map((group) => [group.path, isNavGroupActive(group, location.pathname)]),
-    ),
-  )
+  const shouldRenderDrawerContent = !isMobile || mobileOpen
 
-  const toggleGroup = (path: string) => {
-    setExpandedGroups((previous) => ({
-      ...previous,
-      [path]: !previous[path],
-    }))
-  }
-
-  const drawerContent = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <Toolbar />
-
-      <List
-        className="thin-scrollbar"
-        sx={(muiTheme) => ({
-          px: 1,
-          flex: 1,
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          minHeight: 0,
-          '& > .nav-group-item + .nav-group-item': {
-            borderTop: `1px solid ${alpha(
-              muiTheme.palette.text.primary,
-              muiTheme.palette.mode === 'light' ? 0.08 : 0.16,
-            )}`,
-            mt: 0.5,
-            pt: 0.5,
-          },
-        })}
-      >
-        {navGroups.map((group) => {
-          const groupLabel = group.label ? group.label[locale] : t(group.labelKey ?? '')
-          const isExpanded = expandedGroups[group.path] ?? false
-          const GroupIcon = group.icon
-          const hasChildren = group.children.length > 0
-          const isAlphabetGroup = group.labelKey === 'nav.alphabet'
-
-          const isGroupHighlighted = location.pathname === group.path
-
-          return (
-            <Box key={group.path} className="nav-group-item">
-              {hasChildren ? (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    borderRadius: 1,
-                    bgcolor: 'transparent',
-                    '&:hover': { bgcolor: 'transparent' },
-                  }}
-                >
-                  <ListItemButton
-                    component={NavLink}
-                    to={group.path}
-                    selected={isGroupHighlighted}
-                    onClick={() => setMobileOpen(false)}
-                    sx={{
-                      flex: 1,
-                      borderRadius: 1,
-                      bgcolor: 'transparent',
-                      '&:hover': {
-                        bgcolor: 'transparent',
-                        '& .MuiListItemText-primary': { color: 'primary.main' },
-                        '& .MuiListItemIcon-root': { color: 'primary.main' },
-                      },
-                      '&.Mui-selected': {
-                        bgcolor: 'transparent',
-                        '& .MuiListItemText-primary': { color: 'primary.main' },
-                        '& .MuiListItemIcon-root': { color: 'primary.main' },
-                        '&:hover': { bgcolor: 'transparent' },
-                      },
-                    }}
-                  >
-                    <ListItemIcon sx={{ minWidth: 40 }}>
-                      {GroupIcon ? <GroupIcon fontSize="small" /> : null}
-                    </ListItemIcon>
-                    <ListItemText primary={groupLabel} />
-                  </ListItemButton>
-
-                  <IconButton
-                    size="small"
-                    aria-label={
-                      isExpanded
-                        ? t('nav.collapse', { label: groupLabel })
-                        : t('nav.expand', { label: groupLabel })
-                    }
-                    aria-expanded={isExpanded}
-                    onClick={() => toggleGroup(group.path)}
-                    sx={{
-                      mr: 0.5,
-                      bgcolor: 'transparent',
-                      '&:hover': { bgcolor: 'transparent' },
-                    }}
-                  >
-                    {isExpanded ? (
-                      <ExpandLessIcon fontSize="small" />
-                    ) : (
-                      <ExpandMoreIcon fontSize="small" />
-                    )}
-                  </IconButton>
-                </Box>
-              ) : (
-                <ListItemButton
-                  component={NavLink}
-                  to={group.path}
-                  selected={isGroupHighlighted}
-                  onClick={() => setMobileOpen(false)}
-                  sx={{
-                    borderRadius: 1,
-                    '&:hover': {
-                      bgcolor: 'transparent',
-                      '& .MuiListItemText-primary': { color: 'primary.main' },
-                      '& .MuiListItemIcon-root': { color: 'primary.main' },
-                    },
-                    '&.Mui-selected': {
-                      bgcolor: 'transparent',
-                      '& .MuiListItemText-primary': { color: 'primary.main' },
-                      '& .MuiListItemIcon-root': { color: 'primary.main' },
-                    },
-                    '&.Mui-selected:hover': { bgcolor: 'transparent' },
-                  }}
-                >
-                  <ListItemIcon sx={{ minWidth: 40 }}>
-                    {GroupIcon ? <GroupIcon fontSize="small" /> : null}
-                  </ListItemIcon>
-                  <ListItemText primary={groupLabel} />
-                </ListItemButton>
-              )}
-
-              {hasChildren && (
-                <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-                  <List
-                    component="div"
-                    disablePadding
-                    sx={(muiTheme) => ({
-                      mt: 0.5,
-                      pl: 0,
-                      '& .MuiListItemButton-root': {
-                        position: 'relative',
-                      },
-                      '& .MuiListItemButton-root + .MuiListItemButton-root::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: isAlphabetGroup
-                          ? `calc(${muiTheme.spacing(7)} + 32px)`
-                          : `calc(${muiTheme.spacing(2)} + 40px)`,
-                        right: muiTheme.spacing(1),
-                        borderTop: `1px solid ${alpha(
-                          muiTheme.palette.text.primary,
-                          muiTheme.palette.mode === 'light' ? 0.08 : 0.16,
-                        )}`,
-                      },
-                    })}
-                  >
-                    {group.children.map((child) => (
-                      <ListItemButton
-                        key={child.path}
-                        component={NavLink}
-                        to={child.path}
-                        selected={
-                          location.pathname === child.path ||
-                          location.pathname.startsWith(`${child.path}/`)
-                        }
-                        onClick={() => setMobileOpen(false)}
-                        sx={{
-                          pl: isAlphabetGroup ? 7 : 2,
-                          py: 0.5,
-                          borderRadius: 1,
-                          minHeight: 56,
-                          '&:hover': {
-                            bgcolor: 'transparent',
-                            '& .MuiListItemText-primary': { color: 'primary.main' },
-                            '& .MuiListItemIcon-root': { color: 'primary.main' },
-                          },
-                          '&.Mui-selected': {
-                            bgcolor: 'transparent',
-                            '& .MuiListItemText-primary': { color: 'primary.main' },
-                            '& .MuiListItemIcon-root': { color: 'primary.main' },
-                          },
-                          '&.Mui-selected:hover': { bgcolor: 'transparent' },
-                        }}
-                      >
-                        <ListItemIcon sx={{ minWidth: isAlphabetGroup ? 32 : 40 }}>
-                          <NavItemIcon item={child} />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={child.label ? child.label[locale] : t(child.labelKey ?? '')}
-                          slotProps={{
-                            primary: {
-                              variant: 'body2',
-                              sx: {
-                                lineHeight: 1.35,
-                                display: '-webkit-box',
-                                WebkitLineClamp: 2,
-                                WebkitBoxOrient: 'vertical',
-                                overflow: 'hidden',
-                              },
-                            },
-                          }}
-                        />
-                      </ListItemButton>
-                    ))}
-                  </List>
-                </Collapse>
-              )}
-            </Box>
-          )
-        })}
-      </List>
-    </Box>
-  )
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      void loadJapaneseUiFont()
+    }
+  }, [location.pathname])
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -317,8 +92,10 @@ function AppLayout() {
               <Brand showTagline={false} showLogo={false} />
               <Box sx={{ flexGrow: 1 }} />
               <Stack direction="row" spacing={0.5}>
-                <AudioSettings />
-                <LanguageSwitcher />
+                <Suspense fallback={<Box sx={{ width: 80, height: 40 }} aria-hidden />}>
+                  <AudioSettings />
+                  <LanguageSwitcher />
+                </Suspense>
               </Stack>
             </Stack>
           </Box>
@@ -345,7 +122,17 @@ function AppLayout() {
             },
           }}
         >
-          {drawerContent}
+          {shouldRenderDrawerContent ? (
+            <Suspense
+              fallback={
+                <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                  <Toolbar />
+                </Box>
+              }
+            >
+              <AppDrawerContent onNavigate={() => setMobileOpen(false)} />
+            </Suspense>
+          ) : null}
         </Drawer>
       </Box>
 

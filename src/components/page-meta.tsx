@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { getCourse, isCourseLevel } from '@/constants/courses/index.ts'
+import { isCourseLevel } from '@/constants/courses/levels.ts'
+import { getCourseSeo } from '@/constants/courses/seo.ts'
 import { getSeoRouteKey, type SeoRouteKey } from '@/constants/routes.ts'
 import { SITE_NAME, SITE_URL } from '@/constants/site.ts'
 import type { Locale } from '@/i18n/translations.ts'
@@ -58,11 +59,11 @@ function buildCanonicalUrl(pathname: string) {
 
 function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => string): SeoMeta {
   if (isCourseLevel(routeKey)) {
-    const course = getCourse(routeKey)
+    const courseSeo = getCourseSeo(routeKey)
 
     return {
-      title: `${course.seoTitle[locale]} | ${SITE_NAME}`,
-      description: course.seoDescription[locale],
+      title: `${courseSeo.seoTitle[locale]} | ${SITE_NAME}`,
+      description: courseSeo.seoDescription[locale],
     }
   }
 

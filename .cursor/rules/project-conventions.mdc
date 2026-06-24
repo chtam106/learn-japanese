@@ -31,6 +31,9 @@ alwaysApply: true
 - The header should not show brand logo or slogan; keep only the text brand link in the app bar. The site footer text stays in ENGLISH regardless of locale.
 - On desktop (`md` and up), align the text brand (`Langwish`) with the main content text column (same left gutter alignment), not visual center of the viewport.
 
+## Documentation
+- When the user asks for bilingual docs, write the whole document in parallel EN/VI sections (not only one quick-start block), and keep command examples identical across both languages.
+
 ## Audio / pronunciation
 - Japanese is spoken via the Web Speech API: `speakJapanese(text)` in `src/utils/speech.ts` (lang `ja-JP`). Voice + speed are user-configurable (persisted in localStorage) via `<AudioSettings />` in the header; voices load async (use `subscribeVoices`).
 - Anywhere Japanese text is shown, add `<SpeakButton text={...} />` (`src/components/speak-button.tsx`). Pass kana for single words, full sentence for examples. Do NOT add it to quiz answer options (would leak the answer) or to grammar patterns containing `N` placeholders.
