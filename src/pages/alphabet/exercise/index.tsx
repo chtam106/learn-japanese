@@ -31,6 +31,11 @@ function ExerciseHubPage() {
       title: t('exercise.scriptPair'),
       description: t('exercise.scriptPairDescription'),
     },
+    {
+      to: routes.alphabet.exercise.writing,
+      title: t('exercise.writing'),
+      description: t('exercise.writingDescription'),
+    },
   ];
 
   return (

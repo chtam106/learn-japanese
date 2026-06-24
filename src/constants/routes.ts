@@ -1,6 +1,6 @@
 import { COURSE_LEVELS, coursePath } from '@/constants/courses/levels.ts';
 
-type RouteNode = string | { readonly [key: string]: RouteNode }
+type RouteNode = string | { readonly [key: string]: RouteNode };
 
 export const routes = {
   home: '/',
@@ -32,14 +32,15 @@ export const routes = {
       character: '/alphabet/exercise/character',
       listen: '/alphabet/exercise/listen',
       scriptPair: '/alphabet/exercise/script-pair',
+      writing: '/alphabet/exercise/writing',
     },
   },
 } as const satisfies RouteNode;
 
 type RouteEntry = {
-  path: string
-  seoKey: string
-}
+  path: string;
+  seoKey: string;
+};
 
 function buildSeoKey(keyPath: readonly string[]) {
   const joined = keyPath.join('.');
@@ -63,7 +64,7 @@ export const SITEMAP_PATHS = routeEntries.map((entry) => entry.path);
 
 const pathToSeoKey = Object.fromEntries(routeEntries.map((entry) => [entry.path, entry.seoKey]));
 
-export type SeoRouteKey = (typeof routeEntries)[number]['seoKey']
+export type SeoRouteKey = (typeof routeEntries)[number]['seoKey'];
 
 export function getSeoRouteKey(pathname: string): SeoRouteKey {
   for (const level of COURSE_LEVELS) {

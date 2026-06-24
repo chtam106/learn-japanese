@@ -1,5 +1,4 @@
 import { Link as RouterLink } from 'react-router-dom';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import {
   Box,
   Button,
@@ -70,7 +69,6 @@ function CoursePage({ level }: { level: CourseLevel }) {
                     })}
                   </Typography>
                 </Box>
-                <ArrowForwardIcon color="action" />
               </Stack>
             </CardContent>
           </CardActionArea>

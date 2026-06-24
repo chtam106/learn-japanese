@@ -1,8 +1,8 @@
 import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
 
-export type Locale = 'en' | 'vi'
+export type Locale = 'en' | 'vi';
 
-export type TranslationParams = Record<string, string | number>
+export type TranslationParams = Record<string, string | number>;
 
 const en: TranslationTree = {
   app: {
@@ -71,6 +71,11 @@ const en: TranslationTree = {
           description:
             'Match hiragana and katakana pairs to strengthen both Japanese syllabaries at once.',
         },
+        writing: {
+          title: 'Kana Writing Practice with Stroke Order Animation',
+          description:
+            'Pick a basic hiragana or katakana character, practice writing by hand, and follow the stroke order animation guide.',
+        },
       },
     },
   },
@@ -134,6 +139,16 @@ const en: TranslationTree = {
     characterDescription: 'See romaji and choose the matching kana.',
     listenDescription: 'Listen and choose the matching kana.',
     scriptPairDescription: 'Match hiragana and katakana pairs.',
+    writing: 'Writing practice',
+    writingDescription:
+      'Choose a basic character and practice writing it with stroke-order animation guidance.',
+    writingCharacter: 'Character',
+    writingGuideAlt: '{{script}} stroke order for {{char}}',
+    writingReplayHint: 'Tap the character image to replay the stroke order and hear it.',
+    writingCanvasAria: 'Writing canvas for {{char}}',
+    writingClear: 'Clear writing',
+    writingPreviousCharacter: 'Previous character {{char}}',
+    writingNextCharacter: 'Next character {{char}}',
     chooseCharacter: 'Choose character',
     listenPickShort: 'Listen & choose',
     script: 'Script',
@@ -226,9 +241,9 @@ const en: TranslationTree = {
   },
 } satisfies TranslationTree;
 
-type TranslationLeaf = string
-type TranslationNode = { [key: string]: TranslationLeaf | TranslationNode }
-export type TranslationTree = TranslationNode
+type TranslationLeaf = string;
+type TranslationNode = { [key: string]: TranslationLeaf | TranslationNode };
+export type TranslationTree = TranslationNode;
 
 export const enTranslations: TranslationTree = en;
 

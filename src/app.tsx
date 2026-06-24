@@ -12,7 +12,10 @@ const ExerciseHubPage = lazy(() => import('@/pages/alphabet/exercise/index.tsx')
 const RomajiExercisePage = lazy(() => import('@/pages/alphabet/exercise/romaji/index.tsx'));
 const CharacterExercisePage = lazy(() => import('@/pages/alphabet/exercise/character/index.tsx'));
 const ListenExercisePage = lazy(() => import('@/pages/alphabet/exercise/listen/index.tsx'));
-const ScriptPairExercisePage = lazy(() => import('@/pages/alphabet/exercise/script-pair/index.tsx'));
+const ScriptPairExercisePage = lazy(
+  () => import('@/pages/alphabet/exercise/script-pair/index.tsx'),
+);
+const WritingExercisePage = lazy(() => import('@/pages/alphabet/exercise/writing/index.tsx'));
 const CoursePage = lazy(() => import('@/pages/course/course-page.tsx'));
 const LessonPage = lazy(() => import('@/pages/course/lesson-page.tsx'));
 const ExercisePage = lazy(() => import('@/pages/course/exercise-page.tsx'));
@@ -57,6 +60,7 @@ function App() {
           <Route path={routes.alphabet.exercise.character} element={<CharacterExercisePage />} />
           <Route path={routes.alphabet.exercise.listen} element={<ListenExercisePage />} />
           <Route path={routes.alphabet.exercise.scriptPair} element={<ScriptPairExercisePage />} />
+          <Route path={routes.alphabet.exercise.writing} element={<WritingExercisePage />} />
         </Route>
       </Routes>
     </Suspense>

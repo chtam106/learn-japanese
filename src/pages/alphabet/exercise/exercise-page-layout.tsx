@@ -8,15 +8,17 @@ import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type ExercisePageLayoutProps = {
-  title: string
-  subtitle: string
-  controls: ReactNode
-  children: ReactNode
-}
+  title: string;
+  subtitle: string;
+  note?: ReactNode;
+  controls?: ReactNode;
+  children: ReactNode;
+};
 
 export function ExercisePageLayout({
   title,
   subtitle,
+  note,
   controls,
   children,
 }: ExercisePageLayoutProps) {
@@ -36,23 +38,27 @@ export function ExercisePageLayout({
       <Heading component="h1" gutterBottom>
         {title}
       </Heading>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: note ? 1.5 : 3 }}>
         {subtitle}
       </Typography>
 
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: 'repeat(2, minmax(0, 1fr))',
-            lg: 'repeat(4, minmax(0, 1fr))',
-          },
-          gap: 2,
-          mb: 4,
-        }}
-      >
-        {controls}
-      </Box>
+      {note && <Box sx={{ mb: 3 }}>{note}</Box>}
+
+      {controls && (
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'repeat(2, minmax(0, 1fr))',
+              lg: 'repeat(4, minmax(0, 1fr))',
+            },
+            gap: 2,
+            mb: 4,
+          }}
+        >
+          {controls}
+        </Box>
+      )}
 
       {children}
     </PageContainer>
