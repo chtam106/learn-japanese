@@ -43,17 +43,19 @@ function StudyCardGrid({ cards }: { cards: StudyCard[] }) {
               sx={{ height: '100%', alignItems: 'stretch' }}
             >
               <CardContent>
-                <Typography
-                  variant="h4"
-                  component="span"
-                  sx={{ display: 'block', mb: 1, lineHeight: 1 }}
-                >
-                  {card.symbol}
-                  {card.symbol == null && Icon && <Icon fontSize="inherit" />}
-                </Typography>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                  {card.title}
-                </Typography>
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 1 }}>
+                  <Typography
+                    variant="h5"
+                    component="span"
+                    sx={{ display: 'inline-flex', lineHeight: 1 }}
+                  >
+                    {card.symbol}
+                    {card.symbol == null && Icon && <Icon fontSize="inherit" />}
+                  </Typography>
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 600 }}>
+                    {card.title}
+                  </Typography>
+                </Stack>
                 <Typography variant="body2" color="text.secondary">
                   {card.description}
                 </Typography>
