@@ -18,6 +18,7 @@ const ScriptPairExercisePage = lazy(
 );
 const WritingExercisePage = lazy(() => import('@/pages/alphabet/exercise/writing/index.tsx'));
 const CoursePage = lazy(() => import('@/pages/course/course-page.tsx'));
+const FrontendReferencePage = lazy(() => import('@/pages/course/frontend-reference.tsx'));
 const LessonPage = lazy(() => import('@/pages/course/lesson-page.tsx'));
 const ExercisePage = lazy(() => import('@/pages/course/exercise-page.tsx'));
 const ListeningPage = lazy(() => import('@/pages/course/listening-page.tsx'));
@@ -52,6 +53,8 @@ function App() {
               </Fragment>
             );
           })}
+
+          <Route path={routes.frontend.reference} element={<FrontendReferencePage />} />
 
           <Route path={routes.alphabet.index} element={<AlphabetPage />} />
           <Route path={routes.alphabet.hiragana} element={<HiraganaPage />} />

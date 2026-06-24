@@ -20,7 +20,8 @@ export const routes = {
     index: '/n1'
   },
   frontend: {
-    index: '/frontend'
+    index: '/frontend',
+    reference: '/frontend/reference'
   },
   alphabet: {
     index: '/alphabet',

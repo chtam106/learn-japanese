@@ -195,6 +195,15 @@ const en: TranslationTree = {
   course: {
     lessonsHeading: 'Lessons',
     frontendTrackTag: 'Frontend',
+    referenceLink: 'Advanced vocabulary & grammar (BrSE)',
+    referenceLinkDescription:
+      'A searchable reference of IT/web terms and business expressions beyond the lessons.',
+    referenceTitle: 'Advanced vocabulary & grammar for BrSE',
+    referenceIntro:
+      'A reference of advanced IT/web-development vocabulary and business Japanese expressions that go beyond the lessons - useful for working as a bridge SE (BrSE). Tap any Japanese term to hear it.',
+    referenceVocabHeading: 'Vocabulary',
+    referenceGrammarHeading: 'Grammar & business expressions',
+    referenceMeetingHeading: 'Common meeting phrases',
     lessonLabel: 'Lesson {{number}}',
     focusLabel: 'In this lesson',
     vocabulary: 'Vocabulary',

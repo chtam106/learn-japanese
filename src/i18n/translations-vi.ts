@@ -188,6 +188,15 @@ export const viTranslations: TranslationTree = {
   course: {
     lessonsHeading: 'Danh sách bài học',
     frontendTrackTag: 'Frontend',
+    referenceLink: 'Từ vựng & ngữ pháp nâng cao (BrSE)',
+    referenceLinkDescription:
+      'Tài liệu tra cứu thuật ngữ IT/web và mẫu câu công việc, vượt ra ngoài các bài học.',
+    referenceTitle: 'Từ vựng & ngữ pháp nâng cao cho BrSE',
+    referenceIntro:
+      'Tài liệu tra cứu từ vựng IT/web nâng cao và mẫu câu tiếng Nhật công việc, vượt ra ngoài các bài học - hữu ích khi làm kỹ sư cầu nối (BrSE). Nhấn vào từ tiếng Nhật để nghe phát âm.',
+    referenceVocabHeading: 'Từ vựng',
+    referenceGrammarHeading: 'Ngữ pháp & mẫu câu công việc',
+    referenceMeetingHeading: 'Mẫu câu thông dụng trong họp',
     lessonLabel: 'Bài {{number}}',
     focusLabel: 'Trong bài này',
     vocabulary: 'Từ vựng',

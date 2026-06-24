@@ -61,6 +61,13 @@ export type Lesson = {
   reading?: ReadingPassage[];
 };
 
+/** Optional thematic grouping of a course's lessons, by inclusive lesson-number range. */
+export type CourseModule = {
+  title: Bilingual;
+  from: number;
+  to: number;
+};
+
 export type Course = {
   level: CourseLevel;
   code: string;
@@ -70,6 +77,7 @@ export type Course = {
   seoTitle: Bilingual;
   seoDescription: Bilingual;
   lessons: Lesson[];
+  modules?: CourseModule[];
 };
 
 /**

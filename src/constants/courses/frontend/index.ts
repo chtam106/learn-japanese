@@ -1,7 +1,25 @@
 import { frontendLessonsA } from './lessons-a.ts';
 import { frontendLessonsB } from './lessons-b.ts';
 import { frontendLessonsC } from './lessons-c.ts';
-import { withSequentialNumbers, type Course } from '../types.ts';
+import { withSequentialNumbers, type Course, type CourseModule } from '../types.ts';
+
+const frontendModules: CourseModule[] = [
+  {
+    title: { en: 'Foundations: engineering & teamwork', vi: 'Nền tảng: kỹ thuật & làm việc nhóm' },
+    from: 1,
+    to: 10
+  },
+  {
+    title: { en: 'Engineering quality & platform', vi: 'Chất lượng kỹ thuật & nền tảng' },
+    from: 11,
+    to: 23
+  },
+  {
+    title: { en: 'BRSE communication', vi: 'Giao tiếp BRSE' },
+    from: 24,
+    to: 30
+  }
+];
 
 export const frontendCourse: Course = {
   level: 'frontend',
@@ -23,5 +41,6 @@ export const frontendCourse: Course = {
     en: 'A practical Japanese course for frontend developers. Learn technical vocabulary, project communication patterns, and real workplace expressions with exercises and reading practice.',
     vi: 'Khóa tiếng Nhật thực hành cho frontend developer. Học từ vựng kỹ thuật, mẫu giao tiếp dự án và cách diễn đạt nơi làm việc với bài tập và đọc hiểu.'
   },
-  lessons: withSequentialNumbers([...frontendLessonsA, ...frontendLessonsB, ...frontendLessonsC])
+  lessons: withSequentialNumbers([...frontendLessonsA, ...frontendLessonsB, ...frontendLessonsC]),
+  modules: frontendModules
 };
