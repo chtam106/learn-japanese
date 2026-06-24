@@ -45,13 +45,6 @@ function AppLayout() {
     }
   }, [location.pathname]);
 
-  // On navigation, jump to the top of the page unless the URL targets an anchor.
-  useEffect(() => {
-    if (!location.hash) {
-      window.scrollTo({ top: 0, left: 0 });
-    }
-  }, [location.pathname, location.hash]);
-
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
       <PageMeta />
