@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
@@ -15,12 +16,22 @@ export default defineConfig([
   eslintConfigPrettier,
   {
     files: ['**/*.{ts,tsx}'],
+    plugins: {
+      '@stylistic': stylistic,
+    },
     languageOptions: {
       ecmaVersion: 'latest',
       globals: globals.browser,
     },
     rules: {
       semi: ['error', 'always'],
+      '@stylistic/member-delimiter-style': [
+        'error',
+        {
+          multiline: { delimiter: 'semi', requireLast: true },
+          singleline: { delimiter: 'semi', requireLast: false },
+        },
+      ],
     },
   },
   {
