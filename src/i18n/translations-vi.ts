@@ -38,6 +38,11 @@ export const viTranslations: TranslationTree = {
         description:
           'Luyện katakana với bảng chữ đầy đủ, phát âm bản xứ và bài tập cho từ mượn và nhấn mạnh.'
       },
+      combined: {
+        title: 'Bảng gộp Hiragana + Katakana',
+        description:
+          'Một bảng gojuon ghép hiragana và katakana trong từng ô kèm romaji và phát âm chuẩn - so sánh cả hai bảng chữ cạnh nhau.'
+      },
       exercise: {
         title: 'Bài tập & Quiz Kana tiếng Nhật',
         description:
@@ -78,6 +83,7 @@ export const viTranslations: TranslationTree = {
     alphabet: 'Bảng chữ cái',
     hiragana: 'Hiragana',
     katakana: 'Katakana',
+    combined: 'Bảng gộp',
     exercise: 'Luyện tập',
     openMenu: 'Mở menu',
     closeMenu: 'Đóng menu',
@@ -109,11 +115,14 @@ export const viTranslations: TranslationTree = {
       'Kanji (漢字) - chữ biểu nghĩa mượn từ tiếng Hán; bạn sẽ học dần qua các khóa JLPT.',
     hiraganaDescription: 'ひらがな - bảng âm tiếng Nhật cơ bản',
     katakanaDescription: 'カタカナ - dùng cho từ ngoại lai và nhấn mạnh',
+    combinedDescription: 'Xem hiragana và katakana cạnh nhau trong cùng một bảng',
     exerciseDescription: 'Luyện hiragana và katakana',
     hiraganaPageDescription:
       'Hiragana là nền tảng của chữ viết tiếng Nhật. 46 âm cơ bản (seion) dùng để viết trợ từ ngữ pháp, đuôi động từ và tính từ, cùng các từ thuần Nhật. Dấu hữu thanh (dakuten và handakuten) và âm ghép yoon với ゃ/ゅ/ょ nhỏ mở rộng bộ này để bao trùm mọi âm tiếng Nhật.',
     katakanaPageDescription:
       'Katakana có đúng các âm như hiragana nhưng nét vuông và sắc hơn. Nó dùng cho từ ngoại lai, tên nước ngoài, từ tượng thanh, thuật ngữ khoa học và những từ cần nhấn mạnh. Học cùng hiragana giúp bạn đọc được biển hiệu, thực đơn và tên sản phẩm.',
+    combinedPageDescription:
+      'Hai bảng kana dùng chung các âm, nên bảng này ghép chúng trong từng ô: hiragana bên trái, katakana bên phải. Dùng để so sánh hình dạng cạnh nhau và củng cố cả hai bảng cùng lúc.',
     tapHint: 'Nhấn vào chữ để nghe phát âm.'
   },
   chart: {

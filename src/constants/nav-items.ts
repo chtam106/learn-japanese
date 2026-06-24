@@ -1,3 +1,4 @@
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
@@ -10,7 +11,7 @@ import type { Bilingual, CourseLevel } from '@/constants/courses/types.ts';
 import { routes } from '@/constants/routes.ts';
 
 export type NavItem = {
-  labelKey?: 'nav.hiragana' | 'nav.katakana' | 'nav.exercise';
+  labelKey?: 'nav.hiragana' | 'nav.katakana' | 'nav.combined' | 'nav.exercise';
   label?: Bilingual;
   path: string;
   icon?: ComponentType<SvgIconProps>;
@@ -81,6 +82,11 @@ export const navGroups: NavGroup[] = [
         labelKey: 'nav.katakana',
         path: routes.alphabet.katakana,
         symbol: 'ア'
+      },
+      {
+        labelKey: 'nav.combined',
+        path: routes.alphabet.combined,
+        icon: GridViewOutlinedIcon
       },
       {
         labelKey: 'nav.exercise',

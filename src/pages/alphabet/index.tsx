@@ -34,6 +34,12 @@ function AlphabetPage() {
       description: t('alphabet.katakanaDescription')
     },
     {
+      to: routes.alphabet.combined,
+      title: t('nav.combined'),
+      symbol: 'あ/ア',
+      description: t('alphabet.combinedDescription')
+    },
+    {
       to: routes.alphabet.exercise.index,
       title: t('nav.exercise'),
       icon: QuizOutlinedIcon,

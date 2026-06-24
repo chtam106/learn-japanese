@@ -8,6 +8,7 @@ import { routes } from '@/constants/routes.ts';
 const AlphabetPage = lazy(() => import('@/pages/alphabet/index.tsx'));
 const HiraganaPage = lazy(() => import('@/pages/alphabet/hiragana/index.tsx'));
 const KatakanaPage = lazy(() => import('@/pages/alphabet/katakana/index.tsx'));
+const CombinedChartPage = lazy(() => import('@/pages/alphabet/combined/index.tsx'));
 const ExerciseHubPage = lazy(() => import('@/pages/alphabet/exercise/index.tsx'));
 const RomajiExercisePage = lazy(() => import('@/pages/alphabet/exercise/romaji/index.tsx'));
 const CharacterExercisePage = lazy(() => import('@/pages/alphabet/exercise/character/index.tsx'));
@@ -55,6 +56,7 @@ function App() {
           <Route path={routes.alphabet.index} element={<AlphabetPage />} />
           <Route path={routes.alphabet.hiragana} element={<HiraganaPage />} />
           <Route path={routes.alphabet.katakana} element={<KatakanaPage />} />
+          <Route path={routes.alphabet.combined} element={<CombinedChartPage />} />
           <Route path={routes.alphabet.exercise.index} element={<ExerciseHubPage />} />
           <Route path={routes.alphabet.exercise.romaji} element={<RomajiExercisePage />} />
           <Route path={routes.alphabet.exercise.character} element={<CharacterExercisePage />} />

@@ -26,6 +26,7 @@ export const routes = {
     index: '/alphabet',
     hiragana: '/alphabet/hiragana',
     katakana: '/alphabet/katakana',
+    combined: '/alphabet/combined',
     exercise: {
       index: '/alphabet/exercise',
       romaji: '/alphabet/exercise/romaji',

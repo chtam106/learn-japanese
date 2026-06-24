@@ -42,6 +42,11 @@ const en: TranslationTree = {
         description:
           'Master katakana with a full interactive chart, native pronunciation, and practice exercises for loanwords and emphasis.'
       },
+      combined: {
+        title: 'Hiragana + Katakana Combined Chart',
+        description:
+          'A single gojuon chart that pairs hiragana and katakana in every cell with romaji and native audio - compare both syllabaries side by side.'
+      },
       exercise: {
         title: 'Japanese Kana Exercises & Quizzes',
         description:
@@ -84,6 +89,7 @@ const en: TranslationTree = {
     alphabet: 'Alphabet',
     hiragana: 'Hiragana',
     katakana: 'Katakana',
+    combined: 'Combined chart',
     exercise: 'Exercise',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -115,11 +121,14 @@ const en: TranslationTree = {
       'Kanji (漢字) - meaning-based characters borrowed from Chinese; you pick these up gradually through the JLPT courses.',
     hiraganaDescription: 'ひらがな - basic Japanese syllabary',
     katakanaDescription: 'カタカナ - used for foreign words and emphasis',
+    combinedDescription: 'See hiragana and katakana side by side in one chart',
     exerciseDescription: 'Practice hiragana and katakana',
     hiraganaPageDescription:
       'Hiragana is the foundation of written Japanese. Its 46 basic sounds (seion) spell grammar particles, verb and adjective endings, and native words. Voicing marks (dakuten and handakuten) and the small ゃ/ゅ/ょ of yoon extend the same set to cover every Japanese sound.',
     katakanaPageDescription:
       'Katakana shares the exact same sounds as hiragana but uses sharper, more angular strokes. It is reserved for loanwords, foreign names, onomatopoeia, scientific terms, and words written for emphasis. Learning it alongside hiragana lets you read signs, menus, and product names.',
+    combinedPageDescription:
+      'Both kana sets share the same sounds, so this chart pairs them in every cell: hiragana on the left, katakana on the right. Use it to compare shapes side by side and reinforce both syllabaries at once.',
     tapHint: 'Tap a character to hear its pronunciation.'
   },
   chart: {
