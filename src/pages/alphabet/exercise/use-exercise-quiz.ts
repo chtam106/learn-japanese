@@ -19,15 +19,9 @@ type UseExerciseQuizOptions = {
   pairDirection?: ScriptPairDirection;
 };
 
-function sessionKey(
-  script: ExerciseScript,
-  mode: ExerciseMode,
-  scope: ExerciseScope,
-  pairDirection: ScriptPairDirection
-) {
-  return `${script}-${mode}-${scope}-${pairDirection}`;
-}
-
+// This hook keeps no effect-driven reset: when the script/mode/scope/direction
+// change, the consumer remounts <ExerciseQuiz /> via a `key`, which reruns the
+// `useState` initializer with a fresh session.
 export function useExerciseQuiz({
   mode,
   script,
@@ -40,24 +34,9 @@ export function useExerciseQuiz({
     return { session, question: session.next() };
   });
   const sessionRef = useRef<QuizSession>(initialQuiz.session);
-  const sessionKeyRef = useRef(sessionKey(script, mode, scope, pairDirection));
   const [question, setQuestion] = useState<QuizQuestion>(initialQuiz.question);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
-
-  useEffect(() => {
-    const key = sessionKey(script, mode, scope, pairDirection);
-
-    if (key === sessionKeyRef.current) {
-      return;
-    }
-
-    sessionKeyRef.current = key;
-    sessionRef.current = createQuizSession(script, mode, scope, pairDirection);
-    setQuestion(sessionRef.current.next());
-    setWrongAnswers([]);
-    setAnsweredCorrectly(false);
-  }, [script, mode, scope, pairDirection]);
 
   useEffect(() => {
     if (mode !== 'listen' || answeredCorrectly) {

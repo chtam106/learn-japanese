@@ -5,9 +5,13 @@ import {
   isQuizAnswerCorrect,
   usesCharacterOptions,
   type ExerciseMode,
-  type QuizQuestion
+  type ExerciseScope,
+  type ExerciseScript,
+  type QuizQuestion,
+  type ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import { resultBorderSx } from '@/pages/alphabet/exercise/exercise-ui.ts';
+import { useExerciseQuiz } from '@/pages/alphabet/exercise/use-exercise-quiz.ts';
 import { KanaDisplay } from '@/components/kana-display.tsx';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
@@ -177,5 +181,39 @@ export function ExerciseQuizPanel({
         })}
       </Box>
     </Paper>
+  );
+}
+
+type ExerciseQuizProps = {
+  mode: ExerciseMode;
+  script: ExerciseScript;
+  scope: ExerciseScope;
+  pairDirection?: ScriptPairDirection;
+  scriptLabel: string;
+};
+
+/**
+ * Container that owns the quiz session. Mount it with a `key` derived from the
+ * current options so changing script/scope/direction remounts (and resets) it
+ * instead of resetting state from inside an effect.
+ */
+export function ExerciseQuiz({
+  mode,
+  script,
+  scope,
+  pairDirection,
+  scriptLabel
+}: ExerciseQuizProps) {
+  const quiz = useExerciseQuiz({ mode, script, scope, pairDirection });
+
+  return (
+    <ExerciseQuizPanel
+      mode={mode}
+      scriptLabel={scriptLabel}
+      question={quiz.question}
+      wrongAnswers={quiz.wrongAnswers}
+      answeredCorrectly={quiz.answeredCorrectly}
+      onAnswer={quiz.handleAnswer}
+    />
   );
 }
