@@ -128,7 +128,7 @@ function CombinedKanaCell({ cell, compact }: { cell: CombinedCell; compact: bool
       <Typography
         variant="caption"
         color="text.secondary"
-        sx={{ lineHeight: 1.1, fontSize: compact ? 12 : 13 }}
+        sx={{ lineHeight: 1.1, fontSize: compact ? 13 : 15 }}
       >
         {cell.romaji}
       </Typography>
@@ -155,9 +155,13 @@ function CombinedGrid({ rows, headers }: { rows: GridRow[]; headers: string[] })
         {headers.map((header) => (
           <Typography
             key={header}
-            variant="caption"
             align="center"
-            sx={{ fontWeight: 700, color: 'text.secondary', pb: 0.5 }}
+            sx={{
+              fontWeight: 700,
+              color: 'text.secondary',
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              pb: 0.5
+            }}
           >
             {header}
           </Typography>
@@ -166,10 +170,10 @@ function CombinedGrid({ rows, headers }: { rows: GridRow[]; headers: string[] })
         {rows.map((row, rowIndex) => (
           <Box key={`${row.label}-${rowIndex}`} sx={{ display: 'contents' }}>
             <Typography
-              variant="caption"
               sx={{
                 fontWeight: 700,
                 color: 'text.secondary',
+                fontSize: { xs: '1rem', md: '1.2rem' },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
@@ -245,7 +249,7 @@ function CombinedChartPage() {
         </ChartBlock>
 
         <ChartBlock heading={sectionLabels.yoon}>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
             {t('chart.yoonDescription')}
           </Typography>
           <CombinedGrid rows={yoonRows} headers={YOON_HEADERS} />
