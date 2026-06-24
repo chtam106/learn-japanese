@@ -150,9 +150,9 @@ export function AlphabetChartPage({
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColVowel')}</TableCell>
-                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColLong')}</TableCell>
-                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColExample')}</TableCell>
+                    <TableCell sx={{ fontWeight: 500 }}>{t('chart.chouonColVowel')}</TableCell>
+                    <TableCell sx={{ fontWeight: 500 }}>{t('chart.chouonColLong')}</TableCell>
+                    <TableCell sx={{ fontWeight: 500 }}>{t('chart.chouonColExample')}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -178,7 +178,7 @@ export function AlphabetChartPage({
                         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
                           <SpeakButton text={rule.example} />
                           <Box sx={{ minWidth: 0 }}>
-                            <Typography component="span" lang="ja" sx={{ fontWeight: 600 }}>
+                            <Typography component="span" lang="ja" sx={{ fontWeight: 400 }}>
                               {rule.example}
                             </Typography>
                             <Typography
@@ -218,7 +218,7 @@ export function AlphabetChartPage({
                       variant="subtitle1"
                       component="span"
                       lang="ja"
-                      sx={{ fontWeight: 600 }}
+                      sx={{ fontWeight: 400 }}
                     >
                       {example.jp}
                     </Typography>
