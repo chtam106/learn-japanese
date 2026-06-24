@@ -74,12 +74,14 @@ export function GojuonGrid<T>({
   rows,
   headers,
   renderCell,
-  minCellWidth = 44
+  minCellWidth = 44,
+  maxCellWidth = 96
 }: {
   rows: GridRow<T>[];
   headers: string[];
   renderCell: (cell: T, compact: boolean) => ReactNode;
   minCellWidth?: number;
+  maxCellWidth?: number;
 }) {
   const theme = useTheme();
   const compact = useMediaQuery(theme.breakpoints.down('md'));
@@ -90,9 +92,10 @@ export function GojuonGrid<T>({
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: `minmax(28px, auto) repeat(${columnCount}, minmax(${minCellWidth}px, 1fr))`,
+          gridTemplateColumns: `28px repeat(${columnCount}, minmax(${minCellWidth}px, ${maxCellWidth}px))`,
           gap: 0.5,
-          minWidth: 'min-content'
+          width: 'fit-content',
+          maxWidth: '100%'
         }}
       >
         <Box />

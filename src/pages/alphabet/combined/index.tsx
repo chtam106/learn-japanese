@@ -134,6 +134,7 @@ function CombinedChartPage() {
             headers={VOWEL_HEADERS}
             renderCell={renderCombinedCell}
             minCellWidth={56}
+            maxCellWidth={132}
           />
         </ChartBlock>
 
@@ -146,6 +147,7 @@ function CombinedChartPage() {
             headers={VOWEL_HEADERS}
             renderCell={renderCombinedCell}
             minCellWidth={56}
+            maxCellWidth={132}
           />
         </ChartBlock>
 
@@ -158,6 +160,7 @@ function CombinedChartPage() {
             headers={YOON_HEADERS}
             renderCell={renderCombinedCell}
             minCellWidth={56}
+            maxCellWidth={132}
           />
         </ChartBlock>
       </Box>
