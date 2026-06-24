@@ -1,5 +1,11 @@
 import type { Bilingual, CourseLevel } from './types.ts';
 
+// SEO title/description per course, used by `page-meta.tsx` (loaded on every
+// route). Like `summaries.ts`, this intentionally DUPLICATES the `seoTitle` /
+// `seoDescription` of each `Course` in `<level>/index.ts` rather than deriving
+// from them, to keep the heavy per-level lesson data out of the main bundle.
+// Keep these strings in sync with the matching `Course` objects.
+
 export type CourseSeo = {
   seoTitle: Bilingual;
   seoDescription: Bilingual;
