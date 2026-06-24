@@ -1,12 +1,11 @@
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
 import {
-  DEFAULT_LOCALE,
   LOCALE_STORAGE_KEY,
   enTranslations,
   type Locale,
   type TranslationTree
 } from '@/i18n/translations.ts';
-import { LanguageContext, type TranslateFn } from '@/i18n/language-context.ts';
+import { LanguageContext, readStoredLocale, type TranslateFn } from '@/i18n/language-context.ts';
 
 type TranslationMap = Partial<Record<Locale, TranslationTree>>;
 
@@ -40,16 +39,6 @@ function interpolate(template: string, params?: Record<string, string | number>)
   }
 
   return template.replace(/\{\{(\w+)\}\}/g, (_, name: string) => String(params[name] ?? ''));
-}
-
-function readStoredLocale(): Locale {
-  if (typeof window === 'undefined') {
-    return DEFAULT_LOCALE;
-  }
-
-  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-
-  return stored === 'vi' || stored === 'en' ? stored : DEFAULT_LOCALE;
 }
 
 type LanguageProviderProps = {

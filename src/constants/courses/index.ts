@@ -19,7 +19,7 @@ export * from './levels.ts';
 export * from './summaries.ts';
 export * from './seo.ts';
 
-export const courses: Record<CourseLevel, Course> = {
+const courses: Record<CourseLevel, Course> = {
   n5: n5Course,
   n4: n4Course,
   n3: n3Course,
@@ -27,8 +27,6 @@ export const courses: Record<CourseLevel, Course> = {
   n1: n1Course,
   frontend: frontendCourse
 };
-
-export const courseList: Course[] = COURSE_LEVELS.map((level) => courses[level]);
 
 export function getCourse(level: CourseLevel): Course {
   return courses[level];

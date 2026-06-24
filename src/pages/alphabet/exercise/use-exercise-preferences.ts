@@ -26,7 +26,7 @@ export function useExerciseScript() {
     [setScript]
   );
 
-  return { script, setScript, handleScriptChange };
+  return { script, handleScriptChange };
 }
 
 export function useExercisePairDirection() {
@@ -46,5 +46,5 @@ export function useExercisePairDirection() {
     [setPairDirection]
   );
 
-  return { pairDirection, setPairDirection, handlePairDirectionChange };
+  return { pairDirection, handlePairDirectionChange };
 }

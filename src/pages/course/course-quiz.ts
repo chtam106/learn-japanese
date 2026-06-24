@@ -1,7 +1,7 @@
 import type { Course, Lesson } from '@/constants/courses/index.ts';
 import type { Locale } from '@/i18n/translations.ts';
 
-export type QuestionKind =
+type QuestionKind =
   | 'vocab-meaning'
   | 'vocab-word'
   | 'grammar-translate'

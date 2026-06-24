@@ -7,11 +7,10 @@ export type ListeningOption = {
   ja: boolean;
 };
 
-export type ListeningKind = 'word-meaning' | 'word-script' | 'sentence-meaning';
+type ListeningKind = 'word-meaning' | 'word-script' | 'sentence-meaning';
 
-export type ListeningReveal = {
+type ListeningReveal = {
   jp: string;
-  romaji: string;
   meaning: string;
 };
 
@@ -97,7 +96,7 @@ export function buildLessonListening(
   lesson.vocab.forEach((item, index) => {
     const word = vocabWord(item);
     const meaning = item.meaning[locale];
-    const reveal: ListeningReveal = { jp: word, romaji: item.romaji, meaning };
+    const reveal: ListeningReveal = { jp: word, meaning };
 
     if (index % 2 === 0) {
       const { options, correctId } = buildOptions(meaning, false, pools.meanings);
@@ -138,7 +137,7 @@ export function buildLessonListening(
         optionsJa: false,
         options,
         correctId,
-        reveal: { jp: example.jp, romaji: example.romaji, meaning: example.meaning[locale] }
+        reveal: { jp: example.jp, meaning: example.meaning[locale] }
       });
     });
   });

@@ -106,7 +106,8 @@ function HomePage() {
                       component="span"
                       sx={{ display: 'block', mb: 1, lineHeight: 1 }}
                     >
-                      {card.symbol ?? (Icon ? <Icon fontSize="inherit" /> : null)}
+                      {card.symbol}
+                      {card.symbol == null && Icon && <Icon fontSize="inherit" />}
                     </Typography>
                     <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
                       {card.title}

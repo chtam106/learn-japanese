@@ -7,8 +7,8 @@ import './index.css';
 import App from './app.tsx';
 import { ErrorBoundary } from '@/components/error-boundary.tsx';
 import { LanguageProvider } from '@/i18n/context.tsx';
+import { readStoredLocale } from '@/i18n/language-context.ts';
 import type { TranslationTree } from '@/i18n/translations.ts';
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from '@/i18n/translations.ts';
 import { FONT_FAMILY_UI } from '@/theme/fonts.ts';
 
 const theme = createTheme({
@@ -43,12 +43,6 @@ const theme = createTheme({
 });
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-function readStoredLocale(): Locale {
-  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-
-  return stored === 'vi' || stored === 'en' ? stored : DEFAULT_LOCALE;
-}
 
 async function bootstrap() {
   const initialLocale = readStoredLocale();

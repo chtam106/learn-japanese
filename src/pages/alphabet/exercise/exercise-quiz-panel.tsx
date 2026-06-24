@@ -175,7 +175,8 @@ export function ExerciseQuizPanel({
                 ...(showWrong && resultBorderSx('wrong'))
               }}
             >
-              {characterOptions ? <KanaDisplay cell={item} variant="option" /> : item.romaji}
+              {characterOptions && <KanaDisplay cell={item} variant="option" />}
+              {!characterOptions && item.romaji}
             </Button>
           );
         })}

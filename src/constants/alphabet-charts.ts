@@ -1,11 +1,9 @@
 import type { AlphabetCell, AlphabetChartRow } from '@/pages/alphabet/alphabet-chart.tsx';
 import { DAKUTEN_MARK, HANDAKUTEN_MARK, voicedVariantMark } from '@/constants/kana-terminology.ts';
-import type { TranslationParams } from '@/i18n/translations.ts';
+import type { TranslateFn } from '@/i18n/language-context.ts';
 import { getYoonDisplayParts } from '@/utils/yoon-display.ts';
 
 export type { AlphabetCell };
-
-type TranslateFn = (key: string, params?: TranslationParams) => string;
 
 type BilingualCell = {
   romaji: string;

@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material';
 import { pink } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
 
-export type ChoiceState = 'default' | 'correct' | 'wrong';
+type ChoiceState = 'default' | 'correct' | 'wrong';
 
 type ChoiceButtonProps = {
   children: ReactNode;

@@ -63,7 +63,3 @@ export function getYoonDisplayParts(
 
   return { base, suffix };
 }
-
-export function isYoonRomaji(romaji: string) {
-  return romaji in YOON_ROMAJI_PARTS;
-}
