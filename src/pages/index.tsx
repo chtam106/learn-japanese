@@ -1,16 +1,13 @@
 import { Link as RouterLink } from 'react-router-dom';
 import type { ComponentType } from 'react';
 import type { SvgIconProps } from '@mui/material';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined';
 import { Box, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
 import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts';
 import { coursePath } from '@/constants/courses/levels.ts';
-import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
@@ -123,32 +120,6 @@ function HomePage() {
             {t('home.coursesSection')}
           </Typography>
           <StudyCardGrid cards={courseCards} />
-        </Stack>
-
-        <Stack spacing={1.5}>
-          <Typography variant="subtitle1" component="h2" sx={{ fontWeight: 600 }}>
-            {t('home.featuresTitle')}
-          </Typography>
-          <Stack spacing={1}>
-            <Stack direction="row" spacing={1.5} sx={{ alignItems: 'flex-start' }}>
-              <MenuBookOutlinedIcon fontSize="small" sx={{ mt: 0.3, color: 'text.secondary' }} />
-              <Typography variant="body2" color="text.secondary">
-                {t('home.featureCharts', { dakuten: DAKUTEN_MARK, handakuten: HANDAKUTEN_MARK })}
-              </Typography>
-            </Stack>
-            <Stack direction="row" spacing={1.5} sx={{ alignItems: 'flex-start' }}>
-              <VolumeUpOutlinedIcon fontSize="small" sx={{ mt: 0.3, color: 'text.secondary' }} />
-              <Typography variant="body2" color="text.secondary">
-                {t('home.featureAudio')}
-              </Typography>
-            </Stack>
-            <Stack direction="row" spacing={1.5} sx={{ alignItems: 'flex-start' }}>
-              <QuizOutlinedIcon fontSize="small" sx={{ mt: 0.3, color: 'text.secondary' }} />
-              <Typography variant="body2" color="text.secondary">
-                {t('home.featureQuiz')}
-              </Typography>
-            </Stack>
-          </Stack>
         </Stack>
       </Stack>
     </PageContainer>

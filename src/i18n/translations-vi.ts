@@ -93,13 +93,7 @@ export const viTranslations: TranslationTree = {
     katakanaDescription: 'Học bảng chữ dùng cho từ mượn và nhấn mạnh.',
     exerciseDescription: 'Tự kiểm tra romaji và chữ kana, có phản hồi âm thanh.',
     alphabetSection: 'Bảng chữ cái & luyện tập',
-    coursesSection: 'Khóa học',
-    featuresTitle: 'Bạn có thể làm gì ở đây',
-    featureCharts:
-      'Xem bảng seion, dakuten ({{dakuten}}), handakuten ({{handakuten}}) và yoon cho hiragana và katakana.',
-    featureAudio: 'Chạm vào chữ để nghe phát âm rõ ràng, tự nhiên.',
-    featureQuiz:
-      'Luyện tập qua câu hỏi - chọn romaji, chọn chữ, nghe chọn chữ, ghép hiragana và katakana, hoặc luyện viết theo thứ tự nét.'
+    coursesSection: 'Khóa học'
   },
   alphabet: {
     title: 'Bảng chữ cái',
