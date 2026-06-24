@@ -128,9 +128,13 @@ function GojuonGrid({ rows, headers }: { rows: GridRow[]; headers: string[] }) {
         {headers.map((header) => (
           <Typography
             key={header}
-            variant="caption"
             align="center"
-            sx={{ fontWeight: 700, color: 'text.secondary', pb: 0.5 }}
+            sx={{
+              fontWeight: 700,
+              color: 'text.secondary',
+              fontSize: { xs: '0.9rem', md: '1.05rem' },
+              pb: 0.5
+            }}
           >
             {header}
           </Typography>
@@ -139,10 +143,10 @@ function GojuonGrid({ rows, headers }: { rows: GridRow[]; headers: string[] }) {
         {rows.map((row, rowIndex) => (
           <Box key={`${row.label}-${rowIndex}`} sx={{ display: 'contents' }}>
             <Typography
-              variant="caption"
               sx={{
                 fontWeight: 700,
                 color: 'text.secondary',
+                fontSize: { xs: '0.9rem', md: '1.05rem' },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
