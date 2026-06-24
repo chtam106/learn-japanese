@@ -170,11 +170,7 @@ const en: TranslationTree = {
   },
   course: {
     lessonsHeading: 'Lessons',
-    coreTrackHeading: 'JLPT Core Track',
-    frontendTrackHeading: 'Frontend Track',
     frontendTrackTag: 'Frontend',
-    frontendTrackDescription:
-      'Practical lessons for frontend engineering and project communication in real product teams.',
     lessonLabel: 'Lesson {{number}}',
     focusLabel: 'In this lesson',
     vocabulary: 'Vocabulary',

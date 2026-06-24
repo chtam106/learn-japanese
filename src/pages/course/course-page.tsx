@@ -18,64 +18,6 @@ import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
 function CoursePage({ level }: { level: CourseLevel }) {
   const { locale, t } = useTranslation();
   const course = getCourse(level);
-  const coreLessons = course.lessons.filter((lesson) => lesson.track !== 'frontend');
-  const frontendLessons = course.lessons.filter((lesson) => lesson.track === 'frontend');
-
-  const renderLessonCards = (trackLessons: typeof course.lessons) => (
-    <Stack spacing={1.5}>
-      {trackLessons.map((lesson) => (
-        <Card key={lesson.id} elevation={0} sx={interactiveSurfaceSx}>
-          <CardActionArea component={RouterLink} to={lessonPath(level, lesson.id)}>
-            <CardContent>
-              <Stack
-                direction="row"
-                spacing={2}
-                sx={{ alignItems: 'center', justifyContent: 'space-between' }}
-              >
-                <Box sx={{ minWidth: 0 }}>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    useFlexGap
-                    sx={{ alignItems: 'center', mb: 1, flexWrap: 'wrap' }}
-                  >
-                    <Chip
-                      label={t('course.lessonLabel', { number: lesson.number })}
-                      size="small"
-                      color="primary"
-                      variant="outlined"
-                    />
-                    {lesson.track === 'frontend' && (
-                      <Chip
-                        label={t('course.frontendTrackTag')}
-                        size="small"
-                        color="secondary"
-                        variant="outlined"
-                      />
-                    )}
-                  </Stack>
-                  <Heading component="h3">{lesson.title[locale]}</Heading>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-                    {lesson.focus[locale]}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    sx={{ mt: 1, display: 'block' }}
-                  >
-                    {t('course.counts', {
-                      vocab: lesson.vocab.length,
-                      grammar: lesson.grammar.length
-                    })}
-                  </Typography>
-                </Box>
-              </Stack>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-    </Stack>
-  );
 
   return (
     <PageContainer>
@@ -97,40 +39,39 @@ function CoursePage({ level }: { level: CourseLevel }) {
             {t('course.lessonsHeading')}
           </Heading>
 
-          {frontendLessons.length > 0 && (
-            <Stack spacing={3}>
-              {coreLessons.length > 0 && (
-                <Box>
-                  <Heading component="h3" sx={{ mb: 1.5 }}>
-                    {t('course.coreTrackHeading')}
-                  </Heading>
-                  {renderLessonCards(coreLessons)}
-                </Box>
-              )}
-
-              <Box>
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  useFlexGap
-                  sx={{ alignItems: 'center', mb: 1, flexWrap: 'wrap' }}
-                >
-                  <Heading component="h3">{t('course.frontendTrackHeading')}</Heading>
-                  <Chip
-                    label={t('course.frontendTrackTag')}
-                    size="small"
-                    color="secondary"
-                    variant="outlined"
-                  />
-                </Stack>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
-                  {t('course.frontendTrackDescription')}
-                </Typography>
-                {renderLessonCards(frontendLessons)}
-              </Box>
-            </Stack>
-          )}
-          {frontendLessons.length === 0 && renderLessonCards(course.lessons)}
+          <Stack spacing={1.5}>
+            {course.lessons.map((lesson) => (
+              <Card key={lesson.id} elevation={0} sx={interactiveSurfaceSx}>
+                <CardActionArea component={RouterLink} to={lessonPath(level, lesson.id)}>
+                  <CardContent>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Chip
+                        label={t('course.lessonLabel', { number: lesson.number })}
+                        size="small"
+                        color="primary"
+                        variant="outlined"
+                        sx={{ mb: 1 }}
+                      />
+                      <Heading component="h3">{lesson.title[locale]}</Heading>
+                      <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                        {lesson.focus[locale]}
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{ mt: 1, display: 'block' }}
+                      >
+                        {t('course.counts', {
+                          vocab: lesson.vocab.length,
+                          grammar: lesson.grammar.length
+                        })}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))}
+          </Stack>
         </Box>
 
         {course.lessons.length > 0 && (
