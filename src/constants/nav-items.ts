@@ -28,7 +28,7 @@ export type NavGroup = {
 
 function formatLessonNavLabel(number: number, title: Bilingual): Bilingual {
   return {
-    en: `Unit ${number}: ${title.en}`,
+    en: `Lesson ${number}: ${title.en}`,
     vi: `Bài ${number}: ${title.vi}`
   };
 }
