@@ -32,7 +32,7 @@ export function ExercisePageLayout({
         startIcon={<ArrowBackIcon />}
         sx={{ mb: 2, ml: -1 }}
       >
-        {t('exercise.back')}
+        {t('common.back')}
       </Button>
 
       <Heading component="h1" gutterBottom>

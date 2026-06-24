@@ -6,7 +6,8 @@ export type TranslationParams = Record<string, string | number>;
 
 const en: TranslationTree = {
   common: {
-    playAudio: 'Play pronunciation'
+    playAudio: 'Play pronunciation',
+    back: 'Back'
   },
   errorBoundary: {
     title: 'Something went wrong',
@@ -114,8 +115,7 @@ const en: TranslationTree = {
     exerciseDescription: 'Practice hiragana and katakana',
     hiraganaPageDescription: 'Learn the hiragana alphabet (ひらがな).',
     katakanaPageDescription: 'Learn the katakana alphabet (カタカナ).',
-    tapHint: 'Tap a character to hear its pronunciation.',
-    back: 'Back to alphabet'
+    tapHint: 'Tap a character to hear its pronunciation.'
   },
   chart: {
     seion: 'Seion',
@@ -127,7 +127,6 @@ const en: TranslationTree = {
   exercise: {
     title: 'Exercise',
     hubSubtitle: 'Choose an exercise type.',
-    back: 'All exercises',
     romajiDescription: 'See kana and choose the matching romaji.',
     characterDescription: 'See romaji and choose the matching kana.',
     listenDescription: 'Listen and choose the matching kana.',
@@ -188,7 +187,6 @@ const en: TranslationTree = {
     grammar: 'Grammar',
     examples: 'Examples',
     openLesson: 'Study lesson',
-    backToCourse: 'Back to course',
     previousLesson: 'Previous',
     nextLesson: 'Next',
     counts: '{{vocab}} words · {{grammar}} grammar points',

@@ -286,7 +286,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
               size="small"
               sx={{ ml: -0.5 }}
             >
-              {t('course.backToCourse')}
+              {t('common.back')}
             </Button>
           </Box>
 

@@ -2,7 +2,8 @@ import type { TranslationTree } from '@/i18n/translations.ts';
 
 export const viTranslations: TranslationTree = {
   common: {
-    playAudio: 'Nghe phát âm'
+    playAudio: 'Nghe phát âm',
+    back: 'Quay lại'
   },
   errorBoundary: {
     title: 'Đã có lỗi xảy ra',
@@ -108,8 +109,7 @@ export const viTranslations: TranslationTree = {
     exerciseDescription: 'Luyện hiragana và katakana',
     hiraganaPageDescription: 'Học bảng chữ hiragana (ひらがな).',
     katakanaPageDescription: 'Học bảng chữ katakana (カタカナ).',
-    tapHint: 'Nhấn vào chữ để nghe phát âm.',
-    back: 'Quay lại bảng chữ cái'
+    tapHint: 'Nhấn vào chữ để nghe phát âm.'
   },
   chart: {
     seion: 'Seion',
@@ -121,7 +121,6 @@ export const viTranslations: TranslationTree = {
   exercise: {
     title: 'Luyện tập',
     hubSubtitle: 'Chọn loại bài tập.',
-    back: 'Tất cả bài tập',
     romajiDescription: 'Nhìn chữ kana và chọn romaji đúng.',
     characterDescription: 'Nhìn romaji và chọn chữ kana đúng.',
     listenDescription: 'Nghe và chọn chữ kana đúng.',
@@ -181,7 +180,6 @@ export const viTranslations: TranslationTree = {
     grammar: 'Ngữ pháp',
     examples: 'Ví dụ',
     openLesson: 'Học bài',
-    backToCourse: 'Về trang khóa học',
     previousLesson: 'Bài trước',
     nextLesson: 'Bài sau',
     counts: '{{vocab}} từ · {{grammar}} điểm ngữ pháp',

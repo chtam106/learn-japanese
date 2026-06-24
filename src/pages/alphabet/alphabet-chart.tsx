@@ -395,7 +395,7 @@ export function AlphabetChartPage({
         startIcon={<ArrowBackIcon />}
         sx={{ mb: 2, ml: -1 }}
       >
-        {t('alphabet.back')}
+        {t('common.back')}
       </Button>
 
       <Heading component="h1" gutterBottom>

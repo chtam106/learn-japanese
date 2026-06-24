@@ -19,7 +19,7 @@ export function LessonNotFound({ level }: { level: CourseLevel }) {
         {t('course.notFoundBody')}
       </Typography>
       <Button component={RouterLink} to={coursePath(level)} variant="contained">
-        {t('course.backToCourse')}
+        {t('common.back')}
       </Button>
     </PageContainer>
   );
