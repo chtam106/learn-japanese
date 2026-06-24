@@ -137,7 +137,7 @@ export const viTranslations: TranslationTree = {
     writingClear: 'Xóa nét viết',
     writingPreviousCharacter: 'Chữ trước {{char}}',
     writingNextCharacter: 'Chữ tiếp theo {{char}}',
-    chooseCharacter: 'Chọn chữ',
+    chooseCharacter: 'Chọn chữ kana',
     listenPickShort: 'Nghe & chọn',
     script: 'Bảng chữ',
     scriptAll: 'Tất cả',

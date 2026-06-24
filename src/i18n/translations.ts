@@ -144,7 +144,7 @@ const en: TranslationTree = {
     writingClear: 'Clear writing',
     writingPreviousCharacter: 'Previous character {{char}}',
     writingNextCharacter: 'Next character {{char}}',
-    chooseCharacter: 'Choose character',
+    chooseCharacter: 'Choose the kana character',
     listenPickShort: 'Listen & choose',
     script: 'Script',
     scriptAll: 'All',
