@@ -181,7 +181,7 @@ const en: TranslationTree = {
     frontendTrackTag: 'Frontend',
     frontendTrackDescription:
       'Practical lessons for frontend engineering and project communication in real product teams.',
-    lessonLabel: 'Unit {{number}}',
+    lessonLabel: 'Lesson {{number}}',
     focusLabel: 'In this lesson',
     vocabulary: 'Vocabulary',
     grammar: 'Grammar',

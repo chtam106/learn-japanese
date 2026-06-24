@@ -77,8 +77,8 @@ alwaysApply: true
 - For dynamic pages, export path arrays from the data file and append them to `SITEMAP_PATHS` in `routes.ts`.
 
 ## Navigation labels
-- In drawer sub-items for course lessons, keep lesson number inline with the lesson name (e.g. `Unit 1: ...` / `Bài 1: ...`); do not render the number as a separate left icon/symbol.
-- Keep English lesson chips/menu wording consistent as `Unit` (e.g. `Unit {{number}}` in `course.lessonLabel` and `Unit N: ...` in drawer sub-items).
+- In drawer sub-items for course lessons, keep lesson number inline with the lesson name (e.g. `Lesson 1: ...` / `Bài 1: ...`); do not render the number as a separate left icon/symbol.
+- Keep English lesson chips/menu wording consistent as `Lesson` (e.g. `Lesson {{number}}` in `course.lessonLabel` and `Lesson N: ...` in drawer sub-items), matching the `/lesson/...` route and the Vietnamese `Bài`. Do NOT use `Unit`.
 
 ## Drawer menu layout
 - Keep drawer menu visuals minimal: use subtle divider lines between sibling items/sub-items; avoid card-like shadows/background blocks for separation.
