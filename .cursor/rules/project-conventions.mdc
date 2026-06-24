@@ -13,6 +13,7 @@ alwaysApply: true
 
 ## Git (IMPORTANT)
 - NEVER commit or push on your own. Only run `git commit` / `git push` when the user explicitly asks. Make and validate changes in the working tree and wait for the user's go-ahead before committing.
+- NEVER merge a PR (`gh pr merge`) on your own. Merging is destructive/hard-to-undo — always ask for an explicit, per-PR confirmation right before merging, even if an earlier instruction seemed to allow it. Preparing a PR (rebase, resolve conflicts, push, make it green) is fine; clicking merge is not, without confirmation.
 
 ## Dev tooling (IMPORTANT)
 - The repo requires Node 24 (`.nvmrc`). The default shell may resolve `node` to v12, which breaks `pnpm`. Always prefix commands:
