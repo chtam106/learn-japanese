@@ -84,8 +84,8 @@ function CombinedKanaCell({ cell, compact }: { cell: CombinedCell; compact: bool
         spacing={compact ? 0.5 : 1}
         sx={{ alignItems: 'center', justifyContent: 'center' }}
       >
-        <KanaDisplay cell={cell.hiragana} variant="chart" compact />
-        <KanaDisplay cell={cell.katakana} variant="chart" compact />
+        <KanaDisplay cell={cell.hiragana} variant="chart" compact={compact} />
+        <KanaDisplay cell={cell.katakana} variant="chart" compact={compact} />
       </Stack>
     </CellButton>
   );
