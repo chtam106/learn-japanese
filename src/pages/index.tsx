@@ -104,9 +104,6 @@ function HomePage() {
           <Heading component="h1" gutterBottom>
             {t('home.title')}
           </Heading>
-          <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 400, mb: 2 }}>
-            {t('home.subtitle')}
-          </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560 }}>
             {t('home.intro')}
           </Typography>

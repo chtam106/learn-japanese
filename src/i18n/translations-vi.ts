@@ -87,7 +87,6 @@ export const viTranslations: TranslationTree = {
   },
   home: {
     title: 'Học tiếng Nhật cùng Langwish',
-    subtitle: 'Bắt đầu với bảng chữ cái - hiragana và katakana.',
     intro:
       'Đọc và luyện kana từng bước, rồi học tiếp với các khóa JLPT N5–N1 và tiếng Nhật frontend có lộ trình — bảng chữ tương tác, audio, quiz và luyện viết.',
     startHiragana: 'Bắt đầu với Hiragana',

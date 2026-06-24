@@ -93,7 +93,6 @@ const en: TranslationTree = {
   },
   home: {
     title: 'Learn Japanese with Langwish',
-    subtitle: 'Start with the alphabet - hiragana and katakana.',
     intro:
       'Read and practice kana step by step, then keep going with structured JLPT N5–N1 and frontend Japanese courses — interactive charts, audio, quizzes, and writing practice.',
     startHiragana: 'Start with Hiragana',
