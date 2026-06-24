@@ -269,7 +269,8 @@ function LessonPage({ level }: { level: CourseLevel }) {
     return <LessonNotFound level={level} />;
   }
 
-  const lessons = getCourse(level).lessons;
+  const course = getCourse(level);
+  const lessons = course.lessons;
   const index = lessons.findIndex((item) => item.id === lesson.id);
   const previous = index > 0 ? lessons[index - 1] : undefined;
   const next = index < lessons.length - 1 ? lessons[index + 1] : undefined;
@@ -290,22 +291,25 @@ function LessonPage({ level }: { level: CourseLevel }) {
             </Button>
           </Box>
 
-          <Chip
-            label={t('course.lessonLabel', { number: lesson.number })}
-            color="primary"
-            variant="outlined"
-            sx={{ mb: 1 }}
-          />
-          <Heading component="h1">{lesson.title[locale]}</Heading>
-          {lesson.track === 'frontend' && (
+          <Stack
+            direction="row"
+            spacing={1}
+            useFlexGap
+            sx={{ mb: 1, flexWrap: 'wrap', alignItems: 'center' }}
+          >
             <Chip
-              label={t('course.frontendTrackTag')}
-              color="secondary"
+              label={t('course.lessonLabel', { number: lesson.number })}
+              color="primary"
               variant="outlined"
-              size="small"
-              sx={{ mt: 1 }}
             />
-          )}
+            {lesson.track === 'frontend' && (
+              <Chip label={t('course.frontendTrackTag')} color="secondary" variant="outlined" />
+            )}
+            {lesson.track !== 'frontend' && (
+              <Chip label={course.code} color="secondary" variant="outlined" />
+            )}
+          </Stack>
+          <Heading component="h1">{lesson.title[locale]}</Heading>
 
           <Paper elevation={0} sx={[subtleSurfaceSx, { p: 2, mt: 2 }]}>
             <Typography variant="overline" color="text.secondary">
