@@ -65,7 +65,7 @@ export function CellButton({
 }
 
 const HEADER_LABEL_SX = {
-  fontWeight: 700,
+  fontWeight: 500,
   color: 'text.secondary',
   fontSize: { xs: '1rem', md: '1.2rem' }
 } as const;
