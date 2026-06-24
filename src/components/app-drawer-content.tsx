@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useCallback, useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Box,
   Collapse,
@@ -12,29 +12,29 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-} from '@mui/material'
-import { alpha } from '@mui/material/styles'
-import { useTranslation } from '@/i18n/use-translation.ts'
-import type { CourseLevel } from '@/constants/courses/types.ts'
+} from '@mui/material';
+import { alpha } from '@mui/material/styles';
+import { useTranslation } from '@/i18n/use-translation.ts';
+import type { CourseLevel } from '@/constants/courses/types.ts';
 import {
   isNavGroupActive,
   loadCourseLessonNavItems,
   navGroups,
   type NavItem,
-} from '@/constants/nav-items.ts'
+} from '@/constants/nav-items.ts';
 
 function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
-  const Icon = item.icon
+  const Icon = item.icon;
 
   if (Icon) {
-    return <Icon fontSize="small" />
+    return <Icon fontSize="small" />;
   }
 
   return (
     <Typography variant="body1" component="span" sx={{ fontWeight: 600 }}>
       {item.symbol}
     </Typography>
-  )
+  );
 }
 
 type AppDrawerContentProps = {
@@ -42,60 +42,60 @@ type AppDrawerContentProps = {
 }
 
 export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
-  const location = useLocation()
-  const { locale, t } = useTranslation()
+  const location = useLocation();
+  const { locale, t } = useTranslation();
   const [courseChildrenByLevel, setCourseChildrenByLevel] = useState<
     Partial<Record<CourseLevel, NavItem[]>>
-  >({})
-  const [loadingLevels, setLoadingLevels] = useState<Partial<Record<CourseLevel, boolean>>>({})
+  >({});
+  const [loadingLevels, setLoadingLevels] = useState<Partial<Record<CourseLevel, boolean>>>({});
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(
       navGroups.map((group) => [group.path, isNavGroupActive(group, location.pathname)]),
     ),
-  )
+  );
 
   const ensureCourseChildren = useCallback(
     async (level: CourseLevel) => {
       if (courseChildrenByLevel[level] || loadingLevels[level]) {
-        return
+        return;
       }
 
-      setLoadingLevels((previous) => ({ ...previous, [level]: true }))
+      setLoadingLevels((previous) => ({ ...previous, [level]: true }));
 
       try {
-        const children = await loadCourseLessonNavItems(level)
-        setCourseChildrenByLevel((previous) => ({ ...previous, [level]: children }))
+        const children = await loadCourseLessonNavItems(level);
+        setCourseChildrenByLevel((previous) => ({ ...previous, [level]: children }));
       } finally {
-        setLoadingLevels((previous) => ({ ...previous, [level]: false }))
+        setLoadingLevels((previous) => ({ ...previous, [level]: false }));
       }
     },
     [courseChildrenByLevel, loadingLevels],
-  )
+  );
 
   const toggleGroup = (path: string, level?: CourseLevel) => {
-    const isExpanded = expandedGroups[path] ?? false
+    const isExpanded = expandedGroups[path] ?? false;
 
     setExpandedGroups((previous) => ({
       ...previous,
       [path]: !isExpanded,
-    }))
+    }));
 
     if (!isExpanded && level) {
-      void ensureCourseChildren(level)
+      void ensureCourseChildren(level);
     }
-  }
+  };
 
   useEffect(() => {
     navGroups.forEach((group) => {
       if (!group.courseLevel) {
-        return
+        return;
       }
 
       if (expandedGroups[group.path]) {
-        void ensureCourseChildren(group.courseLevel)
+        void ensureCourseChildren(group.courseLevel);
       }
-    })
-  }, [expandedGroups, ensureCourseChildren])
+    });
+  }, [expandedGroups, ensureCourseChildren]);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -120,15 +120,15 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
         })}
       >
         {navGroups.map((group) => {
-          const groupLabel = group.label ? group.label[locale] : t(group.labelKey ?? '')
-          const isExpanded = expandedGroups[group.path] ?? false
-          const dynamicChildren = group.courseLevel ? (courseChildrenByLevel[group.courseLevel] ?? []) : []
-          const children = group.courseLevel ? dynamicChildren : group.children
-          const hasChildren = group.courseLevel ? true : children.length > 0
-          const isLoadingChildren = group.courseLevel ? loadingLevels[group.courseLevel] : false
-          const GroupIcon = group.icon
-          const isAlphabetGroup = group.labelKey === 'nav.alphabet'
-          const isGroupHighlighted = location.pathname === group.path
+          const groupLabel = group.label ? group.label[locale] : t(group.labelKey ?? '');
+          const isExpanded = expandedGroups[group.path] ?? false;
+          const dynamicChildren = group.courseLevel ? (courseChildrenByLevel[group.courseLevel] ?? []) : [];
+          const children = group.courseLevel ? dynamicChildren : group.children;
+          const hasChildren = group.courseLevel ? true : children.length > 0;
+          const isLoadingChildren = group.courseLevel ? loadingLevels[group.courseLevel] : false;
+          const GroupIcon = group.icon;
+          const isAlphabetGroup = group.labelKey === 'nav.alphabet';
+          const isGroupHighlighted = location.pathname === group.path;
 
           return (
             <Box
@@ -311,11 +311,11 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                 </Collapse>
               )}
             </Box>
-          )
+          );
         })}
       </List>
     </Box>
-  )
+  );
 }
 
-export default AppDrawerContent
+export default AppDrawerContent;

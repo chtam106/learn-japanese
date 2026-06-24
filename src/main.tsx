@@ -1,15 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import { CssBaseline, ThemeProvider } from '@mui/material'
-import { createTheme } from '@mui/material/styles'
-import './index.css'
-import App from './app.tsx'
-import { ErrorBoundary } from '@/components/error-boundary.tsx'
-import { LanguageProvider } from '@/i18n/context.tsx'
-import type { TranslationTree } from '@/i18n/translations.ts'
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from '@/i18n/translations.ts'
-import { FONT_FAMILY_UI } from '@/theme/fonts.ts'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import './index.css';
+import App from './app.tsx';
+import { ErrorBoundary } from '@/components/error-boundary.tsx';
+import { LanguageProvider } from '@/i18n/context.tsx';
+import type { TranslationTree } from '@/i18n/translations.ts';
+import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from '@/i18n/translations.ts';
+import { FONT_FAMILY_UI } from '@/theme/fonts.ts';
 
 const theme = createTheme({
   typography: {
@@ -40,23 +40,23 @@ const theme = createTheme({
       },
     },
   },
-})
+});
 
-const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function readStoredLocale(): Locale {
-  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY)
+  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
 
-  return stored === 'vi' || stored === 'en' ? stored : DEFAULT_LOCALE
+  return stored === 'vi' || stored === 'en' ? stored : DEFAULT_LOCALE;
 }
 
 async function bootstrap() {
-  const initialLocale = readStoredLocale()
-  let initialViTranslations: TranslationTree | undefined
+  const initialLocale = readStoredLocale();
+  let initialViTranslations: TranslationTree | undefined;
 
   if (initialLocale === 'vi') {
-    const { viTranslations } = await import('@/i18n/translations-vi.ts')
-    initialViTranslations = viTranslations
+    const { viTranslations } = await import('@/i18n/translations-vi.ts');
+    initialViTranslations = viTranslations;
   }
 
   createRoot(document.getElementById('root')!).render(
@@ -75,7 +75,7 @@ async function bootstrap() {
         </LanguageProvider>
       </ThemeProvider>
     </StrictMode>,
-  )
+  );
 }
 
-void bootstrap()
+void bootstrap();

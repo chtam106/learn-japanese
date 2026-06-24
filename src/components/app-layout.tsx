@@ -1,7 +1,7 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
-import CloseIcon from '@mui/icons-material/Close'
-import MenuIcon from '@mui/icons-material/Menu'
+import { Suspense, lazy, useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Box,
@@ -11,38 +11,38 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
-} from '@mui/material'
-import { alpha } from '@mui/material/styles'
-import { Brand } from '@/components/brand.tsx'
-import { PageMeta } from '@/components/page-meta.tsx'
-import { SiteFooter } from '@/components/site-footer.tsx'
-import { useTranslation } from '@/i18n/use-translation.ts'
-import { loadJapaneseUiFont } from '@/theme/fonts.ts'
+} from '@mui/material';
+import { alpha } from '@mui/material/styles';
+import { Brand } from '@/components/brand.tsx';
+import { PageMeta } from '@/components/page-meta.tsx';
+import { SiteFooter } from '@/components/site-footer.tsx';
+import { useTranslation } from '@/i18n/use-translation.ts';
+import { loadJapaneseUiFont } from '@/theme/fonts.ts';
 
-const drawerWidth = 320
-const AppDrawerContent = lazy(() => import('@/components/app-drawer-content.tsx'))
+const drawerWidth = 320;
+const AppDrawerContent = lazy(() => import('@/components/app-drawer-content.tsx'));
 const AudioSettings = lazy(() =>
   import('@/components/audio-settings.tsx').then((module) => ({ default: module.AudioSettings })),
-)
+);
 const LanguageSwitcher = lazy(() =>
   import('@/components/language-switcher.tsx').then((module) => ({
     default: module.LanguageSwitcher,
   })),
-)
+);
 
 function AppLayout() {
-  const location = useLocation()
-  const theme = useTheme()
-  const { t } = useTranslation()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const shouldRenderDrawerContent = !isMobile || mobileOpen
+  const location = useLocation();
+  const theme = useTheme();
+  const { t } = useTranslation();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const shouldRenderDrawerContent = !isMobile || mobileOpen;
 
   useEffect(() => {
     if (location.pathname !== '/') {
-      void loadJapaneseUiFont()
+      void loadJapaneseUiFont();
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -151,7 +151,7 @@ function AppLayout() {
         <SiteFooter />
       </Box>
     </Box>
-  )
+  );
 }
 
-export default AppLayout
+export default AppLayout;

@@ -1,4 +1,4 @@
-import type { Bilingual, CourseLevel } from './types.ts'
+import type { Bilingual, CourseLevel } from './types.ts';
 
 export type CourseSeo = {
   seoTitle: Bilingual
@@ -66,8 +66,8 @@ const courseSeoByLevel: Record<CourseLevel, CourseSeo> = {
       vi: 'Khóa tiếng Nhật thực hành cho frontend developer. Học từ vựng kỹ thuật, mẫu giao tiếp dự án và cách diễn đạt nơi làm việc với bài tập và đọc hiểu.',
     },
   },
-}
+};
 
 export function getCourseSeo(level: CourseLevel): CourseSeo {
-  return courseSeoByLevel[level]
+  return courseSeoByLevel[level];
 }

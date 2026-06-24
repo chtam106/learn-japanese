@@ -1,5 +1,5 @@
-import type { Bilingual, CourseLevel } from './types.ts'
-import { COURSE_LEVELS } from './levels.ts'
+import type { Bilingual, CourseLevel } from './types.ts';
+import { COURSE_LEVELS } from './levels.ts';
 
 export type CourseSummary = {
   level: CourseLevel
@@ -56,6 +56,6 @@ const summaryByLevel: Record<CourseLevel, CourseSummary> = {
       vi: 'Tiếng Nhật thực chiến cho frontend engineer và team sản phẩm.',
     },
   },
-}
+};
 
-export const COURSE_SUMMARIES: CourseSummary[] = COURSE_LEVELS.map((level) => summaryByLevel[level])
+export const COURSE_SUMMARIES: CourseSummary[] = COURSE_LEVELS.map((level) => summaryByLevel[level]);

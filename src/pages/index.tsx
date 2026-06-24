@@ -1,18 +1,18 @@
-import { Link as RouterLink } from 'react-router-dom'
-import type { ComponentType } from 'react'
-import type { SvgIconProps } from '@mui/material'
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined'
-import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined'
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
-import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined'
-import { Box, Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material'
-import { PageContainer } from '@/components/page-container.tsx'
-import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts'
-import { coursePath } from '@/constants/courses/levels.ts'
-import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts'
-import { routes } from '@/constants/routes.ts'
-import { useTranslation } from '@/i18n/use-translation.ts'
-import { interactiveSurfaceSx } from '@/theme/surfaces.ts'
+import { Link as RouterLink } from 'react-router-dom';
+import type { ComponentType } from 'react';
+import type { SvgIconProps } from '@mui/material';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined';
+import { Box, Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
+import { PageContainer } from '@/components/page-container.tsx';
+import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts';
+import { coursePath } from '@/constants/courses/levels.ts';
+import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
+import { routes } from '@/constants/routes.ts';
+import { useTranslation } from '@/i18n/use-translation.ts';
+import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
 
 type StudyCard = {
   to: string
@@ -23,7 +23,7 @@ type StudyCard = {
 }
 
 function HomePage() {
-  const { locale, t } = useTranslation()
+  const { locale, t } = useTranslation();
 
   const studyCards: StudyCard[] = [
     {
@@ -50,7 +50,7 @@ function HomePage() {
       icon: SchoolOutlinedIcon,
       description: course.subtitle[locale],
     })),
-  ]
+  ];
 
   return (
     <PageContainer>
@@ -91,7 +91,7 @@ function HomePage() {
           }}
         >
           {studyCards.map((card) => {
-            const Icon = card.icon
+            const Icon = card.icon;
 
             return (
               <Card key={card.to} elevation={0} sx={[interactiveSurfaceSx, { height: '100%' }]}>
@@ -117,7 +117,7 @@ function HomePage() {
                   </CardContent>
                 </CardActionArea>
               </Card>
-            )
+            );
           })}
         </Box>
 
@@ -148,7 +148,7 @@ function HomePage() {
         </Stack>
       </Stack>
     </PageContainer>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

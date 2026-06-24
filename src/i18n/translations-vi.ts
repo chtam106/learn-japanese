@@ -1,4 +1,4 @@
-import type { TranslationTree } from '@/i18n/translations.ts'
+import type { TranslationTree } from '@/i18n/translations.ts';
 
 export const viTranslations: TranslationTree = {
   app: {
@@ -218,4 +218,4 @@ export const viTranslations: TranslationTree = {
     retry: 'Làm lại',
     reviewLesson: 'Xem lại bài học',
   },
-}
+};
