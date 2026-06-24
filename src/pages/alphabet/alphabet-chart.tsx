@@ -1,20 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {
-  Box,
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Typography,
-  useMediaQuery,
-  useTheme
-} from '@mui/material';
+import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
-import { HintText } from '@/components/hint-text.tsx';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { KanaDisplay } from '@/components/kana-display.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -35,91 +22,48 @@ export type AlphabetChartRow = {
   handakuten?: (AlphabetCell | null)[];
 };
 
-type VoicedCell = {
-  dakuten: AlphabetCell | null;
-  handakuten: AlphabetCell | null;
+type GridRow = {
+  label: string;
+  cells: (AlphabetCell | null)[];
 };
 
-type DisplayRow = {
-  seion: (AlphabetCell | null)[];
-  voiced: VoicedCell[];
-  tall: boolean;
-};
+const VOWEL_HEADERS = ['a', 'i', 'u', 'e', 'o'];
 
-function toDisplayRows(rows: AlphabetChartRow[]): DisplayRow[] {
-  return rows.map((row) => ({
-    seion: row.seion,
-    voiced: row.seion.map((_, index) => ({
-      dakuten: row.dakuten?.[index] ?? null,
-      handakuten: row.handakuten?.[index] ?? null
-    })),
-    tall: Boolean(row.handakuten)
-  }));
+function firstCell(cells: (AlphabetCell | null)[]) {
+  return cells.find((cell): cell is AlphabetCell => cell !== null);
 }
 
-const DESKTOP_CELL_SIZE = 90;
-const MOBILE_CELL_SIZE = 56;
-
-function getCellSize(compact: boolean) {
-  return compact ? MOBILE_CELL_SIZE : DESKTOP_CELL_SIZE;
+/** Leading consonant of a row, e.g. か→"k", さ→"s", あ→"–", きゃ→"ky". */
+function consonantLabel(cells: (AlphabetCell | null)[]) {
+  const cell = firstCell(cells);
+  if (!cell) return '';
+  const match = cell.romaji.toLowerCase().match(/^[^aeiou]+/);
+  return match ? match[0] : '–';
 }
 
-function getRowHeight(tall: boolean, cellSize: number) {
-  return tall ? cellSize * 2 : cellSize;
+function toSeionRows(rows: AlphabetChartRow[]): GridRow[] {
+  return rows
+    .filter((row) => firstCell(row.seion))
+    .map((row) => ({ label: consonantLabel(row.seion), cells: row.seion }));
 }
 
-function getCellSx(tall: boolean, cellSize: number, columnCount: number) {
-  const height = getRowHeight(tall, cellSize);
-
-  return {
-    width: `${100 / columnCount}%`,
-    height,
-    minHeight: height,
-    p: { xs: 0.375, md: 0.5 },
-    verticalAlign: 'middle' as const,
-    boxSizing: 'border-box' as const,
-    border: 0
-  };
+/** Dakuten rows (g/z/d/b) followed by handakuten rows (p), each a full row. */
+function toVoicedRows(rows: AlphabetChartRow[]): GridRow[] {
+  const dakuten = rows
+    .filter((row) => row.dakuten && firstCell(row.dakuten))
+    .map((row) => ({ label: consonantLabel(row.dakuten!), cells: row.dakuten! }));
+  const handakuten = rows
+    .filter((row) => row.handakuten && firstCell(row.handakuten))
+    .map((row) => ({ label: consonantLabel(row.handakuten!), cells: row.handakuten! }));
+  return [...dakuten, ...handakuten];
 }
 
-function hasAnyCell(cells: (AlphabetCell | null)[] | undefined) {
-  return cells?.some((cell) => cell !== null) ?? false;
-}
-
-function hasVoicedContent(row: DisplayRow) {
-  return row.voiced.some((cell) => cell.dakuten || cell.handakuten);
-}
-
-function rowIsTall(row: DisplayRow, variant: 'seion' | 'voiced', isMobileChart: boolean) {
-  if (variant === 'seion') {
-    return !isMobileChart && row.tall;
-  }
-
-  return row.tall;
-}
-
-function ChartCell({ cell, compact = false }: { cell: AlphabetCell; compact?: boolean }) {
-  return (
-    <>
-      <KanaDisplay cell={cell} variant="chart" compact={compact} />
-      <Typography
-        variant="caption"
-        color="text.secondary"
-        sx={{ display: 'block', lineHeight: 1.1, fontSize: compact ? 13 : 14 }}
-      >
-        {cell.romaji}
-      </Typography>
-    </>
-  );
-}
-
-function PlayableChartCell({ cell, compact = false }: { cell: AlphabetCell; compact?: boolean }) {
+function PlayableCell({ cell, compact }: { cell: AlphabetCell; compact: boolean }) {
   const { t } = useTranslation();
   const handlePlay = () => playKanaAudio(cell.romaji, cell.char);
 
   return (
     <Box
-      className="playable-cell"
       role="button"
       tabIndex={0}
       aria-label={t('chart.playAudio', { char: cell.char, romaji: cell.romaji })}
@@ -131,8 +75,8 @@ function PlayableChartCell({ cell, compact = false }: { cell: AlphabetCell; comp
         }
       }}
       sx={{
-        width: '100%',
         height: '100%',
+        minHeight: { xs: 52, md: 68 },
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -152,157 +96,82 @@ function PlayableChartCell({ cell, compact = false }: { cell: AlphabetCell; comp
         }
       }}
     >
-      <ChartCell cell={cell} compact={compact} />
+      <KanaDisplay cell={cell} variant="chart" compact={compact} />
+      <Typography
+        variant="caption"
+        color="text.secondary"
+        sx={{ lineHeight: 1.1, fontSize: compact ? 12 : 13 }}
+      >
+        {cell.romaji}
+      </Typography>
     </Box>
   );
 }
 
-function VoicedChartCell({
-  cell,
-  tall,
-  cellSize,
-  compact
-}: {
-  cell: VoicedCell;
-  tall: boolean;
-  cellSize: number;
-  compact: boolean;
-}) {
-  const voicedCompact = compact || Boolean(cell.dakuten && cell.handakuten);
-  const innerHeight = getRowHeight(tall, cellSize) - (compact ? 8 : 16);
-
-  return (
-    <Box
-      sx={{
-        height: innerHeight,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: tall ? 0.5 : voicedCompact ? 0.25 : 0,
-        width: '100%'
-      }}
-    >
-      {cell.dakuten && (
-        <Box sx={{ flex: 1, width: '100%', minHeight: 0 }}>
-          <PlayableChartCell cell={cell.dakuten} compact={voicedCompact} />
-        </Box>
-      )}
-      {cell.handakuten && (
-        <Box sx={{ flex: 1, width: '100%', minHeight: 0 }}>
-          <PlayableChartCell cell={cell.handakuten} compact={voicedCompact} />
-        </Box>
-      )}
-    </Box>
-  );
-}
-
-function BaseChartCell({
-  cell,
-  tall,
-  cellSize,
-  compact
-}: {
-  cell: AlphabetCell | null;
-  tall: boolean;
-  cellSize: number;
-  compact: boolean;
-}) {
-  return (
-    <Box
-      sx={{
-        height: getRowHeight(tall, cellSize) - (compact ? 8 : 16),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%'
-      }}
-    >
-      {cell && <PlayableChartCell cell={cell} compact={compact} />}
-    </Box>
-  );
-}
-
-function AlphabetChartTable({
-  rows,
-  variant,
-  hideEmptyRows = false
-}: {
-  rows: DisplayRow[];
-  variant: 'seion' | 'voiced';
-  hideEmptyRows?: boolean;
-}) {
+function GojuonGrid({ rows, headers }: { rows: GridRow[]; headers: string[] }) {
   const theme = useTheme();
   const compact = useMediaQuery(theme.breakpoints.down('md'));
-  const isMobileChart = useMediaQuery(theme.breakpoints.down('lg'));
-  const cellSize = getCellSize(compact);
-  const columnCount = rows[0]?.seion.length ?? 5;
-  const tableRows = hideEmptyRows
-    ? rows.filter((row) => (variant === 'seion' ? hasAnyCell(row.seion) : hasVoicedContent(row)))
-    : rows;
+  const columnCount = headers.length;
 
   return (
-    <TableContainer
-      component={Paper}
-      elevation={0}
-      sx={{
-        width: '100%',
-        boxSizing: 'border-box',
-        boxShadow: 'none',
-        overflowX: 'auto',
-        overflowY: 'hidden'
-      }}
-    >
-      <Table
+    <Box sx={{ width: '100%', overflowX: 'auto' }}>
+      <Box
         sx={{
-          tableLayout: 'fixed',
-          width: '100%',
-          minWidth: columnCount * cellSize,
-          borderCollapse: 'separate',
-          borderSpacing: 0
+          display: 'grid',
+          gridTemplateColumns: `minmax(28px, auto) repeat(${columnCount}, minmax(44px, 1fr))`,
+          gap: 0.5,
+          minWidth: 'min-content'
         }}
       >
-        <TableBody>
-          {tableRows.map((row, rowIndex) => {
-            const tall = rowIsTall(row, variant, isMobileChart);
-            const cells = variant === 'seion' ? row.seion : row.voiced;
+        <Box />
+        {headers.map((header) => (
+          <Typography
+            key={header}
+            variant="caption"
+            align="center"
+            sx={{ fontWeight: 700, color: 'text.secondary', pb: 0.5 }}
+          >
+            {header}
+          </Typography>
+        ))}
 
-            return (
-              <TableRow
-                key={`${variant}-${rowIndex}`}
-                sx={{ height: getRowHeight(tall, cellSize) }}
-              >
-                {cells.map((cell, colIndex) => (
-                  <TableCell
-                    key={`${variant}-${rowIndex}-${colIndex}`}
-                    align="center"
-                    sx={getCellSx(tall, cellSize, columnCount)}
-                  >
-                    {variant === 'seion' && (
-                      <BaseChartCell
-                        cell={cell as AlphabetCell | null}
-                        tall={tall}
-                        cellSize={cellSize}
-                        compact={compact}
-                      />
-                    )}
-                    {variant !== 'seion' && (
-                      <VoicedChartCell
-                        cell={cell as VoicedCell}
-                        tall={tall}
-                        cellSize={cellSize}
-                        compact={compact}
-                      />
-                    )}
-                  </TableCell>
-                ))}
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        {rows.map((row, rowIndex) => (
+          <Box key={`${row.label}-${rowIndex}`} sx={{ display: 'contents' }}>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 700,
+                color: 'text.secondary',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              {row.label}
+            </Typography>
+            {row.cells.map((cell, colIndex) => (
+              <Box key={`${row.label}-${rowIndex}-${colIndex}`}>
+                {cell && <PlayableCell cell={cell} compact={compact} />}
+              </Box>
+            ))}
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+function ChartBlock({ heading, children }: { heading: string; children: React.ReactNode }) {
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Heading
+        component="h2"
+        sx={{ mb: 1.5, fontSize: { xs: '1.125rem', md: '1.25rem' }, fontWeight: 600 }}
+      >
+        {heading}
+      </Heading>
+      {children}
+    </Box>
   );
 }
 
@@ -313,72 +182,6 @@ type AlphabetChartPageProps = {
   yoonChartRows: AlphabetChartRow[];
 };
 
-const chartSectionHeadingSx = {
-  mb: 1,
-  minHeight: 20,
-  fontWeight: 600,
-  fontSize: { xs: '1rem', md: '1.125rem' },
-  color: 'text.secondary'
-} as const;
-
-function ChartSectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <Heading component="h3" sx={chartSectionHeadingSx}>
-      {children}
-    </Heading>
-  );
-}
-
-function ChartSection({ chartRows }: { chartRows: AlphabetChartRow[] }) {
-  const theme = useTheme();
-  const { t } = useTranslation();
-  const sectionLabels = getChartSectionLabels(t);
-  const isMobile = useMediaQuery(theme.breakpoints.down('xl'));
-  const displayRows = toDisplayRows(chartRows);
-
-  if (isMobile) {
-    const hasVoiced = displayRows.some(hasVoicedContent);
-
-    return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, width: '100%' }}>
-        <Box sx={{ width: '100%' }}>
-          <ChartSectionHeading>{sectionLabels.seion}</ChartSectionHeading>
-          <AlphabetChartTable rows={displayRows} variant="seion" hideEmptyRows />
-        </Box>
-
-        {hasVoiced && (
-          <Box sx={{ width: '100%' }}>
-            <ChartSectionHeading>{sectionLabels.voiced}</ChartSectionHeading>
-            <AlphabetChartTable rows={displayRows} variant="voiced" hideEmptyRows />
-          </Box>
-        )}
-      </Box>
-    );
-  }
-
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 2,
-        alignItems: 'flex-start',
-        width: '100%'
-      }}
-    >
-      <Box sx={{ flex: 1, minWidth: 0, width: '100%' }}>
-        <ChartSectionHeading>{sectionLabels.seion}</ChartSectionHeading>
-        <AlphabetChartTable rows={displayRows} variant="seion" />
-      </Box>
-
-      <Box sx={{ flex: 1, minWidth: 0, width: '100%' }}>
-        <ChartSectionHeading>{sectionLabels.voiced}</ChartSectionHeading>
-        <AlphabetChartTable rows={displayRows} variant="voiced" />
-      </Box>
-    </Box>
-  );
-}
-
 export function AlphabetChartPage({
   title,
   description,
@@ -387,6 +190,15 @@ export function AlphabetChartPage({
 }: AlphabetChartPageProps) {
   const { t } = useTranslation();
   const sectionLabels = getChartSectionLabels(t);
+
+  const seionRows = toSeionRows(chartRows);
+  const voicedRows = toVoicedRows(chartRows);
+
+  const yoonRows = toSeionRows(yoonChartRows).map((row) => ({
+    label: row.label,
+    cells: row.cells.filter((cell) => cell !== null)
+  }));
+  const yoonHeaders = ['ya', 'yu', 'yo'];
 
   return (
     <PageContainer>
@@ -405,18 +217,25 @@ export function AlphabetChartPage({
       <Typography variant="body1" color="text.secondary" sx={{ mb: 0.5 }}>
         {description}
       </Typography>
-      <HintText sx={{ mt: 1.5, mb: { xs: 2, md: 3 } }}>{t('alphabet.tapHint')}</HintText>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 3, md: 4 } }}>
+        {t('alphabet.tapHint')}
+      </Typography>
 
-      <ChartSection chartRows={chartRows} />
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 4, md: 5 } }}>
+        <ChartBlock heading={sectionLabels.seion}>
+          <GojuonGrid rows={seionRows} headers={VOWEL_HEADERS} />
+        </ChartBlock>
 
-      <Box sx={{ mt: { xs: 3, md: 4 } }}>
-        <Heading component="h2" sx={{ mb: 2, fontSize: { xs: '1.375rem', md: '1.625rem' } }}>
-          {sectionLabels.yoon}
-        </Heading>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          {t('chart.yoonDescription')}
-        </Typography>
-        <ChartSection chartRows={yoonChartRows} />
+        <ChartBlock heading={sectionLabels.voiced}>
+          <GojuonGrid rows={voicedRows} headers={VOWEL_HEADERS} />
+        </ChartBlock>
+
+        <ChartBlock heading={sectionLabels.yoon}>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            {t('chart.yoonDescription')}
+          </Typography>
+          <GojuonGrid rows={yoonRows} headers={yoonHeaders} />
+        </ChartBlock>
       </Box>
     </PageContainer>
   );
