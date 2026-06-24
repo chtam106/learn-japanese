@@ -2,6 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
+import { HintText } from '@/components/hint-text.tsx';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { KanaDisplay } from '@/components/kana-display.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -217,9 +218,7 @@ export function AlphabetChartPage({
       <Typography variant="body1" color="text.secondary" sx={{ mb: 0.5 }}>
         {description}
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: { xs: 3, md: 4 } }}>
-        {t('alphabet.tapHint')}
-      </Typography>
+      <HintText sx={{ mt: 1.5, mb: { xs: 3, md: 4 } }}>{t('alphabet.tapHint')}</HintText>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 4, md: 5 } }}>
         <ChartBlock heading={sectionLabels.seion}>
