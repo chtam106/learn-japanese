@@ -1,9 +1,9 @@
 import type { Bilingual, CourseLevel } from './types.ts';
 
 export type CourseSeo = {
-  seoTitle: Bilingual
-  seoDescription: Bilingual
-}
+  seoTitle: Bilingual;
+  seoDescription: Bilingual;
+};
 
 const courseSeoByLevel: Record<CourseLevel, CourseSeo> = {
   n5: {

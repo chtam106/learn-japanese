@@ -6,37 +6,37 @@ export type QuestionKind =
   | 'vocab-word'
   | 'grammar-translate'
   | 'grammar-pattern'
-  | 'grammar-cloze'
+  | 'grammar-cloze';
 
 export type QuizOption = {
-  id: string
-  label: string
-  ja: boolean
-}
+  id: string;
+  label: string;
+  ja: boolean;
+};
 
 export type ChoiceQuestion = {
-  format: 'choice'
-  id: string
-  kind: Exclude<QuestionKind, 'grammar-cloze'>
-  promptPrimary: string
-  promptSecondary?: string
-  promptJa: boolean
-  options: QuizOption[]
-  correctId: string
-}
+  format: 'choice';
+  id: string;
+  kind: Exclude<QuestionKind, 'grammar-cloze'>;
+  promptPrimary: string;
+  promptSecondary?: string;
+  promptJa: boolean;
+  options: QuizOption[];
+  correctId: string;
+};
 
 export type InputQuestion = {
-  format: 'input'
-  id: string
-  kind: 'grammar-cloze'
-  promptPrimary: string
-  promptSecondary?: string
-  promptJa: boolean
-  accepted: string[]
-  answer: string
-}
+  format: 'input';
+  id: string;
+  kind: 'grammar-cloze';
+  promptPrimary: string;
+  promptSecondary?: string;
+  promptJa: boolean;
+  accepted: string[];
+  answer: string;
+};
 
-export type QuizQuestion = ChoiceQuestion | InputQuestion
+export type QuizQuestion = ChoiceQuestion | InputQuestion;
 
 const QUESTION_LIMIT = 12;
 const OPTION_COUNT = 4;
@@ -87,8 +87,8 @@ function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
 
   for (let index = copy.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
   }
 
   return copy;
@@ -122,11 +122,11 @@ function buildOptions(
 }
 
 type CoursePools = {
-  meanings: string[]
-  words: string[]
-  exampleMeanings: string[]
-  patternTitles: string[]
-}
+  meanings: string[];
+  words: string[];
+  exampleMeanings: string[];
+  patternTitles: string[];
+};
 
 function buildCoursePools(course: Course, locale: Locale): CoursePools {
   const meanings: string[] = [];

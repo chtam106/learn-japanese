@@ -10,21 +10,21 @@ import type { Bilingual, CourseLevel } from '@/constants/courses/types.ts';
 import { routes } from '@/constants/routes.ts';
 
 export type NavItem = {
-  labelKey?: 'nav.hiragana' | 'nav.katakana' | 'nav.exercise'
-  label?: Bilingual
-  path: string
-  icon?: ComponentType<SvgIconProps>
-  symbol?: string
-}
+  labelKey?: 'nav.hiragana' | 'nav.katakana' | 'nav.exercise';
+  label?: Bilingual;
+  path: string;
+  icon?: ComponentType<SvgIconProps>;
+  symbol?: string;
+};
 
 export type NavGroup = {
-  labelKey?: 'nav.home' | 'nav.alphabet'
-  label?: Bilingual
-  path: string
-  icon?: ComponentType<SvgIconProps>
-  courseLevel?: CourseLevel
-  children: NavItem[]
-}
+  labelKey?: 'nav.home' | 'nav.alphabet';
+  label?: Bilingual;
+  path: string;
+  icon?: ComponentType<SvgIconProps>;
+  courseLevel?: CourseLevel;
+  children: NavItem[];
+};
 
 function formatLessonNavLabel(number: number, title: Bilingual): Bilingual {
   return {
@@ -55,7 +55,9 @@ const courseLessonLoaders: Record<
   n2: () => import('@/constants/courses/n2/index.ts').then(({ n2Course }) => n2Course.lessons),
   n1: () => import('@/constants/courses/n1/index.ts').then(({ n1Course }) => n1Course.lessons),
   frontend: () =>
-    import('@/constants/courses/frontend/index.ts').then(({ frontendCourse }) => frontendCourse.lessons),
+    import('@/constants/courses/frontend/index.ts').then(
+      ({ frontendCourse }) => frontendCourse.lessons,
+    ),
 };
 
 export const navGroups: NavGroup[] = [

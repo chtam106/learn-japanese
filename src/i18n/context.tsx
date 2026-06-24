@@ -8,7 +8,7 @@ import {
 } from '@/i18n/translations.ts';
 import { LanguageContext, type TranslateFn } from '@/i18n/language-context.ts';
 
-type TranslationMap = Partial<Record<Locale, TranslationTree>>
+type TranslationMap = Partial<Record<Locale, TranslationTree>>;
 
 let viTranslationsPromise: Promise<TranslationTree> | null = null;
 
@@ -53,10 +53,10 @@ function readStoredLocale(): Locale {
 }
 
 type LanguageProviderProps = {
-  children: ReactNode
-  initialLocale?: Locale
-  initialTranslations?: TranslationMap
-}
+  children: ReactNode;
+  initialLocale?: Locale;
+  initialTranslations?: TranslationMap;
+};
 
 export function LanguageProvider({
   children,

@@ -2,28 +2,28 @@ import type { Course, Lesson } from '@/constants/courses/index.ts';
 import type { Locale } from '@/i18n/translations.ts';
 
 export type ListeningOption = {
-  id: string
-  label: string
-  ja: boolean
-}
+  id: string;
+  label: string;
+  ja: boolean;
+};
 
-export type ListeningKind = 'word-meaning' | 'word-script' | 'sentence-meaning'
+export type ListeningKind = 'word-meaning' | 'word-script' | 'sentence-meaning';
 
 export type ListeningReveal = {
-  jp: string
-  romaji: string
-  meaning: string
-}
+  jp: string;
+  romaji: string;
+  meaning: string;
+};
 
 export type ListeningQuestion = {
-  id: string
-  kind: ListeningKind
-  audioText: string
-  optionsJa: boolean
-  options: ListeningOption[]
-  correctId: string
-  reveal: ListeningReveal
-}
+  id: string;
+  kind: ListeningKind;
+  audioText: string;
+  optionsJa: boolean;
+  options: ListeningOption[];
+  correctId: string;
+  reveal: ListeningReveal;
+};
 
 const QUESTION_LIMIT = 10;
 const OPTION_COUNT = 4;
@@ -32,8 +32,8 @@ function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
 
   for (let index = copy.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
   }
 
   return copy;
@@ -60,10 +60,10 @@ function buildOptions(
 }
 
 type ListeningPools = {
-  meanings: string[]
-  words: string[]
-  sentenceMeanings: string[]
-}
+  meanings: string[];
+  words: string[];
+  sentenceMeanings: string[];
+};
 
 function buildPools(course: Course, locale: Locale): ListeningPools {
   const meanings: string[] = [];

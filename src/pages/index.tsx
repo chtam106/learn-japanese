@@ -15,12 +15,12 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
 
 type StudyCard = {
-  to: string
-  title: string
-  description: string
-  symbol?: string
-  icon?: ComponentType<SvgIconProps>
-}
+  to: string;
+  title: string;
+  description: string;
+  symbol?: string;
+  icon?: ComponentType<SvgIconProps>;
+};
 
 function HomePage() {
   const { locale, t } = useTranslation();

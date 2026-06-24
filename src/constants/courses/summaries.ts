@@ -2,10 +2,10 @@ import type { Bilingual, CourseLevel } from './types.ts';
 import { COURSE_LEVELS } from './levels.ts';
 
 export type CourseSummary = {
-  level: CourseLevel
-  name: Bilingual
-  subtitle: Bilingual
-}
+  level: CourseLevel;
+  name: Bilingual;
+  subtitle: Bilingual;
+};
 
 const summaryByLevel: Record<CourseLevel, CourseSummary> = {
   n5: {
@@ -58,4 +58,6 @@ const summaryByLevel: Record<CourseLevel, CourseSummary> = {
   },
 };
 
-export const COURSE_SUMMARIES: CourseSummary[] = COURSE_LEVELS.map((level) => summaryByLevel[level]);
+export const COURSE_SUMMARIES: CourseSummary[] = COURSE_LEVELS.map(
+  (level) => summaryByLevel[level],
+);

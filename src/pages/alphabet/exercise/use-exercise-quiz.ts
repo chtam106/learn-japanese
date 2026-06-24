@@ -13,11 +13,11 @@ import {
 import { playKanaAudio, playWrongAnswerSound } from '@/utils/kana-audio.ts';
 
 type UseExerciseQuizOptions = {
-  mode: ExerciseMode
-  script: ExerciseScript
-  scope: ExerciseScope
-  pairDirection?: ScriptPairDirection
-}
+  mode: ExerciseMode;
+  script: ExerciseScript;
+  scope: ExerciseScope;
+  pairDirection?: ScriptPairDirection;
+};
 
 function sessionKey(
   script: ExerciseScript,

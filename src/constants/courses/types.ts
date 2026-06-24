@@ -1,76 +1,76 @@
 import type { Locale } from '@/i18n/translations.ts';
 
-export type Bilingual = Record<Locale, string>
+export type Bilingual = Record<Locale, string>;
 
-export type CourseLevel = 'n5' | 'n4' | 'n3' | 'n2' | 'n1' | 'frontend'
-export type LessonTrack = 'core' | 'frontend'
+export type CourseLevel = 'n5' | 'n4' | 'n3' | 'n2' | 'n1' | 'frontend';
+export type LessonTrack = 'core' | 'frontend';
 
 export type VocabItem = {
-  kana: string
-  kanji?: string
-  romaji: string
-  meaning: Bilingual
-}
+  kana: string;
+  kanji?: string;
+  romaji: string;
+  meaning: Bilingual;
+};
 
 export type GrammarExample = {
-  jp: string
-  romaji: string
-  meaning: Bilingual
-}
+  jp: string;
+  romaji: string;
+  meaning: Bilingual;
+};
 
 export type GrammarPoint = {
-  pattern: string
-  title: Bilingual
-  explanation: Bilingual
-  examples: GrammarExample[]
-}
+  pattern: string;
+  title: Bilingual;
+  explanation: Bilingual;
+  examples: GrammarExample[];
+};
 
 export type ReadingLine = {
-  jp: string
-  romaji: string
-  meaning: Bilingual
-}
+  jp: string;
+  romaji: string;
+  meaning: Bilingual;
+};
 
 export type ReadingChoice = {
-  id: string
-  label: Bilingual
-}
+  id: string;
+  label: Bilingual;
+};
 
 export type ReadingQuestion = {
-  id: string
-  question: Bilingual
-  choices: ReadingChoice[]
-  correctId: string
-}
+  id: string;
+  question: Bilingual;
+  choices: ReadingChoice[];
+  correctId: string;
+};
 
 export type ReadingPassage = {
-  id: string
-  title: Bilingual
-  lines: ReadingLine[]
-  questions: ReadingQuestion[]
-}
+  id: string;
+  title: Bilingual;
+  lines: ReadingLine[];
+  questions: ReadingQuestion[];
+};
 
 export type Lesson = {
-  id: string
-  number: number
-  track?: LessonTrack
-  title: Bilingual
-  focus: Bilingual
-  vocab: VocabItem[]
-  grammar: GrammarPoint[]
-  reading?: ReadingPassage[]
-}
+  id: string;
+  number: number;
+  track?: LessonTrack;
+  title: Bilingual;
+  focus: Bilingual;
+  vocab: VocabItem[];
+  grammar: GrammarPoint[];
+  reading?: ReadingPassage[];
+};
 
 export type Course = {
-  level: CourseLevel
-  code: string
-  name: Bilingual
-  subtitle: Bilingual
-  intro: Bilingual
-  seoTitle: Bilingual
-  seoDescription: Bilingual
-  lessons: Lesson[]
-}
+  level: CourseLevel;
+  code: string;
+  name: Bilingual;
+  subtitle: Bilingual;
+  intro: Bilingual;
+  seoTitle: Bilingual;
+  seoDescription: Bilingual;
+  lessons: Lesson[];
+};
 
 /**
  * Renumbers a composed list of lessons sequentially (1..N), so course content can be

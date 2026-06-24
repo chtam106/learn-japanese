@@ -3,15 +3,15 @@ import { Box, Button } from '@mui/material';
 import { pink } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
 
-export type ChoiceState = 'default' | 'correct' | 'wrong'
+export type ChoiceState = 'default' | 'correct' | 'wrong';
 
 type ChoiceButtonProps = {
-  children: ReactNode
-  state: ChoiceState
-  dimmed: boolean
-  onClick: () => void
-  lang?: string
-}
+  children: ReactNode;
+  state: ChoiceState;
+  dimmed: boolean;
+  onClick: () => void;
+  lang?: string;
+};
 
 /**
  * A quiz answer button. It always uses the `outlined` variant so the border width stays

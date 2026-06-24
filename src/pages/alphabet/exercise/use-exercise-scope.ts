@@ -16,7 +16,7 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 
 export const ALL_ROWS_VALUE = '__all-rows__' as const;
 
-type RowSelectOption = { value: ExerciseScope | typeof ALL_ROWS_VALUE; label: string }
+type RowSelectOption = { value: ExerciseScope | typeof ALL_ROWS_VALUE; label: string };
 
 function isValidRowScope(value: ExerciseRowScope | '', options: RowSelectOption[]) {
   return !value || options.some((option) => option.value === value);

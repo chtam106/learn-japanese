@@ -5,19 +5,19 @@ import { getYoonDisplayParts } from '@/utils/yoon-display.ts';
 
 export type { AlphabetCell };
 
-type TranslateFn = (key: string, params?: TranslationParams) => string
+type TranslateFn = (key: string, params?: TranslationParams) => string;
 
 type BilingualCell = {
-  romaji: string
-  hiragana: string
-  katakana: string
-}
+  romaji: string;
+  hiragana: string;
+  katakana: string;
+};
 
 type BilingualChartRow = {
-  seion: (BilingualCell | null)[]
-  dakuten?: (BilingualCell | null)[]
-  handakuten?: (BilingualCell | null)[]
-}
+  seion: (BilingualCell | null)[];
+  dakuten?: (BilingualCell | null)[];
+  handakuten?: (BilingualCell | null)[];
+};
 
 const bilingualChartRows: BilingualChartRow[] = [
   {
@@ -376,16 +376,16 @@ export type ExerciseScope =
   | `yoon-row-${number}-handakuten`
   | `yoon-row-range-${number}-${number}`
   | `yoon-row-range-${number}-${number}-dakuten`
-  | `yoon-row-range-${number}-${number}-handakuten`
+  | `yoon-row-range-${number}-${number}-handakuten`;
 
-export type ExerciseOverviewScope = 'all' | 'seion' | 'dakuten' | 'handakuten' | 'yoon'
+export type ExerciseOverviewScope = 'all' | 'seion' | 'dakuten' | 'handakuten' | 'yoon';
 
-export type ExerciseRowScope = Exclude<ExerciseScope, ExerciseOverviewScope>
+export type ExerciseRowScope = Exclude<ExerciseScope, ExerciseOverviewScope>;
 
 export type AlphabetRowOption = {
-  value: ExerciseScope
-  label: string
-}
+  value: ExerciseScope;
+  label: string;
+};
 
 function getRowName(row: BilingualChartRow) {
   const first = row.seion.find((cell): cell is BilingualCell => cell !== null);
@@ -548,10 +548,10 @@ export function resolveExerciseScope(
 }
 
 type ParsedRowScope = {
-  family: 'seion' | 'yoon'
-  index: number
-  variant: 'plain' | 'dakuten' | 'handakuten'
-}
+  family: 'seion' | 'yoon';
+  index: number;
+  variant: 'plain' | 'dakuten' | 'handakuten';
+};
 
 function parseRowScope(scope: ExerciseRowScope): ParsedRowScope | null {
   const seionPlain = scope.match(/^row-(\d+)$/);
