@@ -5,8 +5,8 @@ alwaysApply: true
 
 # Langwish conventions
 
-## Courses (N5/N4/N3)
-- Lesson count per level is NOT fixed — author enough lessons to cover the full standard JLPT grammar syllabus for that level; reorder/renumber lessons freely. See the `courses` rule for details.
+## Courses (N5–N1 + Frontend)
+- Lesson count per level is NOT fixed — author enough lessons to cover the full standard JLPT grammar syllabus for that level; reorder/renumber lessons freely. See the `n5-course` rule for details.
 - Keep frontend/software-engineering Japanese content in a dedicated top-level `frontend` course track; do NOT mix frontend lessons into JLPT levels (`n5`-`n1`).
 - In `src/constants/courses`, keep one folder per course level/track (`n5`, `n4`, `n3`, `n2`, `n1`, `frontend`), with each course definition in `<course>/index.ts`; keep the `courses/` root as registry/types only.
 - Store split lesson part files inside each corresponding course folder (e.g. `src/constants/courses/n2/lessons-*.ts`, `src/constants/courses/frontend/lessons-*.ts`) instead of at the `courses/` root.

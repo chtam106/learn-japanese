@@ -21,6 +21,19 @@ Routes map to folders under `src/pages/`. The page component file is always `ind
 | `/alphabet/exercise/character` | `src/pages/alphabet/exercise/character/index.tsx` |
 | `/alphabet/exercise/listen` | `src/pages/alphabet/exercise/listen/index.tsx` |
 | `/alphabet/exercise/script-pair` | `src/pages/alphabet/exercise/script-pair/index.tsx` |
+| `/alphabet/exercise/writing` | `src/pages/alphabet/exercise/writing/index.tsx` |
+
+## Course routes (exception: generic, not folder-per-route)
+
+Course pages are shared and parameterized by `level: CourseLevel`, so they do NOT follow the folder-per-route `index.tsx` pattern. They live as flat files in `src/pages/course/` and are registered once in `src/app.tsx` by looping `COURSE_LEVELS` (`n5`–`n1`, `frontend`):
+
+| Route | File |
+|-------|------|
+| `/:level` | `src/pages/course/course-page.tsx` |
+| `/:level/lesson/:lessonId` | `src/pages/course/lesson-page.tsx` |
+| `/:level/lesson/:lessonId/exercise` | `src/pages/course/exercise-page.tsx` |
+| `/:level/lesson/:lessonId/listening` | `src/pages/course/listening-page.tsx` |
+| `/:level/lesson/:lessonId/reading` | `src/pages/course/reading-page.tsx` |
 
 ## Colocation
 

@@ -1,22 +1,23 @@
 ---
-description: Structure of the shared JLPT course engine (N5/N4/N3 lessons, exercise, listening, reading)
+description: Structure of the shared course engine (N5–N1 JLPT + Frontend tracks; lessons, exercise, listening, reading)
 globs: src/pages/course/**,src/constants/courses/**
 alwaysApply: false
 ---
 
-# Courses (N5 / N4 / N3)
+# Courses (N5–N1 + Frontend)
 
-All three JLPT courses share ONE engine. Adding a level = adding a data file; pages are generic.
+All course levels share ONE engine. Adding/extending a level = editing data files; the pages are generic and take a `level: CourseLevel` prop. Levels live in `COURSE_LEVELS = ['n5','n4','n3','n2','n1','frontend']`.
 
 ## Lesson count is FLEXIBLE (IMPORTANT)
-- Do NOT cap the number of lessons per level at a fixed number. Author as many lessons as needed to cover the FULL standard JLPT grammar syllabus for that level (N5/N4/N3).
-- Lesson order may be (re)arranged for a sensible learning progression; renumber `id`/`number` (1..N) accordingly when reordering.
+- Do NOT cap the number of lessons per level. Author as many lessons as needed to cover the FULL standard JLPT grammar syllabus for that level (N5–N1). The `frontend` track covers practical frontend/BRSE Japanese.
+- Lesson order may be (re)arranged freely. Compose part files and wrap with `withSequentialNumbers(...)` (in `types.ts`) so `id` becomes `lesson-<n>` and `number` becomes `1..N` automatically — no manual renumbering.
 - Everything is data-driven: the `lessons` array length drives routes, nav, sitemap, and the quiz/listening/reading builders — so the count can grow freely with no code changes.
 
 ## Data (`src/constants/courses/`)
-- `types.ts` – shared types: `Bilingual`, `VocabItem`, `GrammarExample`, `GrammarPoint`, `ReadingLine`, `ReadingChoice`, `ReadingQuestion`, `ReadingPassage`, `Lesson`, `Course`, `CourseLevel` (`'n5' | 'n4' | 'n3'`). Content is bilingual (`{ en, vi }`).
-- `n5.ts`, `n4.ts`, `n3.ts` – each exports a `Course` (`n5Course` etc.) with `level`, `code`, `name`/`subtitle`/`intro`/`seoTitle`/`seoDescription` (all `Bilingual`, NOT translation keys) and a `lessons` array. Each lesson has `vocab`, `grammar`, and optional `reading` (a `ReadingPassage[]`; passages have `lines` + multiple-choice `questions` with bilingual `choices` and a `correctId`).
-- `index.ts` – registry + helpers: `courses`, `courseList`, `COURSE_LEVELS`, `getCourse`, `getLesson`, `isCourseLevel`, path helpers (`coursePath`, `lessonPath`, `lessonExercisePath`, `lessonListeningPath`, `lessonReadingPath`), `lessonHasReading`, and `COURSE_SITEMAP_PATHS` (appended to `SITEMAP_PATHS` in `routes.ts`).
+- One FOLDER per level/track: `n5/`, `n4/`, `n3/`, `n2/`, `n1/`, `frontend/`. Each folder has an `index.ts` that exports its `Course` (`n5Course`, `n4Course`, …, `frontendCourse`) and keeps long content split into `lessons-*.ts` part files inside the same folder (e.g. `n2/lessons-1.ts`, `frontend/lessons-a.ts`). The `courses/` root holds registry/types/levels only — no per-level content.
+- `types.ts` – shared types: `Bilingual`, `LessonTrack`, `VocabItem`, `GrammarExample`, `GrammarPoint`, `ReadingLine`, `ReadingChoice`, `ReadingQuestion`, `ReadingPassage`, `Lesson`, `Course`, `CourseLevel` (`'n5' | 'n4' | 'n3' | 'n2' | 'n1' | 'frontend'`), plus the `withSequentialNumbers(lessons)` helper. Content is bilingual (`{ en, vi }`), NOT translation keys. A lesson may set `track: 'frontend'`.
+- `levels.ts` – `COURSE_LEVELS`, `isCourseLevel`, and path helpers (`coursePath`, `lessonPath`, `lessonExercisePath`, `lessonListeningPath`, `lessonReadingPath`).
+- `index.ts` – registry + helpers: `courses`, `courseList`, `getCourse`, `getLesson`, `lessonHasReading`, `COURSE_SITEMAP_PATHS` (appended to `SITEMAP_PATHS` in `routes.ts`); re-exports `types.ts`, `levels.ts`, `summaries.ts`, `seo.ts`. Each `Course` has `level`, `code`, `name`/`subtitle`/`intro`/`seoTitle`/`seoDescription` (all `Bilingual`) and a `lessons` array. Each lesson has `vocab`, `grammar`, and optional `reading` (`ReadingPassage[]` with `lines` + multiple-choice `questions`).
 
 ## Quizzes: NO romaji (IMPORTANT)
 - Do NOT show romaji/phonetic transcription in the quiz surfaces (exercise / listening / reading). Quiz prompts, the listening reveal, and reading passages display Japanese (and meanings) only — no romaji helper line. Romaji stays on the lesson detail page only.
@@ -28,9 +29,10 @@ All three JLPT courses share ONE engine. Adding a level = adding a data file; pa
 - `listening-page.tsx` + `course-listening.ts` – audio quiz; plays `audioText` with `speakJapanese`.
 - `reading-page.tsx` – reading comprehension: shows the passage (per-line `SpeakButton`, show/hide translation toggle) then steps through multiple-choice questions; reuses `ResultScreen`.
 - `shared.tsx` – `LessonNotFound`, `ResultScreen` (both take `level`).
+- Quiz state resets by remounting via `key` (e.g. `key={`${level}:${lesson.id}:${locale}`}`), NOT via `setState` in an effect.
 
 ## Wiring
-- Routes are registered ONCE in `src/app.tsx` by looping `COURSE_LEVELS`: `/:level`, `.../lesson/:lessonId`, `.../exercise`, `.../listening`, `.../reading`. `routes.ts` still declares `n5`/`n4`/`n3` index entries for SEO keys.
-- `getSeoRouteKey` maps any `/n5|/n4|/n3` path to that level key; `page-meta.tsx` builds SEO from the course's `seoTitle`/`seoDescription` (via `isCourseLevel` + `getCourse`).
-- Each course is a nav group generated from the registry in `src/constants/nav-items.ts` (`NavGroup.label?: Bilingual`); `app-layout.tsx` renders `group.label[locale]`.
-- All shared course UI strings live under the `course.*` key namespace in `translations.ts` (en + vi). Per-level titles/intros come from course DATA, not translations.
+- Routes are registered ONCE in `src/app.tsx` by looping `COURSE_LEVELS`: `/:level`, `.../lesson/:lessonId`, `.../exercise`, `.../listening`, `.../reading`. `routes.ts` declares per-level index entries for SEO keys.
+- `getSeoRouteKey` maps any `/n5`…`/n1` (and `/frontend`) path to that level key; `page-meta.tsx` builds SEO from the course's `seoTitle`/`seoDescription` (via `isCourseLevel` + `getCourse`).
+- Each course is a nav group generated from the registry in `src/constants/nav-items.ts`; `app-drawer-content.tsx` renders course-group labels via `group.label[locale]`, while the Home/Alphabet groups use `labelKey` + `t()`.
+- Shared course UI strings live under the `course.*` key namespace in `translations.ts` (en + vi). Per-level titles/intros come from course DATA, not translations.
