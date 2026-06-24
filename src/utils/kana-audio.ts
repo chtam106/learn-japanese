@@ -83,7 +83,7 @@ function playWrongAnswerSoundFallback() {
     playPluck(start, 370, 0.13, 0.28);
     playPluck(start + 0.15, 260, 0.22, 0.26);
   } catch {
-    // Web Audio unavailable — skip feedback sound
+    // Web Audio unavailable - skip feedback sound
   }
 }
 

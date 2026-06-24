@@ -927,7 +927,7 @@ export const n1LessonsA: Lesson[] = [
             jp: '直しては不具合が出て、まるでいたちごっこだ。',
             romaji: 'Naoshite wa fuguai ga dete, marude itachigokko da.',
             meaning: {
-              en: 'I fix it, a glitch appears, and on it goes — it is a vicious circle.',
+              en: 'I fix it, a glitch appears, and on it goes - it is a vicious circle.',
               vi: 'Cứ sửa xong lại phát sinh lỗi, đúng là vòng luẩn quẩn.'
             }
           },
@@ -1902,8 +1902,8 @@ export const n1LessonsA: Lesson[] = [
           vi: 'Vì hoàn cảnh đặc biệt đó'
         },
         explanation: {
-          en: 'Because of the special situation A — which naturally leads to B — B happens. Used for noteworthy, often public situations.',
-          vi: 'Vì hoàn cảnh đặc biệt A — vốn tự nhiên dẫn tới B — nên B xảy ra. Dùng cho các tình huống đáng chú ý, thường mang tính công cộng.'
+          en: 'Because of the special situation A - which naturally leads to B - B happens. Used for noteworthy, often public situations.',
+          vi: 'Vì hoàn cảnh đặc biệt A - vốn tự nhiên dẫn tới B - nên B xảy ra. Dùng cho các tình huống đáng chú ý, thường mang tính công cộng.'
         },
         examples: [
           {

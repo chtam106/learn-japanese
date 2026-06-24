@@ -403,7 +403,7 @@ export const n2LessonsB: Lesson[] = [
             jp: 'さすが人気の店だ、いつも行列ができている。',
             romaji: 'Sasuga ninki no mise da, itsumo gyōretsu ga dekite iru.',
             meaning: {
-              en: 'Truly a popular shop—there is always a line.',
+              en: 'Truly a popular shop - there is always a line.',
               vi: 'Quả đúng là quán nổi tiếng, lúc nào cũng có người xếp hàng.'
             }
           },

@@ -963,8 +963,8 @@ export const n1LessonsC: Lesson[] = [
           vi: 'Như thể sắp / gần như (〜んばかり(に))'
         },
         explanation: {
-          en: 'Describes a state so extreme it looks "almost as if ~" or "on the verge of ~"—but the action does not actually happen. Attach to the ない-stem (泣か → 泣かんばかり); する becomes せんばかり.',
-          vi: 'Mô tả trạng thái mạnh đến mức trông "như thể sắp ~", "gần như ~" — nhưng hành động không thực sự xảy ra. Gắn vào gốc thể ない (泣か → 泣かんばかり); する thành せんばかり.'
+          en: 'Describes a state so extreme it looks "almost as if ~" or "on the verge of ~" - but the action does not actually happen. Attach to the ない-stem (泣か → 泣かんばかり); する becomes せんばかり.',
+          vi: 'Mô tả trạng thái mạnh đến mức trông "như thể sắp ~", "gần như ~" - nhưng hành động không thực sự xảy ra. Gắn vào gốc thể ない (泣か → 泣かんばかり); する thành せんばかり.'
         },
         examples: [
           {

@@ -116,8 +116,8 @@ export const n3LessonsB: Lesson[] = [
         pattern: 'V-ない うちに',
         title: { en: 'Before it happens', vi: 'Trước khi điều gì xảy ra' },
         explanation: {
-          en: '〜ないうちに means "before (something) happens" — act before an unwanted change occurs.',
-          vi: '〜ないうちに nghĩa là "trước khi (điều gì) xảy ra" — hãy hành động trước khi có thay đổi không mong muốn.'
+          en: '〜ないうちに means "before (something) happens" - act before an unwanted change occurs.',
+          vi: '〜ないうちに nghĩa là "trước khi (điều gì) xảy ra" - hãy hành động trước khi có thay đổi không mong muốn.'
         },
         examples: [
           {
@@ -321,8 +321,8 @@ export const n3LessonsB: Lesson[] = [
         pattern: 'V-る / N の たびに',
         title: { en: 'Every time', vi: 'Mỗi lần' },
         explanation: {
-          en: '〜たびに means "every time (something happens), …" — the second clause happens each time.',
-          vi: '〜たびに nghĩa là "mỗi lần (điều gì xảy ra), …" — mệnh đề sau xảy ra mỗi lần.'
+          en: '〜たびに means "every time (something happens), …" - the second clause happens each time.',
+          vi: '〜たびに nghĩa là "mỗi lần (điều gì xảy ra), …" - mệnh đề sau xảy ra mỗi lần.'
         },
         examples: [
           {
@@ -347,8 +347,8 @@ export const n3LessonsB: Lesson[] = [
         pattern: 'V-る / N の ついでに',
         title: { en: 'While you are at it', vi: 'Tiện thể' },
         explanation: {
-          en: '〜ついでに means "while doing A, also do B" — B is a convenient extra during A.',
-          vi: '〜ついでに nghĩa là "nhân tiện làm A thì làm luôn B" — B là việc làm thêm thuận tiện.'
+          en: '〜ついでに means "while doing A, also do B" - B is a convenient extra during A.',
+          vi: '〜ついでに nghĩa là "nhân tiện làm A thì làm luôn B" - B là việc làm thêm thuận tiện.'
         },
         examples: [
           {

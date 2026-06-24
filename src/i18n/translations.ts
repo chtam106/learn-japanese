@@ -94,7 +94,7 @@ const en: TranslationTree = {
   home: {
     title: 'Learn Japanese with Langwish',
     intro:
-      'Read and practice kana step by step, then keep going with structured JLPT N5–N1 and frontend Japanese courses — interactive charts, audio, quizzes, and writing practice.',
+      'Read and practice kana step by step, then keep going with structured JLPT N5-N1 and frontend Japanese courses - interactive charts, audio, quizzes, and writing practice.',
     hiraganaDescription: 'Learn the basic syllabary used for native Japanese words.',
     katakanaDescription: 'Learn the script used for loanwords and emphasis.',
     exerciseDescription: 'Quiz yourself on romaji and characters with audio feedback.',

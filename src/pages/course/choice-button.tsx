@@ -15,7 +15,7 @@ type ChoiceButtonProps = {
 
 /**
  * A quiz answer button. It always uses the `outlined` variant so the border width stays
- * constant across states (correct/wrong only fill the background) — this avoids the layout
+ * constant across states (correct/wrong only fill the background) - this avoids the layout
  * shift caused by switching between outlined and contained variants.
  */
 export function ChoiceButton({ children, state, dimmed, onClick, lang }: ChoiceButtonProps) {

@@ -89,7 +89,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（る／ます-stem）＋ まい',
-        title: { en: 'まい — strong negative will', vi: 'まい — ý chí phủ định mạnh' },
+        title: { en: 'まい - strong negative will', vi: 'まい - ý chí phủ định mạnh' },
         explanation: {
           en: 'Expresses a firm decision not to do something ("I will never / definitely won\u2019t"). Often paired with と決めた / と決心した. For Group 2/3 verbs both 食べまい and するまい / しまい are used.',
           vi: 'Diễn đạt quyết định dứt khoát không làm gì đó ("nhất quyết không / sẽ không"). Thường đi với と決めた / と決心した. Với động từ nhóm 2/3 dùng cả 食べまい và するまい / しまい.'
@@ -115,7 +115,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（る）＋ まい',
-        title: { en: 'まい — negative conjecture', vi: 'まい — phỏng đoán phủ định' },
+        title: { en: 'まい - negative conjecture', vi: 'まい - phỏng đoán phủ định' },
         explanation: {
           en: 'Means "probably will not / surely won\u2019t", a formal equivalent of ないだろう. Used in writing and formal speech.',
           vi: 'Nghĩa là "chắc sẽ không / hẳn là không", tương đương trang trọng của ないだろう. Dùng trong văn viết và lời nói trang trọng.'
@@ -142,8 +142,8 @@ export const n3LessonsE: Lesson[] = [
       {
         pattern: '〜のではあるまいか',
         title: {
-          en: 'のではあるまいか — I wonder if not…',
-          vi: 'のではあるまいか — phải chăng là…'
+          en: 'のではあるまいか - I wonder if not…',
+          vi: 'のではあるまいか - phải chăng là…'
         },
         explanation: {
           en: 'A formal way to raise a doubt or guess: "could it be that…? / I suspect that…". Softer and more literary than のではないか.',
@@ -349,7 +349,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（ます-stem）＋ つつ',
-        title: { en: 'つつ — while doing (simultaneous)', vi: 'つつ — vừa … vừa (đồng thời)' },
+        title: { en: 'つつ - while doing (simultaneous)', vi: 'つつ - vừa … vừa (đồng thời)' },
         explanation: {
           en: 'A formal, written equivalent of ながら: two actions by the same person at the same time.',
           vi: 'Tương đương trang trọng, văn viết của ながら: hai hành động của cùng một người diễn ra cùng lúc.'
@@ -375,7 +375,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（ます-stem）＋ つつ（も）',
-        title: { en: 'つつ(も) — even though', vi: 'つつ(も) — mặc dù' },
+        title: { en: 'つつ(も) - even though', vi: 'つつ(も) - mặc dù' },
         explanation: {
           en: 'With contrast (often つつも) it means "even though / although", linking two facts that conflict.',
           vi: 'Khi mang nghĩa tương phản (thường つつも) nghĩa là "mặc dù", nối hai sự việc mâu thuẫn nhau.'
@@ -401,7 +401,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（ます-stem）＋ つつある',
-        title: { en: 'つつある — in the process of', vi: 'つつある — đang dần diễn ra' },
+        title: { en: 'つつある - in the process of', vi: 'つつある - đang dần diễn ra' },
         explanation: {
           en: 'Shows a change that is gradually progressing toward some state. More formal than ている for trends.',
           vi: 'Diễn tả một thay đổi đang dần tiến tới trạng thái nào đó. Trang trọng hơn ている khi nói về xu hướng.'
@@ -600,7 +600,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（ます-stem）＋ ぬく',
-        title: { en: 'ぬく — do all the way through', vi: 'ぬく — làm đến cùng' },
+        title: { en: 'ぬく - do all the way through', vi: 'ぬく - làm đến cùng' },
         explanation: {
           en: 'Stresses finishing an action completely despite hardship, by sheer effort or willpower.',
           vi: 'Nhấn mạnh việc làm xong một hành động đến cùng dù khó khăn, bằng nỗ lực và ý chí.'
@@ -626,7 +626,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（ます-stem）＋ ぬく（考えぬく）',
-        title: { en: 'ぬく — do thoroughly', vi: 'ぬく — làm thấu đáo' },
+        title: { en: 'ぬく - do thoroughly', vi: 'ぬく - làm thấu đáo' },
         explanation: {
           en: 'With mental verbs (考える, 悩む, 選ぶ) it means doing it thoroughly, to the very end.',
           vi: 'Với động từ chỉ tư duy (考える, 悩む, 選ぶ) nghĩa là làm thật thấu đáo, đến tận cùng.'
@@ -652,7 +652,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（ます-stem）＋ きる',
-        title: { en: 'きる — finish completely', vi: 'きる — làm hết, làm xong hẳn' },
+        title: { en: 'きる - finish completely', vi: 'きる - làm hết, làm xong hẳn' },
         explanation: {
           en: 'A related ending: きる stresses completing or using something up fully, while ぬく stresses overcoming hardship.',
           vi: 'Một đuôi liên quan: きる nhấn mạnh làm xong hẳn hay dùng hết, còn ぬく nhấn mạnh vượt qua gian khó.'
@@ -851,7 +851,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（ます-stem）＋ 得る（うる／える）',
-        title: { en: '得る — can possibly happen', vi: '得る — có thể xảy ra' },
+        title: { en: '得る - can possibly happen', vi: '得る - có thể xảy ra' },
         explanation: {
           en: 'Attached to a verb stem, 得る means "it is possible to / such a thing can happen". The dictionary form is read both うる and える.',
           vi: 'Gắn vào thân động từ, 得る nghĩa là "có thể / điều đó có thể xảy ra". Dạng từ điển đọc là うる hoặc える.'
@@ -877,7 +877,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（ます-stem）＋ 得ない（えない）',
-        title: { en: '得ない — cannot possibly happen', vi: '得ない — không thể nào xảy ra' },
+        title: { en: '得ない - cannot possibly happen', vi: '得ない - không thể nào xảy ra' },
         explanation: {
           en: 'The negative 得ない (always read えない) means "it is impossible / unthinkable". ありえない is very common.',
           vi: 'Dạng phủ định 得ない (luôn đọc là えない) nghĩa là "không thể / khó tưởng tượng". ありえない rất thông dụng.'
@@ -903,7 +903,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（る）／N ＋ おそれがある',
-        title: { en: 'おそれがある — there is a risk', vi: 'おそれがある — có nguy cơ' },
+        title: { en: 'おそれがある - there is a risk', vi: 'おそれがある - có nguy cơ' },
         explanation: {
           en: 'A related expression for an undesirable possibility: "there is a fear/risk that…". Common in news and warnings.',
           vi: 'Một cấu trúc liên quan cho khả năng xấu: "có nguy cơ / e rằng…". Thường gặp trong tin tức và cảnh báo.'
@@ -1096,7 +1096,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（ます-stem）＋ かねる',
-        title: { en: 'かねる — cannot bring oneself to', vi: 'かねる — khó mà làm được' },
+        title: { en: 'かねる - cannot bring oneself to', vi: 'かねる - khó mà làm được' },
         explanation: {
           en: 'A polite, formal way to say "I am unable to / cannot do this". Common in business as a soft refusal.',
           vi: 'Cách nói lịch sự, trang trọng để diễn đạt "tôi không thể làm được". Thường dùng trong kinh doanh như lời từ chối nhẹ nhàng.'
@@ -1123,8 +1123,8 @@ export const n3LessonsE: Lesson[] = [
       {
         pattern: 'V（ます-stem）＋ かねない',
         title: {
-          en: 'かねない — might well happen (bad)',
-          vi: 'かねない — rất dễ xảy ra (điều xấu)'
+          en: 'かねない - might well happen (bad)',
+          vi: 'かねない - rất dễ xảy ra (điều xấu)'
         },
         explanation: {
           en: 'The opposite in feeling: it warns that an undesirable result "could well happen / is quite possible".',
@@ -1152,8 +1152,8 @@ export const n3LessonsE: Lesson[] = [
       {
         pattern: 'V（る）＋ わけにはいかない',
         title: {
-          en: 'わけにはいかない — cannot (socially)',
-          vi: 'わけにはいかない — không thể (vì lẽ phải)'
+          en: 'わけにはいかない - cannot (socially)',
+          vi: 'わけにはいかない - không thể (vì lẽ phải)'
         },
         explanation: {
           en: 'A related pattern: "I can\u2019t do it" for moral or social reasons, not physical ones.',
@@ -1348,8 +1348,8 @@ export const n3LessonsE: Lesson[] = [
       {
         pattern: '〜ばかりに',
         title: {
-          en: 'ばかりに — simply because (bad result)',
-          vi: 'ばかりに — chỉ vì (kết quả xấu)'
+          en: 'ばかりに - simply because (bad result)',
+          vi: 'ばかりに - chỉ vì (kết quả xấu)'
         },
         explanation: {
           en: 'States that one single cause led to an unfortunate result: "simply / just because…". Always negative in tone.',
@@ -1376,7 +1376,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（た）／N の ＋ あげく（に）',
-        title: { en: 'あげく — after all (bad end)', vi: 'あげく — sau cùng (kết cục xấu)' },
+        title: { en: 'あげく - after all (bad end)', vi: 'あげく - sau cùng (kết cục xấu)' },
         explanation: {
           en: 'After much of some action, a (usually bad) result occurred: "after … in the end". Stresses the troublesome process.',
           vi: 'Sau cả một quá trình làm gì đó, một kết quả (thường xấu) xảy ra: "sau khi … rốt cuộc". Nhấn mạnh quá trình nhọc nhằn.'
@@ -1402,10 +1402,10 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'V（た）／N の ＋ 末（に）',
-        title: { en: '末に — after, finally', vi: '末に — sau cùng, cuối cùng' },
+        title: { en: '末に - after, finally', vi: '末に - sau cùng, cuối cùng' },
         explanation: {
-          en: 'Also "after … finally", but more neutral than あげく — the outcome can be good, reached after much effort.',
-          vi: 'Cũng nghĩa "sau … cuối cùng", nhưng trung tính hơn あげく — kết quả có thể tốt, đạt được sau nhiều nỗ lực.'
+          en: 'Also "after … finally", but more neutral than あげく - the outcome can be good, reached after much effort.',
+          vi: 'Cũng nghĩa "sau … cuối cùng", nhưng trung tính hơn あげく - kết quả có thể tốt, đạt được sau nhiều nỗ lực.'
         },
         examples: [
           {
@@ -1599,7 +1599,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'N／V（る）＋ とともに',
-        title: { en: 'とともに — together with / as', vi: 'とともに — cùng với / khi' },
+        title: { en: 'とともに - together with / as', vi: 'とともに - cùng với / khi' },
         explanation: {
           en: 'Links two things that change at the same time: "as A …, B also …". Also means "together with (someone)".',
           vi: 'Nối hai sự việc thay đổi đồng thời: "khi A …, thì B cũng …". Cũng có nghĩa "cùng với (ai đó)".'
@@ -1625,7 +1625,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'N／V（る）＋ にしたがって',
-        title: { en: 'にしたがって — in accordance with / as', vi: 'にしたがって — theo / khi' },
+        title: { en: 'にしたがって - in accordance with / as', vi: 'にしたがって - theo / khi' },
         explanation: {
           en: 'Two uses: a gradual change ("as A changes, B changes") and "in accordance with (rules, instructions)".',
           vi: 'Hai cách dùng: thay đổi dần dần ("khi A đổi thì B đổi") và "theo, tuân theo (quy tắc, chỉ thị)".'
@@ -1651,7 +1651,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'N ＋ に応じて',
-        title: { en: 'に応じて — depending on', vi: 'に応じて — tùy theo' },
+        title: { en: 'に応じて - depending on', vi: 'に応じて - tùy theo' },
         explanation: {
           en: 'A related pattern meaning "in response to / depending on": the action adapts to changing conditions.',
           vi: 'Một mẫu liên quan nghĩa "tùy theo / ứng với": hành động thay đổi cho phù hợp với điều kiện.'
@@ -1850,7 +1850,7 @@ export const n3LessonsE: Lesson[] = [
     grammar: [
       {
         pattern: 'V（る）／N ＋ につれて',
-        title: { en: 'につれて — as … gradually', vi: 'につれて — càng … thì càng' },
+        title: { en: 'につれて - as … gradually', vi: 'につれて - càng … thì càng' },
         explanation: {
           en: 'As one thing changes gradually, another changes along with it. Both sides are continuous, gradual changes.',
           vi: 'Khi một việc thay đổi dần, việc khác cũng thay đổi theo. Cả hai vế đều là thay đổi liên tục, từ từ.'
@@ -1876,7 +1876,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'N／V（る）の ＋ にともなって',
-        title: { en: 'にともなって — accompanying a change', vi: 'にともなって — đi kèm với' },
+        title: { en: 'にともなって - accompanying a change', vi: 'にともなって - đi kèm với' },
         explanation: {
           en: 'One change brings another along with it: "accompanying / as a result of". More formal, often with nouns of change.',
           vi: 'Một thay đổi kéo theo thay đổi khác: "đi kèm / kéo theo". Trang trọng hơn, hay dùng với danh từ chỉ biến đổi.'
@@ -1902,7 +1902,7 @@ export const n3LessonsE: Lesson[] = [
       },
       {
         pattern: 'N やら N やら',
-        title: { en: 'やら〜やら — things like … and …', vi: 'やら〜やら — nào là … nào là …' },
+        title: { en: 'やら〜やら - things like … and …', vi: 'やら〜やら - nào là … nào là …' },
         explanation: {
           en: 'Lists examples in a jumbled, often overwhelmed way: "what with … and …". Can join nouns or plain-form predicates.',
           vi: 'Liệt kê các ví dụ một cách hỗn độn, thường mang ý ngổn ngang: "nào là … nào là …". Nối danh từ hoặc vị ngữ thể thường.'

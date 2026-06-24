@@ -90,8 +90,8 @@ export const n1LessonsE: Lesson[] = [
         pattern: 'N ならではの N',
         title: { en: 'Unique to / only possible for', vi: 'Chỉ riêng có ở' },
         explanation: {
-          en: 'Attach ならではの to a noun to say a following quality is unique to it — something only that person, place, or thing can offer.',
-          vi: 'Gắn ならではの vào danh từ để nói phẩm chất theo sau là chỉ riêng nó mới có — điều mà chỉ người, nơi hay vật đó mang lại được.'
+          en: 'Attach ならではの to a noun to say a following quality is unique to it - something only that person, place, or thing can offer.',
+          vi: 'Gắn ならではの vào danh từ để nói phẩm chất theo sau là chỉ riêng nó mới có - điều mà chỉ người, nơi hay vật đó mang lại được.'
         },
         examples: [
           {
@@ -293,8 +293,8 @@ export const n1LessonsE: Lesson[] = [
       vi: 'Nghẹn ngào, ngồi yên một chỗ: 〜ながらに(して)'
     },
     focus: {
-      en: 'Describe doing something while remaining in a state or place — 涙ながらに (tearfully), 居ながらにして (without leaving one\u2019s place), 生まれながらに (from birth).',
-      vi: 'Diễn tả việc làm gì đó trong khi vẫn giữ nguyên một trạng thái hay vị trí — 涙ながらに (nghẹn ngào), 居ながらにして (ngồi tại chỗ), 生まれながらに (từ khi sinh ra).'
+      en: 'Describe doing something while remaining in a state or place - 涙ながらに (tearfully), 居ながらにして (without leaving one\u2019s place), 生まれながらに (from birth).',
+      vi: 'Diễn tả việc làm gì đó trong khi vẫn giữ nguyên một trạng thái hay vị trí - 涙ながらに (nghẹn ngào), 居ながらにして (ngồi tại chỗ), 生まれながらに (từ khi sinh ra).'
     },
     vocab: [
       { kana: 'なみだ', kanji: '涙', romaji: 'namida', meaning: { en: 'tears', vi: 'nước mắt' } },
@@ -1628,8 +1628,8 @@ export const n1LessonsE: Lesson[] = [
       vi: 'Có được là nhờ: 〜あっての'
     },
     focus: {
-      en: 'Say that one thing exists or is possible only because another exists — A あっての B means without A there is no B.',
-      vi: 'Diễn đạt rằng một điều chỉ tồn tại hay thành lập được nhờ một điều khác — A あっての B nghĩa là không có A thì không có B.'
+      en: 'Say that one thing exists or is possible only because another exists - A あっての B means without A there is no B.',
+      vi: 'Diễn đạt rằng một điều chỉ tồn tại hay thành lập được nhờ một điều khác - A あっての B nghĩa là không có A thì không có B.'
     },
     vocab: [
       {
@@ -1726,7 +1726,7 @@ export const n1LessonsE: Lesson[] = [
             jp: '健康あっての仕事だと、病気をして気づいた。',
             romaji: 'Kenkō atte no shigoto da to, byōki o shite kizuita.',
             meaning: {
-              en: 'Work is only possible thanks to health — I realized that when I fell ill.',
+              en: 'Work is only possible thanks to health - I realized that when I fell ill.',
               vi: 'Có sức khỏe mới có công việc, tôi nhận ra điều đó khi đổ bệnh.'
             }
           }

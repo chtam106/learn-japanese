@@ -6,7 +6,7 @@ const YOON_SUFFIX_CHARS = {
 
 type YoonSuffix = keyof typeof YOON_SUFFIX_CHARS;
 
-// Romaji ending varies: kya vs sha vs ja — map each yoon syllable explicitly.
+// Romaji ending varies: kya vs sha vs ja - map each yoon syllable explicitly.
 const YOON_ROMAJI_PARTS: Record<string, { baseRomaji: string; suffix: YoonSuffix }> = {
   kya: { baseRomaji: 'ki', suffix: 'ya' },
   kyu: { baseRomaji: 'ki', suffix: 'yu' },
