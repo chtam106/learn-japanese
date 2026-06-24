@@ -175,7 +175,7 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
               size="small"
               sx={{ ml: -0.5 }}
             >
-              {t('course.reviewLesson')}
+              {t('common.back')}
             </Button>
           </Box>
           <Chip

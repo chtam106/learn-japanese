@@ -31,7 +31,7 @@ export const viTranslations: TranslationTree = {
       hiragana: {
         title: 'Bảng Hiragana & Luyện tập (ひらがな)',
         description:
-          'Học hiragana qua bảng tương tác gồm seion, dakuten, handakuten và yoon. Chạm để nghe phát âm chuẩn.'
+          'Học hiragana qua bảng tương tác gồm seion, dakuten, handakuten và yoon. Nhấn để nghe phát âm chuẩn.'
       },
       katakana: {
         title: 'Bảng Katakana & Luyện tập (カタカナ)',
@@ -66,9 +66,9 @@ export const viTranslations: TranslationTree = {
           description: 'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.'
         },
         writing: {
-          title: 'Luyện viết Kana với animation thứ tự nét',
+          title: 'Luyện viết Kana với hoạt ảnh thứ tự nét',
           description:
-            'Chọn một chữ hiragana hoặc katakana cơ bản, tập viết bằng tay và làm theo animation hướng dẫn thứ tự nét.'
+            'Chọn một chữ hiragana hoặc katakana cơ bản, tập viết bằng tay và làm theo hoạt ảnh hướng dẫn thứ tự nét.'
         }
       }
     }
@@ -94,7 +94,7 @@ export const viTranslations: TranslationTree = {
   home: {
     title: 'Học tiếng Nhật cùng Langwish',
     intro:
-      'Đọc và luyện kana từng bước, rồi học tiếp với các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình - bảng chữ tương tác, audio, quiz và luyện viết.',
+      'Đọc và luyện kana từng bước, rồi học tiếp với các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình - bảng chữ tương tác, âm thanh, bài kiểm tra và luyện viết.',
     hiraganaDescription: 'Học bảng âm cơ bản dùng cho từ tiếng Nhật thuần.',
     katakanaDescription: 'Học bảng chữ dùng cho từ mượn và nhấn mạnh.',
     exerciseDescription: 'Tự kiểm tra romaji và chữ kana, có phản hồi âm thanh.',
@@ -143,7 +143,7 @@ export const viTranslations: TranslationTree = {
     listenDescription: 'Nghe và chọn chữ kana đúng.',
     scriptPairDescription: 'Ghép cặp hiragana và katakana.',
     writing: 'Luyện viết',
-    writingDescription: 'Chọn một chữ cơ bản và luyện viết theo animation hướng dẫn thứ tự nét.',
+    writingDescription: 'Chọn một chữ cơ bản và luyện viết theo hoạt ảnh hướng dẫn thứ tự nét.',
     writingCharacter: 'Chữ',
     writingGuideAlt: 'Thứ tự nét {{script}} cho chữ {{char}}',
     writingReplayHint: 'Nhấn vào hình chữ để xem lại thứ tự nét và nghe phát âm.',
@@ -165,7 +165,7 @@ export const viTranslations: TranslationTree = {
     pairDirection: 'Hướng',
     pairHiraToKata: 'Hiragana → Katakana',
     pairKataToHira: 'Katakana → Hiragana',
-    pairMixed: 'Ngẫu nhiên',
+    pairMixed: 'Hỗn hợp',
     questionListen: 'Bạn nghe thấy chữ {{script}} nào?',
     questionScriptPairHiraToKata: 'Katakana tương ứng là gì?',
     questionScriptPairKataToHira: 'Hiragana tương ứng là gì?',

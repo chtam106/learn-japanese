@@ -27,12 +27,12 @@ export function firstCell(cells: (AlphabetCell | null)[]) {
   return cells.find((cell): cell is AlphabetCell => cell !== null);
 }
 
-/** Leading consonant of a row, e.g. か→"k", さ→"s", あ→"–", きゃ→"ky". */
+/** Leading consonant of a row, e.g. か→"k", さ→"s", あ→"-", きゃ→"ky". */
 export function consonantLabel(cells: (AlphabetCell | null)[]) {
   const cell = firstCell(cells);
   if (!cell) return '';
   const match = cell.romaji.toLowerCase().match(/^[^aeiou]+/);
-  return match ? match[0] : '–';
+  return match ? match[0] : '-';
 }
 
 /** Script-correct example for the dakuten explanation, e.g. か→が (or カ→ガ). */

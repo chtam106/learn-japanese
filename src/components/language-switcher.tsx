@@ -18,15 +18,14 @@ export function LanguageSwitcher() {
       sx={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: 0.25,
-        p: 0.375,
+        gap: 0.5,
+        p: 0.625,
+        px: 1,
         borderRadius: 999,
-        bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.100' : 'action.selected'),
-        border: 1,
-        borderColor: 'divider'
+        bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.100' : 'action.selected')
       }}
     >
-      <LanguageIcon sx={{ fontSize: 17, ml: 0.75, mr: 0.25, color: 'text.secondary' }} />
+      <LanguageIcon sx={{ fontSize: 17, mr: 0.25, color: 'text.secondary' }} />
 
       {locales.map(({ code, shortLabel, labelKey }) => {
         const selected = locale === code;
@@ -39,11 +38,13 @@ export function LanguageSwitcher() {
             aria-label={t(labelKey)}
             sx={{
               px: 1.25,
-              py: 0.625,
+              py: 0.5,
               borderRadius: 999,
               minWidth: 40,
               bgcolor: selected ? 'background.paper' : 'transparent',
-              boxShadow: selected ? 1 : 0,
+              boxShadow: selected
+                ? '0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06)'
+                : 'none',
               transition: 'background-color 0.15s, box-shadow 0.15s',
               '&:hover': {
                 bgcolor: selected ? 'background.paper' : 'action.hover'
