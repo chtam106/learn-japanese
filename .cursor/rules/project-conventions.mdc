@@ -33,6 +33,7 @@ alwaysApply: true
 
 ## Documentation
 - When the user asks for bilingual docs, write the whole document in parallel EN/VI sections (not only one quick-start block), and keep command examples identical across both languages.
+- In user-facing docs, prefer concise commands (`pnpm ...`) and list `nvm use 24` once as a prerequisite instead of prefixing every command with shell setup.
 
 ## Audio / pronunciation
 - Japanese is spoken via the Web Speech API: `speakJapanese(text)` in `src/utils/speech.ts` (lang `ja-JP`). Voice + speed are user-configurable (persisted in localStorage) via `<AudioSettings />` in the header; voices load async (use `subscribeVoices`).

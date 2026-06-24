@@ -14,8 +14,12 @@
 ### 1) Build and run preview / Build và chạy preview
 
 ```bash
-export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm run build
-export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm run preview
+nvm use 24
+```
+
+```bash
+pnpm run build
+pnpm run preview
 ```
 
 - **EN:** Preview URL is usually `http://127.0.0.1:4173`.
@@ -24,11 +28,11 @@ export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null
 ### 2) Run Lighthouse mobile + desktop / Chạy Lighthouse mobile + desktop
 
 ```bash
-export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm exec lighthouse "http://127.0.0.1:4173" --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=".lighthouse/mobile.json"
+pnpm exec lighthouse "http://127.0.0.1:4173" --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=".lighthouse/mobile.json"
 ```
 
 ```bash
-export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm exec lighthouse "http://127.0.0.1:4173" --preset=desktop --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=".lighthouse/desktop.json"
+pnpm exec lighthouse "http://127.0.0.1:4173" --preset=desktop --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=".lighthouse/desktop.json"
 ```
 
 ### 3) Read scores quickly / Đọc điểm nhanh

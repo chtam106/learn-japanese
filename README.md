@@ -7,7 +7,7 @@ The app ships bilingual content (English and Vietnamese), interactive practice, 
 ## Main Learning Tracks
 
 - JLPT tracks: `N5`, `N4`, `N3`, `N2`, `N1`
-- Frontend track: `/frontend` (30 units)
+- Frontend track: `/frontend`
   - Covers practical frontend communication
   - Includes HTML/CSS/JavaScript bug-report vocabulary
   - Includes BRSE-focused modules (requirements, specs, meetings, risk/escalation, handover)
@@ -64,6 +64,11 @@ Open the app at `http://localhost:5173`.
 - `pnpm check` - run typecheck + lint + stylelint + format check
 - `pnpm download:audio` - download kana audio assets
 - `pnpm download:audio:force` - force refresh kana audio assets
+
+## Performance Audits
+
+- Lighthouse auditing workflow (mobile/desktop commands, reporting, before/after notes):
+  - `LIGHTHOUSE.md`
 
 ## Project Structure (high level)
 
