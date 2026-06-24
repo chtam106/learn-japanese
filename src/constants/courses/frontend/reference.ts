@@ -6,6 +6,18 @@ export type ReferenceVocabGroup = {
   items: VocabItem[];
 };
 
+export type MeetingPhrase = {
+  jp: string;
+  romaji: string;
+  meaning: Bilingual;
+};
+
+export type MeetingPhraseGroup = {
+  id: string;
+  title: Bilingual;
+  phrases: MeetingPhrase[];
+};
+
 export const referenceVocabGroups: ReferenceVocabGroup[] = [
   {
     id: 'project-roles',
@@ -1141,6 +1153,249 @@ export const referenceGrammarPoints: GrammarPoint[] = [
         meaning: {
           en: 'First, we will prioritize fixing the critical defects.',
           vi: 'Trước tiên, chúng tôi xin ưu tiên sửa các lỗi nghiêm trọng.'
+        }
+      }
+    ]
+  }
+];
+
+export const referenceMeetingPhrases: MeetingPhraseGroup[] = [
+  {
+    id: 'opening',
+    title: { en: 'Opening the meeting', vi: 'Mở đầu cuộc họp' },
+    phrases: [
+      {
+        jp: 'それでは、会議を始めます。',
+        romaji: 'Sore dewa, kaigi o hajimemasu.',
+        meaning: { en: "Well then, let's begin the meeting.", vi: 'Vậy thì, chúng ta bắt đầu họp.' }
+      },
+      {
+        jp: 'お時間をいただき、ありがとうございます。',
+        romaji: 'O-jikan o itadaki, arigatō gozaimasu.',
+        meaning: { en: 'Thank you for your time.', vi: 'Cảm ơn anh/chị đã dành thời gian.' }
+      },
+      {
+        jp: '本日のアジェンダを共有します。',
+        romaji: 'Honjitsu no ajenda o kyōyū shimasu.',
+        meaning: { en: "Let me share today's agenda.", vi: 'Tôi xin chia sẻ chương trình hôm nay.' }
+      },
+      {
+        jp: 'まず、前回の議事録を確認します。',
+        romaji: 'Mazu, zenkai no gijiroku o kakunin shimasu.',
+        meaning: {
+          en: "First, let's review the previous minutes.",
+          vi: 'Trước tiên, ta xem lại biên bản lần trước.'
+        }
+      },
+      {
+        jp: '本日のゴールは認識合わせです。',
+        romaji: 'Honjitsu no gōru wa ninshiki awase desu.',
+        meaning: {
+          en: "Today's goal is to align our understanding.",
+          vi: 'Mục tiêu hôm nay là thống nhất nhận thức.'
+        }
+      }
+    ]
+  },
+  {
+    id: 'facilitating',
+    title: { en: 'Facilitating', vi: 'Điều phối' },
+    phrases: [
+      {
+        jp: '次の議題に移ります。',
+        romaji: 'Tsugi no gidai ni utsurimasu.',
+        meaning: { en: "Let's move on to the next topic.", vi: 'Chuyển sang nội dung tiếp theo.' }
+      },
+      {
+        jp: '一つずつ確認していきましょう。',
+        romaji: 'Hitotsu zutsu kakunin shite ikimashō.',
+        meaning: { en: "Let's check them one by one.", vi: 'Ta kiểm tra từng cái một nhé.' }
+      },
+      {
+        jp: '時間が限られているので、手短にお願いします。',
+        romaji: 'Jikan ga kagirarete iru node, temijika ni onegai shimasu.',
+        meaning: {
+          en: "We're short on time, so please keep it brief.",
+          vi: 'Thời gian có hạn, mong mọi người nói ngắn gọn.'
+        }
+      },
+      {
+        jp: 'いったん、この話は保留にしましょう。',
+        romaji: 'Ittan, kono hanashi wa horyū ni shimashō.',
+        meaning: { en: "Let's park this topic for now.", vi: 'Tạm gác chủ đề này lại đã.' }
+      },
+      {
+        jp: 'ご意見はありますか。',
+        romaji: 'Go-iken wa arimasu ka.',
+        meaning: { en: 'Do you have any opinions?', vi: 'Anh/chị có ý kiến gì không?' }
+      },
+      {
+        jp: '〜さんは、いかがですか。',
+        romaji: '〜-san wa, ikaga desu ka.',
+        meaning: { en: 'Mr./Ms. ~, what do you think?', vi: 'Anh/chị ~ thấy thế nào?' }
+      }
+    ]
+  },
+  {
+    id: 'clarifying',
+    title: { en: 'Clarifying & asking again', vi: 'Làm rõ & hỏi lại' },
+    phrases: [
+      {
+        jp: 'すみません、もう一度おっしゃっていただけますか。',
+        romaji: 'Sumimasen, mō ichido osshatte itadakemasu ka.',
+        meaning: {
+          en: 'Sorry, could you say that once more?',
+          vi: 'Xin lỗi, anh/chị nói lại lần nữa được không?'
+        }
+      },
+      {
+        jp: '音声が少し途切れてしまいました。',
+        romaji: 'Onsei ga sukoshi togirete shimaimashita.',
+        meaning: { en: 'Your audio cut out a little.', vi: 'Âm thanh bị ngắt một chút.' }
+      },
+      {
+        jp: '画面は見えていますでしょうか。',
+        romaji: 'Gamen wa miete imasu deshō ka.',
+        meaning: { en: 'Can you see my screen?', vi: 'Anh/chị thấy màn hình của tôi chứ?' }
+      },
+      {
+        jp: 'つまり、〜ということでしょうか。',
+        romaji: 'Tsumari, 〜 to iu koto deshō ka.',
+        meaning: { en: 'So, do you mean ~?', vi: 'Tức là ~, đúng không ạ?' }
+      },
+      {
+        jp: '具体的には、どういうことでしょうか。',
+        romaji: 'Gutaiteki ni wa, dō iu koto deshō ka.',
+        meaning: { en: 'Specifically, what do you mean?', vi: 'Cụ thể là như thế nào ạ?' }
+      },
+      {
+        jp: '認識を合わせたいのですが、よろしいでしょうか。',
+        romaji: 'Ninshiki o awasetai no desu ga, yoroshii deshō ka.',
+        meaning: {
+          en: "I'd like to align our understanding; is that okay?",
+          vi: 'Tôi muốn thống nhất nhận thức, được không ạ?'
+        }
+      }
+    ]
+  },
+  {
+    id: 'agree-disagree',
+    title: { en: 'Agreeing, disagreeing, reserving', vi: 'Đồng ý, phản đối, bảo lưu' },
+    phrases: [
+      {
+        jp: 'その案に賛成です。',
+        romaji: 'Sono an ni sansei desu.',
+        meaning: { en: 'I agree with that proposal.', vi: 'Tôi đồng ý với phương án đó.' }
+      },
+      {
+        jp: 'おっしゃる通りだと思います。',
+        romaji: 'Ossharu tōri da to omoimasu.',
+        meaning: { en: "I think you're exactly right.", vi: 'Tôi nghĩ đúng như anh/chị nói.' }
+      },
+      {
+        jp: '申し訳ありませんが、少し懸念があります。',
+        romaji: 'Mōshiwake arimasen ga, sukoshi kenen ga arimasu.',
+        meaning: {
+          en: "I'm sorry, but I have a slight concern.",
+          vi: 'Xin lỗi, nhưng tôi có một chút lo ngại.'
+        }
+      },
+      {
+        jp: '別の案も検討したいです。',
+        romaji: 'Betsu no an mo kentō shitai desu.',
+        meaning: {
+          en: "I'd like to consider another option too.",
+          vi: 'Tôi muốn cân nhắc thêm phương án khác.'
+        }
+      },
+      {
+        jp: '一度持ち帰って検討させてください。',
+        romaji: 'Ichido mochikaette kentō sasete kudasai.',
+        meaning: {
+          en: 'Please let me take it back and consider.',
+          vi: 'Cho tôi mang về cân nhắc đã ạ.'
+        }
+      },
+      {
+        jp: '基本的には問題ないと思います。',
+        romaji: 'Kihonteki ni wa mondai nai to omoimasu.',
+        meaning: {
+          en: 'Basically, I think there is no problem.',
+          vi: 'Về cơ bản tôi thấy không có vấn đề gì.'
+        }
+      }
+    ]
+  },
+  {
+    id: 'time-progress',
+    title: { en: 'Time & progress', vi: 'Thời gian & tiến độ' },
+    phrases: [
+      {
+        jp: '残り時間が少なくなってきました。',
+        romaji: 'Nokori jikan ga sukunaku natte kimashita.',
+        meaning: { en: "We're running low on time.", vi: 'Thời gian còn lại không nhiều.' }
+      },
+      {
+        jp: 'この件は次回に持ち越しましょう。',
+        romaji: 'Kono ken wa jikai ni mochikoshimashō.',
+        meaning: {
+          en: "Let's carry this item over to next time.",
+          vi: 'Việc này để sang lần sau nhé.'
+        }
+      },
+      {
+        jp: '進捗を共有していただけますか。',
+        romaji: 'Shinchoku o kyōyū shite itadakemasu ka.',
+        meaning: { en: 'Could you share your progress?', vi: 'Anh/chị chia sẻ tiến độ được không?' }
+      },
+      {
+        jp: '予定の時間になりました。',
+        romaji: 'Yotei no jikan ni narimashita.',
+        meaning: { en: "We've reached the scheduled time.", vi: 'Đã đến giờ dự kiến.' }
+      }
+    ]
+  },
+  {
+    id: 'closing',
+    title: { en: 'Wrapping up & action items', vi: 'Tổng kết & việc cần làm' },
+    phrases: [
+      {
+        jp: '本日の決定事項を確認します。',
+        romaji: 'Honjitsu no kettei jikō o kakunin shimasu.',
+        meaning: {
+          en: "Let me confirm today's decisions.",
+          vi: 'Tôi xin xác nhận các quyết định hôm nay.'
+        }
+      },
+      {
+        jp: '担当と期限を決めましょう。',
+        romaji: 'Tantō to kigen o kimemashō.',
+        meaning: {
+          en: "Let's decide the owners and deadlines.",
+          vi: 'Ta chốt người phụ trách và thời hạn nhé.'
+        }
+      },
+      {
+        jp: '議事録は後ほど共有します。',
+        romaji: 'Gijiroku wa nochihodo kyōyū shimasu.',
+        meaning: { en: 'I will share the minutes later.', vi: 'Biên bản tôi sẽ chia sẻ sau.' }
+      },
+      {
+        jp: '他に何か質問はありますか。',
+        romaji: 'Hoka ni nanika shitsumon wa arimasu ka.',
+        meaning: { en: 'Are there any other questions?', vi: 'Còn câu hỏi nào khác không ạ?' }
+      },
+      {
+        jp: '次回の日程を調整します。',
+        romaji: 'Jikai no nittei o chōsei shimasu.',
+        meaning: { en: "Let's arrange the next meeting date.", vi: 'Ta sắp xếp lịch buổi sau.' }
+      },
+      {
+        jp: '以上で会議を終わります。ありがとうございました。',
+        romaji: 'Ijō de kaigi o owarimasu. Arigatō gozaimashita.',
+        meaning: {
+          en: 'That concludes the meeting. Thank you.',
+          vi: 'Cuộc họp đến đây kết thúc. Xin cảm ơn.'
         }
       }
     ]

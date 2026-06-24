@@ -196,6 +196,7 @@ export const viTranslations: TranslationTree = {
       'Tài liệu tra cứu từ vựng IT/web nâng cao và mẫu câu tiếng Nhật công việc, vượt ra ngoài các bài học - hữu ích khi làm kỹ sư cầu nối (BrSE). Nhấn vào từ tiếng Nhật để nghe phát âm.',
     referenceVocabHeading: 'Từ vựng',
     referenceGrammarHeading: 'Ngữ pháp & mẫu câu công việc',
+    referenceMeetingHeading: 'Mẫu câu thông dụng trong họp',
     lessonLabel: 'Bài {{number}}',
     focusLabel: 'Trong bài này',
     vocabulary: 'Từ vựng',

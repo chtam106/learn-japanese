@@ -1,10 +1,12 @@
 import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import { Box, Button, Card, CardContent, Chip, Paper, Stack, Typography } from '@mui/material';
 import {
   referenceGrammarPoints,
+  referenceMeetingPhrases,
   referenceVocabGroups
 } from '@/constants/courses/frontend/reference.ts';
 import { Heading } from '@/components/heading.tsx';
@@ -161,6 +163,47 @@ function FrontendReferencePage() {
                   </Stack>
                 </CardContent>
               </Card>
+            ))}
+          </Stack>
+        </Box>
+
+        <Box>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 2 }}>
+            <ForumOutlinedIcon color="primary" />
+            <Heading component="h2">{t('course.referenceMeetingHeading')}</Heading>
+          </Stack>
+
+          <Stack spacing={3}>
+            {referenceMeetingPhrases.map((group) => (
+              <Box key={group.id}>
+                <Heading scale="subsection" component="h3" sx={{ mb: 1.5 }}>
+                  {group.title[locale]}
+                </Heading>
+                <Stack spacing={1.5}>
+                  {group.phrases.map((phrase) => (
+                    <Paper key={phrase.jp} elevation={0} sx={[elevatedSurfaceSx, { p: 1.5 }]}>
+                      <Stack direction="row" spacing={0.5} sx={{ alignItems: 'flex-start' }}>
+                        <SpeakButton text={phrase.jp} />
+                        <Box sx={{ flex: 1, minWidth: 0 }}>
+                          <Typography variant="body1" lang="ja" sx={{ fontWeight: 500 }}>
+                            {phrase.jp}
+                          </Typography>
+                          <Typography
+                            variant="caption"
+                            color="text.secondary"
+                            sx={{ display: 'block' }}
+                          >
+                            {phrase.romaji}
+                          </Typography>
+                          <Typography variant="body2" sx={{ mt: 0.25 }}>
+                            {phrase.meaning[locale]}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </Paper>
+                  ))}
+                </Stack>
+              </Box>
             ))}
           </Stack>
         </Box>
