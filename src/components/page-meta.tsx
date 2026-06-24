@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { isCourseLevel } from '@/constants/courses/levels.ts';
 import { getCourseSeo } from '@/constants/courses/seo.ts';
 import { getSeoRouteKey, type SeoRouteKey } from '@/constants/routes.ts';
-import { SITE_NAME, SITE_URL } from '@/constants/site.ts';
+import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/constants/site.ts';
 import type { Locale } from '@/i18n/translations.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
@@ -67,8 +67,16 @@ function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => s
     };
   }
 
-  const title = t(`seo.${routeKey}.title`);
   const description = t(`seo.${routeKey}.description`);
+
+  if (routeKey === 'home') {
+    return {
+      title: `${SITE_NAME} | ${SITE_TAGLINE}`,
+      description
+    };
+  }
+
+  const title = t(`seo.${routeKey}.title`);
 
   return {
     title: `${title} | ${SITE_NAME}`,
