@@ -1,74 +1,18 @@
-import { Link as RouterLink } from 'react-router-dom';
-import type { ComponentType } from 'react';
-import type { SvgIconProps } from '@mui/material';
-import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import { Box, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
+import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
+import { Box, Stack, Typography } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
+import { NavCardGrid, type NavCardItem } from '@/components/nav-card.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
 import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts';
 import { coursePath } from '@/constants/courses/levels.ts';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
-import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
-
-type StudyCard = {
-  to: string;
-  title: string;
-  description: string;
-  symbol?: string;
-  icon?: ComponentType<SvgIconProps>;
-};
-
-function StudyCardGrid({ cards }: { cards: StudyCard[] }) {
-  return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-        gap: 2
-      }}
-    >
-      {cards.map((card) => {
-        const Icon = card.icon;
-
-        return (
-          <Card key={card.to} elevation={0} sx={[interactiveSurfaceSx, { height: '100%' }]}>
-            <CardActionArea
-              component={RouterLink}
-              to={card.to}
-              sx={{ height: '100%', alignItems: 'stretch' }}
-            >
-              <CardContent>
-                <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 1 }}>
-                  <Typography
-                    variant="h5"
-                    component="span"
-                    sx={{ display: 'inline-flex', lineHeight: 1 }}
-                  >
-                    {card.symbol}
-                    {card.symbol == null && Icon && <Icon fontSize="inherit" />}
-                  </Typography>
-                  <Typography variant="h6" component="h3" sx={{ fontWeight: 600 }}>
-                    {card.title}
-                  </Typography>
-                </Stack>
-                <Typography variant="body2" color="text.secondary">
-                  {card.description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        );
-      })}
-    </Box>
-  );
-}
 
 function HomePage() {
   const { locale, t } = useTranslation();
 
-  const alphabetCards: StudyCard[] = [
+  const alphabetCards: NavCardItem[] = [
     {
       to: routes.alphabet.hiragana,
       title: t('nav.hiragana'),
@@ -95,7 +39,7 @@ function HomePage() {
     }
   ];
 
-  const courseCards: StudyCard[] = COURSE_SUMMARIES.map((course) => ({
+  const courseCards: NavCardItem[] = COURSE_SUMMARIES.map((course) => ({
     to: coursePath(course.level),
     title: course.name[locale],
     icon: SchoolOutlinedIcon,
@@ -118,14 +62,14 @@ function HomePage() {
           <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
             {t('home.alphabetSection')}
           </Typography>
-          <StudyCardGrid cards={alphabetCards} />
+          <NavCardGrid items={alphabetCards} titleComponent="h3" />
         </Stack>
 
         <Stack spacing={1.5}>
           <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
             {t('home.coursesSection')}
           </Typography>
-          <StudyCardGrid cards={courseCards} />
+          <NavCardGrid items={courseCards} titleComponent="h3" />
         </Stack>
       </Stack>
     </PageContainer>

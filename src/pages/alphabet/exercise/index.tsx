@@ -1,30 +1,21 @@
 import { Link as RouterLink } from 'react-router-dom';
-import type { ComponentType } from 'react';
-import type { SvgIconProps } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DrawOutlinedIcon from '@mui/icons-material/DrawOutlined';
 import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
 import SpellcheckOutlinedIcon from '@mui/icons-material/SpellcheckOutlined';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import { Box, Button, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
+import { NavCardGrid, type NavCardItem } from '@/components/nav-card.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
-import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
-
-type ExerciseCard = {
-  to: string;
-  title: string;
-  description: string;
-  icon: ComponentType<SvgIconProps>;
-};
 
 function ExerciseHubPage() {
   const { t } = useTranslation();
 
-  const cards: ExerciseCard[] = [
+  const cards: NavCardItem[] = [
     {
       to: routes.alphabet.exercise.romaji,
       title: t('exercise.guessRomaji'),
@@ -75,45 +66,7 @@ function ExerciseHubPage() {
         {t('exercise.hubSubtitle')}
       </Typography>
 
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-          gap: 2
-        }}
-      >
-        {cards.map((card) => {
-          const Icon = card.icon;
-
-          return (
-            <Card key={card.to} elevation={0} sx={[interactiveSurfaceSx, { height: '100%' }]}>
-              <CardActionArea
-                component={RouterLink}
-                to={card.to}
-                sx={{ height: '100%', alignItems: 'stretch' }}
-              >
-                <CardContent>
-                  <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 1 }}>
-                    <Typography
-                      variant="h5"
-                      component="span"
-                      sx={{ display: 'inline-flex', lineHeight: 1 }}
-                    >
-                      <Icon fontSize="inherit" />
-                    </Typography>
-                    <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
-                      {card.title}
-                    </Typography>
-                  </Stack>
-                  <Typography variant="body2" color="text.secondary">
-                    {card.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          );
-        })}
-      </Box>
+      <NavCardGrid items={cards} />
     </PageContainer>
   );
 }

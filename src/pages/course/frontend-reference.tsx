@@ -4,19 +4,19 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import { Box, Button, Card, CardContent, Chip, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import {
   referenceGrammarPoints,
   referenceMeetingPhrases,
   referenceVocabGroups
 } from '@/constants/courses/frontend/reference.ts';
+import { GrammarPointCard } from '@/components/grammar-point-card.tsx';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
 import { SpeakButton } from '@/components/speak-button.tsx';
 import { SpeakableSurface } from '@/components/speakable-surface.tsx';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
-import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
 function VocabSection() {
   const { locale } = useTranslation();
@@ -79,54 +79,10 @@ function VocabSection() {
 }
 
 function GrammarSection() {
-  const { locale, t } = useTranslation();
-
   return (
     <Stack spacing={2}>
       {referenceGrammarPoints.map((point) => (
-        <Card key={point.pattern} elevation={0} sx={elevatedSurfaceSx}>
-          <CardContent>
-            <Chip label={point.pattern} size="small" sx={{ mb: 1, fontWeight: 600 }} lang="ja" />
-            <Heading component="h3" gutterBottom>
-              {point.title[locale]}
-            </Heading>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              {point.explanation[locale]}
-            </Typography>
-
-            <Typography
-              variant="overline"
-              color="text.secondary"
-              sx={{ display: 'block', mb: 0.5 }}
-            >
-              {t('course.examples')}
-            </Typography>
-            <Stack spacing={1.5}>
-              {point.examples.map((example) => (
-                <SpeakableSurface key={example.jp} text={example.jp} sx={{ p: 1.5 }}>
-                  <Stack direction="row" spacing={0.5} sx={{ alignItems: 'flex-start' }}>
-                    <SpeakButton text={example.jp} />
-                    <Box sx={{ flex: 1, minWidth: 0 }}>
-                      <Typography variant="body1" lang="ja" sx={{ fontWeight: 500 }}>
-                        {example.jp}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                        sx={{ display: 'block' }}
-                      >
-                        {example.romaji}
-                      </Typography>
-                      <Typography variant="body2" sx={{ mt: 0.25 }}>
-                        {example.meaning[locale]}
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </SpeakableSurface>
-              ))}
-            </Stack>
-          </CardContent>
-        </Card>
+        <GrammarPointCard key={point.pattern} point={point} />
       ))}
     </Stack>
   );
