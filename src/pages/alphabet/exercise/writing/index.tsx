@@ -10,10 +10,11 @@ import {
   Typography
 } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
-import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
-import { getAlphabetItems } from '@/constants/alphabet-charts.ts';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import type { AlphabetCell } from '@/constants/alphabet-charts.ts';
+import { hiraganaChartRows, katakanaChartRows } from '@/constants/alphabet-charts.ts';
 import { HintText } from '@/components/hint-text.tsx';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
@@ -166,12 +167,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
   }, [getContext]);
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        width: '100%'
-      }}
-    >
+    <Box sx={{ position: 'relative', width: '100%' }}>
       <IconButton
         aria-label={clearLabel}
         size="small"
@@ -215,77 +211,113 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
   );
 }
 
+/** A single stroke-order guide; tapping replays the animation and speaks the kana. */
+function StrokeGuide({ cell, script }: { cell: AlphabetCell; script: Script }) {
+  const { t } = useTranslation();
+  const [replayTick, setReplayTick] = useState(0);
+  const [hasError, setHasError] = useState(false);
+
+  const handleActivate = () => {
+    setReplayTick((previous) => previous + 1);
+    setHasError(false);
+    speakJapanese(cell.char);
+  };
+
+  const guideSize = { xs: 40, sm: 48 };
+
+  return (
+    <Stack spacing={0.5} sx={{ alignItems: 'center', width: { xs: 46, sm: 56 } }}>
+      {hasError && (
+        <Box
+          sx={{
+            width: guideSize,
+            height: guideSize,
+            borderRadius: 1.5,
+            bgcolor: '#ffffff',
+            boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Typography variant="caption" color="text.secondary">
+            N/A
+          </Typography>
+        </Box>
+      )}
+      {!hasError && (
+        <Box
+          component="img"
+          src={getStrokeOrderSvgUrl(cell.char, replayTick)}
+          role="button"
+          tabIndex={0}
+          alt={t('exercise.writingGuideAlt', {
+            char: cell.char,
+            script: script === 'hiragana' ? t('nav.hiragana') : t('nav.katakana')
+          })}
+          onClick={handleActivate}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              handleActivate();
+            }
+          }}
+          onError={() => setHasError(true)}
+          sx={{
+            width: guideSize,
+            height: guideSize,
+            objectFit: 'contain',
+            display: 'block',
+            cursor: 'pointer',
+            borderRadius: 1,
+            '&:focus-visible': {
+              outline: '2px solid',
+              outlineColor: 'primary.main',
+              outlineOffset: 2
+            }
+          }}
+        />
+      )}
+      <Typography variant="caption" color="text.secondary">
+        {cell.romaji}
+      </Typography>
+    </Stack>
+  );
+}
+
 function WritingExercisePage() {
   const { t } = useTranslation();
   const [script, setScript] = useState<Script>('hiragana');
-  const [selectedRomaji, setSelectedRomaji] = useState('a');
-  const [guideErrorKey, setGuideErrorKey] = useState<string | null>(null);
-  const [replayTick, setReplayTick] = useState(0);
+  const [rowIndex, setRowIndex] = useState(0);
 
-  const basicCharacters = useMemo(() => getAlphabetItems(script, 'seion'), [script]);
-  const selectedCharacter = useMemo(
-    () => basicCharacters.find((item) => item.romaji === selectedRomaji) ?? basicCharacters[0],
-    [basicCharacters, selectedRomaji]
+  const rows = useMemo(
+    () => (script === 'hiragana' ? hiraganaChartRows : katakanaChartRows),
+    [script]
   );
-  const selectedCharacterIndex = useMemo(
-    () => basicCharacters.findIndex((item) => item.romaji === selectedCharacter?.romaji),
-    [basicCharacters, selectedCharacter]
+  const safeRowIndex = Math.min(rowIndex, rows.length - 1);
+  const cells = useMemo(
+    () => (rows[safeRowIndex]?.seion ?? []).filter((cell): cell is AlphabetCell => cell !== null),
+    [rows, safeRowIndex]
   );
-  const previousCharacter = useMemo(() => {
-    if (!selectedCharacter || basicCharacters.length === 0) {
-      return null;
-    }
-    const previousIndex =
-      selectedCharacterIndex <= 0 ? basicCharacters.length - 1 : selectedCharacterIndex - 1;
-    return basicCharacters[previousIndex] ?? null;
-  }, [basicCharacters, selectedCharacter, selectedCharacterIndex]);
-  const nextCharacter = useMemo(() => {
-    if (!selectedCharacter || basicCharacters.length === 0) {
-      return null;
-    }
-    const nextIndex = (selectedCharacterIndex + 1) % basicCharacters.length;
-    return basicCharacters[nextIndex] ?? null;
-  }, [basicCharacters, selectedCharacter, selectedCharacterIndex]);
 
   const handleScriptChange = (event: SelectChangeEvent<Script>) => {
     setScript(event.target.value as Script);
+    setRowIndex(0);
   };
-
-  const handleCharacterChange = (event: SelectChangeEvent<string>) => {
-    setSelectedRomaji(event.target.value);
-    setReplayTick(0);
+  const handleRowChange = (event: SelectChangeEvent<number>) => {
+    setRowIndex(Number(event.target.value));
   };
-  const handlePreviousCharacter = useCallback(() => {
-    if (!previousCharacter) {
-      return;
-    }
-    setSelectedRomaji(previousCharacter.romaji);
-  }, [previousCharacter]);
-  const handleNextCharacter = useCallback(() => {
-    if (!nextCharacter) {
-      return;
-    }
-    setSelectedRomaji(nextCharacter.romaji);
-  }, [nextCharacter]);
-  const handleSpeakCharacter = useCallback(() => {
-    speakJapanese(selectedCharacter.char);
-  }, [selectedCharacter.char]);
-  const handleReplay = useCallback(() => {
-    setReplayTick((previous) => previous + 1);
-    setGuideErrorKey(null);
-  }, []);
-  const handleGuideClick = useCallback(() => {
-    handleReplay();
-    handleSpeakCharacter();
-  }, [handleReplay, handleSpeakCharacter]);
+  const goToPreviousRow = () => setRowIndex((previous) => Math.max(0, previous - 1));
+  const goToNextRow = () => setRowIndex((previous) => Math.min(rows.length - 1, previous + 1));
 
-  if (!selectedCharacter) {
-    return null;
-  }
-
-  const svgUrl = getStrokeOrderSvgUrl(selectedCharacter.char, replayTick);
-  const guideKey = `${script}:${selectedCharacter.char}`;
-  const isGuideUnavailable = guideErrorKey === guideKey;
+  const rowLabel = (rowCells: (AlphabetCell | null)[]) => {
+    const first = rowCells.find((cell): cell is AlphabetCell => cell !== null);
+    if (!first) {
+      return t('exercise.rowDefault');
+    }
+    const name = first.romaji.charAt(0).toUpperCase() + first.romaji.slice(1);
+    return t('exercise.rowLabel', { name, char: first.char });
+  };
 
   return (
     <ExercisePageLayout
@@ -293,13 +325,7 @@ function WritingExercisePage() {
       subtitle={t('exercise.writingDescription')}
       note={<HintText>{t('exercise.writingReplayHint')}</HintText>}
     >
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: { xs: '100%', sm: 380, md: 420 },
-          mx: 'auto'
-        }}
-      >
+      <Box sx={{ width: '100%', maxWidth: { xs: '100%', sm: 380, md: 420 }, mx: 'auto' }}>
         <Stack spacing={2}>
           <Stack direction="row" spacing={2}>
             <FormControl fullWidth>
@@ -315,138 +341,54 @@ function WritingExercisePage() {
               </Select>
             </FormControl>
             <FormControl fullWidth>
-              <InputLabel id="writing-character-select-label">
-                {t('exercise.writingCharacter')}
-              </InputLabel>
-              <Select<string>
-                labelId="writing-character-select-label"
-                value={selectedCharacter.romaji}
-                label={t('exercise.writingCharacter')}
-                onChange={handleCharacterChange}
+              <InputLabel id="writing-row-select-label">{t('exercise.writingRow')}</InputLabel>
+              <Select<number>
+                labelId="writing-row-select-label"
+                value={safeRowIndex}
+                label={t('exercise.writingRow')}
+                onChange={handleRowChange}
               >
-                {basicCharacters.map((item) => (
-                  <MenuItem key={item.romaji} value={item.romaji}>
-                    {item.char} ({item.romaji})
+                {rows.map((row, index) => (
+                  <MenuItem key={index} value={index} lang="ja">
+                    {rowLabel(row.seion)}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Stack>
-          <Box
-            sx={{
-              position: 'relative',
-              borderRadius: 2,
-              px: 2,
-              py: 1.5
-            }}
-          >
+
+          <Stack direction="row" spacing={{ xs: 0, sm: 0.5 }} sx={{ alignItems: 'center' }}>
             <IconButton
-              aria-label={t('exercise.writingPreviousCharacter', {
-                char: previousCharacter?.char ?? ''
-              })}
-              onClick={(event) => {
-                event.stopPropagation();
-                handlePreviousCharacter();
-              }}
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: 8,
-                transform: 'translateY(-50%)',
-                zIndex: 2,
-                width: 40,
-                height: 40
-              }}
+              aria-label={t('exercise.writingPreviousRow')}
+              size="small"
+              disabled={safeRowIndex === 0}
+              onClick={goToPreviousRow}
             >
-              <ChevronLeftOutlinedIcon />
+              <ChevronLeftIcon sx={{ fontSize: 30 }} />
             </IconButton>
             <Stack
               direction="row"
-              spacing={{ xs: 2.5, sm: 3.5 }}
-              sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: 72,
-                px: { xs: 5, sm: 6 }
-              }}
+              spacing={{ xs: 0.25, sm: 0.75 }}
+              useFlexGap
+              sx={{ flex: 1, flexWrap: 'wrap', justifyContent: 'center', minHeight: 80 }}
             >
-              {isGuideUnavailable && (
-                <Box
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: 1.5,
-                    bgcolor: '#ffffff',
-                    boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    px: 1
-                  }}
-                >
-                  <Typography variant="caption" color="text.secondary" sx={{ textAlign: 'center' }}>
-                    N/A
-                  </Typography>
-                </Box>
-              )}
-              {!isGuideUnavailable && (
-                <Box
-                  component="img"
-                  src={svgUrl}
-                  role="button"
-                  tabIndex={0}
-                  alt={t('exercise.writingGuideAlt', {
-                    char: selectedCharacter.char,
-                    script: script === 'hiragana' ? t('nav.hiragana') : t('nav.katakana')
-                  })}
-                  onClick={handleGuideClick}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault();
-                      handleGuideClick();
-                    }
-                  }}
-                  onError={() => {
-                    setGuideErrorKey(guideKey);
-                  }}
-                  sx={{
-                    width: { xs: 64, sm: 72 },
-                    height: { xs: 64, sm: 72 },
-                    objectFit: 'contain',
-                    display: 'block',
-                    cursor: 'pointer',
-                    borderRadius: 1,
-                    '&:focus-visible': {
-                      outline: '2px solid',
-                      outlineColor: 'primary.main',
-                      outlineOffset: 2
-                    }
-                  }}
-                />
-              )}
+              {cells.map((cell) => (
+                <StrokeGuide key={`${script}:${cell.char}`} cell={cell} script={script} />
+              ))}
             </Stack>
             <IconButton
-              aria-label={t('exercise.writingNextCharacter', { char: nextCharacter?.char ?? '' })}
-              onClick={(event) => {
-                event.stopPropagation();
-                handleNextCharacter();
-              }}
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                right: 8,
-                transform: 'translateY(-50%)',
-                zIndex: 2,
-                width: 40,
-                height: 40
-              }}
+              aria-label={t('exercise.writingNextRow')}
+              size="small"
+              disabled={safeRowIndex === rows.length - 1}
+              onClick={goToNextRow}
             >
-              <ChevronRightOutlinedIcon />
+              <ChevronRightIcon sx={{ fontSize: 30 }} />
             </IconButton>
-          </Box>
+          </Stack>
+
           <WritingCanvas
-            key={guideKey}
-            ariaLabel={t('exercise.writingCanvasAria', { char: selectedCharacter.char })}
+            key={`${script}:${safeRowIndex}`}
+            ariaLabel={t('exercise.writingCanvasAria')}
             clearLabel={t('exercise.writingClear')}
           />
         </Stack>
