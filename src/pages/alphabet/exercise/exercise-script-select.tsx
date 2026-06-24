@@ -4,9 +4,9 @@ import type { ExerciseScript } from '@/pages/alphabet/exercise/exercise-quiz.ts'
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type ExerciseScriptSelectProps = {
-  script: ExerciseScript
-  onChange: (event: SelectChangeEvent<ExerciseScript>) => void
-}
+  script: ExerciseScript;
+  onChange: (event: SelectChangeEvent<ExerciseScript>) => void;
+};
 
 export function ExerciseScriptSelect({ script, onChange }: ExerciseScriptSelectProps) {
   const { t } = useTranslation();

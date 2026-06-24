@@ -1180,16 +1180,51 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Học từ vựng HTML thực tế bằng tiếng Nhật và báo lỗi markup với mô tả tái hiện rõ ràng.',
     },
     vocab: [
-      { kana: 'HTMLこうぞう', kanji: 'HTML構造', romaji: 'HTML kōzō', meaning: { en: 'HTML structure', vi: 'cấu trúc HTML' } },
+      {
+        kana: 'HTMLこうぞう',
+        kanji: 'HTML構造',
+        romaji: 'HTML kōzō',
+        meaning: { en: 'HTML structure', vi: 'cấu trúc HTML' },
+      },
       { kana: 'マークアップ', romaji: 'mākuappu', meaning: { en: 'markup', vi: 'markup' } },
       { kana: 'ようそ', kanji: '要素', romaji: 'yōso', meaning: { en: 'element', vi: 'phần tử' } },
-      { kana: 'ぞくせい', kanji: '属性', romaji: 'zokusei', meaning: { en: 'attribute', vi: 'thuộc tính' } },
-      { kana: 'みだしタグ', kanji: '見出しタグ', romaji: 'midashi tagu', meaning: { en: 'heading tag', vi: 'thẻ tiêu đề' } },
-      { kana: 'だんらく', kanji: '段落', romaji: 'danraku', meaning: { en: 'paragraph', vi: 'đoạn văn' } },
+      {
+        kana: 'ぞくせい',
+        kanji: '属性',
+        romaji: 'zokusei',
+        meaning: { en: 'attribute', vi: 'thuộc tính' },
+      },
+      {
+        kana: 'みだしタグ',
+        kanji: '見出しタグ',
+        romaji: 'midashi tagu',
+        meaning: { en: 'heading tag', vi: 'thẻ tiêu đề' },
+      },
+      {
+        kana: 'だんらく',
+        kanji: '段落',
+        romaji: 'danraku',
+        meaning: { en: 'paragraph', vi: 'đoạn văn' },
+      },
       { kana: 'フォーム', romaji: 'fōmu', meaning: { en: 'form', vi: 'biểu mẫu' } },
-      { kana: 'にゅうりょくらん', kanji: '入力欄', romaji: 'nyūryokuran', meaning: { en: 'input field', vi: 'ô nhập liệu' } },
-      { kana: 'けっそん', kanji: '欠損', romaji: 'kesson', meaning: { en: 'missing part', vi: 'phần bị thiếu' } },
-      { kana: 'じゅうふく', kanji: '重複', romaji: 'jūfuku', meaning: { en: 'duplication', vi: 'trùng lặp' } },
+      {
+        kana: 'にゅうりょくらん',
+        kanji: '入力欄',
+        romaji: 'nyūryokuran',
+        meaning: { en: 'input field', vi: 'ô nhập liệu' },
+      },
+      {
+        kana: 'けっそん',
+        kanji: '欠損',
+        romaji: 'kesson',
+        meaning: { en: 'missing part', vi: 'phần bị thiếu' },
+      },
+      {
+        kana: 'じゅうふく',
+        kanji: '重複',
+        romaji: 'jūfuku',
+        meaning: { en: 'duplication', vi: 'trùng lặp' },
+      },
     ],
     grammar: [
       {
@@ -1260,15 +1295,42 @@ export const frontendLessonsC: Lesson[] = [
     },
     vocab: [
       { kana: 'レイアウト', romaji: 'reiauto', meaning: { en: 'layout', vi: 'bố cục' } },
-      { kana: 'フレックスボックス', romaji: 'furekkusu bokkusu', meaning: { en: 'flexbox', vi: 'flexbox' } },
+      {
+        kana: 'フレックスボックス',
+        romaji: 'furekkusu bokkusu',
+        meaning: { en: 'flexbox', vi: 'flexbox' },
+      },
       { kana: 'グリッド', romaji: 'guriddo', meaning: { en: 'grid', vi: 'grid' } },
-      { kana: 'よはく', kanji: '余白', romaji: 'yohaku', meaning: { en: 'spacing/whitespace', vi: 'khoảng trắng, khoảng cách' } },
+      {
+        kana: 'よはく',
+        kanji: '余白',
+        romaji: 'yohaku',
+        meaning: { en: 'spacing/whitespace', vi: 'khoảng trắng, khoảng cách' },
+      },
       { kana: 'マージン', romaji: 'mājin', meaning: { en: 'margin', vi: 'margin' } },
       { kana: 'パディング', romaji: 'paddingu', meaning: { en: 'padding', vi: 'padding' } },
-      { kana: 'かさなりじゅん', kanji: '重なり順', romaji: 'kasanari-jun', meaning: { en: 'stacking order', vi: 'thứ tự chồng lớp' } },
-      { kana: 'レスポンシブ', romaji: 'resuponshibu', meaning: { en: 'responsive', vi: 'responsive' } },
-      { kana: 'メディアクエリ', romaji: 'media kueri', meaning: { en: 'media query', vi: 'media query' } },
-      { kana: 'はみだし', kanji: 'はみ出し', romaji: 'hamidashi', meaning: { en: 'overflow protrusion', vi: 'tràn ra ngoài' } },
+      {
+        kana: 'かさなりじゅん',
+        kanji: '重なり順',
+        romaji: 'kasanari-jun',
+        meaning: { en: 'stacking order', vi: 'thứ tự chồng lớp' },
+      },
+      {
+        kana: 'レスポンシブ',
+        romaji: 'resuponshibu',
+        meaning: { en: 'responsive', vi: 'responsive' },
+      },
+      {
+        kana: 'メディアクエリ',
+        romaji: 'media kueri',
+        meaning: { en: 'media query', vi: 'media query' },
+      },
+      {
+        kana: 'はみだし',
+        kanji: 'はみ出し',
+        romaji: 'hamidashi',
+        meaning: { en: 'overflow protrusion', vi: 'tràn ra ngoài' },
+      },
     ],
     grammar: [
       {
@@ -1289,7 +1351,8 @@ export const frontendLessonsC: Lesson[] = [
           },
           {
             jp: 'z-indexの指定ミスのせいで、モーダルが背景の下に表示されます。',
-            romaji: 'Z-index no shitei misu no sei de, mōdaru ga haikei no shita ni hyōji saremasu.',
+            romaji:
+              'Z-index no shitei misu no sei de, mōdaru ga haikei no shita ni hyōji saremasu.',
             meaning: {
               en: 'Because of a z-index mistake, the modal appears under the background.',
               vi: 'Vì lỗi chỉ định z-index, modal hiển thị dưới lớp nền.',
@@ -1338,16 +1401,64 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Luyện mẫu tiếng Nhật để báo lỗi exception JavaScript, lỗi bất đồng bộ và kết quả debug.',
     },
     vocab: [
-      { kana: 'JavaScriptじっこうじエラー', kanji: 'JavaScript実行時エラー', romaji: 'JavaScript jikkōji erā', meaning: { en: 'JavaScript runtime error', vi: 'lỗi runtime JavaScript' } },
-      { kana: 'れいがい', kanji: '例外', romaji: 'reigai', meaning: { en: 'exception', vi: 'ngoại lệ' } },
-      { kana: 'スタックトレース', romaji: 'sutakku torēsu', meaning: { en: 'stack trace', vi: 'stack trace' } },
-      { kana: 'みていぎ', kanji: '未定義', romaji: 'miteigi', meaning: { en: 'undefined', vi: 'chưa định nghĩa' } },
-      { kana: 'nullち', kanji: 'null値', romaji: 'null chi', meaning: { en: 'null value', vi: 'giá trị null' } },
-      { kana: 'へんすうスコープ', kanji: '変数スコープ', romaji: 'hensū sukōpu', meaning: { en: 'variable scope', vi: 'phạm vi biến' } },
-      { kana: 'ひどうきしょり', kanji: '非同期処理', romaji: 'hidōki shori', meaning: { en: 'asynchronous processing', vi: 'xử lý bất đồng bộ' } },
-      { kana: 'Promiseきょひ', kanji: 'Promise拒否', romaji: 'Promise kyohi', meaning: { en: 'promise rejection', vi: 'promise bị reject' } },
-      { kana: 'デバッグログ', romaji: 'debaggu rogu', meaning: { en: 'debug log', vi: 'log debug' } },
-      { kana: 'さいげんてじゅん', kanji: '再現手順', romaji: 'saigen tejun', meaning: { en: 'reproduction steps', vi: 'các bước tái hiện' } },
+      {
+        kana: 'JavaScriptじっこうじエラー',
+        kanji: 'JavaScript実行時エラー',
+        romaji: 'JavaScript jikkōji erā',
+        meaning: { en: 'JavaScript runtime error', vi: 'lỗi runtime JavaScript' },
+      },
+      {
+        kana: 'れいがい',
+        kanji: '例外',
+        romaji: 'reigai',
+        meaning: { en: 'exception', vi: 'ngoại lệ' },
+      },
+      {
+        kana: 'スタックトレース',
+        romaji: 'sutakku torēsu',
+        meaning: { en: 'stack trace', vi: 'stack trace' },
+      },
+      {
+        kana: 'みていぎ',
+        kanji: '未定義',
+        romaji: 'miteigi',
+        meaning: { en: 'undefined', vi: 'chưa định nghĩa' },
+      },
+      {
+        kana: 'nullち',
+        kanji: 'null値',
+        romaji: 'null chi',
+        meaning: { en: 'null value', vi: 'giá trị null' },
+      },
+      {
+        kana: 'へんすうスコープ',
+        kanji: '変数スコープ',
+        romaji: 'hensū sukōpu',
+        meaning: { en: 'variable scope', vi: 'phạm vi biến' },
+      },
+      {
+        kana: 'ひどうきしょり',
+        kanji: '非同期処理',
+        romaji: 'hidōki shori',
+        meaning: { en: 'asynchronous processing', vi: 'xử lý bất đồng bộ' },
+      },
+      {
+        kana: 'Promiseきょひ',
+        kanji: 'Promise拒否',
+        romaji: 'Promise kyohi',
+        meaning: { en: 'promise rejection', vi: 'promise bị reject' },
+      },
+      {
+        kana: 'デバッグログ',
+        romaji: 'debaggu rogu',
+        meaning: { en: 'debug log', vi: 'log debug' },
+      },
+      {
+        kana: 'さいげんてじゅん',
+        kanji: '再現手順',
+        romaji: 'saigen tejun',
+        meaning: { en: 'reproduction steps', vi: 'các bước tái hiện' },
+      },
     ],
     grammar: [
       {
@@ -1368,7 +1479,8 @@ export const frontendLessonsC: Lesson[] = [
           },
           {
             jp: '再現手順を試したところ、null値参照が原因だと分かりました。',
-            romaji: 'Saigen tejun o tameshita tokoro, null chi sanshō ga gen-in da to wakarimashita.',
+            romaji:
+              'Saigen tejun o tameshita tokoro, null chi sanshō ga gen-in da to wakarimashita.',
             meaning: {
               en: 'After trying reproduction steps, we found null reference was the cause.',
               vi: 'Sau khi thử các bước tái hiện, chúng tôi phát hiện truy cập null là nguyên nhân.',
@@ -1417,14 +1529,48 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Xây nền giao tiếp tiếng Nhật cho buổi khai thác yêu cầu, hỏi làm rõ và đồng bộ phạm vi.',
     },
     vocab: [
-      { kana: 'ようけんていぎ', kanji: '要件定義', romaji: 'yōken teigi', meaning: { en: 'requirements definition', vi: 'định nghĩa yêu cầu' } },
-      { kana: 'ひあリング', romaji: 'hiaringu', meaning: { en: 'hearing/interview', vi: 'buổi khai thác thông tin' } },
-      { kana: 'まえてい', kanji: '前提', romaji: 'zentei', meaning: { en: 'assumption', vi: 'giả định ban đầu' } },
-      { kana: 'もくてき', kanji: '目的', romaji: 'mokuteki', meaning: { en: 'objective', vi: 'mục tiêu' } },
+      {
+        kana: 'ようけんていぎ',
+        kanji: '要件定義',
+        romaji: 'yōken teigi',
+        meaning: { en: 'requirements definition', vi: 'định nghĩa yêu cầu' },
+      },
+      {
+        kana: 'ひあリング',
+        romaji: 'hiaringu',
+        meaning: { en: 'hearing/interview', vi: 'buổi khai thác thông tin' },
+      },
+      {
+        kana: 'まえてい',
+        kanji: '前提',
+        romaji: 'zentei',
+        meaning: { en: 'assumption', vi: 'giả định ban đầu' },
+      },
+      {
+        kana: 'もくてき',
+        kanji: '目的',
+        romaji: 'mokuteki',
+        meaning: { en: 'objective', vi: 'mục tiêu' },
+      },
       { kana: 'はんい', kanji: '範囲', romaji: 'han-i', meaning: { en: 'scope', vi: 'phạm vi' } },
-      { kana: 'ぎもんてん', kanji: '疑問点', romaji: 'gimonten', meaning: { en: 'open question', vi: 'điểm còn thắc mắc' } },
-      { kana: 'ゆうせんど', kanji: '優先度', romaji: 'yūsendo', meaning: { en: 'priority', vi: 'độ ưu tiên' } },
-      { kana: 'かくにんじこう', kanji: '確認事項', romaji: 'kakunin jikō', meaning: { en: 'items to confirm', vi: 'hạng mục cần xác nhận' } },
+      {
+        kana: 'ぎもんてん',
+        kanji: '疑問点',
+        romaji: 'gimonten',
+        meaning: { en: 'open question', vi: 'điểm còn thắc mắc' },
+      },
+      {
+        kana: 'ゆうせんど',
+        kanji: '優先度',
+        romaji: 'yūsendo',
+        meaning: { en: 'priority', vi: 'độ ưu tiên' },
+      },
+      {
+        kana: 'かくにんじこう',
+        kanji: '確認事項',
+        romaji: 'kakunin jikō',
+        meaning: { en: 'items to confirm', vi: 'hạng mục cần xác nhận' },
+      },
     ],
     grammar: [
       {
@@ -1494,14 +1640,54 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Luyện tiếng Nhật cần thiết để viết đặc tả và định nghĩa tiêu chí chấp nhận rõ ràng.',
     },
     vocab: [
-      { kana: 'しようしょ', kanji: '仕様書', romaji: 'shiyōsho', meaning: { en: 'specification document', vi: 'tài liệu đặc tả' } },
-      { kana: 'じゅようきじゅん', kanji: '受容基準', romaji: 'juyō kijun', meaning: { en: 'acceptance criteria', vi: 'tiêu chí chấp nhận' } },
-      { kana: 'けーすぶんき', kanji: 'ケース分岐', romaji: 'kēsu bunki', meaning: { en: 'case branching', vi: 'phân nhánh case' } },
-      { kana: 'きのうようけん', kanji: '機能要件', romaji: 'kinō yōken', meaning: { en: 'functional requirement', vi: 'yêu cầu chức năng' } },
-      { kana: 'ひきのうようけん', kanji: '非機能要件', romaji: 'hikinō yōken', meaning: { en: 'non-functional requirement', vi: 'yêu cầu phi chức năng' } },
-      { kana: 'せいげんじこう', kanji: '制限事項', romaji: 'seigen jikō', meaning: { en: 'constraints', vi: 'điều kiện ràng buộc' } },
-      { kana: 'ていぎずみ', kanji: '定義済み', romaji: 'teigi-zumi', meaning: { en: 'already defined', vi: 'đã được định nghĩa' } },
-      { kana: 'れいがいしよう', kanji: '例外仕様', romaji: 'reigai shiyō', meaning: { en: 'exception specification', vi: 'đặc tả ngoại lệ' } },
+      {
+        kana: 'しようしょ',
+        kanji: '仕様書',
+        romaji: 'shiyōsho',
+        meaning: { en: 'specification document', vi: 'tài liệu đặc tả' },
+      },
+      {
+        kana: 'じゅようきじゅん',
+        kanji: '受容基準',
+        romaji: 'juyō kijun',
+        meaning: { en: 'acceptance criteria', vi: 'tiêu chí chấp nhận' },
+      },
+      {
+        kana: 'けーすぶんき',
+        kanji: 'ケース分岐',
+        romaji: 'kēsu bunki',
+        meaning: { en: 'case branching', vi: 'phân nhánh case' },
+      },
+      {
+        kana: 'きのうようけん',
+        kanji: '機能要件',
+        romaji: 'kinō yōken',
+        meaning: { en: 'functional requirement', vi: 'yêu cầu chức năng' },
+      },
+      {
+        kana: 'ひきのうようけん',
+        kanji: '非機能要件',
+        romaji: 'hikinō yōken',
+        meaning: { en: 'non-functional requirement', vi: 'yêu cầu phi chức năng' },
+      },
+      {
+        kana: 'せいげんじこう',
+        kanji: '制限事項',
+        romaji: 'seigen jikō',
+        meaning: { en: 'constraints', vi: 'điều kiện ràng buộc' },
+      },
+      {
+        kana: 'ていぎずみ',
+        kanji: '定義済み',
+        romaji: 'teigi-zumi',
+        meaning: { en: 'already defined', vi: 'đã được định nghĩa' },
+      },
+      {
+        kana: 'れいがいしよう',
+        kanji: '例外仕様',
+        romaji: 'reigai shiyō',
+        meaning: { en: 'exception specification', vi: 'đặc tả ngoại lệ' },
+      },
     ],
     grammar: [
       {
@@ -1571,14 +1757,54 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Dùng tiếng Nhật cho ước lượng công sức, trao đổi rủi ro tiến độ và đàm phán đánh đổi phạm vi.',
     },
     vocab: [
-      { kana: 'こうすう', kanji: '工数', romaji: 'kōsū', meaning: { en: 'effort (man-hours)', vi: 'công sức (man-hour)' } },
-      { kana: 'みつもり', kanji: '見積もり', romaji: 'mitsumori', meaning: { en: 'estimation', vi: 'ước lượng' } },
-      { kana: 'のうき', kanji: '納期', romaji: 'nōki', meaning: { en: 'delivery deadline', vi: 'hạn giao' } },
-      { kana: 'よゆう', kanji: '余裕', romaji: 'yoyū', meaning: { en: 'buffer/slack', vi: 'đệm thời gian' } },
-      { kana: 'いぞんタスク', kanji: '依存タスク', romaji: 'izon tasuku', meaning: { en: 'dependent task', vi: 'task phụ thuộc' } },
-      { kana: 'てまえ', kanji: '手前', romaji: 'temae', meaning: { en: 'beforehand', vi: 'trước mốc' } },
-      { kana: 'きのうさくげん', kanji: '機能削減', romaji: 'kinō sakugen', meaning: { en: 'feature reduction', vi: 'giảm phạm vi tính năng' } },
-      { kana: 'だんかいてき', kanji: '段階的', romaji: 'dankai-teki', meaning: { en: 'phased', vi: 'theo từng giai đoạn' } },
+      {
+        kana: 'こうすう',
+        kanji: '工数',
+        romaji: 'kōsū',
+        meaning: { en: 'effort (man-hours)', vi: 'công sức (man-hour)' },
+      },
+      {
+        kana: 'みつもり',
+        kanji: '見積もり',
+        romaji: 'mitsumori',
+        meaning: { en: 'estimation', vi: 'ước lượng' },
+      },
+      {
+        kana: 'のうき',
+        kanji: '納期',
+        romaji: 'nōki',
+        meaning: { en: 'delivery deadline', vi: 'hạn giao' },
+      },
+      {
+        kana: 'よゆう',
+        kanji: '余裕',
+        romaji: 'yoyū',
+        meaning: { en: 'buffer/slack', vi: 'đệm thời gian' },
+      },
+      {
+        kana: 'いぞんタスク',
+        kanji: '依存タスク',
+        romaji: 'izon tasuku',
+        meaning: { en: 'dependent task', vi: 'task phụ thuộc' },
+      },
+      {
+        kana: 'てまえ',
+        kanji: '手前',
+        romaji: 'temae',
+        meaning: { en: 'beforehand', vi: 'trước mốc' },
+      },
+      {
+        kana: 'きのうさくげん',
+        kanji: '機能削減',
+        romaji: 'kinō sakugen',
+        meaning: { en: 'feature reduction', vi: 'giảm phạm vi tính năng' },
+      },
+      {
+        kana: 'だんかいてき',
+        kanji: '段階的',
+        romaji: 'dankai-teki',
+        meaning: { en: 'phased', vi: 'theo từng giai đoạn' },
+      },
     ],
     grammar: [
       {
@@ -1648,14 +1874,53 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Luyện tiếng Nhật để điều phối họp, chốt quyết định và ghi lại action items.',
     },
     vocab: [
-      { kana: 'しんこうやく', kanji: '進行役', romaji: 'shinkō-yaku', meaning: { en: 'facilitator', vi: 'người điều phối' } },
-      { kana: 'ぎじろく', kanji: '議事録', romaji: 'gijiroku', meaning: { en: 'meeting minutes', vi: 'biên bản họp' } },
-      { kana: 'けっていじこう', kanji: '決定事項', romaji: 'kettei jikō', meaning: { en: 'decisions made', vi: 'hạng mục đã quyết' } },
-      { kana: 'みけってい', kanji: '未決定', romaji: 'mikettei', meaning: { en: 'pending decision', vi: 'chưa quyết định' } },
-      { kana: 'じかい', kanji: '次回', romaji: 'jikai', meaning: { en: 'next time/next meeting', vi: 'cuộc họp tiếp theo' } },
-      { kana: 'たんとうしゃ', kanji: '担当者', romaji: 'tantōsha', meaning: { en: 'owner/person in charge', vi: 'người phụ trách' } },
-      { kana: 'しめきり', kanji: '締め切り', romaji: 'shimekiri', meaning: { en: 'deadline', vi: 'hạn chót' } },
-      { kana: 'あくしょんあいてむ', romaji: 'akushon aitemu', meaning: { en: 'action item', vi: 'hành động cần thực hiện' } },
+      {
+        kana: 'しんこうやく',
+        kanji: '進行役',
+        romaji: 'shinkō-yaku',
+        meaning: { en: 'facilitator', vi: 'người điều phối' },
+      },
+      {
+        kana: 'ぎじろく',
+        kanji: '議事録',
+        romaji: 'gijiroku',
+        meaning: { en: 'meeting minutes', vi: 'biên bản họp' },
+      },
+      {
+        kana: 'けっていじこう',
+        kanji: '決定事項',
+        romaji: 'kettei jikō',
+        meaning: { en: 'decisions made', vi: 'hạng mục đã quyết' },
+      },
+      {
+        kana: 'みけってい',
+        kanji: '未決定',
+        romaji: 'mikettei',
+        meaning: { en: 'pending decision', vi: 'chưa quyết định' },
+      },
+      {
+        kana: 'じかい',
+        kanji: '次回',
+        romaji: 'jikai',
+        meaning: { en: 'next time/next meeting', vi: 'cuộc họp tiếp theo' },
+      },
+      {
+        kana: 'たんとうしゃ',
+        kanji: '担当者',
+        romaji: 'tantōsha',
+        meaning: { en: 'owner/person in charge', vi: 'người phụ trách' },
+      },
+      {
+        kana: 'しめきり',
+        kanji: '締め切り',
+        romaji: 'shimekiri',
+        meaning: { en: 'deadline', vi: 'hạn chót' },
+      },
+      {
+        kana: 'あくしょんあいてむ',
+        romaji: 'akushon aitemu',
+        meaning: { en: 'action item', vi: 'hành động cần thực hiện' },
+      },
     ],
     grammar: [
       {
@@ -1725,14 +1990,53 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Dùng tiếng Nhật để báo blocker, escalation rủi ro nghiêm trọng và đề xuất phương án giảm thiểu.',
     },
     vocab: [
-      { kana: 'しょうがいよういん', kanji: '障害要因', romaji: 'shōgai yōin', meaning: { en: 'blocking factor', vi: 'yếu tố cản trở' } },
-      { kana: 'えすかれーしょん', romaji: 'esukarēshon', meaning: { en: 'escalation', vi: 'escalation' } },
-      { kana: 'えいきょうど', kanji: '影響度', romaji: 'eikyōdo', meaning: { en: 'impact severity', vi: 'mức độ ảnh hưởng' } },
-      { kana: 'はっせいかのうせい', kanji: '発生可能性', romaji: 'hassei kanōsei', meaning: { en: 'likelihood', vi: 'khả năng xảy ra' } },
-      { kana: 'かいひさく', kanji: '回避策', romaji: 'kaihisaku', meaning: { en: 'avoidance strategy', vi: 'biện pháp né tránh' } },
-      { kana: 'かんわさく', kanji: '緩和策', romaji: 'kanwasaku', meaning: { en: 'mitigation', vi: 'biện pháp giảm thiểu' } },
-      { kana: 'たいおうあん', kanji: '対応案', romaji: 'taiō-an', meaning: { en: 'response proposal', vi: 'phương án xử lý' } },
-      { kana: 'きんきゅうたいおう', kanji: '緊急対応', romaji: 'kinkyū taiō', meaning: { en: 'urgent response', vi: 'ứng phó khẩn cấp' } },
+      {
+        kana: 'しょうがいよういん',
+        kanji: '障害要因',
+        romaji: 'shōgai yōin',
+        meaning: { en: 'blocking factor', vi: 'yếu tố cản trở' },
+      },
+      {
+        kana: 'えすかれーしょん',
+        romaji: 'esukarēshon',
+        meaning: { en: 'escalation', vi: 'escalation' },
+      },
+      {
+        kana: 'えいきょうど',
+        kanji: '影響度',
+        romaji: 'eikyōdo',
+        meaning: { en: 'impact severity', vi: 'mức độ ảnh hưởng' },
+      },
+      {
+        kana: 'はっせいかのうせい',
+        kanji: '発生可能性',
+        romaji: 'hassei kanōsei',
+        meaning: { en: 'likelihood', vi: 'khả năng xảy ra' },
+      },
+      {
+        kana: 'かいひさく',
+        kanji: '回避策',
+        romaji: 'kaihisaku',
+        meaning: { en: 'avoidance strategy', vi: 'biện pháp né tránh' },
+      },
+      {
+        kana: 'かんわさく',
+        kanji: '緩和策',
+        romaji: 'kanwasaku',
+        meaning: { en: 'mitigation', vi: 'biện pháp giảm thiểu' },
+      },
+      {
+        kana: 'たいおうあん',
+        kanji: '対応案',
+        romaji: 'taiō-an',
+        meaning: { en: 'response proposal', vi: 'phương án xử lý' },
+      },
+      {
+        kana: 'きんきゅうたいおう',
+        kanji: '緊急対応',
+        romaji: 'kinkyū taiō',
+        meaning: { en: 'urgent response', vi: 'ứng phó khẩn cấp' },
+      },
     ],
     grammar: [
       {
@@ -1802,14 +2106,53 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Học mẫu tiếng Nhật để đàm phán ưu tiên, xử lý phản biện và đạt đồng thuận với stakeholder.',
     },
     vocab: [
-      { kana: 'りようしゃかち', kanji: '利用者価値', romaji: 'riyōsha kachi', meaning: { en: 'user value', vi: 'giá trị người dùng' } },
-      { kana: 'じぎょうインパクト', romaji: 'jigyō inpakuto', meaning: { en: 'business impact', vi: 'ảnh hưởng kinh doanh' } },
-      { kana: 'あいしょうもんだい', kanji: '相性問題', romaji: 'aishō mondai', meaning: { en: 'compatibility issue', vi: 'vấn đề tương thích' } },
-      { kana: 'だとうあん', kanji: '妥当案', romaji: 'datō-an', meaning: { en: 'reasonable proposal', vi: 'phương án hợp lý' } },
-      { kana: 'せんこうかいはつ', kanji: '先行開発', romaji: 'senkō kaihatsu', meaning: { en: 'prior development', vi: 'phát triển trước' } },
-      { kana: 'しだん', kanji: '次段', romaji: 'jidan', meaning: { en: 'next phase', vi: 'giai đoạn kế tiếp' } },
-      { kana: 'ごういけいせい', kanji: '合意形成', romaji: 'gōi keisei', meaning: { en: 'consensus building', vi: 'hình thành đồng thuận' } },
-      { kana: 'たいあん', kanji: '対案', romaji: 'taian', meaning: { en: 'counterproposal', vi: 'phương án đối ứng' } },
+      {
+        kana: 'りようしゃかち',
+        kanji: '利用者価値',
+        romaji: 'riyōsha kachi',
+        meaning: { en: 'user value', vi: 'giá trị người dùng' },
+      },
+      {
+        kana: 'じぎょうインパクト',
+        romaji: 'jigyō inpakuto',
+        meaning: { en: 'business impact', vi: 'ảnh hưởng kinh doanh' },
+      },
+      {
+        kana: 'あいしょうもんだい',
+        kanji: '相性問題',
+        romaji: 'aishō mondai',
+        meaning: { en: 'compatibility issue', vi: 'vấn đề tương thích' },
+      },
+      {
+        kana: 'だとうあん',
+        kanji: '妥当案',
+        romaji: 'datō-an',
+        meaning: { en: 'reasonable proposal', vi: 'phương án hợp lý' },
+      },
+      {
+        kana: 'せんこうかいはつ',
+        kanji: '先行開発',
+        romaji: 'senkō kaihatsu',
+        meaning: { en: 'prior development', vi: 'phát triển trước' },
+      },
+      {
+        kana: 'しだん',
+        kanji: '次段',
+        romaji: 'jidan',
+        meaning: { en: 'next phase', vi: 'giai đoạn kế tiếp' },
+      },
+      {
+        kana: 'ごういけいせい',
+        kanji: '合意形成',
+        romaji: 'gōi keisei',
+        meaning: { en: 'consensus building', vi: 'hình thành đồng thuận' },
+      },
+      {
+        kana: 'たいあん',
+        kanji: '対案',
+        romaji: 'taian',
+        meaning: { en: 'counterproposal', vi: 'phương án đối ứng' },
+      },
     ],
     grammar: [
       {
@@ -1879,14 +2222,54 @@ export const frontendLessonsC: Lesson[] = [
       vi: 'Làm chủ tiếng Nhật dùng trong báo cáo bàn giao cuối kỳ, walkthrough nghiệm thu và giao tiếp handover.',
     },
     vocab: [
-      { kana: 'のうひん', kanji: '納品', romaji: 'nōhin', meaning: { en: 'delivery', vi: 'bàn giao sản phẩm' } },
-      { kana: 'けんしゅう', kanji: '検収', romaji: 'kenshū', meaning: { en: 'acceptance inspection', vi: 'nghiệm thu' } },
-      { kana: 'ひきつぎ', kanji: '引き継ぎ', romaji: 'hikitsugi', meaning: { en: 'handover', vi: 'chuyển giao' } },
-      { kana: 'うんようてじゅん', kanji: '運用手順', romaji: 'un-yō tejun', meaning: { en: 'operation procedure', vi: 'quy trình vận hành' } },
-      { kana: 'かだいかんりひょう', kanji: '課題管理表', romaji: 'kadai kanrihyō', meaning: { en: 'issue tracker sheet', vi: 'bảng quản lý vấn đề' } },
-      { kana: 'かんりょうほうこく', kanji: '完了報告', romaji: 'kanryō hōkoku', meaning: { en: 'completion report', vi: 'báo cáo hoàn thành' } },
-      { kana: 'のこりかだい', kanji: '残り課題', romaji: 'nokori kadai', meaning: { en: 'remaining issues', vi: 'hạng mục còn lại' } },
-      { kana: 'ほしゅけいやく', kanji: '保守契約', romaji: 'hoshu keiyaku', meaning: { en: 'maintenance contract', vi: 'hợp đồng bảo trì' } },
+      {
+        kana: 'のうひん',
+        kanji: '納品',
+        romaji: 'nōhin',
+        meaning: { en: 'delivery', vi: 'bàn giao sản phẩm' },
+      },
+      {
+        kana: 'けんしゅう',
+        kanji: '検収',
+        romaji: 'kenshū',
+        meaning: { en: 'acceptance inspection', vi: 'nghiệm thu' },
+      },
+      {
+        kana: 'ひきつぎ',
+        kanji: '引き継ぎ',
+        romaji: 'hikitsugi',
+        meaning: { en: 'handover', vi: 'chuyển giao' },
+      },
+      {
+        kana: 'うんようてじゅん',
+        kanji: '運用手順',
+        romaji: 'un-yō tejun',
+        meaning: { en: 'operation procedure', vi: 'quy trình vận hành' },
+      },
+      {
+        kana: 'かだいかんりひょう',
+        kanji: '課題管理表',
+        romaji: 'kadai kanrihyō',
+        meaning: { en: 'issue tracker sheet', vi: 'bảng quản lý vấn đề' },
+      },
+      {
+        kana: 'かんりょうほうこく',
+        kanji: '完了報告',
+        romaji: 'kanryō hōkoku',
+        meaning: { en: 'completion report', vi: 'báo cáo hoàn thành' },
+      },
+      {
+        kana: 'のこりかだい',
+        kanji: '残り課題',
+        romaji: 'nokori kadai',
+        meaning: { en: 'remaining issues', vi: 'hạng mục còn lại' },
+      },
+      {
+        kana: 'ほしゅけいやく',
+        kanji: '保守契約',
+        romaji: 'hoshu keiyaku',
+        meaning: { en: 'maintenance contract', vi: 'hợp đồng bảo trì' },
+      },
     ],
     grammar: [
       {

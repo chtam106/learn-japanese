@@ -4,7 +4,7 @@ const YOON_SUFFIX_CHARS = {
   yo: { hiragana: 'ょ', katakana: 'ョ' },
 } as const;
 
-type YoonSuffix = keyof typeof YOON_SUFFIX_CHARS
+type YoonSuffix = keyof typeof YOON_SUFFIX_CHARS;
 
 // Romaji ending varies: kya vs sha vs ja — map each yoon syllable explicitly.
 const YOON_ROMAJI_PARTS: Record<string, { baseRomaji: string; suffix: YoonSuffix }> = {

@@ -6,33 +6,33 @@ import {
 
 export type { ExerciseScope };
 
-export type Script = 'hiragana' | 'katakana'
-export type ExerciseScript = Script | 'all'
-export type ExerciseMode = 'romaji' | 'character' | 'listen' | 'script-pair'
-export type ScriptPairDirection = 'hiragana-to-katakana' | 'katakana-to-hiragana' | 'mixed'
-export type ResolvedScriptPairDirection = 'hiragana-to-katakana' | 'katakana-to-hiragana'
+export type Script = 'hiragana' | 'katakana';
+export type ExerciseScript = Script | 'all';
+export type ExerciseMode = 'romaji' | 'character' | 'listen' | 'script-pair';
+export type ScriptPairDirection = 'hiragana-to-katakana' | 'katakana-to-hiragana' | 'mixed';
+export type ResolvedScriptPairDirection = 'hiragana-to-katakana' | 'katakana-to-hiragana';
 
 export type QuizQuestion = {
-  mode: ExerciseMode
-  correctItem: AlphabetCell
-  optionItems: AlphabetCell[]
-  correctAnswers: string[]
-  promptItem?: AlphabetCell
-  pairDirection?: ResolvedScriptPairDirection
-}
+  mode: ExerciseMode;
+  correctItem: AlphabetCell;
+  optionItems: AlphabetCell[];
+  correctAnswers: string[];
+  promptItem?: AlphabetCell;
+  pairDirection?: ResolvedScriptPairDirection;
+};
 
 export type QuizSession = {
-  next: () => QuizQuestion
-  remaining: number
-  total: number
-}
+  next: () => QuizQuestion;
+  remaining: number;
+  total: number;
+};
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
 
   for (let index = copy.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
   }
 
   return copy;

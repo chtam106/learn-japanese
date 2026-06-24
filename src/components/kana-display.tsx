@@ -4,10 +4,10 @@ import { YoonGlyph } from '@/components/yoon-glyph.tsx';
 import { FONT_FAMILY_JP } from '@/theme/fonts.ts';
 
 type KanaDisplayProps = {
-  cell: AlphabetCell
-  variant?: 'prompt' | 'option' | 'chart'
-  compact?: boolean
-}
+  cell: AlphabetCell;
+  variant?: 'prompt' | 'option' | 'chart';
+  compact?: boolean;
+};
 
 const kanaFontSx = { fontFamily: FONT_FAMILY_JP, fontWeight: 400 } as const;
 

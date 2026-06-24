@@ -5,9 +5,9 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { isSpeechSupported, speakJapanese } from '@/utils/speech.ts';
 
 type SpeakButtonProps = {
-  text: string
-  size?: 'small' | 'medium'
-}
+  text: string;
+  size?: 'small' | 'medium';
+};
 
 export function SpeakButton({ text, size = 'small' }: SpeakButtonProps) {
   const { t } = useTranslation();

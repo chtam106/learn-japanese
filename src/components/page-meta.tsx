@@ -8,9 +8,9 @@ import type { Locale } from '@/i18n/translations.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type SeoMeta = {
-  title: string
-  description: string
-}
+  title: string;
+  description: string;
+};
 
 function upsertMeta(name: string, content: string, attribute: 'name' | 'property' = 'name') {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${name}"]`);

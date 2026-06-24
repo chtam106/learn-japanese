@@ -15,7 +15,7 @@ type ExerciseScopeControlsProps = Pick<
   | 'handleOverviewScopeChange'
   | 'handleRowFromSelectChange'
   | 'handleRowToSelectChange'
->
+>;
 
 export function ExerciseScopeControls({
   overviewScope,

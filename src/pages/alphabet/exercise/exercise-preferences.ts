@@ -7,12 +7,12 @@ import type {
 export const EXERCISE_PREFS_STORAGE_KEY = 'langwish.exercise-preferences';
 
 export type StoredExercisePreferences = {
-  script: ExerciseScript
-  overviewScope: ExerciseOverviewScope
-  rowFrom: ExerciseRowScope | ''
-  rowTo: ExerciseRowScope | ''
-  pairDirection: ScriptPairDirection
-}
+  script: ExerciseScript;
+  overviewScope: ExerciseOverviewScope;
+  rowFrom: ExerciseRowScope | '';
+  rowTo: ExerciseRowScope | '';
+  pairDirection: ScriptPairDirection;
+};
 
 const DEFAULTS: StoredExercisePreferences = {
   script: 'all',

@@ -32,11 +32,11 @@ export function ResultScreen({
   lessonId,
   onRetry,
 }: {
-  score: number
-  total: number
-  level: CourseLevel
-  lessonId: string
-  onRetry: () => void
+  score: number;
+  total: number;
+  level: CourseLevel;
+  lessonId: string;
+  onRetry: () => void;
 }) {
   const { t } = useTranslation();
   const ratio = total === 0 ? 0 : score / total;

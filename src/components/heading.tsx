@@ -1,8 +1,8 @@
 import { Typography, type TypographyProps } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material/styles';
 
-export type HeadingScale = 'display' | 'page' | 'section' | 'subsection'
-type SemanticHeading = 'h1' | 'h2' | 'h3'
+export type HeadingScale = 'display' | 'page' | 'section' | 'subsection';
+type SemanticHeading = 'h1' | 'h2' | 'h3';
 
 const HEADING_VARIANT: Record<HeadingScale, 'h3' | 'h4' | 'h5' | 'h6'> = {
   display: 'h3',
@@ -25,8 +25,8 @@ const SCALE_FROM_COMPONENT: Record<SemanticHeading, HeadingScale> = {
 };
 
 export type HeadingProps = Omit<TypographyProps, 'variant'> & {
-  scale?: HeadingScale
-}
+  scale?: HeadingScale;
+};
 
 export function Heading({ scale, sx, component, ...props }: HeadingProps) {
   const inferredScale =

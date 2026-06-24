@@ -2,11 +2,11 @@ import { Box, Typography } from '@mui/material';
 import { FONT_FAMILY_JP } from '@/theme/fonts.ts';
 
 type YoonGlyphProps = {
-  base: string
-  suffix: string
-  compact?: boolean
-  large?: boolean
-}
+  base: string;
+  suffix: string;
+  compact?: boolean;
+  large?: boolean;
+};
 
 export function YoonGlyph({ base, suffix, compact = false, large = false }: YoonGlyphProps) {
   const baseVariant = large ? 'h2' : compact ? 'h6' : 'h4';
