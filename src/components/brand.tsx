@@ -8,9 +8,9 @@ import { SITE_NAME } from '@/constants/site.ts';
 const SLOGAN = 'Learn Japanese';
 
 type BrandProps = {
-  showTagline?: boolean
-  showLogo?: boolean
-}
+  showTagline?: boolean;
+  showLogo?: boolean;
+};
 
 export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
   return (
@@ -26,7 +26,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
         color: 'inherit',
       }}
     >
-      {showLogo ? (
+      {showLogo && (
         <Box
           aria-hidden
           sx={{
@@ -49,7 +49,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
             あ
           </Typography>
         </Box>
-      ) : null}
+      )}
 
       <Box sx={{ minWidth: 0 }}>
         <Typography
@@ -64,7 +64,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
         >
           {SITE_NAME}
         </Typography>
-        {showTagline ? (
+        {showTagline && (
           <Typography
             variant="caption"
             color="text.secondary"
@@ -73,7 +73,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
           >
             {SLOGAN}
           </Typography>
-        ) : null}
+        )}
       </Box>
     </Stack>
   );

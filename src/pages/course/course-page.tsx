@@ -45,14 +45,14 @@ function CoursePage({ level }: { level: CourseLevel }) {
                       color="primary"
                       variant="outlined"
                     />
-                    {lesson.track === 'frontend' ? (
+                    {lesson.track === 'frontend' && (
                       <Chip
                         label={t('course.frontendTrackTag')}
                         size="small"
                         color="secondary"
                         variant="outlined"
                       />
-                    ) : null}
+                    )}
                   </Stack>
                   <Heading component="h3">{lesson.title[locale]}</Heading>
                   <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -97,16 +97,16 @@ function CoursePage({ level }: { level: CourseLevel }) {
             {t('course.lessonsHeading')}
           </Heading>
 
-          {frontendLessons.length > 0 ? (
+          {frontendLessons.length > 0 && (
             <Stack spacing={3}>
-              {coreLessons.length > 0 ? (
+              {coreLessons.length > 0 && (
                 <Box>
                   <Heading component="h3" sx={{ mb: 1.5 }}>
                     {t('course.coreTrackHeading')}
                   </Heading>
                   {renderLessonCards(coreLessons)}
                 </Box>
-              ) : null}
+              )}
 
               <Box>
                 <Stack
@@ -129,12 +129,11 @@ function CoursePage({ level }: { level: CourseLevel }) {
                 {renderLessonCards(frontendLessons)}
               </Box>
             </Stack>
-          ) : (
-            renderLessonCards(course.lessons)
           )}
+          {frontendLessons.length === 0 && renderLessonCards(course.lessons)}
         </Box>
 
-        {course.lessons.length > 0 ? (
+        {course.lessons.length > 0 && (
           <Box>
             <Button
               component={RouterLink}
@@ -145,7 +144,7 @@ function CoursePage({ level }: { level: CourseLevel }) {
               {t('course.openLesson')}
             </Button>
           </Box>
-        ) : null}
+        )}
       </Stack>
     </PageContainer>
   );

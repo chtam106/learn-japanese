@@ -24,6 +24,7 @@ alwaysApply: true
 - `react-hooks/set-state-in-effect`: do NOT call `setState` inside `useEffect`. To reset component state when a prop/route/locale changes, remount via `key` (e.g. `<Quiz key={`${id}:${locale}`} />`) and reset on user actions in event handlers instead.
 - `useEffect` is fine for syncing with external systems (e.g. calling `speakJapanese`), just not for setting React state.
 - Enforce semicolons for code style: keep Prettier `semi: true` and ESLint `semi: ['error', 'always']` (for `ts`/`tsx` and `scripts/**/*.mjs`).
+- For conditional JSX *content* rendering, always use `&&`, never the `? :` ternary — including when there is an else branch. Split a two-branch render into two guards: `{cond && (<A />)}{!cond && (<B />)}`. This applies to `: null` cases too. Exception: keep `? :` for non-JSX *value* selection (prop values like `color={x ? 'a' : 'b'}`, `state={a ? 'x' : 'y'}`, string pickers like `{cond ? t('a') : t('b')}`) since `&&` cannot express those.
 
 ## i18n
 - UI chrome text lives in `src/i18n/translations.ts` as nested keys; both `en` and `vi` MUST be kept in sync. Read via `const { t, locale } = useTranslation()`.

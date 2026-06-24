@@ -371,7 +371,7 @@ function WritingExercisePage() {
                 px: { xs: 5, sm: 6 },
               }}
             >
-              {isGuideUnavailable ? (
+              {isGuideUnavailable && (
                 <Box
                   sx={{
                     width: 80,
@@ -389,7 +389,8 @@ function WritingExercisePage() {
                     N/A
                   </Typography>
                 </Box>
-              ) : (
+              )}
+              {!isGuideUnavailable && (
                 <Box
                   component="img"
                   src={svgUrl}

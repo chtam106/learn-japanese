@@ -22,28 +22,28 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { getChartSectionLabels } from '@/i18n/translations.ts';
 
 export type AlphabetCell = {
-  char: string
-  romaji: string
-  yoonBase?: string
-  yoonSuffix?: string
-}
+  char: string;
+  romaji: string;
+  yoonBase?: string;
+  yoonSuffix?: string;
+};
 
 export type AlphabetChartRow = {
-  seion: (AlphabetCell | null)[]
-  dakuten?: (AlphabetCell | null)[]
-  handakuten?: (AlphabetCell | null)[]
-}
+  seion: (AlphabetCell | null)[];
+  dakuten?: (AlphabetCell | null)[];
+  handakuten?: (AlphabetCell | null)[];
+};
 
 type VoicedCell = {
-  dakuten: AlphabetCell | null
-  handakuten: AlphabetCell | null
-}
+  dakuten: AlphabetCell | null;
+  handakuten: AlphabetCell | null;
+};
 
 type DisplayRow = {
-  seion: (AlphabetCell | null)[]
-  voiced: VoicedCell[]
-  tall: boolean
-}
+  seion: (AlphabetCell | null)[];
+  voiced: VoicedCell[];
+  tall: boolean;
+};
 
 function toDisplayRows(rows: AlphabetChartRow[]): DisplayRow[] {
   return rows.map((row) => ({
@@ -162,10 +162,10 @@ function VoicedChartCell({
   cellSize,
   compact,
 }: {
-  cell: VoicedCell
-  tall: boolean
-  cellSize: number
-  compact: boolean
+  cell: VoicedCell;
+  tall: boolean;
+  cellSize: number;
+  compact: boolean;
 }) {
   const voicedCompact = compact || Boolean(cell.dakuten && cell.handakuten);
   const innerHeight = getRowHeight(tall, cellSize) - (compact ? 8 : 16);
@@ -202,10 +202,10 @@ function BaseChartCell({
   cellSize,
   compact,
 }: {
-  cell: AlphabetCell | null
-  tall: boolean
-  cellSize: number
-  compact: boolean
+  cell: AlphabetCell | null;
+  tall: boolean;
+  cellSize: number;
+  compact: boolean;
 }) {
   return (
     <Box
@@ -228,9 +228,9 @@ function AlphabetChartTable({
   variant,
   hideEmptyRows = false,
 }: {
-  rows: DisplayRow[]
-  variant: 'seion' | 'voiced'
-  hideEmptyRows?: boolean
+  rows: DisplayRow[];
+  variant: 'seion' | 'voiced';
+  hideEmptyRows?: boolean;
 }) {
   const theme = useTheme();
   const compact = useMediaQuery(theme.breakpoints.down('md'));
@@ -278,14 +278,15 @@ function AlphabetChartTable({
                     align="center"
                     sx={getCellSx(tall, cellSize, columnCount)}
                   >
-                    {variant === 'seion' ? (
+                    {variant === 'seion' && (
                       <BaseChartCell
                         cell={cell as AlphabetCell | null}
                         tall={tall}
                         cellSize={cellSize}
                         compact={compact}
                       />
-                    ) : (
+                    )}
+                    {variant !== 'seion' && (
                       <VoicedChartCell
                         cell={cell as VoicedCell}
                         tall={tall}
@@ -305,11 +306,11 @@ function AlphabetChartTable({
 }
 
 type AlphabetChartPageProps = {
-  title: string
-  description: string
-  chartRows: AlphabetChartRow[]
-  yoonChartRows: AlphabetChartRow[]
-}
+  title: string;
+  description: string;
+  chartRows: AlphabetChartRow[];
+  yoonChartRows: AlphabetChartRow[];
+};
 
 const chartSectionHeadingSx = {
   mb: 1,

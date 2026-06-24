@@ -132,7 +132,7 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
           </Heading>
         </Box>
 
-        {finished ? (
+        {finished && (
           <ResultScreen
             score={score}
             total={total}
@@ -140,7 +140,8 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
             lessonId={lesson.id}
             onRetry={handleRetry}
           />
-        ) : (
+        )}
+        {!finished && (
           <>
             <Box>
               <Stack
@@ -194,18 +195,16 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                 >
                   {question.promptPrimary}
                 </Typography>
-                {canPlayPromptAudio ? (
-                  <SpeakButton text={question.promptPrimary} size="medium" />
-                ) : null}
+                {canPlayPromptAudio && <SpeakButton text={question.promptPrimary} size="medium" />}
               </Stack>
-              {question.promptSecondary ? (
+              {question.promptSecondary && (
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 0.5 }}>
                   {question.promptSecondary}
                 </Typography>
-              ) : null}
+              )}
             </Paper>
 
-            {question.format === 'choice' ? (
+            {question.format === 'choice' && (
               <Stack spacing={1.5}>
                 {question.options.map((option) => {
                   const isCorrectOption = option.id === question.correctId;
@@ -225,7 +224,8 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                   );
                 })}
               </Stack>
-            ) : (
+            )}
+            {question.format !== 'choice' && (
               <Box
                 component="form"
                 onSubmit={(event) => {
@@ -265,7 +265,7 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
             )}
 
             <Box sx={{ minHeight: 56 }}>
-              {answered ? (
+              {answered && (
                 <Stack
                   direction="row"
                   spacing={1.5}
@@ -278,17 +278,17 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                     >
                       {isCorrect ? t('course.correct') : t('course.incorrect')}
                     </Typography>
-                    {question.format === 'input' && !isCorrect ? (
+                    {question.format === 'input' && !isCorrect && (
                       <Typography variant="body2" color="text.secondary">
                         {t('course.answerWas', { answer: question.answer })}
                       </Typography>
-                    ) : null}
+                    )}
                   </Box>
                   <Button variant="contained" onClick={handleNext}>
                     {isLast ? t('course.seeResults') : t('course.next')}
                   </Button>
                 </Stack>
-              ) : null}
+              )}
             </Box>
           </>
         )}

@@ -118,7 +118,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
           </Heading>
         </Box>
 
-        {finished ? (
+        {finished && (
           <ResultScreen
             score={score}
             total={total}
@@ -126,7 +126,8 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
             lessonId={lesson.id}
             onRetry={handleRetry}
           />
-        ) : (
+        )}
+        {!finished && (
           <>
             <Box>
               <Stack
@@ -186,13 +187,13 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                 {t('course.replay')}
               </Button>
 
-              {answered ? (
+              {answered && (
                 <Box sx={{ mt: 1 }}>
                   <Typography variant="h5" component="p" lang="ja" sx={{ fontWeight: 600 }}>
                     {question.reveal.jp}
                   </Typography>
                 </Box>
-              ) : null}
+              )}
             </Paper>
 
             <Stack spacing={1.5}>
@@ -216,7 +217,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
             </Stack>
 
             <Box sx={{ minHeight: 56 }}>
-              {answered ? (
+              {answered && (
                 <Stack
                   direction="row"
                   spacing={1.5}
@@ -237,7 +238,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                     {isLast ? t('course.seeResults') : t('course.next')}
                   </Button>
                 </Stack>
-              ) : null}
+              )}
             </Box>
           </>
         )}

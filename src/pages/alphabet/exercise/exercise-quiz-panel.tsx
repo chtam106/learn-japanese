@@ -14,13 +14,13 @@ import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
 type ExerciseQuizPanelProps = {
-  mode: ExerciseMode
-  scriptLabel: string
-  question: QuizQuestion
-  wrongAnswers: string[]
-  answeredCorrectly: boolean
-  onAnswer: (answer: string) => void
-}
+  mode: ExerciseMode;
+  scriptLabel: string;
+  question: QuizQuestion;
+  wrongAnswers: string[];
+  answeredCorrectly: boolean;
+  onAnswer: (answer: string) => void;
+};
 
 function getQuestionLabel(
   mode: ExerciseMode,
@@ -72,7 +72,7 @@ export function ExerciseQuizPanel({
           justifyContent: 'center',
         }}
       >
-        {mode === 'romaji' ? (
+        {mode === 'romaji' && (
           <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
               <Box
@@ -113,15 +113,15 @@ export function ExerciseQuizPanel({
               </IconButton>
             </Box>
           </Box>
-        ) : null}
+        )}
 
-        {mode === 'character' ? (
+        {mode === 'character' && (
           <Typography variant="h2" component="span" sx={{ lineHeight: 1.1 }}>
             {question.correctItem.romaji}
           </Typography>
-        ) : null}
+        )}
 
-        {mode === 'listen' ? (
+        {mode === 'listen' && (
           <IconButton
             aria-label={t('exercise.replayAudio')}
             onClick={playPromptAudio}
@@ -135,11 +135,11 @@ export function ExerciseQuizPanel({
           >
             <VolumeUpIcon sx={{ fontSize: 40 }} />
           </IconButton>
-        ) : null}
+        )}
 
-        {mode === 'script-pair' && question.promptItem ? (
+        {mode === 'script-pair' && question.promptItem && (
           <KanaDisplay cell={question.promptItem} variant="prompt" />
-        ) : null}
+        )}
       </Box>
 
       <Box

@@ -84,7 +84,7 @@ function VocabularySection({ lesson }: { lesson: Lesson }) {
               <Typography variant="subtitle1" component="span" lang="ja" sx={{ fontWeight: 600 }}>
                 {item.kanji ?? item.kana}
               </Typography>
-              {item.kanji ? (
+              {item.kanji && (
                 <Typography
                   variant="body2"
                   component="span"
@@ -94,7 +94,7 @@ function VocabularySection({ lesson }: { lesson: Lesson }) {
                 >
                   {item.kana}
                 </Typography>
-              ) : null}
+              )}
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
                 {item.romaji}
               </Typography>
@@ -243,7 +243,7 @@ function PracticePanel({ level, lesson }: { level: CourseLevel; lesson: Lesson }
         >
           {t('course.startListening')}
         </Button>
-        {hasReading ? (
+        {hasReading && (
           <Button
             component={RouterLink}
             to={lessonReadingPath(level, lesson.id)}
@@ -253,7 +253,7 @@ function PracticePanel({ level, lesson }: { level: CourseLevel; lesson: Lesson }
           >
             {t('course.startReading')}
           </Button>
-        ) : null}
+        )}
       </Stack>
     </Paper>
   );
@@ -297,7 +297,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
             sx={{ mb: 1 }}
           />
           <Heading component="h1">{lesson.title[locale]}</Heading>
-          {lesson.track === 'frontend' ? (
+          {lesson.track === 'frontend' && (
             <Chip
               label={t('course.frontendTrackTag')}
               color="secondary"
@@ -305,7 +305,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
               size="small"
               sx={{ mt: 1 }}
             />
-          ) : null}
+          )}
 
           <Paper elevation={0} sx={[subtleSurfaceSx, { p: 2, mt: 2 }]}>
             <Typography variant="overline" color="text.secondary">
@@ -322,7 +322,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
 
         <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-            {previous ? (
+            {previous && (
               <Button
                 component={RouterLink}
                 to={lessonPath(level, previous.id)}
@@ -337,10 +337,10 @@ function LessonPage({ level }: { level: CourseLevel }) {
               >
                 {t('course.previousLesson')}
               </Button>
-            ) : null}
+            )}
           </Box>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            {next ? (
+            {next && (
               <Button
                 component={RouterLink}
                 to={lessonPath(level, next.id)}
@@ -355,7 +355,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
               >
                 {t('course.nextLesson')}
               </Button>
-            ) : null}
+            )}
           </Box>
         </Stack>
       </Stack>

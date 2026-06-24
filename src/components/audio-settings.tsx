@@ -125,11 +125,12 @@ export function AudioSettings() {
             </Select>
           </FormControl>
 
-          {voices.length === 0 ? (
+          {voices.length === 0 && (
             <Typography variant="caption" color="text.secondary">
               {t('audio.noVoices')}
             </Typography>
-          ) : (
+          )}
+          {voices.length > 0 && (
             <Button
               startIcon={<PlayArrowIcon />}
               variant="outlined"

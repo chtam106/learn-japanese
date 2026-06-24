@@ -67,18 +67,18 @@ function AppLayout() {
             alignItems: 'center',
           }}
         >
-          {isMobile ? (
+          {isMobile && (
             <IconButton
               edge="start"
               onClick={() => setMobileOpen((previous) => !previous)}
               aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+              {mobileOpen && <CloseIcon />}
+              {!mobileOpen && <MenuIcon />}
             </IconButton>
-          ) : (
-            <Box sx={{ width: drawerWidth, flexShrink: 0 }} aria-hidden />
           )}
+          {!isMobile && <Box sx={{ width: drawerWidth, flexShrink: 0 }} aria-hidden />}
           <Box
             sx={{
               flexGrow: 1,
@@ -122,7 +122,7 @@ function AppLayout() {
             },
           }}
         >
-          {shouldRenderDrawerContent ? (
+          {shouldRenderDrawerContent && (
             <Suspense
               fallback={
                 <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -132,7 +132,7 @@ function AppLayout() {
             >
               <AppDrawerContent onNavigate={() => setMobileOpen(false)} />
             </Suspense>
-          ) : null}
+          )}
         </Drawer>
       </Box>
 

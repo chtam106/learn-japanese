@@ -33,8 +33,8 @@ function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
 
   for (let index = copy.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
   }
 
   return copy;
@@ -192,7 +192,7 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
 
         <PassageCard passage={passage} />
 
-        {finished ? (
+        {finished && (
           <ResultScreen
             score={score}
             total={total}
@@ -200,7 +200,8 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
             lessonId={lesson.id}
             onRetry={handleRetry}
           />
-        ) : (
+        )}
+        {!finished && (
           <>
             <Box>
               <Stack
@@ -250,7 +251,7 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
             </Stack>
 
             <Box sx={{ minHeight: 56 }}>
-              {answered ? (
+              {answered && (
                 <Stack
                   direction="row"
                   spacing={1.5}
@@ -271,7 +272,7 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
                     {isLast ? t('course.seeResults') : t('course.next')}
                   </Button>
                 </Stack>
-              ) : null}
+              )}
             </Box>
           </>
         )}

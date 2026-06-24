@@ -38,8 +38,8 @@ function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
 }
 
 type AppDrawerContentProps = {
-  onNavigate: () => void
-}
+  onNavigate: () => void;
+};
 
 export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
   const location = useLocation();
@@ -122,7 +122,9 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
         {navGroups.map((group) => {
           const groupLabel = group.label ? group.label[locale] : t(group.labelKey ?? '');
           const isExpanded = expandedGroups[group.path] ?? false;
-          const dynamicChildren = group.courseLevel ? (courseChildrenByLevel[group.courseLevel] ?? []) : [];
+          const dynamicChildren = group.courseLevel
+            ? (courseChildrenByLevel[group.courseLevel] ?? [])
+            : [];
           const children = group.courseLevel ? dynamicChildren : group.children;
           const hasChildren = group.courseLevel ? true : children.length > 0;
           const isLoadingChildren = group.courseLevel ? loadingLevels[group.courseLevel] : false;
@@ -137,7 +139,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
               className="nav-group-item"
               sx={{ listStyle: 'none', p: 0, m: 0 }}
             >
-              {hasChildren ? (
+              {hasChildren && (
                 <Box
                   sx={{
                     display: 'flex',
@@ -170,7 +172,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                     }}
                   >
                     <ListItemIcon sx={{ minWidth: 40 }}>
-                      {GroupIcon ? <GroupIcon fontSize="small" /> : null}
+                      {GroupIcon && <GroupIcon fontSize="small" />}
                     </ListItemIcon>
                     <ListItemText primary={groupLabel} />
                   </ListItemButton>
@@ -190,14 +192,12 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                       '&:hover': { bgcolor: 'transparent' },
                     }}
                   >
-                    {isExpanded ? (
-                      <ExpandLessIcon fontSize="small" />
-                    ) : (
-                      <ExpandMoreIcon fontSize="small" />
-                    )}
+                    {isExpanded && <ExpandLessIcon fontSize="small" />}
+                    {!isExpanded && <ExpandMoreIcon fontSize="small" />}
                   </IconButton>
                 </Box>
-              ) : (
+              )}
+              {!hasChildren && (
                 <ListItemButton
                   component={NavLink}
                   to={group.path}
@@ -219,7 +219,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                   }}
                 >
                   <ListItemIcon sx={{ minWidth: 40 }}>
-                    {GroupIcon ? <GroupIcon fontSize="small" /> : null}
+                    {GroupIcon && <GroupIcon fontSize="small" />}
                   </ListItemIcon>
                   <ListItemText primary={groupLabel} />
                 </ListItemButton>
@@ -251,13 +251,14 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                       },
                     })}
                   >
-                    {isLoadingChildren ? (
+                    {isLoadingChildren && (
                       <Box sx={{ px: 2, py: 1 }}>
                         <Typography variant="body2" color="text.secondary">
                           Loading...
                         </Typography>
                       </Box>
-                    ) : (
+                    )}
+                    {!isLoadingChildren &&
                       children.map((child) => (
                         <ListItemButton
                           key={child.path}
@@ -305,8 +306,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                             }}
                           />
                         </ListItemButton>
-                      ))
-                    )}
+                      ))}
                   </List>
                 </Collapse>
               )}
