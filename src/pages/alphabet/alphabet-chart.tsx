@@ -1,7 +1,18 @@
 import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, Button, Paper, Typography } from '@mui/material';
-import type { ChouonExample } from '@/constants/alphabet-charts.ts';
+import {
+  Box,
+  Button,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography
+} from '@mui/material';
+import type { ChouonExample, ChouonRule } from '@/constants/alphabet-charts.ts';
 import { Heading } from '@/components/heading.tsx';
 import { HintText } from '@/components/hint-text.tsx';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
@@ -69,7 +80,8 @@ type AlphabetChartPageProps = {
   description: string;
   chartRows: AlphabetChartRow[];
   yoonChartRows: AlphabetChartRow[];
-  chouonExamples: ChouonExample[];
+  chouonExamples?: ChouonExample[];
+  chouonRules?: ChouonRule[];
 };
 
 export function AlphabetChartPage({
@@ -78,7 +90,8 @@ export function AlphabetChartPage({
   description,
   chartRows,
   yoonChartRows,
-  chouonExamples
+  chouonExamples,
+  chouonRules
 }: AlphabetChartPageProps) {
   const { locale, t } = useTranslation();
   const sectionLabels = getChartSectionLabels(t);
@@ -132,39 +145,94 @@ export function AlphabetChartPage({
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
             {t(script === 'hiragana' ? 'chart.chouonHiragana' : 'chart.chouonKatakana')}
           </Typography>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-              gap: 1.5
-            }}
-          >
-            {chouonExamples.map((example) => (
-              <Paper
-                key={example.jp}
-                elevation={0}
-                sx={[elevatedSurfaceSx, { p: 1.5, display: 'flex', gap: 0.5 }]}
-              >
-                <SpeakButton text={example.jp} />
-                <Box sx={{ minWidth: 0 }}>
-                  <Typography
-                    variant="subtitle1"
-                    component="span"
-                    lang="ja"
-                    sx={{ fontWeight: 600 }}
-                  >
-                    {example.jp}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                    {example.romaji}
-                  </Typography>
-                  <Typography variant="body2" sx={{ mt: 0.5 }}>
-                    {example.meaning[locale]}
-                  </Typography>
-                </Box>
-              </Paper>
-            ))}
-          </Box>
+          {chouonRules && (
+            <Paper elevation={0} sx={[elevatedSurfaceSx, { overflowX: 'auto' }]}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColVowel')}</TableCell>
+                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColLong')}</TableCell>
+                    <TableCell sx={{ fontWeight: 700 }}>{t('chart.chouonColExample')}</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {chouonRules.map((rule) => (
+                    <TableRow key={rule.vowel}>
+                      <TableCell>
+                        <Typography component="span" lang="ja" sx={{ fontSize: '1.5rem', mr: 1 }}>
+                          {rule.vowel}
+                        </Typography>
+                        <Typography component="span" variant="caption" color="text.secondary">
+                          {rule.vowelRomaji}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography component="span" lang="ja" sx={{ fontSize: '1.5rem', mr: 1 }}>
+                          {rule.long}
+                        </Typography>
+                        <Typography component="span" variant="caption" color="text.secondary">
+                          {rule.longRomaji}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                          <SpeakButton text={rule.example} />
+                          <Box sx={{ minWidth: 0 }}>
+                            <Typography component="span" lang="ja" sx={{ fontWeight: 600 }}>
+                              {rule.example}
+                            </Typography>
+                            <Typography
+                              variant="caption"
+                              color="text.secondary"
+                              sx={{ display: 'block' }}
+                            >
+                              {rule.exampleRomaji}
+                            </Typography>
+                          </Box>
+                        </Stack>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Paper>
+          )}
+
+          {!chouonRules && chouonExamples && (
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+                gap: 1.5
+              }}
+            >
+              {chouonExamples.map((example) => (
+                <Paper
+                  key={example.jp}
+                  elevation={0}
+                  sx={[elevatedSurfaceSx, { p: 1.5, display: 'flex', gap: 0.5 }]}
+                >
+                  <SpeakButton text={example.jp} />
+                  <Box sx={{ minWidth: 0 }}>
+                    <Typography
+                      variant="subtitle1"
+                      component="span"
+                      lang="ja"
+                      sx={{ fontWeight: 600 }}
+                    >
+                      {example.jp}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+                      {example.romaji}
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 0.5 }}>
+                      {example.meaning[locale]}
+                    </Typography>
+                  </Box>
+                </Paper>
+              ))}
+            </Box>
+          )}
         </ChartBlock>
       </Box>
     </PageContainer>

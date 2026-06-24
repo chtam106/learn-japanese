@@ -827,19 +827,6 @@ export type ChouonExample = {
   meaning: { en: string; vi: string };
 };
 
-export const hiraganaChouonExamples: ChouonExample[] = [
-  { jp: 'おかあさん', romaji: 'okāsan', meaning: { en: 'mother', vi: 'mẹ' } },
-  { jp: 'おにいさん', romaji: 'onīsan', meaning: { en: 'older brother', vi: 'anh trai' } },
-  { jp: 'くうき', romaji: 'kūki', meaning: { en: 'air', vi: 'không khí' } },
-  { jp: 'おねえさん', romaji: 'onēsan', meaning: { en: 'older sister', vi: 'chị gái' } },
-  {
-    jp: 'せんせい',
-    romaji: 'sensei',
-    meaning: { en: 'teacher (ei -> ē)', vi: 'giáo viên (ei -> ē)' }
-  },
-  { jp: 'とうきょう', romaji: 'tōkyō', meaning: { en: 'Tokyo (ou -> ō)', vi: 'Tokyo (ou -> ō)' } }
-];
-
 export const katakanaChouonExamples: ChouonExample[] = [
   { jp: 'コーヒー', romaji: 'kōhī', meaning: { en: 'coffee', vi: 'cà phê' } },
   { jp: 'ケーキ', romaji: 'kēki', meaning: { en: 'cake', vi: 'bánh ngọt' } },
@@ -847,4 +834,56 @@ export const katakanaChouonExamples: ChouonExample[] = [
   { jp: 'ノート', romaji: 'nōto', meaning: { en: 'notebook', vi: 'vở/sổ' } },
   { jp: 'メール', romaji: 'mēru', meaning: { en: 'email', vi: 'email' } },
   { jp: 'テーブル', romaji: 'tēburu', meaning: { en: 'table', vi: 'bàn' } }
+];
+
+export type ChouonRule = {
+  vowel: string;
+  vowelRomaji: string;
+  long: string;
+  longRomaji: string;
+  example: string;
+  exampleRomaji: string;
+};
+
+export const hiraganaChouonRules: ChouonRule[] = [
+  {
+    vowel: 'あ',
+    vowelRomaji: 'a',
+    long: 'ああ',
+    longRomaji: 'ā',
+    example: 'おかあさん',
+    exampleRomaji: 'okāsan'
+  },
+  {
+    vowel: 'い',
+    vowelRomaji: 'i',
+    long: 'いい',
+    longRomaji: 'ī',
+    example: 'おにいさん',
+    exampleRomaji: 'onīsan'
+  },
+  {
+    vowel: 'う',
+    vowelRomaji: 'u',
+    long: 'うう',
+    longRomaji: 'ū',
+    example: 'くうき',
+    exampleRomaji: 'kūki'
+  },
+  {
+    vowel: 'え',
+    vowelRomaji: 'e',
+    long: 'ええ / えい',
+    longRomaji: 'ē',
+    example: 'おねえさん',
+    exampleRomaji: 'onēsan'
+  },
+  {
+    vowel: 'お',
+    vowelRomaji: 'o',
+    long: 'おお / おう',
+    longRomaji: 'ō',
+    example: 'おとうさん',
+    exampleRomaji: 'otōsan'
+  }
 ];

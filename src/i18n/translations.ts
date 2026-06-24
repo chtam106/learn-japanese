@@ -145,6 +145,9 @@ const en: TranslationTree = {
       'A long vowel holds the vowel for two beats. In hiragana, add the matching vowel: あ->ああ, い->いい, う->うう. The え-row usually adds い and the お-row usually adds う (so えい sounds like ē and おう like ō).',
     chouonKatakana:
       'A long vowel holds the vowel for two beats. In katakana, it is written with the long-vowel mark ー, whatever the vowel is.',
+    chouonColVowel: 'Vowel',
+    chouonColLong: 'Long vowel',
+    chouonColExample: 'Example',
     playAudio: 'Play {{char}}, {{romaji}}'
   },
   exercise: {

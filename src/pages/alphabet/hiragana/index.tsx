@@ -1,7 +1,7 @@
 import { AlphabetChartPage } from '@/pages/alphabet/alphabet-chart.tsx';
 import {
   hiraganaChartRows,
-  hiraganaChouonExamples,
+  hiraganaChouonRules,
   hiraganaYoonChartRows
 } from '@/constants/alphabet-charts.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
@@ -16,7 +16,7 @@ function HiraganaPage() {
       description={t('alphabet.hiraganaPageDescription')}
       chartRows={hiraganaChartRows}
       yoonChartRows={hiraganaYoonChartRows}
-      chouonExamples={hiraganaChouonExamples}
+      chouonRules={hiraganaChouonRules}
     />
   );
 }
