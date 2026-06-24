@@ -129,9 +129,10 @@ export const viTranslations: TranslationTree = {
     seion: 'Seion',
     voiced: 'Dakuten / Handakuten ({{dakuten}} / {{handakuten}})',
     voicedDescription:
-      'Thêm dấu dakuten ({{dakuten}}) để hữu thanh hóa: k→g, s→z, t→d, h→b. Dấu handakuten ({{handakuten}}) biến h→p. Ví dụ: か (ka) + {{dakuten}} = が (ga).',
+      'Thêm dấu dakuten ({{dakuten}}) để hữu thanh hóa: k→g, s→z, t→d, h→b. Dấu handakuten ({{handakuten}}) biến h→p. Ví dụ: {{base}} ({{baseRomaji}}) + {{dakuten}} = {{voiced}} ({{voicedRomaji}}).',
     yoon: 'Yoon',
-    yoonDescription: 'Âm ghép với ゃ, ゅ, ょ nhỏ - ví dụ: き + ゃ = きゃ (kya).',
+    yoonDescription:
+      'Âm ghép với {{small1}}, {{small2}}, {{small3}} nhỏ - ví dụ: {{base}} + {{small1}} = {{result}} ({{romaji}}).',
     playAudio: 'Phát {{char}}, {{romaji}}'
   },
   exercise: {

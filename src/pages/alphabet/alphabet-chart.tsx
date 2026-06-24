@@ -12,6 +12,8 @@ import {
   YOON_HEADERS,
   consonantLabel,
   firstCell,
+  getVoicedDescription,
+  getYoonDescription,
   type AlphabetCell,
   type AlphabetChartRow,
   type GridRow
@@ -107,14 +109,14 @@ export function AlphabetChartPage({
 
         <ChartBlock heading={sectionLabels.voiced}>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            {sectionLabels.voicedDescription}
+            {getVoicedDescription(t, chartRows)}
           </Typography>
           <GojuonGrid rows={voicedRows} headers={VOWEL_HEADERS} renderCell={renderKanaCell} />
         </ChartBlock>
 
         <ChartBlock heading={sectionLabels.yoon}>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            {t('chart.yoonDescription')}
+            {getYoonDescription(t, yoonChartRows)}
           </Typography>
           <GojuonGrid rows={yoonRows} headers={YOON_HEADERS} renderCell={renderKanaCell} />
         </ChartBlock>

@@ -13,6 +13,8 @@ import {
   YOON_HEADERS,
   consonantLabel,
   firstCell,
+  getVoicedDescription,
+  getYoonDescription,
   type AlphabetCell,
   type AlphabetChartRow,
   type GridRow
@@ -137,7 +139,7 @@ function CombinedChartPage() {
 
         <ChartBlock heading={sectionLabels.voiced}>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            {sectionLabels.voicedDescription}
+            {getVoicedDescription(t, hiraganaChartRows)}
           </Typography>
           <GojuonGrid
             rows={voicedRows}
@@ -149,7 +151,7 @@ function CombinedChartPage() {
 
         <ChartBlock heading={sectionLabels.yoon}>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            {t('chart.yoonDescription')}
+            {getYoonDescription(t, hiraganaYoonChartRows)}
           </Typography>
           <GojuonGrid
             rows={yoonRows}
