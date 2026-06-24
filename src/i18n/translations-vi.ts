@@ -103,7 +103,7 @@ export const viTranslations: TranslationTree = {
   },
   alphabet: {
     title: 'Bảng chữ cái',
-    subtitle: 'Chọn bảng chữ để học.',
+    subtitle: 'Học bảng chữ hiragana và katakana, rồi luyện tập.',
     hiraganaDescription: 'ひらがな - bảng âm tiếng Nhật cơ bản',
     katakanaDescription: 'カタカナ - dùng cho từ ngoại lai và nhấn mạnh',
     exerciseDescription: 'Luyện hiragana và katakana',

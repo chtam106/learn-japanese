@@ -109,7 +109,7 @@ const en: TranslationTree = {
   },
   alphabet: {
     title: 'Alphabet',
-    subtitle: 'Choose a writing system to study.',
+    subtitle: 'Study the hiragana and katakana writing systems, then practice them.',
     hiraganaDescription: 'ひらがな - basic Japanese syllabary',
     katakanaDescription: 'カタカナ - used for foreign words and emphasis',
     exerciseDescription: 'Practice hiragana and katakana',
