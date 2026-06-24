@@ -25,6 +25,7 @@ export default defineConfig([
     },
     rules: {
       semi: ['error', 'always'],
+      'react-hooks/set-state-in-effect': 'error',
       '@stylistic/member-delimiter-style': [
         'error',
         {
