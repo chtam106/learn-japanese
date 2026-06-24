@@ -280,6 +280,73 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Staged rollout decision', vi: 'Quyết định rollout theo giai đoạn' },
+        lines: [
+          {
+            jp: '金曜日のデプロイは、障害が起きるおそれがあるので避けることにしました。',
+            romaji:
+              "Kin'yōbi no depuroi wa, shōgai ga okiru osore ga aru node sakeru koto ni shimashita.",
+            meaning: {
+              en: 'We decided to avoid Friday deploys because there is a risk of incidents.',
+              vi: 'Chúng tôi quyết định tránh deploy thứ Sáu vì có nguy cơ xảy ra sự cố.'
+            }
+          },
+          {
+            jp: 'CIのテストとステージング確認を終えたうえで、本番にリリースします。',
+            romaji: 'CI no tesuto to sutējingu kakunin o oeta ue de, honban ni rirīsu shimasu.',
+            meaning: {
+              en: 'After finishing CI tests and staging checks, we release to production.',
+              vi: 'Sau khi hoàn tất test CI và kiểm tra staging, chúng tôi mới release lên production.'
+            }
+          },
+          {
+            jp: 'まず一部のユーザーに公開して、問題がなければ全体に広げます。',
+            romaji: 'Mazu ichibu no yūzā ni kōkai shite, mondai ga nakereba zentai ni hirogemasu.',
+            meaning: {
+              en: 'First we release to some users, then expand to everyone if there are no problems.',
+              vi: 'Đầu tiên mở cho một phần người dùng, nếu không có vấn đề thì mở rộng cho tất cả.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'Why did they avoid Friday deploys?',
+              vi: 'Vì sao họ tránh deploy thứ Sáu?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'There is a risk of incidents', vi: 'Có nguy cơ xảy ra sự cố' }
+              },
+              { id: 'b', label: { en: 'No one works on Friday', vi: 'Thứ Sáu không ai làm việc' } },
+              { id: 'c', label: { en: 'CI runs faster then', vi: 'CI chạy nhanh hơn khi đó' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What happens before the production release?',
+              vi: 'Điều gì diễn ra trước khi release production?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'CI tests and staging checks', vi: 'Test CI và kiểm tra staging' }
+              },
+              { id: 'b', label: { en: 'Nothing at all', vi: 'Không gì cả' } },
+              { id: 'c', label: { en: 'All tests are deleted', vi: 'Xóa toàn bộ test' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -387,6 +454,64 @@ export const frontendLessonsC: Lesson[] = [
               en: 'We reviewed ARIA attributes so screen reading does not break.',
               vi: 'Chúng tôi xem lại thuộc tính ARIA để trình đọc không bị ngắt quãng.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Accessibility review', vi: 'Review về accessibility' },
+        lines: [
+          {
+            jp: '色覚に配慮して、色だけでなくアイコンでも状態を示すようにしました。',
+            romaji:
+              'Shikikaku ni hairyo shite, iro dake de naku aikon demo jōtai o shimesu yō ni shimashita.',
+            meaning: {
+              en: 'With consideration for color vision, we show state with icons, not only color.',
+              vi: 'Cân nhắc tới thị giác màu, chúng tôi thể hiện trạng thái bằng cả icon chứ không chỉ màu.'
+            }
+          },
+          {
+            jp: 'スクリーンリーダーのために、すべての画像に代替テキストを付けます。',
+            romaji: 'Sukurīn rīdā no tame ni, subete no gazō ni daitai tekisuto o tsukemasu.',
+            meaning: {
+              en: 'For screen readers, we add alternative text to every image.',
+              vi: 'Vì screen reader, chúng tôi thêm văn bản thay thế cho mọi ảnh.'
+            }
+          },
+          {
+            jp: 'キーボードだけで操作できないページが残らないように確認します。',
+            romaji: 'Kībōdo dake de sōsa dekinai pēji ga nokoranai yō ni kakunin shimasu.',
+            meaning: {
+              en: 'We check so that no page remains unusable with the keyboard alone.',
+              vi: 'Chúng tôi kiểm tra để không còn trang nào không thao tác được chỉ bằng bàn phím.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'How is state shown besides color?',
+              vi: 'Trạng thái được thể hiện bằng gì ngoài màu?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'With icons', vi: 'Bằng icon' } },
+              { id: 'b', label: { en: 'With sound only', vi: 'Chỉ bằng âm thanh' } },
+              { id: 'c', label: { en: 'It is not shown', vi: 'Không thể hiện' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'Why add alternative text?', vi: 'Vì sao thêm văn bản thay thế?' },
+            choices: [
+              { id: 'a', label: { en: 'For screen readers', vi: 'Vì screen reader' } },
+              { id: 'b', label: { en: 'To load faster', vi: 'Để tải nhanh hơn' } },
+              { id: 'c', label: { en: 'To hide the image', vi: 'Để ẩn ảnh' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -498,6 +623,64 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Bundle size reduction', vi: 'Giảm kích thước bundle' },
+        lines: [
+          {
+            jp: '表示速度を上げるために、画像を遅延読み込みにしました。',
+            romaji: 'Hyōji sokudo o ageru tame ni, gazō o chien yomikomi ni shimashita.',
+            meaning: {
+              en: 'To improve display speed, we switched images to lazy loading.',
+              vi: 'Để tăng tốc độ hiển thị, chúng tôi cho ảnh tải trễ (lazy load).'
+            }
+          },
+          {
+            jp: '不要なライブラリを削除した結果、バンドルサイズが三割減りました。',
+            romaji:
+              'Fuyō na raiburari o sakujo shita kekka, bandoru saizu ga san-wari herimashita.',
+            meaning: {
+              en: 'As a result of removing unused libraries, the bundle size dropped by 30%.',
+              vi: 'Kết quả của việc xóa thư viện không cần thiết, bundle giảm 30%.'
+            }
+          },
+          {
+            jp: '初回表示が速くなり、離脱率も改善しました。',
+            romaji: 'Shokai hyōji ga hayaku nari, ridatsu-ritsu mo kaizen shimashita.',
+            meaning: {
+              en: 'First paint became faster and the bounce rate improved too.',
+              vi: 'Lần hiển thị đầu nhanh hơn và tỉ lệ thoát cũng cải thiện.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What did they do to improve speed?',
+              vi: 'Họ làm gì để tăng tốc độ?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Lazy-loaded images', vi: 'Cho ảnh tải trễ' } },
+              { id: 'b', label: { en: 'Added more libraries', vi: 'Thêm nhiều thư viện hơn' } },
+              { id: 'c', label: { en: 'Removed all images', vi: 'Xóa toàn bộ ảnh' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'How much did the bundle size drop?', vi: 'Bundle giảm bao nhiêu?' },
+            choices: [
+              { id: 'a', label: { en: 'About 30%', vi: 'Khoảng 30%' } },
+              { id: 'b', label: { en: 'About 3%', vi: 'Khoảng 3%' } },
+              { id: 'c', label: { en: 'It did not change', vi: 'Không thay đổi' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -601,6 +784,63 @@ export const frontendLessonsC: Lesson[] = [
               en: 'Required countermeasures differ depending on operating environment.',
               vi: 'Biện pháp cần thiết khác nhau tùy môi trường vận hành.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Preventing XSS', vi: 'Phòng chống XSS' },
+        lines: [
+          {
+            jp: 'XSSを起こさないために、ユーザー入力を必ずエスケープします。',
+            romaji: 'XSS o okosanai tame ni, yūzā nyūryoku o kanarazu esukēpu shimasu.',
+            meaning: {
+              en: 'In order not to cause XSS, we always escape user input.',
+              vi: 'Để không gây XSS, chúng tôi luôn escape input người dùng.'
+            }
+          },
+          {
+            jp: '攻撃の影響は実装によって大きく変わります。',
+            romaji: 'Kōgeki no eikyō wa jissō ni yotte ōkiku kawarimasu.',
+            meaning: {
+              en: 'The impact of an attack changes greatly depending on the implementation.',
+              vi: 'Mức ảnh hưởng của tấn công thay đổi nhiều tùy theo cách triển khai.'
+            }
+          },
+          {
+            jp: '重要な操作には、トークンによる検証を追加しました。',
+            romaji: 'Jūyō na sōsa ni wa, tōkun ni yoru kenshō o tsuika shimashita.',
+            meaning: {
+              en: 'For important actions, we added token-based verification.',
+              vi: 'Với thao tác quan trọng, chúng tôi thêm xác thực bằng token.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: { en: 'How do they prevent XSS?', vi: 'Họ phòng XSS bằng cách nào?' },
+            choices: [
+              { id: 'a', label: { en: 'Escape user input', vi: 'Escape input người dùng' } },
+              { id: 'b', label: { en: 'Disable JavaScript', vi: 'Tắt JavaScript' } },
+              { id: 'c', label: { en: 'Hide the URL', vi: 'Ẩn URL' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What was added for important actions?',
+              vi: 'Thao tác quan trọng được thêm gì?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Token-based verification', vi: 'Xác thực bằng token' } },
+              { id: 'b', label: { en: 'Nothing', vi: 'Không gì' } },
+              { id: 'c', label: { en: 'More advertisements', vi: 'Thêm quảng cáo' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -718,6 +958,63 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Token governance', vi: 'Governance token' },
+        lines: [
+          {
+            jp: '色は直接指定せず、必ずトークンを使うようにしています。',
+            romaji: 'Iro wa chokusetsu shitei sezu, kanarazu tōkun o tsukau yō ni shite imasu.',
+            meaning: {
+              en: 'We make it a practice to always use tokens instead of specifying colors directly.',
+              vi: 'Chúng tôi duy trì thói quen luôn dùng token thay vì chỉ định màu trực tiếp.'
+            }
+          },
+          {
+            jp: '新しいコンポーネントはレビューを通すことになっています。',
+            romaji: 'Atarashii konpōnento wa rebyū o tōsu koto ni natte imasu.',
+            meaning: {
+              en: 'It is a rule that new components go through review.',
+              vi: 'Quy định là component mới phải qua review.'
+            }
+          },
+          {
+            jp: 'これにより、製品間でUIの一貫性を保てます。',
+            romaji: 'Kore ni yori, seihin-kan de UI no ikkansei o tamotemasu.',
+            meaning: {
+              en: 'This keeps UI consistency across products.',
+              vi: 'Nhờ vậy, giữ được tính nhất quán UI giữa các sản phẩm.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What do they use instead of direct colors?',
+              vi: 'Họ dùng gì thay cho chỉ định màu trực tiếp?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Design tokens', vi: 'Token thiết kế' } },
+              { id: 'b', label: { en: 'Random hex values', vi: 'Mã hex ngẫu nhiên' } },
+              { id: 'c', label: { en: 'Background images', vi: 'Ảnh nền' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'What must new components do?', vi: 'Component mới phải làm gì?' },
+            choices: [
+              { id: 'a', label: { en: 'Go through review', vi: 'Qua review' } },
+              { id: 'b', label: { en: 'Skip review', vi: 'Bỏ qua review' } },
+              { id: 'c', label: { en: 'Be deleted', vi: 'Bị xóa' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -821,6 +1118,69 @@ export const frontendLessonsC: Lesson[] = [
               en: 'Unless we gather error patterns, we cannot prepare sufficient countermeasures.',
               vi: 'Nếu không thu thập pattern lỗi thì không thể xây biện pháp đầy đủ.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Handling API errors', vi: 'Xử lý lỗi API' },
+        lines: [
+          {
+            jp: 'サーバーエラーに対して、再試行と分かりやすい通知を用意します。',
+            romaji: 'Sābā erā ni taishite, saishikō to wakariyasui tsūchi o yōi shimasu.',
+            meaning: {
+              en: 'In response to server errors, we prepare retries and clear notifications.',
+              vi: 'Đối với lỗi server, chúng tôi chuẩn bị retry và thông báo dễ hiểu.'
+            }
+          },
+          {
+            jp: '仕様が決まらないことには、実装を始められません。',
+            romaji: 'Shiyō ga kimaranai koto ni wa, jissō o hajimeraremasen.',
+            meaning: {
+              en: 'Unless the spec is decided, we cannot start implementation.',
+              vi: 'Nếu chưa chốt spec thì không thể bắt đầu implement.'
+            }
+          },
+          {
+            jp: 'データの整合性を保つため、取得後に必ず検証します。',
+            romaji: 'Dēta no seigōsei o tamotsu tame, shutoku-go ni kanarazu kenshō shimasu.',
+            meaning: {
+              en: 'To keep data consistency, we always validate after fetching.',
+              vi: 'Để giữ tính nhất quán dữ liệu, chúng tôi luôn kiểm chứng sau khi lấy.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What do they prepare for server errors?',
+              vi: 'Họ chuẩn bị gì cho lỗi server?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'Retries and clear notifications', vi: 'Retry và thông báo dễ hiểu' }
+              },
+              { id: 'b', label: { en: 'Nothing', vi: 'Không gì' } },
+              { id: 'c', label: { en: 'Only raw logs', vi: 'Chỉ log thô' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What is required before implementation?',
+              vi: 'Cần gì trước khi implement?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'The spec is decided', vi: 'Spec đã được chốt' } },
+              { id: 'b', label: { en: 'The deploy is done', vi: 'Đã deploy xong' } },
+              { id: 'c', label: { en: 'The team is on leave', vi: 'Cả team đang nghỉ' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -938,6 +1298,70 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Scaling state', vi: 'Mở rộng state' },
+        lines: [
+          {
+            jp: '機能が増えるにつれて、状態管理が複雑になってきました。',
+            romaji: 'Kinō ga fueru ni tsurete, jōtai kanri ga fukuzatsu ni natte kimashita.',
+            meaning: {
+              en: 'As features increased, state management became more complex.',
+              vi: 'Càng nhiều tính năng thì quản lý state càng phức tạp.'
+            }
+          },
+          {
+            jp: '現状の課題を踏まえて、状態を機能ごとに分割する方針にしました。',
+            romaji:
+              'Genjō no kadai o fumaete, jōtai o kinō-goto ni bunkatsu suru hōshin ni shimashita.',
+            meaning: {
+              en: 'Taking the current issues into account, we decided to split state per feature.',
+              vi: 'Tính đến vấn đề hiện tại, chúng tôi chọn phương án tách state theo từng tính năng.'
+            }
+          },
+          {
+            jp: 'これにより、影響範囲が分かりやすくなります。',
+            romaji: "Kore ni yori, eikyō han'i ga wakariyasuku narimasu.",
+            meaning: {
+              en: 'This makes the scope of impact easier to understand.',
+              vi: 'Nhờ vậy phạm vi ảnh hưởng dễ hiểu hơn.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What happened as features increased?',
+              vi: 'Điều gì xảy ra khi tính năng tăng?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'State management got more complex', vi: 'Quản lý state phức tạp hơn' }
+              },
+              { id: 'b', label: { en: 'State disappeared', vi: 'State biến mất' } },
+              { id: 'c', label: { en: 'Nothing changed', vi: 'Không có gì thay đổi' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'What did they decide to do?', vi: 'Họ quyết định làm gì?' },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'Split state per feature', vi: 'Tách state theo tính năng' }
+              },
+              { id: 'b', label: { en: 'Merge all state into one', vi: 'Gộp hết state làm một' } },
+              { id: 'c', label: { en: 'Remove all state', vi: 'Bỏ hết state' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1049,6 +1473,69 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'An A/B test decision', vi: 'Một quyết định A/B test' },
+        lines: [
+          {
+            jp: 'ボタンの色を変えることで、クリック率が上がるか検証します。',
+            romaji: 'Botan no iro o kaeru koto de, kurikku-ritsu ga agaru ka kenshō shimasu.',
+            meaning: {
+              en: 'By changing the button color, we test whether the click rate goes up.',
+              vi: 'Bằng cách đổi màu nút, chúng tôi kiểm chứng tỉ lệ click có tăng không.'
+            }
+          },
+          {
+            jp: 'テスト結果に基づいて、どちらの案を採用するか決めます。',
+            romaji: 'Tesuto kekka ni motozuite, dochira no an o saiyō suru ka kimemasu.',
+            meaning: {
+              en: 'Based on the test results, we decide which option to adopt.',
+              vi: 'Dựa trên kết quả test, chúng tôi quyết định chọn phương án nào.'
+            }
+          },
+          {
+            jp: '計測が正しくできるように、事前にトラッキングを設計します。',
+            romaji: 'Keisoku ga tadashiku dekiru yō ni, jizen ni torakkingu o sekkei shimasu.',
+            meaning: {
+              en: 'So that measurement is correct, we design tracking in advance.',
+              vi: 'Để đo đúng, chúng tôi thiết kế tracking trước.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What are they testing by changing the button color?',
+              vi: 'Đổi màu nút để kiểm chứng điều gì?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'Whether the click rate goes up', vi: 'Tỉ lệ click có tăng không' }
+              },
+              { id: 'b', label: { en: 'The server speed', vi: 'Tốc độ server' } },
+              { id: 'c', label: { en: 'The font family', vi: 'Phông chữ' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What decides which option to adopt?',
+              vi: 'Dựa vào đâu để chọn phương án?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'The test results', vi: 'Kết quả test' } },
+              { id: 'b', label: { en: "The manager's mood", vi: 'Tâm trạng quản lý' } },
+              { id: 'c', label: { en: 'A coin flip', vi: 'Tung đồng xu' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1125,7 +1612,7 @@ export const frontendLessonsC: Lesson[] = [
             jp: '今週の進捗に関して、三点共有します。',
             romaji: 'Konshū no shinchoku ni kanshite, san-ten kyōyū shimasu.',
             meaning: {
-              en: 'Regarding this week’s progress, I will share three points.',
+              en: "Regarding this week's progress, I will share three points.",
               vi: 'Liên quan đến tiến độ tuần này, tôi sẽ chia sẻ ba điểm.'
             }
           },
@@ -1162,6 +1649,66 @@ export const frontendLessonsC: Lesson[] = [
               en: 'It would help if you could share materials before the meeting.',
               vi: 'Nếu bạn có thể chia sẻ tài liệu trước cuộc họp thì rất hữu ích.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'A standup update', vi: 'Cập nhật trong standup' },
+        lines: [
+          {
+            jp: 'ログイン機能に関して、今日中にレビューを終える予定です。',
+            romaji: 'Roguin kinō ni kanshite, kyō-jū ni rebyū o oeru yotei desu.',
+            meaning: {
+              en: 'Regarding the login feature, we plan to finish the review today.',
+              vi: 'Liên quan đến tính năng đăng nhập, dự kiến xong review trong hôm nay.'
+            }
+          },
+          {
+            jp: '仕様の不明点を午前中に教えてもらえると助かります。',
+            romaji: 'Shiyō no fumeiten o gozen-chū ni oshiete moraeru to tasukarimasu.',
+            meaning: {
+              en: 'It would help if you could tell me the unclear spec points by noon.',
+              vi: 'Nếu bạn có thể cho biết các điểm spec chưa rõ trước trưa thì rất tốt.'
+            }
+          },
+          {
+            jp: 'ブロッカーがあれば、すぐに共有してください。',
+            romaji: 'Burokkā ga areba, sugu ni kyōyū shite kudasai.',
+            meaning: {
+              en: 'If there are blockers, please share them right away.',
+              vi: 'Nếu có blocker, hãy chia sẻ ngay.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'When do they plan to finish the login review?',
+              vi: 'Khi nào họ dự kiến xong review đăng nhập?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Today', vi: 'Trong hôm nay' } },
+              { id: 'b', label: { en: 'Next month', vi: 'Tháng sau' } },
+              { id: 'c', label: { en: 'After release', vi: 'Sau khi release' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What does the speaker request by noon?',
+              vi: 'Người nói cần gì trước trưa?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'The unclear spec points', vi: 'Các điểm spec chưa rõ' } },
+              { id: 'b', label: { en: 'A new laptop', vi: 'Một laptop mới' } },
+              { id: 'c', label: { en: 'A day off', vi: 'Một ngày nghỉ' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -1279,6 +1826,60 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'A markup bug report', vi: 'Báo lỗi markup' },
+        lines: [
+          {
+            jp: 'このフォームには、ラベルが欠けている入力があります。',
+            romaji: 'Kono fōmu ni wa, raberu ga kakete iru nyūryoku ga arimasu.',
+            meaning: {
+              en: 'In this form, there is an input that is missing a label.',
+              vi: 'Trong form này có ô nhập bị thiếu label.'
+            }
+          },
+          {
+            jp: 'ページ内で同じIDが重複しているため、スクリプトが誤作動します。',
+            romaji: 'Pēji-nai de onaji ID ga jūfuku shite iru tame, sukuriputo ga gosadō shimasu.',
+            meaning: {
+              en: 'Because the same ID is duplicated on the page, the script misbehaves.',
+              vi: 'Vì cùng một ID bị trùng trong trang, script chạy sai.'
+            }
+          },
+          {
+            jp: '修正後、アクセシビリティのチェックも再度行います。',
+            romaji: 'Shūsei-go, akuseshibiriti no chekku mo saido okonaimasu.',
+            meaning: {
+              en: 'After fixing, we will run the accessibility check again.',
+              vi: 'Sau khi sửa, chúng tôi sẽ chạy lại kiểm tra accessibility.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: { en: 'What is wrong with one input?', vi: 'Một ô nhập bị lỗi gì?' },
+            choices: [
+              { id: 'a', label: { en: 'It is missing a label', vi: 'Bị thiếu label' } },
+              { id: 'b', label: { en: 'It is too large', vi: 'Quá lớn' } },
+              { id: 'c', label: { en: 'It has the wrong color', vi: 'Sai màu' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'Why does the script misbehave?', vi: 'Vì sao script chạy sai?' },
+            choices: [
+              { id: 'a', label: { en: 'The same ID is duplicated', vi: 'Cùng một ID bị trùng' } },
+              { id: 'b', label: { en: 'The page is empty', vi: 'Trang trống rỗng' } },
+              { id: 'c', label: { en: 'There is no CSS', vi: 'Không có CSS' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1383,6 +1984,66 @@ export const frontendLessonsC: Lesson[] = [
               en: 'To prevent text overflow, we added wrapping rules.',
               vi: 'Để chữ không bị tràn, chúng tôi đã thêm quy tắc xuống dòng.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'A layout break report', vi: 'Báo lỗi vỡ layout' },
+        lines: [
+          {
+            jp: '固定幅のせいで、スマホで横スクロールが発生しています。',
+            romaji: 'Kotei-haba no sei de, sumaho de yoko sukurōru ga hassei shite imasu.',
+            meaning: {
+              en: 'Because of the fixed width, horizontal scroll appears on mobile.',
+              vi: 'Vì độ rộng cố định, trên điện thoại bị cuộn ngang.'
+            }
+          },
+          {
+            jp: 'レイアウトが崩れないために、相対単位を使うことにしました。',
+            romaji: "Reiauto ga kuzurenai tame ni, sōtai tan'i o tsukau koto ni shimashita.",
+            meaning: {
+              en: 'So that the layout does not break, we decided to use relative units.',
+              vi: 'Để layout không vỡ, chúng tôi quyết định dùng đơn vị tương đối.'
+            }
+          },
+          {
+            jp: '主要な画面幅で表示を確認してから、リリースします。',
+            romaji: 'Shuyō na gamen-haba de hyōji o kakunin shite kara, rirīsu shimasu.',
+            meaning: {
+              en: 'We release after checking the display at the major screen widths.',
+              vi: 'Chúng tôi release sau khi kiểm tra hiển thị ở các độ rộng màn hình chính.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What causes the horizontal scroll on mobile?',
+              vi: 'Nguyên nhân cuộn ngang trên mobile?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'The fixed width', vi: 'Độ rộng cố định' } },
+              { id: 'b', label: { en: 'Too many images', vi: 'Quá nhiều ảnh' } },
+              { id: 'c', label: { en: 'Dark mode', vi: 'Chế độ tối' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What will they use to avoid breaking the layout?',
+              vi: 'Họ dùng gì để layout không vỡ?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Relative units', vi: 'Đơn vị tương đối' } },
+              { id: 'b', label: { en: 'Fixed pixels everywhere', vi: 'Pixel cố định mọi nơi' } },
+              { id: 'c', label: { en: 'Inline styles only', vi: 'Chỉ inline style' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -1514,6 +2175,60 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Debugging an exception', vi: 'Debug một exception' },
+        lines: [
+          {
+            jp: 'エラーログを調べたところ、null参照が原因だと分かりました。',
+            romaji: "Erā rogu o shirabeta tokoro, naru sanshō ga gen'in da to wakarimashita.",
+            meaning: {
+              en: 'After examining the error log, we found that a null reference was the cause.',
+              vi: 'Sau khi kiểm tra log lỗi, chúng tôi phát hiện tham chiếu null là nguyên nhân.'
+            }
+          },
+          {
+            jp: 'この不具合は、ブラウザによって発生したりしなかったりします。',
+            romaji: 'Kono fuguai wa, burauza ni yotte hassei shitari shinakattari shimasu.',
+            meaning: {
+              en: 'This bug happens or not depending on the browser.',
+              vi: 'Lỗi này có hoặc không xảy ra tùy theo trình duyệt.'
+            }
+          },
+          {
+            jp: '非同期処理の順序を見直して、修正しました。',
+            romaji: 'Hidōki shori no junjo o minaoshite, shūsei shimashita.',
+            meaning: {
+              en: 'We reviewed the order of the async processing and fixed it.',
+              vi: 'Chúng tôi xem lại thứ tự xử lý bất đồng bộ và đã sửa.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: { en: 'What was the cause of the error?', vi: 'Nguyên nhân lỗi là gì?' },
+            choices: [
+              { id: 'a', label: { en: 'A null reference', vi: 'Tham chiếu null' } },
+              { id: 'b', label: { en: 'A missing image', vi: 'Thiếu một ảnh' } },
+              { id: 'c', label: { en: 'A slow network only', vi: 'Chỉ do mạng chậm' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'What does the bug depend on?', vi: 'Lỗi phụ thuộc vào gì?' },
+            choices: [
+              { id: 'a', label: { en: 'The browser', vi: 'Trình duyệt' } },
+              { id: 'b', label: { en: 'The time of day', vi: 'Thời điểm trong ngày' } },
+              { id: 'c', label: { en: "The user's name", vi: 'Tên người dùng' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1622,6 +2337,66 @@ export const frontendLessonsC: Lesson[] = [
               en: 'To prevent misunderstandings, we document confirmation items.',
               vi: 'Để tránh lệch nhận thức, chúng tôi tài liệu hóa các mục xác nhận.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'A requirement hearing', vi: 'Buổi khai thác yêu cầu' },
+        lines: [
+          {
+            jp: '検索機能に関して、いくつか確認させてください。',
+            romaji: 'Kensaku kinō ni kanshite, ikutsuka kakunin sasete kudasai.',
+            meaning: {
+              en: 'Regarding the search feature, please let me confirm a few points.',
+              vi: 'Liên quan đến tính năng tìm kiếm, cho tôi xác nhận vài điểm.'
+            }
+          },
+          {
+            jp: '仕様を明確にするために、想定される利用者を教えてください。',
+            romaji: 'Shiyō o meikaku ni suru tame ni, sōtei sareru riyōsha o oshiete kudasai.',
+            meaning: {
+              en: 'In order to clarify the spec, please tell me the assumed users.',
+              vi: 'Để làm rõ spec, hãy cho biết đối tượng người dùng dự kiến.'
+            }
+          },
+          {
+            jp: '不明点は議事録にまとめて、後で共有します。',
+            romaji: 'Fumeiten wa gijiroku ni matomete, ato de kyōyū shimasu.',
+            meaning: {
+              en: 'We will summarize unclear points in the minutes and share them later.',
+              vi: 'Các điểm chưa rõ sẽ được tổng hợp vào biên bản và chia sẻ sau.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What does the speaker want to do about the search feature?',
+              vi: 'Người nói muốn làm gì với tính năng tìm kiếm?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Confirm a few points', vi: 'Xác nhận vài điểm' } },
+              { id: 'b', label: { en: 'Delete it', vi: 'Xóa nó' } },
+              { id: 'c', label: { en: 'Ship it immediately', vi: 'Phát hành ngay' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'Why ask about the assumed users?',
+              vi: 'Vì sao hỏi về người dùng dự kiến?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'To clarify the spec', vi: 'Để làm rõ spec' } },
+              { id: 'b', label: { en: 'To delay the project', vi: 'Để trì hoãn dự án' } },
+              { id: 'c', label: { en: 'To reduce the team', vi: 'Để giảm nhân sự' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -1742,6 +2517,66 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Acceptance criteria', vi: 'Tiêu chí chấp nhận' },
+        lines: [
+          {
+            jp: '「成功」は、HTTP 200が返ることとして定義します。',
+            romaji: '"Seikō" wa, HTTP 200 ga kaeru koto to shite teigi shimasu.',
+            meaning: {
+              en: 'We define "success" as returning HTTP 200.',
+              vi: '"Thành công" được định nghĩa là trả về HTTP 200.'
+            }
+          },
+          {
+            jp: '入力が空の場合は、エラーメッセージを表示します。',
+            romaji: 'Nyūryoku ga kara no baai wa, erā messēji o hyōji shimasu.',
+            meaning: {
+              en: 'If the input is empty, we show an error message.',
+              vi: 'Trong trường hợp input rỗng, hiển thị thông báo lỗi.'
+            }
+          },
+          {
+            jp: 'これらの条件を満たせば、受け入れ完了とします。',
+            romaji: 'Korera no jōken o mitaseba, ukeire kanryō to shimasu.',
+            meaning: {
+              en: 'If these conditions are met, we consider acceptance complete.',
+              vi: 'Nếu thỏa các điều kiện này thì coi như chấp nhận xong.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'How is "success" defined?',
+              vi: '"Thành công" được định nghĩa thế nào?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Returning HTTP 200', vi: 'Trả về HTTP 200' } },
+              { id: 'b', label: { en: 'A green button', vi: 'Một nút màu xanh' } },
+              { id: 'c', label: { en: 'Fast loading only', vi: 'Chỉ cần tải nhanh' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What happens if the input is empty?',
+              vi: 'Nếu input rỗng thì sao?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Show an error message', vi: 'Hiển thị thông báo lỗi' } },
+              { id: 'b', label: { en: 'Crash the app', vi: 'Làm sập app' } },
+              { id: 'c', label: { en: 'Submit anyway', vi: 'Vẫn gửi đi' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1859,6 +2694,66 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Estimation with risks', vi: 'Ước lượng kèm rủi ro' },
+        lines: [
+          {
+            jp: '依存関係を踏まえて、この機能は二週間かかると見積もりました。',
+            romaji: 'Izon kankei o fumaete, kono kinō wa ni-shūkan kakaru to mitsumorimashita.',
+            meaning: {
+              en: 'Taking dependencies into account, we estimated this feature takes two weeks.',
+              vi: 'Tính đến phụ thuộc, chúng tôi ước lượng tính năng này mất hai tuần.'
+            }
+          },
+          {
+            jp: '仕様変更が続くと、納期に間に合わないおそれがあります。',
+            romaji: 'Shiyō henkō ga tsuzuku to, nōki ni maniawanai osore ga arimasu.',
+            meaning: {
+              en: 'If spec changes continue, there is a risk of missing the deadline.',
+              vi: 'Nếu spec tiếp tục thay đổi, có nguy cơ không kịp deadline.'
+            }
+          },
+          {
+            jp: '優先度の低い項目は、次のスプリントに回す提案をします。',
+            romaji: 'Yūsendo no hikui kōmoku wa, tsugi no supurinto ni mawasu teian o shimasu.',
+            meaning: {
+              en: 'We propose moving low-priority items to the next sprint.',
+              vi: 'Chúng tôi đề xuất chuyển các mục ưu tiên thấp sang sprint sau.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'How long was the feature estimated to take?',
+              vi: 'Tính năng được ước lượng mất bao lâu?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Two weeks', vi: 'Hai tuần' } },
+              { id: 'b', label: { en: 'Two days', vi: 'Hai ngày' } },
+              { id: 'c', label: { en: 'Two months', vi: 'Hai tháng' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What is the risk if spec changes continue?',
+              vi: 'Rủi ro nếu spec cứ thay đổi là gì?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Missing the deadline', vi: 'Không kịp deadline' } },
+              { id: 'b', label: { en: 'Finishing early', vi: 'Xong sớm' } },
+              { id: 'c', label: { en: 'Lower cost', vi: 'Giảm chi phí' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -1935,7 +2830,7 @@ export const frontendLessonsC: Lesson[] = [
             jp: '前回の決定事項を確認したうえで、本日の論点に入ります。',
             romaji: 'Zenkai no kettei jikō o kakunin shita ue de, honjitsu no ronten ni hairimasu.',
             meaning: {
-              en: 'After confirming previous decisions, we move to today’s discussion points.',
+              en: "After confirming previous decisions, we move to today's discussion points.",
               vi: 'Sau khi xác nhận quyết định kỳ trước, chúng ta vào các luận điểm hôm nay.'
             }
           },
@@ -1961,7 +2856,7 @@ export const frontendLessonsC: Lesson[] = [
             jp: '本日の議事録を明日までに共有してもらえると助かります。',
             romaji: 'Honjitsu no gijiroku o ashita made ni kyōyū shite moraeru to tasukarimasu.',
             meaning: {
-              en: 'It would help if you could share today’s minutes by tomorrow.',
+              en: "It would help if you could share today's minutes by tomorrow.",
               vi: 'Nếu bạn có thể chia sẻ biên bản hôm nay trước ngày mai thì rất tốt.'
             }
           },
@@ -1972,6 +2867,69 @@ export const frontendLessonsC: Lesson[] = [
               en: 'It would help if you could summarize pending items in a list.',
               vi: 'Nếu bạn có thể tổng hợp hạng mục chưa chốt thành danh sách thì rất hữu ích.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Meeting wrap-up', vi: 'Chốt cuộc họp' },
+        lines: [
+          {
+            jp: '前回の決定事項を確認したうえで、本日の議題に入ります。',
+            romaji: 'Zenkai no kettei jikō o kakunin shita ue de, honjitsu no gidai ni hairimasu.',
+            meaning: {
+              en: "After confirming last time's decisions, we move into today's agenda.",
+              vi: 'Sau khi xác nhận quyết định lần trước, chúng ta vào nội dung hôm nay.'
+            }
+          },
+          {
+            jp: '議事録を明日までに共有してもらえると助かります。',
+            romaji: 'Gijiroku o ashita made ni kyōyū shite moraeru to tasukarimasu.',
+            meaning: {
+              en: 'It would help if you could share the minutes by tomorrow.',
+              vi: 'Nếu bạn có thể chia sẻ biên bản trước ngày mai thì rất tốt.'
+            }
+          },
+          {
+            jp: '担当者と期限は、その場で決めるようにします。',
+            romaji: 'Tantōsha to kigen wa, sono ba de kimeru yō ni shimasu.',
+            meaning: {
+              en: 'We make it a practice to decide the owner and deadline on the spot.',
+              vi: 'Chúng tôi duy trì việc chốt người phụ trách và hạn ngay tại chỗ.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: "What is done before today's agenda?",
+              vi: 'Trước nội dung hôm nay cần làm gì?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: "Confirm last time's decisions", vi: 'Xác nhận quyết định lần trước' }
+              },
+              { id: 'b', label: { en: 'Order lunch', vi: 'Đặt cơm trưa' } },
+              { id: 'c', label: { en: 'End the meeting', vi: 'Kết thúc họp' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'When should the minutes be shared?',
+              vi: 'Khi nào cần chia sẻ biên bản?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'By tomorrow', vi: 'Trước ngày mai' } },
+              { id: 'b', label: { en: 'Next year', vi: 'Năm sau' } },
+              { id: 'c', label: { en: 'Never', vi: 'Không bao giờ' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -2091,6 +3049,69 @@ export const frontendLessonsC: Lesson[] = [
           }
         ]
       }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Escalating a risk', vi: 'Escalation rủi ro' },
+        lines: [
+          {
+            jp: 'このままでは、リリース延期のおそれがあります。',
+            romaji: 'Kono mama de wa, rirīsu enki no osore ga arimasu.',
+            meaning: {
+              en: 'As it stands, there is a risk of postponing the release.',
+              vi: 'Cứ như hiện tại thì có nguy cơ phải hoãn release.'
+            }
+          },
+          {
+            jp: 'その問題に対して、機能を一部に絞る案を提案します。',
+            romaji: 'Sono mondai ni taishite, kinō o ichibu ni shiboru an o teian shimasu.',
+            meaning: {
+              en: 'For that problem, we propose narrowing the features to a subset.',
+              vi: 'Đối với vấn đề đó, chúng tôi đề xuất thu hẹp tính năng còn một phần.'
+            }
+          },
+          {
+            jp: '早めに関係者へ共有して、判断を仰ぎます。',
+            romaji: 'Hayame ni kankeisha e kyōyū shite, handan o aogimasu.',
+            meaning: {
+              en: 'We share with stakeholders early and seek their decision.',
+              vi: 'Chúng tôi chia sẻ sớm với các bên liên quan và xin quyết định.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: { en: 'What is the risk mentioned?', vi: 'Rủi ro được nêu là gì?' },
+            choices: [
+              { id: 'a', label: { en: 'Postponing the release', vi: 'Phải hoãn release' } },
+              { id: 'b', label: { en: 'Hiring more staff', vi: 'Tuyển thêm người' } },
+              { id: 'c', label: { en: 'Getting a bonus', vi: 'Được thưởng' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'What is proposed for the problem?',
+              vi: 'Đề xuất gì cho vấn đề?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: {
+                  en: 'Narrow the features to a subset',
+                  vi: 'Thu hẹp tính năng còn một phần'
+                }
+              },
+              { id: 'b', label: { en: 'Add more features', vi: 'Thêm nhiều tính năng' } },
+              { id: 'c', label: { en: 'Cancel the project', vi: 'Hủy dự án' } }
+            ],
+            correctId: 'a'
+          }
+        ]
+      }
     ]
   },
   {
@@ -2204,6 +3225,63 @@ export const frontendLessonsC: Lesson[] = [
               en: 'From the development side, phased rollout is safer.',
               vi: 'Từ phía phát triển, triển khai theo giai đoạn an toàn hơn.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Balancing priorities', vi: 'Cân bằng ưu tiên' },
+        lines: [
+          {
+            jp: 'コストだけでなく、保守性も考える必要があります。',
+            romaji: 'Kosuto dake de naku, hoshusei mo kangaeru hitsuyō ga arimasu.',
+            meaning: {
+              en: 'We need to consider not only cost but also maintainability.',
+              vi: 'Cần cân nhắc không chỉ chi phí mà còn khả năng bảo trì.'
+            }
+          },
+          {
+            jp: '開発チームとしては、段階的な導入を希望します。',
+            romaji: 'Kaihatsu chīmu to shite wa, dankaiteki na dōnyū o kibō shimasu.',
+            meaning: {
+              en: "From the development team's standpoint, we prefer a phased rollout.",
+              vi: 'Từ góc độ team phát triển, chúng tôi mong muốn triển khai theo giai đoạn.'
+            }
+          },
+          {
+            jp: '双方の意見を踏まえて、優先順位を合意します。',
+            romaji: 'Sōhō no iken o fumaete, yūsen-juni o gōi shimasu.',
+            meaning: {
+              en: "Taking both sides' opinions into account, we agree on the priorities.",
+              vi: 'Dựa trên ý kiến hai bên, chúng tôi thống nhất thứ tự ưu tiên.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What must be considered besides cost?',
+              vi: 'Ngoài chi phí cần cân nhắc gì?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'Maintainability', vi: 'Khả năng bảo trì' } },
+              { id: 'b', label: { en: 'Only the color', vi: 'Chỉ màu sắc' } },
+              { id: 'c', label: { en: 'Nothing else', vi: 'Không gì khác' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: { en: 'What does the dev team prefer?', vi: 'Team phát triển mong muốn gì?' },
+            choices: [
+              { id: 'a', label: { en: 'A phased rollout', vi: 'Triển khai theo giai đoạn' } },
+              { id: 'b', label: { en: 'A big-bang release', vi: 'Release một lần toàn bộ' } },
+              { id: 'c', label: { en: 'No release at all', vi: 'Không release gì cả' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
@@ -2321,6 +3399,69 @@ export const frontendLessonsC: Lesson[] = [
               en: 'Remaining issues are handed over as management items for the next phase.',
               vi: 'Các hạng mục còn lại được chuyển giao thành mục quản lý cho phase kế tiếp.'
             }
+          }
+        ]
+      }
+    ],
+    reading: [
+      {
+        id: 'reading-1',
+        title: { en: 'Project handover', vi: 'Bàn giao dự án' },
+        lines: [
+          {
+            jp: '受け入れテストを終えたうえで、本番環境へ移行します。',
+            romaji: 'Ukeire tesuto o oeta ue de, honban kankyō e ikō shimasu.',
+            meaning: {
+              en: 'After finishing acceptance testing, we migrate to the production environment.',
+              vi: 'Sau khi hoàn tất test chấp nhận, chúng tôi chuyển sang môi trường production.'
+            }
+          },
+          {
+            jp: '残った課題は、運用チームへ引き継ぎ事項として引き継ぎます。',
+            romaji: "Nokotta kadai wa, un'yō chīmu e hikitsugi jikō to shite hikitsugimasu.",
+            meaning: {
+              en: 'We hand over the remaining issues to the operations team as handover items.',
+              vi: 'Các vấn đề còn lại được bàn giao cho team vận hành dưới dạng mục bàn giao.'
+            }
+          },
+          {
+            jp: 'ドキュメントと連絡先をまとめて、共有します。',
+            romaji: 'Dokyumento to renrakusaki o matomete, kyōyū shimasu.',
+            meaning: {
+              en: 'We compile the documents and contacts and share them.',
+              vi: 'Chúng tôi tổng hợp tài liệu và đầu mối liên hệ rồi chia sẻ.'
+            }
+          }
+        ],
+        questions: [
+          {
+            id: 'q1',
+            question: {
+              en: 'What is done before migrating to production?',
+              vi: 'Trước khi chuyển lên production cần làm gì?'
+            },
+            choices: [
+              {
+                id: 'a',
+                label: { en: 'Finish acceptance testing', vi: 'Hoàn tất test chấp nhận' }
+              },
+              { id: 'b', label: { en: 'Delete the repository', vi: 'Xóa repository' } },
+              { id: 'c', label: { en: 'Start coding', vi: 'Bắt đầu code' } }
+            ],
+            correctId: 'a'
+          },
+          {
+            id: 'q2',
+            question: {
+              en: 'Who receives the remaining issues?',
+              vi: 'Ai nhận các vấn đề còn lại?'
+            },
+            choices: [
+              { id: 'a', label: { en: 'The operations team', vi: 'Team vận hành' } },
+              { id: 'b', label: { en: 'No one', vi: 'Không ai' } },
+              { id: 'c', label: { en: 'The customer directly', vi: 'Khách hàng trực tiếp' } }
+            ],
+            correctId: 'a'
           }
         ]
       }
