@@ -82,6 +82,12 @@ function HomePage() {
       description: t('home.katakanaDescription')
     },
     {
+      to: routes.alphabet.combined,
+      title: t('nav.combined'),
+      symbol: 'あ/ア',
+      description: t('home.combinedDescription')
+    },
+    {
       to: routes.alphabet.exercise.index,
       title: t('nav.exercise'),
       icon: QuizOutlinedIcon,
