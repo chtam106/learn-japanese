@@ -11,7 +11,7 @@ const TAIL_PAD_SEC = 0.35;
 const force = process.argv.includes('--force');
 
 const kanaRomajiToAudioIndex = JSON.parse(
-  readFileSync(join(__dirname, '../src/constants/kana-audio-map.json'), 'utf8'),
+  readFileSync(join(__dirname, '../src/constants/kana-audio-map.json'), 'utf8')
 );
 
 mkdirSync(outDir, { recursive: true });
@@ -44,9 +44,9 @@ for (const [romaji, index] of Object.entries(kanaRomajiToAudioIndex)) {
       '96k',
       '-movflags',
       '+faststart',
-      outputPath,
+      outputPath
     ],
-    { stdio: 'inherit' },
+    { stdio: 'inherit' }
   );
 }
 

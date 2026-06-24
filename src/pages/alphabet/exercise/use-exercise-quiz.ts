@@ -8,7 +8,7 @@ import {
   type ExerciseScript,
   type QuizQuestion,
   type QuizSession,
-  type ScriptPairDirection,
+  type ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import { playKanaAudio, playWrongAnswerSound } from '@/utils/kana-audio.ts';
 
@@ -23,7 +23,7 @@ function sessionKey(
   script: ExerciseScript,
   mode: ExerciseMode,
   scope: ExerciseScope,
-  pairDirection: ScriptPairDirection,
+  pairDirection: ScriptPairDirection
 ) {
   return `${script}-${mode}-${scope}-${pairDirection}`;
 }
@@ -32,7 +32,7 @@ export function useExerciseQuiz({
   mode,
   script,
   scope,
-  pairDirection = 'hiragana-to-katakana',
+  pairDirection = 'hiragana-to-katakana'
 }: UseExerciseQuizOptions) {
   const [initialQuiz] = useState(() => {
     const session = createQuizSession(script, mode, scope, pairDirection);
@@ -107,6 +107,6 @@ export function useExerciseQuiz({
     question,
     wrongAnswers,
     answeredCorrectly,
-    handleAnswer,
+    handleAnswer
   };
 }

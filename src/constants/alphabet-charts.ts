@@ -26,8 +26,8 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'i', hiragana: 'い', katakana: 'イ' },
       { romaji: 'u', hiragana: 'う', katakana: 'ウ' },
       { romaji: 'e', hiragana: 'え', katakana: 'エ' },
-      { romaji: 'o', hiragana: 'お', katakana: 'オ' },
-    ],
+      { romaji: 'o', hiragana: 'お', katakana: 'オ' }
+    ]
   },
   {
     seion: [
@@ -35,15 +35,15 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'ki', hiragana: 'き', katakana: 'キ' },
       { romaji: 'ku', hiragana: 'く', katakana: 'ク' },
       { romaji: 'ke', hiragana: 'け', katakana: 'ケ' },
-      { romaji: 'ko', hiragana: 'こ', katakana: 'コ' },
+      { romaji: 'ko', hiragana: 'こ', katakana: 'コ' }
     ],
     dakuten: [
       { romaji: 'ga', hiragana: 'が', katakana: 'ガ' },
       { romaji: 'gi', hiragana: 'ぎ', katakana: 'ギ' },
       { romaji: 'gu', hiragana: 'ぐ', katakana: 'グ' },
       { romaji: 'ge', hiragana: 'げ', katakana: 'ゲ' },
-      { romaji: 'go', hiragana: 'ご', katakana: 'ゴ' },
-    ],
+      { romaji: 'go', hiragana: 'ご', katakana: 'ゴ' }
+    ]
   },
   {
     seion: [
@@ -51,15 +51,15 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'shi', hiragana: 'し', katakana: 'シ' },
       { romaji: 'su', hiragana: 'す', katakana: 'ス' },
       { romaji: 'se', hiragana: 'せ', katakana: 'セ' },
-      { romaji: 'so', hiragana: 'そ', katakana: 'ソ' },
+      { romaji: 'so', hiragana: 'そ', katakana: 'ソ' }
     ],
     dakuten: [
       { romaji: 'za', hiragana: 'ざ', katakana: 'ザ' },
       { romaji: 'ji', hiragana: 'じ', katakana: 'ジ' },
       { romaji: 'zu', hiragana: 'ず', katakana: 'ズ' },
       { romaji: 'ze', hiragana: 'ぜ', katakana: 'ゼ' },
-      { romaji: 'zo', hiragana: 'ぞ', katakana: 'ゾ' },
-    ],
+      { romaji: 'zo', hiragana: 'ぞ', katakana: 'ゾ' }
+    ]
   },
   {
     seion: [
@@ -67,15 +67,15 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'chi', hiragana: 'ち', katakana: 'チ' },
       { romaji: 'tsu', hiragana: 'つ', katakana: 'ツ' },
       { romaji: 'te', hiragana: 'て', katakana: 'テ' },
-      { romaji: 'to', hiragana: 'と', katakana: 'ト' },
+      { romaji: 'to', hiragana: 'と', katakana: 'ト' }
     ],
     dakuten: [
       { romaji: 'da', hiragana: 'だ', katakana: 'ダ' },
       { romaji: 'di', hiragana: 'ぢ', katakana: 'ヂ' },
       { romaji: 'du', hiragana: 'づ', katakana: 'ヅ' },
       { romaji: 'de', hiragana: 'で', katakana: 'デ' },
-      { romaji: 'do', hiragana: 'ど', katakana: 'ド' },
-    ],
+      { romaji: 'do', hiragana: 'ど', katakana: 'ド' }
+    ]
   },
   {
     seion: [
@@ -83,8 +83,8 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'ni', hiragana: 'に', katakana: 'ニ' },
       { romaji: 'nu', hiragana: 'ぬ', katakana: 'ヌ' },
       { romaji: 'ne', hiragana: 'ね', katakana: 'ネ' },
-      { romaji: 'no', hiragana: 'の', katakana: 'ノ' },
-    ],
+      { romaji: 'no', hiragana: 'の', katakana: 'ノ' }
+    ]
   },
   {
     seion: [
@@ -92,22 +92,22 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'hi', hiragana: 'ひ', katakana: 'ヒ' },
       { romaji: 'fu', hiragana: 'ふ', katakana: 'フ' },
       { romaji: 'he', hiragana: 'へ', katakana: 'ヘ' },
-      { romaji: 'ho', hiragana: 'ほ', katakana: 'ホ' },
+      { romaji: 'ho', hiragana: 'ほ', katakana: 'ホ' }
     ],
     dakuten: [
       { romaji: 'ba', hiragana: 'ば', katakana: 'バ' },
       { romaji: 'bi', hiragana: 'び', katakana: 'ビ' },
       { romaji: 'bu', hiragana: 'ぶ', katakana: 'ブ' },
       { romaji: 'be', hiragana: 'べ', katakana: 'ベ' },
-      { romaji: 'bo', hiragana: 'ぼ', katakana: 'ボ' },
+      { romaji: 'bo', hiragana: 'ぼ', katakana: 'ボ' }
     ],
     handakuten: [
       { romaji: 'pa', hiragana: 'ぱ', katakana: 'パ' },
       { romaji: 'pi', hiragana: 'ぴ', katakana: 'ピ' },
       { romaji: 'pu', hiragana: 'ぷ', katakana: 'プ' },
       { romaji: 'pe', hiragana: 'ぺ', katakana: 'ペ' },
-      { romaji: 'po', hiragana: 'ぽ', katakana: 'ポ' },
-    ],
+      { romaji: 'po', hiragana: 'ぽ', katakana: 'ポ' }
+    ]
   },
   {
     seion: [
@@ -115,8 +115,8 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'mi', hiragana: 'み', katakana: 'ミ' },
       { romaji: 'mu', hiragana: 'む', katakana: 'ム' },
       { romaji: 'me', hiragana: 'め', katakana: 'メ' },
-      { romaji: 'mo', hiragana: 'も', katakana: 'モ' },
-    ],
+      { romaji: 'mo', hiragana: 'も', katakana: 'モ' }
+    ]
   },
   {
     seion: [
@@ -124,8 +124,8 @@ const bilingualChartRows: BilingualChartRow[] = [
       null,
       { romaji: 'yu', hiragana: 'ゆ', katakana: 'ユ' },
       null,
-      { romaji: 'yo', hiragana: 'よ', katakana: 'ヨ' },
-    ],
+      { romaji: 'yo', hiragana: 'よ', katakana: 'ヨ' }
+    ]
   },
   {
     seion: [
@@ -133,8 +133,8 @@ const bilingualChartRows: BilingualChartRow[] = [
       { romaji: 'ri', hiragana: 'り', katakana: 'リ' },
       { romaji: 'ru', hiragana: 'る', katakana: 'ル' },
       { romaji: 're', hiragana: 'れ', katakana: 'レ' },
-      { romaji: 'ro', hiragana: 'ろ', katakana: 'ロ' },
-    ],
+      { romaji: 'ro', hiragana: 'ろ', katakana: 'ロ' }
+    ]
   },
   {
     seion: [
@@ -142,12 +142,12 @@ const bilingualChartRows: BilingualChartRow[] = [
       null,
       null,
       null,
-      { romaji: 'wo', hiragana: 'を', katakana: 'ヲ' },
-    ],
+      { romaji: 'wo', hiragana: 'を', katakana: 'ヲ' }
+    ]
   },
   {
-    seion: [{ romaji: 'n', hiragana: 'ん', katakana: 'ン' }, null, null, null, null],
-  },
+    seion: [{ romaji: 'n', hiragana: 'ん', katakana: 'ン' }, null, null, null, null]
+  }
 ];
 
 const bilingualYoonRows: BilingualChartRow[] = [
@@ -157,15 +157,15 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'kyu', hiragana: 'きゅ', katakana: 'キュ' },
       null,
-      { romaji: 'kyo', hiragana: 'きょ', katakana: 'キョ' },
+      { romaji: 'kyo', hiragana: 'きょ', katakana: 'キョ' }
     ],
     dakuten: [
       { romaji: 'gya', hiragana: 'ぎゃ', katakana: 'ギャ' },
       null,
       { romaji: 'gyu', hiragana: 'ぎゅ', katakana: 'ギュ' },
       null,
-      { romaji: 'gyo', hiragana: 'ぎょ', katakana: 'ギョ' },
-    ],
+      { romaji: 'gyo', hiragana: 'ぎょ', katakana: 'ギョ' }
+    ]
   },
   {
     seion: [
@@ -173,15 +173,15 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'shu', hiragana: 'しゅ', katakana: 'シュ' },
       null,
-      { romaji: 'sho', hiragana: 'しょ', katakana: 'ショ' },
+      { romaji: 'sho', hiragana: 'しょ', katakana: 'ショ' }
     ],
     dakuten: [
       { romaji: 'ja', hiragana: 'じゃ', katakana: 'ジャ' },
       null,
       { romaji: 'ju', hiragana: 'じゅ', katakana: 'ジュ' },
       null,
-      { romaji: 'jo', hiragana: 'じょ', katakana: 'ジョ' },
-    ],
+      { romaji: 'jo', hiragana: 'じょ', katakana: 'ジョ' }
+    ]
   },
   {
     seion: [
@@ -189,8 +189,8 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'chu', hiragana: 'ちゅ', katakana: 'チュ' },
       null,
-      { romaji: 'cho', hiragana: 'ちょ', katakana: 'チョ' },
-    ],
+      { romaji: 'cho', hiragana: 'ちょ', katakana: 'チョ' }
+    ]
   },
   {
     seion: [
@@ -198,8 +198,8 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'nyu', hiragana: 'にゅ', katakana: 'ニュ' },
       null,
-      { romaji: 'nyo', hiragana: 'にょ', katakana: 'ニョ' },
-    ],
+      { romaji: 'nyo', hiragana: 'にょ', katakana: 'ニョ' }
+    ]
   },
   {
     seion: [
@@ -207,22 +207,22 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'hyu', hiragana: 'ひゅ', katakana: 'ヒュ' },
       null,
-      { romaji: 'hyo', hiragana: 'ひょ', katakana: 'ヒョ' },
+      { romaji: 'hyo', hiragana: 'ひょ', katakana: 'ヒョ' }
     ],
     dakuten: [
       { romaji: 'bya', hiragana: 'びゃ', katakana: 'ビャ' },
       null,
       { romaji: 'byu', hiragana: 'びゅ', katakana: 'ビュ' },
       null,
-      { romaji: 'byo', hiragana: 'びょ', katakana: 'ビョ' },
+      { romaji: 'byo', hiragana: 'びょ', katakana: 'ビョ' }
     ],
     handakuten: [
       { romaji: 'pya', hiragana: 'ぴゃ', katakana: 'ピャ' },
       null,
       { romaji: 'pyu', hiragana: 'ぴゅ', katakana: 'ピュ' },
       null,
-      { romaji: 'pyo', hiragana: 'ぴょ', katakana: 'ピョ' },
-    ],
+      { romaji: 'pyo', hiragana: 'ぴょ', katakana: 'ピョ' }
+    ]
   },
   {
     seion: [
@@ -230,8 +230,8 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'myu', hiragana: 'みゅ', katakana: 'ミュ' },
       null,
-      { romaji: 'myo', hiragana: 'みょ', katakana: 'ミョ' },
-    ],
+      { romaji: 'myo', hiragana: 'みょ', katakana: 'ミョ' }
+    ]
   },
   {
     seion: [
@@ -239,14 +239,14 @@ const bilingualYoonRows: BilingualChartRow[] = [
       null,
       { romaji: 'ryu', hiragana: 'りゅ', katakana: 'リュ' },
       null,
-      { romaji: 'ryo', hiragana: 'りょ', katakana: 'リョ' },
-    ],
-  },
+      { romaji: 'ryo', hiragana: 'りょ', katakana: 'リョ' }
+    ]
+  }
 ];
 
 function buildRomajiToCharMap(
   rows: BilingualChartRow[],
-  script: 'hiragana' | 'katakana',
+  script: 'hiragana' | 'katakana'
 ): Record<string, string> {
   const map: Record<string, string> = {};
 
@@ -269,7 +269,7 @@ function buildRomajiToCharMap(
 
 function toChartRows(
   rows: BilingualChartRow[],
-  script: 'hiragana' | 'katakana',
+  script: 'hiragana' | 'katakana'
 ): AlphabetChartRow[] {
   const mapCell = (value: BilingualCell | null) =>
     value ? { char: value[script], romaji: value.romaji } : null;
@@ -279,13 +279,13 @@ function toChartRows(
   return rows.map((row) => ({
     seion: row.seion.map(mapCell),
     dakuten: mapRow(row.dakuten),
-    handakuten: mapRow(row.handakuten),
+    handakuten: mapRow(row.handakuten)
   }));
 }
 
 function toYoonChartRows(
   rows: BilingualChartRow[],
-  script: 'hiragana' | 'katakana',
+  script: 'hiragana' | 'katakana'
 ): AlphabetChartRow[] {
   const romajiToChar = buildRomajiToCharMap(bilingualChartRows, script);
 
@@ -301,8 +301,8 @@ function toYoonChartRows(
       romaji: value.romaji,
       ...(yoonParts && {
         yoonBase: yoonParts.base,
-        yoonSuffix: yoonParts.suffix,
-      }),
+        yoonSuffix: yoonParts.suffix
+      })
     };
   };
 
@@ -311,7 +311,7 @@ function toYoonChartRows(
   return rows.map((row) => ({
     seion: row.seion.map(mapCell),
     dakuten: mapRow(row.dakuten),
-    handakuten: mapRow(row.handakuten),
+    handakuten: mapRow(row.handakuten)
   }));
 }
 
@@ -322,7 +322,7 @@ export const katakanaYoonChartRows = toYoonChartRows(bilingualYoonRows, 'katakan
 
 function flattenSection(
   rows: AlphabetChartRow[],
-  section: 'seion' | 'dakuten' | 'handakuten',
+  section: 'seion' | 'dakuten' | 'handakuten'
 ): AlphabetCell[] {
   const items: AlphabetCell[] = [];
 
@@ -343,7 +343,7 @@ function flattenChartRows(rows: AlphabetChartRow[]): AlphabetCell[] {
   return [
     ...flattenSection(rows, 'seion'),
     ...flattenSection(rows, 'dakuten'),
-    ...flattenSection(rows, 'handakuten'),
+    ...flattenSection(rows, 'handakuten')
   ];
 }
 
@@ -411,7 +411,7 @@ function formatRowLabel(row: BilingualChartRow, t: TranslateFn): string {
 function formatVoicedRowLabel(
   row: BilingualChartRow,
   variant: 'dakuten' | 'handakuten',
-  t: TranslateFn,
+  t: TranslateFn
 ): string {
   const cells = variant === 'dakuten' ? row.dakuten : row.handakuten;
   const first = cells?.find((cell): cell is BilingualCell => cell !== null);
@@ -425,7 +425,7 @@ function formatVoicedRowLabel(
   return t('exercise.voicedRowLabel', {
     name,
     mark,
-    char: first?.hiragana ?? '',
+    char: first?.hiragana ?? ''
   });
 }
 
@@ -443,7 +443,7 @@ function formatYoonRowLabel(row: BilingualChartRow, t: TranslateFn): string {
 function formatYoonVoicedRowLabel(
   row: BilingualChartRow,
   variant: 'dakuten' | 'handakuten',
-  t: TranslateFn,
+  t: TranslateFn
 ): string {
   const cells = variant === 'dakuten' ? row.dakuten : row.handakuten;
   const first = cells?.find((cell): cell is BilingualCell => cell !== null);
@@ -457,7 +457,7 @@ function formatYoonVoicedRowLabel(
   return t('exercise.voicedRowLabel', {
     name,
     mark,
-    char: first?.hiragana ?? '',
+    char: first?.hiragana ?? ''
   });
 }
 
@@ -467,7 +467,7 @@ export function getExerciseOverviewScopeOptions(t: TranslateFn): AlphabetRowOpti
     { value: 'seion', label: t('exercise.scopeSeion') },
     { value: 'dakuten', label: t('exercise.scopeDakuten', { mark: DAKUTEN_MARK }) },
     { value: 'handakuten', label: t('exercise.scopeHandakuten', { mark: HANDAKUTEN_MARK }) },
-    { value: 'yoon', label: t('exercise.scopeYoon') },
+    { value: 'yoon', label: t('exercise.scopeYoon') }
   ];
 }
 
@@ -475,20 +475,20 @@ export function getExerciseRowScopeOptions(t: TranslateFn): AlphabetRowOption[] 
   return [
     ...bilingualChartRows.flatMap((row, index) => {
       const options: AlphabetRowOption[] = [
-        { value: `row-${index}`, label: formatRowLabel(row, t) },
+        { value: `row-${index}`, label: formatRowLabel(row, t) }
       ];
 
       if (row.dakuten) {
         options.push({
           value: `row-${index}-dakuten`,
-          label: formatVoicedRowLabel(row, 'dakuten', t),
+          label: formatVoicedRowLabel(row, 'dakuten', t)
         });
       }
 
       if (row.handakuten) {
         options.push({
           value: `row-${index}-handakuten`,
-          label: formatVoicedRowLabel(row, 'handakuten', t),
+          label: formatVoicedRowLabel(row, 'handakuten', t)
         });
       }
 
@@ -496,25 +496,25 @@ export function getExerciseRowScopeOptions(t: TranslateFn): AlphabetRowOption[] 
     }),
     ...bilingualYoonRows.flatMap((row, index) => {
       const options: AlphabetRowOption[] = [
-        { value: `yoon-row-${index}`, label: formatYoonRowLabel(row, t) },
+        { value: `yoon-row-${index}`, label: formatYoonRowLabel(row, t) }
       ];
 
       if (row.dakuten) {
         options.push({
           value: `yoon-row-${index}-dakuten`,
-          label: formatYoonVoicedRowLabel(row, 'dakuten', t),
+          label: formatYoonVoicedRowLabel(row, 'dakuten', t)
         });
       }
 
       if (row.handakuten) {
         options.push({
           value: `yoon-row-${index}-handakuten`,
-          label: formatYoonVoicedRowLabel(row, 'handakuten', t),
+          label: formatYoonVoicedRowLabel(row, 'handakuten', t)
         });
       }
 
       return options;
-    }),
+    })
   ];
 }
 
@@ -522,7 +522,7 @@ export function resolveExerciseScope(
   overview: ExerciseOverviewScope,
   rowFrom: ExerciseRowScope | '',
   rowTo: ExerciseRowScope | '',
-  rowOptions: AlphabetRowOption[] = [],
+  rowOptions: AlphabetRowOption[] = []
 ): ExerciseScope {
   if (!rowFrom && !rowTo) {
     return overview;
@@ -566,7 +566,7 @@ function parseRowScope(scope: ExerciseRowScope): ParsedRowScope | null {
     return {
       family: 'seion',
       index: Number(seionVoiced[1]),
-      variant: seionVoiced[2] as 'dakuten' | 'handakuten',
+      variant: seionVoiced[2] as 'dakuten' | 'handakuten'
     };
   }
 
@@ -582,7 +582,7 @@ function parseRowScope(scope: ExerciseRowScope): ParsedRowScope | null {
     return {
       family: 'yoon',
       index: Number(yoonVoiced[1]),
-      variant: yoonVoiced[2] as 'dakuten' | 'handakuten',
+      variant: yoonVoiced[2] as 'dakuten' | 'handakuten'
     };
   }
 
@@ -593,7 +593,7 @@ function formatRowRangeScope(
   family: ParsedRowScope['family'],
   start: number,
   end: number,
-  variant: ParsedRowScope['variant'],
+  variant: ParsedRowScope['variant']
 ): ExerciseScope {
   const suffix = variant === 'plain' ? '' : `-${variant}`;
 
@@ -606,7 +606,7 @@ function formatRowRangeScope(
 
 export function buildRowRangeScope(
   from: ExerciseRowScope,
-  to: ExerciseRowScope,
+  to: ExerciseRowScope
 ): ExerciseScope | null {
   const fromParsed = parseRowScope(from);
   const toParsed = parseRowScope(to);
@@ -627,7 +627,7 @@ export function buildRowRangeScope(
 
 export function buildRowRangeScopeToLast(
   from: ExerciseRowScope,
-  options: AlphabetRowOption[],
+  options: AlphabetRowOption[]
 ): ExerciseScope | null {
   const fromParsed = parseRowScope(from);
 
@@ -641,7 +641,7 @@ export function buildRowRangeScopeToLast(
       (parsed): parsed is ParsedRowScope =>
         parsed !== null &&
         parsed.family === fromParsed.family &&
-        parsed.variant === fromParsed.variant,
+        parsed.variant === fromParsed.variant
     );
 
   if (sameFamily.length === 0) {
@@ -655,7 +655,7 @@ export function buildRowRangeScopeToLast(
 
 export function buildRowRangeScopeFromFirst(
   to: ExerciseRowScope,
-  options: AlphabetRowOption[],
+  options: AlphabetRowOption[]
 ): ExerciseScope | null {
   const toParsed = parseRowScope(to);
 
@@ -667,7 +667,7 @@ export function buildRowRangeScopeFromFirst(
     .map((option) => parseRowScope(option.value as ExerciseRowScope))
     .filter(
       (parsed): parsed is ParsedRowScope =>
-        parsed !== null && parsed.family === toParsed.family && parsed.variant === toParsed.variant,
+        parsed !== null && parsed.family === toParsed.family && parsed.variant === toParsed.variant
     );
 
   if (sameFamily.length === 0) {
@@ -685,7 +685,7 @@ export function getExerciseRowScopeGroup(scope: ExerciseScope, t: TranslateFn) {
 
 export function getExerciseRowScopeOptionsForOverview(
   overview: ExerciseOverviewScope,
-  t: TranslateFn,
+  t: TranslateFn
 ): AlphabetRowOption[] {
   const exerciseRowScopeOptions = getExerciseRowScopeOptions(t);
 
@@ -708,7 +708,7 @@ export function getExerciseRowScopeOptionsForOverview(
 function getRowRangeItems(
   rows: AlphabetChartRow[],
   scope: ExerciseScope,
-  prefix: 'row-range' | 'yoon-row-range',
+  prefix: 'row-range' | 'yoon-row-range'
 ): AlphabetCell[] {
   const rangeMatch = scope.match(new RegExp(`^${prefix}-(\\d+)-(\\d+)(?:-(dakuten|handakuten))?$`));
 
@@ -730,7 +730,7 @@ function getRowRangeItems(
     items.push(
       ...(prefix === 'row-range'
         ? getRowScopeItems(rows, rowScope)
-        : getYoonRowScopeItems(rows, rowScope)),
+        : getYoonRowScopeItems(rows, rowScope))
     );
   }
 
@@ -791,7 +791,7 @@ function getYoonRowScopeItems(rows: AlphabetChartRow[], scope: ExerciseScope): A
 
 export function getAlphabetItems(
   script: 'hiragana' | 'katakana',
-  scope: ExerciseScope = 'all',
+  scope: ExerciseScope = 'all'
 ): AlphabetCell[] {
   const rows = getChartRows(script);
   const yoonRows = getYoonChartRows(script);

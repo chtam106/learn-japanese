@@ -7,7 +7,7 @@ import {
   CardContent,
   Chip,
   Stack,
-  Typography,
+  Typography
 } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
 import { getCourse, lessonPath, type CourseLevel } from '@/constants/courses/index.ts';
@@ -65,7 +65,7 @@ function CoursePage({ level }: { level: CourseLevel }) {
                   >
                     {t('course.counts', {
                       vocab: lesson.vocab.length,
-                      grammar: lesson.grammar.length,
+                      grammar: lesson.grammar.length
                     })}
                   </Typography>
                 </Box>

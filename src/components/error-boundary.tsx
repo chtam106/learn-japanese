@@ -20,7 +20,7 @@ function ErrorFallback({ onReload }: { onReload: () => void }) {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        py: 4,
+        py: 4
       }}
     >
       <Container maxWidth="sm">
@@ -31,8 +31,8 @@ function ErrorFallback({ onReload }: { onReload: () => void }) {
             {
               px: { xs: 3, sm: 4 },
               py: { xs: 4, sm: 5 },
-              textAlign: 'center',
-            },
+              textAlign: 'center'
+            }
           ]}
         >
           <Stack spacing={2}>

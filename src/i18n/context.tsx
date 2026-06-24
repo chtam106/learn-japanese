@@ -4,7 +4,7 @@ import {
   LOCALE_STORAGE_KEY,
   enTranslations,
   type Locale,
-  type TranslationTree,
+  type TranslationTree
 } from '@/i18n/translations.ts';
 import { LanguageContext, type TranslateFn } from '@/i18n/language-context.ts';
 
@@ -15,7 +15,7 @@ let viTranslationsPromise: Promise<TranslationTree> | null = null;
 function loadViTranslations() {
   if (!viTranslationsPromise) {
     viTranslationsPromise = import('@/i18n/translations-vi.ts').then(
-      ({ viTranslations }) => viTranslations,
+      ({ viTranslations }) => viTranslations
     );
   }
 
@@ -61,12 +61,12 @@ type LanguageProviderProps = {
 export function LanguageProvider({
   children,
   initialLocale,
-  initialTranslations,
+  initialTranslations
 }: LanguageProviderProps) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale ?? readStoredLocale);
   const [translationsByLocale, setTranslationsByLocale] = useState<TranslationMap>(() => ({
     en: enTranslations,
-    ...(initialTranslations ?? {}),
+    ...(initialTranslations ?? {})
   }));
 
   const setLocale = useCallback(
@@ -84,7 +84,7 @@ export function LanguageProvider({
       setLocaleState(nextLocale);
       window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
     },
-    [translationsByLocale.vi],
+    [translationsByLocale.vi]
   );
 
   const t = useCallback<TranslateFn>(
@@ -97,7 +97,7 @@ export function LanguageProvider({
 
       return interpolate(template, params);
     },
-    [locale, translationsByLocale],
+    [locale, translationsByLocale]
   );
 
   const value = useMemo(() => ({ locale, setLocale, t }), [locale, setLocale, t]);

@@ -53,13 +53,13 @@ const PARTICLES = new Set([
   'mo',
   'ka',
   'kara',
-  'made',
+  'made'
 ]);
 
 const PARTICLE_ALTERNATES: Record<string, string[]> = {
   o: ['wo'],
   e: ['he'],
-  wa: ['ha'],
+  wa: ['ha']
 };
 
 const PARTICLE_KANA: Record<string, string> = {
@@ -74,7 +74,7 @@ const PARTICLE_KANA: Record<string, string> = {
   mo: 'も',
   ka: 'か',
   kara: 'から',
-  made: 'まで',
+  made: 'まで'
 };
 
 const CLOZE_BLANK = '＿＿';
@@ -108,10 +108,10 @@ function vocabWord(item: { kana: string; kanji?: string }): string {
 function buildOptions(
   correctLabel: string,
   ja: boolean,
-  pool: string[],
+  pool: string[]
 ): { options: QuizOption[]; correctId: string } {
   const distractors = shuffle(
-    Array.from(new Set(pool.filter((label) => label !== correctLabel))),
+    Array.from(new Set(pool.filter((label) => label !== correctLabel)))
   ).slice(0, OPTION_COUNT - 1);
 
   const labels = shuffle([correctLabel, ...distractors]);
@@ -156,7 +156,7 @@ function buildClozeQuestion(
   jp: string,
   romaji: string,
   meaning: string,
-  id: string,
+  id: string
 ): InputQuestion | null {
   const particles = romaji
     .split(' ')
@@ -184,7 +184,7 @@ function buildClozeQuestion(
       promptSecondary: meaning,
       promptJa: true,
       accepted: [kana, particle, ...(PARTICLE_ALTERNATES[particle] ?? [])],
-      answer: kana,
+      answer: kana
     };
   }
 
@@ -208,7 +208,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
         promptPrimary: word,
         promptJa: true,
         options,
-        correctId,
+        correctId
       });
     } else {
       const { options, correctId } = buildOptions(word, true, pools.words);
@@ -219,7 +219,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
         promptPrimary: meaning,
         promptJa: false,
         options,
-        correctId,
+        correctId
       });
     }
   });
@@ -228,7 +228,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
     const { options: patternOptions, correctId: patternCorrect } = buildOptions(
       point.title[locale],
       false,
-      pools.patternTitles,
+      pools.patternTitles
     );
     candidates.push({
       format: 'choice',
@@ -237,7 +237,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
       promptPrimary: point.pattern,
       promptJa: true,
       options: patternOptions,
-      correctId: patternCorrect,
+      correctId: patternCorrect
     });
 
     point.examples.forEach((example, exampleIndex) => {
@@ -247,7 +247,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
               example.jp,
               example.romaji,
               example.meaning[locale],
-              `grammar-cloze-${pointIndex}-${exampleIndex}`,
+              `grammar-cloze-${pointIndex}-${exampleIndex}`
             )
           : null;
 
@@ -260,7 +260,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
       const { options, correctId } = buildOptions(
         example.meaning[locale],
         false,
-        pools.exampleMeanings,
+        pools.exampleMeanings
       );
       candidates.push({
         format: 'choice',
@@ -269,7 +269,7 @@ export function buildLessonQuiz(course: Course, lesson: Lesson, locale: Locale):
         promptPrimary: example.jp,
         promptJa: true,
         options,
-        correctId,
+        correctId
       });
     });
   });

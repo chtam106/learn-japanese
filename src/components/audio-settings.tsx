@@ -10,7 +10,7 @@ import {
   Popover,
   Select,
   Stack,
-  Typography,
+  Typography
 } from '@mui/material';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import {
@@ -23,7 +23,7 @@ import {
   setPreferredVoiceURI,
   setSpeechRate,
   speakJapanese,
-  subscribeVoices,
+  subscribeVoices
 } from '@/utils/speech.ts';
 
 const SPEED_OPTIONS = [0.6, 0.75, 0.9, 1, 1.15];

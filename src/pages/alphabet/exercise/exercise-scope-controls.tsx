@@ -27,7 +27,7 @@ export function ExerciseScopeControls({
   showRowRangeControls,
   handleOverviewScopeChange,
   handleRowFromSelectChange,
-  handleRowToSelectChange,
+  handleRowToSelectChange
 }: ExerciseScopeControlsProps) {
   const { t } = useTranslation();
 

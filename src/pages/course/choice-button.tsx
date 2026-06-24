@@ -47,9 +47,9 @@ export function ChoiceButton({ children, state, dimmed, onClick, lang }: ChoiceB
             color: feedbackText,
             '&:hover': {
               bgcolor: alpha(feedbackMain, 0.2),
-              borderColor: alpha(feedbackMain, 0.62),
-            },
-          }),
+              borderColor: alpha(feedbackMain, 0.62)
+            }
+          })
         };
       }}
     >

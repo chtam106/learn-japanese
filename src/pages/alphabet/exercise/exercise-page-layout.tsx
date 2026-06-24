@@ -20,7 +20,7 @@ export function ExercisePageLayout({
   subtitle,
   note,
   controls,
-  children,
+  children
 }: ExercisePageLayoutProps) {
   const { t } = useTranslation();
 
@@ -50,10 +50,10 @@ export function ExercisePageLayout({
             display: 'grid',
             gridTemplateColumns: {
               xs: 'repeat(2, minmax(0, 1fr))',
-              lg: 'repeat(4, minmax(0, 1fr))',
+              lg: 'repeat(4, minmax(0, 1fr))'
             },
             gap: 2,
-            mb: 4,
+            mb: 4
           }}
         >
           {controls}

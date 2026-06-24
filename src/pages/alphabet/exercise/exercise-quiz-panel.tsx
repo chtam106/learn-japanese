@@ -5,7 +5,7 @@ import {
   isQuizAnswerCorrect,
   usesCharacterOptions,
   type ExerciseMode,
-  type QuizQuestion,
+  type QuizQuestion
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import { resultBorderSx } from '@/pages/alphabet/exercise/exercise-ui.ts';
 import { KanaDisplay } from '@/components/kana-display.tsx';
@@ -26,7 +26,7 @@ function getQuestionLabel(
   mode: ExerciseMode,
   scriptLabel: string,
   t: (key: string, params?: Record<string, string>) => string,
-  pairDirection?: QuizQuestion['pairDirection'],
+  pairDirection?: QuizQuestion['pairDirection']
 ) {
   switch (mode) {
     case 'romaji':
@@ -48,7 +48,7 @@ export function ExerciseQuizPanel({
   question,
   wrongAnswers,
   answeredCorrectly,
-  onAnswer,
+  onAnswer
 }: ExerciseQuizPanelProps) {
   const { t } = useTranslation();
   const characterOptions = usesCharacterOptions(mode);
@@ -69,7 +69,7 @@ export function ExerciseQuizPanel({
           alignItems: 'center',
           gap: 1,
           minHeight: 88,
-          justifyContent: 'center',
+          justifyContent: 'center'
         }}
       >
         {mode === 'romaji' && (
@@ -81,7 +81,7 @@ export function ExerciseQuizPanel({
                 tabIndex={0}
                 aria-label={t('chart.playAudio', {
                   char: question.correctItem.char,
-                  romaji: question.correctItem.romaji,
+                  romaji: question.correctItem.romaji
                 })}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
@@ -96,7 +96,7 @@ export function ExerciseQuizPanel({
               <IconButton
                 aria-label={t('chart.playAudio', {
                   char: question.correctItem.char,
-                  romaji: question.correctItem.romaji,
+                  romaji: question.correctItem.romaji
                 })}
                 onClick={playPromptAudio}
                 sx={{
@@ -106,7 +106,7 @@ export function ExerciseQuizPanel({
                   top: 0,
                   bottom: 0,
                   my: 'auto',
-                  ml: 0.5,
+                  ml: 0.5
                 }}
               >
                 <VolumeUpIcon sx={{ fontSize: 32 }} />
@@ -130,7 +130,7 @@ export function ExerciseQuizPanel({
               bgcolor: 'action.hover',
               width: 72,
               height: 72,
-              '&:hover': { bgcolor: 'action.selected' },
+              '&:hover': { bgcolor: 'action.selected' }
             }}
           >
             <VolumeUpIcon sx={{ fontSize: 40 }} />
@@ -146,7 +146,7 @@ export function ExerciseQuizPanel({
         sx={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 2,
+          gap: 2
         }}
       >
         {question.optionItems.map((item) => {
@@ -168,7 +168,7 @@ export function ExerciseQuizPanel({
                 borderWidth: 2,
                 '&.Mui-disabled': { borderWidth: 2 },
                 ...(showCorrect && resultBorderSx('correct')),
-                ...(showWrong && resultBorderSx('wrong')),
+                ...(showWrong && resultBorderSx('wrong'))
               }}
             >
               {characterOptions ? <KanaDisplay cell={item} variant="option" /> : item.romaji}

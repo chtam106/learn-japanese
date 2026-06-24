@@ -29,12 +29,12 @@ export type NavGroup = {
 function formatLessonNavLabel(number: number, title: Bilingual): Bilingual {
   return {
     en: `Unit ${number}: ${title.en}`,
-    vi: `Bài ${number}: ${title.vi}`,
+    vi: `Bài ${number}: ${title.vi}`
   };
 }
 
 const courseSummaryByLevel = Object.fromEntries(
-  COURSE_SUMMARIES.map((summary) => [summary.level, summary]),
+  COURSE_SUMMARIES.map((summary) => [summary.level, summary])
 ) as Record<CourseLevel, (typeof COURSE_SUMMARIES)[number]>;
 
 const courseGroups: NavGroup[] = COURSE_LEVELS.map((level) => ({
@@ -42,7 +42,7 @@ const courseGroups: NavGroup[] = COURSE_LEVELS.map((level) => ({
   path: coursePath(level),
   icon: SchoolOutlinedIcon,
   courseLevel: level,
-  children: [],
+  children: []
 }));
 
 const courseLessonLoaders: Record<
@@ -56,8 +56,8 @@ const courseLessonLoaders: Record<
   n1: () => import('@/constants/courses/n1/index.ts').then(({ n1Course }) => n1Course.lessons),
   frontend: () =>
     import('@/constants/courses/frontend/index.ts').then(
-      ({ frontendCourse }) => frontendCourse.lessons,
-    ),
+      ({ frontendCourse }) => frontendCourse.lessons
+    )
 };
 
 export const navGroups: NavGroup[] = [
@@ -65,7 +65,7 @@ export const navGroups: NavGroup[] = [
     labelKey: 'nav.home',
     path: routes.home,
     icon: HomeOutlinedIcon,
-    children: [],
+    children: []
   },
   {
     labelKey: 'nav.alphabet',
@@ -75,21 +75,21 @@ export const navGroups: NavGroup[] = [
       {
         labelKey: 'nav.hiragana',
         path: routes.alphabet.hiragana,
-        symbol: 'あ',
+        symbol: 'あ'
       },
       {
         labelKey: 'nav.katakana',
         path: routes.alphabet.katakana,
-        symbol: 'ア',
+        symbol: 'ア'
       },
       {
         labelKey: 'nav.exercise',
         path: routes.alphabet.exercise.index,
-        icon: QuizOutlinedIcon,
-      },
-    ],
+        icon: QuizOutlinedIcon
+      }
+    ]
   },
-  ...courseGroups,
+  ...courseGroups
 ];
 
 export function isNavGroupActive(group: NavGroup, pathname: string) {
@@ -102,7 +102,7 @@ export function isNavGroupActive(group: NavGroup, pathname: string) {
   }
 
   return group.children.some(
-    (child) => child.path === pathname || pathname.startsWith(`${child.path}/`),
+    (child) => child.path === pathname || pathname.startsWith(`${child.path}/`)
   );
 }
 
@@ -111,6 +111,6 @@ export async function loadCourseLessonNavItems(level: CourseLevel): Promise<NavI
 
   return lessons.map((lesson) => ({
     label: formatLessonNavLabel(lesson.number, lesson.title),
-    path: lessonPath(level, lesson.id),
+    path: lessonPath(level, lesson.id)
   }));
 }

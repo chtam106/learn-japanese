@@ -2,15 +2,15 @@ import type { TranslationTree } from '@/i18n/translations.ts';
 
 export const viTranslations: TranslationTree = {
   app: {
-    title: 'Langwish',
+    title: 'Langwish'
   },
   common: {
-    playAudio: 'Nghe phát âm',
+    playAudio: 'Nghe phát âm'
   },
   errorBoundary: {
     title: 'Đã có lỗi xảy ra',
     body: 'Ứng dụng gặp lỗi không mong muốn. Hãy tải lại trang để tiếp tục.',
-    reload: 'Tải lại trang',
+    reload: 'Tải lại trang'
   },
   audio: {
     settings: 'Cài đặt âm thanh',
@@ -18,7 +18,7 @@ export const viTranslations: TranslationTree = {
     auto: 'Tự động',
     speed: 'Tốc độ',
     test: 'Nghe thử',
-    noVoices: 'Trình duyệt của bạn không có giọng tiếng Nhật.',
+    noVoices: 'Trình duyệt của bạn không có giọng tiếng Nhật.'
   },
   seo: {
     defaultTitle: 'Langwish - Học Hiragana, Katakana & Luyện Kana',
@@ -27,7 +27,7 @@ export const viTranslations: TranslationTree = {
     home: {
       title: 'Học Hiragana & Katakana tiếng Nhật',
       description:
-        'Bắt đầu học bảng chữ kana với hiragana, katakana, audio bản xứ và bài luyện tập miễn phí.',
+        'Bắt đầu học bảng chữ kana với hiragana, katakana, audio bản xứ và bài luyện tập miễn phí.'
     },
     alphabet: {
       title: 'Bảng chữ cái tiếng Nhật - Hiragana & Katakana',
@@ -36,12 +36,12 @@ export const viTranslations: TranslationTree = {
       hiragana: {
         title: 'Bảng Hiragana & Luyện tập (ひらがな)',
         description:
-          'Học hiragana qua bảng tương tác gồm seion, dakuten, handakuten và yoon. Chạm để nghe phát âm chuẩn.',
+          'Học hiragana qua bảng tương tác gồm seion, dakuten, handakuten và yoon. Chạm để nghe phát âm chuẩn.'
       },
       katakana: {
         title: 'Bảng Katakana & Luyện tập (カタカナ)',
         description:
-          'Luyện katakana với bảng chữ đầy đủ, phát âm bản xứ và bài tập cho từ mượn và nhấn mạnh.',
+          'Luyện katakana với bảng chữ đầy đủ, phát âm bản xứ và bài tập cho từ mượn và nhấn mạnh.'
       },
       exercise: {
         title: 'Bài tập & Quiz Kana tiếng Nhật',
@@ -50,33 +50,33 @@ export const viTranslations: TranslationTree = {
         romaji: {
           title: 'Quiz Romaji - Luyện Hiragana & Katakana',
           description:
-            'Nhìn chữ kana và chọn romaji đúng. Luyện đọc hiragana và katakana từng bước.',
+            'Nhìn chữ kana và chọn romaji đúng. Luyện đọc hiragana và katakana từng bước.'
         },
         character: {
           title: 'Quiz Chọn chữ Kana',
           description:
-            'Nhìn romaji và chọn chữ hiragana hoặc katakana đúng. Rèn nhận diện kana với phản hồi tức thì.',
+            'Nhìn romaji và chọn chữ hiragana hoặc katakana đúng. Rèn nhận diện kana với phản hồi tức thì.'
         },
         listen: {
           title: 'Quiz Nghe & Chọn chữ Kana',
-          description: 'Nghe phát âm chuẩn và chọn đúng chữ hiragana hoặc katakana.',
+          description: 'Nghe phát âm chuẩn và chọn đúng chữ hiragana hoặc katakana.'
         },
         scriptPair: {
           title: 'Quiz Ghép Hiragana ↔ Katakana',
-          description: 'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.',
+          description: 'Ghép cặp hiragana và katakana để củng cố cả hai bảng chữ cùng lúc.'
         },
         writing: {
           title: 'Luyện viết Kana với animation thứ tự nét',
           description:
-            'Chọn một chữ hiragana hoặc katakana cơ bản, tập viết bằng tay và làm theo animation hướng dẫn thứ tự nét.',
-        },
-      },
-    },
+            'Chọn một chữ hiragana hoặc katakana cơ bản, tập viết bằng tay và làm theo animation hướng dẫn thứ tự nét.'
+        }
+      }
+    }
   },
   language: {
     label: 'Ngôn ngữ',
     en: 'English',
-    vi: 'Tiếng Việt',
+    vi: 'Tiếng Việt'
   },
   nav: {
     home: 'Trang chủ',
@@ -88,7 +88,7 @@ export const viTranslations: TranslationTree = {
     closeMenu: 'Đóng menu',
     mainNavigation: 'Điều hướng chính',
     collapse: 'Thu gọn {{label}}',
-    expand: 'Mở rộng {{label}}',
+    expand: 'Mở rộng {{label}}'
   },
   home: {
     subtitle: 'Bắt đầu với bảng chữ cái - hiragana và katakana.',
@@ -104,7 +104,7 @@ export const viTranslations: TranslationTree = {
       'Xem bảng seion, dakuten ({{dakuten}}), handakuten ({{handakuten}}) và yoon cho hiragana và katakana.',
     featureAudio: 'Chạm vào chữ để nghe phát âm kiểu NHK.',
     featureQuiz:
-      'Luyện tập qua câu hỏi - chọn romaji, chọn chữ, nghe chọn chữ, hoặc ghép hiragana và katakana.',
+      'Luyện tập qua câu hỏi - chọn romaji, chọn chữ, nghe chọn chữ, hoặc ghép hiragana và katakana.'
   },
   alphabet: {
     title: 'Bảng chữ cái',
@@ -115,14 +115,14 @@ export const viTranslations: TranslationTree = {
     hiraganaPageDescription: 'Học bảng chữ hiragana (ひらがな).',
     katakanaPageDescription: 'Học bảng chữ katakana (カタカナ).',
     tapHint: 'Nhấn vào chữ để nghe phát âm.',
-    back: 'Quay lại bảng chữ cái',
+    back: 'Quay lại bảng chữ cái'
   },
   chart: {
     seion: 'Seion',
     voiced: 'Dakuten / Handakuten ({{dakuten}} / {{handakuten}})',
     yoon: 'Yoon',
     yoonDescription: 'Âm ghép với ゃ, ゅ, ょ nhỏ - ví dụ: き + ゃ = きゃ (kya).',
-    playAudio: 'Phát {{char}}, {{romaji}}',
+    playAudio: 'Phát {{char}}, {{romaji}}'
   },
   exercise: {
     title: 'Luyện tập',
@@ -178,7 +178,7 @@ export const viTranslations: TranslationTree = {
     rowDefault: 'Hàng',
     yoonRowDefault: 'Hàng yoon',
     rowLabel: 'Hàng {{name}} ({{char}})',
-    voicedRowLabel: 'Hàng {{name}} - {{mark}} ({{char}})',
+    voicedRowLabel: 'Hàng {{name}} - {{mark}} ({{char}})'
   },
   course: {
     lessonsHeading: 'Danh sách bài học',
@@ -230,6 +230,6 @@ export const viTranslations: TranslationTree = {
     resultGood: 'Khá tốt - xem lại câu sai rồi thử lại nhé.',
     resultKeepGoing: 'Cố lên - hãy ôn lại bài rồi làm lại.',
     retry: 'Làm lại',
-    reviewLesson: 'Xem lại bài học',
-  },
+    reviewLesson: 'Xem lại bài học'
+  }
 };

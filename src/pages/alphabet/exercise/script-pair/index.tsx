@@ -16,7 +16,7 @@ function ScriptPairExercisePage() {
     mode: 'script-pair',
     script: 'hiragana',
     scope: scopeState.scope,
-    pairDirection,
+    pairDirection
   });
 
   return (

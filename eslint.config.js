@@ -17,11 +17,11 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
-      '@stylistic': stylistic,
+      '@stylistic': stylistic
     },
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: globals.browser,
+      globals: globals.browser
     },
     rules: {
       semi: ['error', 'always'],
@@ -29,18 +29,18 @@ export default defineConfig([
         'error',
         {
           multiline: { delimiter: 'semi', requireLast: true },
-          singleline: { delimiter: 'semi', requireLast: false },
-        },
-      ],
-    },
+          singleline: { delimiter: 'semi', requireLast: false }
+        }
+      ]
+    }
   },
   {
     files: ['scripts/**/*.mjs'],
     languageOptions: {
-      globals: globals.node,
+      globals: globals.node
     },
     rules: {
-      semi: ['error', 'always'],
-    },
-  },
+      semi: ['error', 'always']
+    }
+  }
 ]);

@@ -11,7 +11,7 @@ import {
   LinearProgress,
   Paper,
   Stack,
-  Typography,
+  Typography
 } from '@mui/material';
 import { pink } from '@mui/material/colors';
 import {
@@ -20,7 +20,7 @@ import {
   lessonPath,
   type Course,
   type CourseLevel,
-  type Lesson,
+  type Lesson
 } from '@/constants/courses/index.ts';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -35,7 +35,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
   const { locale, t } = useTranslation();
 
   const [questions, setQuestions] = useState<ListeningQuestion[]>(() =>
-    buildLessonListening(course, lesson, locale),
+    buildLessonListening(course, lesson, locale)
   );
   const [index, setIndex] = useState(0);
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
@@ -158,8 +158,8 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: 1,
-                },
+                  gap: 1
+                }
               ]}
             >
               <Typography variant="overline" color="text.secondary">
@@ -174,7 +174,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                   height: 84,
                   border: 2,
                   borderColor: 'primary.main',
-                  '& svg': { fontSize: 44 },
+                  '& svg': { fontSize: 44 }
                 }}
               >
                 <VolumeUpIcon />
@@ -227,7 +227,7 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                     variant="subtitle1"
                     sx={{
                       fontWeight: 600,
-                      color: selectedId === question.correctId ? 'info.main' : pink[500],
+                      color: selectedId === question.correctId ? 'info.main' : pink[500]
                     }}
                   >
                     {selectedId === question.correctId

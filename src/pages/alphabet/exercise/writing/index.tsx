@@ -7,7 +7,7 @@ import {
   MenuItem,
   Select,
   Stack,
-  Typography,
+  Typography
 } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
@@ -107,7 +107,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
     const rect = canvas.getBoundingClientRect();
     return {
       x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
+      y: event.clientY - rect.top
     };
   }, []);
 
@@ -127,7 +127,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
       ctx.beginPath();
       ctx.moveTo(point.x, point.y);
     },
-    [getContext, getPoint],
+    [getContext, getPoint]
   );
 
   const handlePointerMove = useCallback(
@@ -147,7 +147,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
       ctx.lineTo(point.x, point.y);
       ctx.stroke();
     },
-    [getContext, getPoint],
+    [getContext, getPoint]
   );
 
   const handlePointerUp = useCallback(() => {
@@ -168,7 +168,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
     <Box
       sx={{
         position: 'relative',
-        width: '100%',
+        width: '100%'
       }}
     >
       <IconButton
@@ -183,8 +183,8 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
           bgcolor: 'rgba(255, 255, 255, 0.9)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.14)',
           '&:hover': {
-            bgcolor: '#ffffff',
-          },
+            bgcolor: '#ffffff'
+          }
         }}
       >
         <CleaningServicesOutlinedIcon fontSize="small" sx={{ transform: 'rotate(30deg)' }} />
@@ -205,7 +205,7 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
           borderRadius: 2,
           touchAction: 'none',
           bgcolor: '#ffffff',
-          boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)',
+          boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)'
         }}
       />
     </Box>
@@ -222,11 +222,11 @@ function WritingExercisePage() {
   const basicCharacters = useMemo(() => getAlphabetItems(script, 'seion'), [script]);
   const selectedCharacter = useMemo(
     () => basicCharacters.find((item) => item.romaji === selectedRomaji) ?? basicCharacters[0],
-    [basicCharacters, selectedRomaji],
+    [basicCharacters, selectedRomaji]
   );
   const selectedCharacterIndex = useMemo(
     () => basicCharacters.findIndex((item) => item.romaji === selectedCharacter?.romaji),
-    [basicCharacters, selectedCharacter],
+    [basicCharacters, selectedCharacter]
   );
   const previousCharacter = useMemo(() => {
     if (!selectedCharacter || basicCharacters.length === 0) {
@@ -298,7 +298,7 @@ function WritingExercisePage() {
         sx={{
           width: '100%',
           maxWidth: { xs: '100%', sm: 380, md: 420 },
-          mx: 'auto',
+          mx: 'auto'
         }}
       >
         <Stack spacing={2}>
@@ -338,12 +338,12 @@ function WritingExercisePage() {
               position: 'relative',
               borderRadius: 2,
               px: 2,
-              py: 1.5,
+              py: 1.5
             }}
           >
             <IconButton
               aria-label={t('exercise.writingPreviousCharacter', {
-                char: previousCharacter?.char ?? '',
+                char: previousCharacter?.char ?? ''
               })}
               onClick={(event) => {
                 event.stopPropagation();
@@ -356,7 +356,7 @@ function WritingExercisePage() {
                 transform: 'translateY(-50%)',
                 zIndex: 2,
                 width: 40,
-                height: 40,
+                height: 40
               }}
             >
               <ChevronLeftOutlinedIcon />
@@ -368,7 +368,7 @@ function WritingExercisePage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: 72,
-                px: { xs: 5, sm: 6 },
+                px: { xs: 5, sm: 6 }
               }}
             >
               {isGuideUnavailable && (
@@ -382,7 +382,7 @@ function WritingExercisePage() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    px: 1,
+                    px: 1
                   }}
                 >
                   <Typography variant="caption" color="text.secondary" sx={{ textAlign: 'center' }}>
@@ -398,7 +398,7 @@ function WritingExercisePage() {
                   tabIndex={0}
                   alt={t('exercise.writingGuideAlt', {
                     char: selectedCharacter.char,
-                    script: script === 'hiragana' ? t('nav.hiragana') : t('nav.katakana'),
+                    script: script === 'hiragana' ? t('nav.hiragana') : t('nav.katakana')
                   })}
                   onClick={handleGuideClick}
                   onKeyDown={(event) => {
@@ -420,8 +420,8 @@ function WritingExercisePage() {
                     '&:focus-visible': {
                       outline: '2px solid',
                       outlineColor: 'primary.main',
-                      outlineOffset: 2,
-                    },
+                      outlineOffset: 2
+                    }
                   }}
                 />
               )}
@@ -439,7 +439,7 @@ function WritingExercisePage() {
                 transform: 'translateY(-50%)',
                 zIndex: 2,
                 width: 40,
-                height: 40,
+                height: 40
               }}
             >
               <ChevronRightOutlinedIcon />

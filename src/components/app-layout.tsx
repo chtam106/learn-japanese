@@ -10,7 +10,7 @@ import {
   Stack,
   Toolbar,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { Brand } from '@/components/brand.tsx';
@@ -22,12 +22,12 @@ import { loadJapaneseUiFont } from '@/theme/fonts.ts';
 const drawerWidth = 320;
 const AppDrawerContent = lazy(() => import('@/components/app-drawer-content.tsx'));
 const AudioSettings = lazy(() =>
-  import('@/components/audio-settings.tsx').then((module) => ({ default: module.AudioSettings })),
+  import('@/components/audio-settings.tsx').then((module) => ({ default: module.AudioSettings }))
 );
 const LanguageSwitcher = lazy(() =>
   import('@/components/language-switcher.tsx').then((module) => ({
-    default: module.LanguageSwitcher,
-  })),
+    default: module.LanguageSwitcher
+  }))
 );
 
 function AppLayout() {
@@ -57,14 +57,14 @@ function AppLayout() {
           bgcolor: (muiTheme) => alpha(muiTheme.palette.background.paper, 0.85),
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
-          boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04)',
+          boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04)'
         }}
       >
         <Toolbar
           sx={{
             gap: { xs: 1.5, md: 0 },
             px: { xs: 2, sm: 4, md: 0 },
-            alignItems: 'center',
+            alignItems: 'center'
           }}
         >
           {isMobile && (
@@ -85,7 +85,7 @@ function AppLayout() {
               minWidth: 0,
               width: '100%',
               maxWidth: { md: 1200 },
-              mx: { md: 'auto' },
+              mx: { md: 'auto' }
             }}
           >
             <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center', px: { md: 6 } }}>
@@ -118,8 +118,8 @@ function AppLayout() {
               boxSizing: 'border-box',
               border: 'none',
               overflow: 'hidden',
-              boxShadow: '1px 0 2px rgba(0, 0, 0, 0.06), 2px 0 8px rgba(0, 0, 0, 0.04)',
-            },
+              boxShadow: '1px 0 2px rgba(0, 0, 0, 0.06), 2px 0 8px rgba(0, 0, 0, 0.04)'
+            }
           }}
         >
           {shouldRenderDrawerContent && (
@@ -143,7 +143,7 @@ function AppLayout() {
           width: { md: `calc(100% - ${drawerWidth}px)` },
           minWidth: 0,
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'column'
         }}
       >
         <Toolbar />

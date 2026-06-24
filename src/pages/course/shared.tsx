@@ -30,7 +30,7 @@ export function ResultScreen({
   total,
   level,
   lessonId,
-  onRetry,
+  onRetry
 }: {
   score: number;
   total: number;

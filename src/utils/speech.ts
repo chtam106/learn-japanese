@@ -56,7 +56,7 @@ export function setSpeechRate(rate: number): void {
 }
 
 export function getDefaultJapaneseVoice(
-  voices: SpeechSynthesisVoice[] = getJapaneseVoices(),
+  voices: SpeechSynthesisVoice[] = getJapaneseVoices()
 ): SpeechSynthesisVoice | undefined {
   // On macOS the "O-ren" voice sounds the most natural, so prefer it by default.
   const oren = voices.find((voice) => voice.name.toLowerCase().includes('o-ren'));

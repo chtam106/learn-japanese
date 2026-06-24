@@ -63,7 +63,7 @@ function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => s
 
     return {
       title: `${courseSeo.seoTitle[locale]} | ${SITE_NAME}`,
-      description: courseSeo.seoDescription[locale],
+      description: courseSeo.seoDescription[locale]
     };
   }
 
@@ -72,7 +72,7 @@ function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => s
 
   return {
     title: `${title} | ${SITE_NAME}`,
-    description,
+    description
   };
 }
 
@@ -86,9 +86,9 @@ function buildStructuredData(routeKey: SeoRouteKey, meta: SeoMeta, canonicalUrl:
     isPartOf: {
       '@type': 'WebSite',
       name: SITE_NAME,
-      url: SITE_URL,
+      url: SITE_URL
     },
-    inLanguage: ['en', 'vi'],
+    inLanguage: ['en', 'vi']
   };
 
   if (routeKey !== 'home') {
@@ -102,7 +102,7 @@ function buildStructuredData(routeKey: SeoRouteKey, meta: SeoMeta, canonicalUrl:
       name: SITE_NAME,
       url: SITE_URL,
       description: meta.description,
-      inLanguage: ['en', 'vi'],
+      inLanguage: ['en', 'vi']
     },
     {
       '@context': 'https://schema.org',
@@ -115,12 +115,12 @@ function buildStructuredData(routeKey: SeoRouteKey, meta: SeoMeta, canonicalUrl:
       offers: {
         '@type': 'Offer',
         price: '0',
-        priceCurrency: 'USD',
+        priceCurrency: 'USD'
       },
       description: meta.description,
-      inLanguage: ['en', 'vi'],
+      inLanguage: ['en', 'vi']
     },
-    webPage,
+    webPage
   ];
 }
 

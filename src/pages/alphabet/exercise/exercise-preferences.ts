@@ -1,7 +1,7 @@
 import type { ExerciseOverviewScope, ExerciseRowScope } from '@/constants/alphabet-charts.ts';
 import type {
   ExerciseScript,
-  ScriptPairDirection,
+  ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 
 export const EXERCISE_PREFS_STORAGE_KEY = 'langwish.exercise-preferences';
@@ -19,7 +19,7 @@ const DEFAULTS: StoredExercisePreferences = {
   overviewScope: 'all',
   rowFrom: '',
   rowTo: '',
-  pairDirection: 'hiragana-to-katakana',
+  pairDirection: 'hiragana-to-katakana'
 };
 
 const OVERVIEW_SCOPES = new Set<ExerciseOverviewScope>([
@@ -27,7 +27,7 @@ const OVERVIEW_SCOPES = new Set<ExerciseOverviewScope>([
   'seion',
   'dakuten',
   'handakuten',
-  'yoon',
+  'yoon'
 ]);
 
 const SCRIPTS = new Set<ExerciseScript>(['hiragana', 'katakana', 'all']);
@@ -35,7 +35,7 @@ const SCRIPTS = new Set<ExerciseScript>(['hiragana', 'katakana', 'all']);
 const PAIR_DIRECTIONS = new Set<ScriptPairDirection>([
   'hiragana-to-katakana',
   'katakana-to-hiragana',
-  'mixed',
+  'mixed'
 ]);
 
 function isOverviewScope(value: unknown): value is ExerciseOverviewScope {
@@ -90,7 +90,7 @@ export function readStoredExercisePreferences(): StoredExercisePreferences {
       rowTo: rowRange.rowTo,
       pairDirection: isPairDirection(parsed.pairDirection)
         ? parsed.pairDirection
-        : DEFAULTS.pairDirection,
+        : DEFAULTS.pairDirection
     };
   } catch {
     return DEFAULTS;

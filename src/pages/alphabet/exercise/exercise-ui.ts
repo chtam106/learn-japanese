@@ -14,14 +14,14 @@ export function resultBorderSx(state: 'correct' | 'wrong') {
     color: getTextColor,
     '&:hover': {
       bgcolor: (theme: Theme) => alpha(getMainColor(theme), 0.2),
-      borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.62),
+      borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.62)
     },
     '&.Mui-disabled': {
       borderWidth: 2,
       bgcolor: (theme: Theme) => alpha(getMainColor(theme), 0.14),
       borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.45),
       color: getTextColor,
-      opacity: 1,
-    },
+      opacity: 1
+    }
   };
 }

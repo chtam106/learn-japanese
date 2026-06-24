@@ -18,6 +18,7 @@ alwaysApply: true
 - The repo requires Node 24 (`.nvmrc`). The default shell may resolve `node` to v12, which breaks `pnpm`. Always prefix commands:
   `export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh" && nvm use 24 >/dev/null && pnpm ...`
 - Validate changes with `pnpm run typecheck`, `pnpm run lint`, `pnpm run format` (or `pnpm run check`).
+- Prettier `trailingComma: "none"` — do NOT add trailing commas after the last element/param/property; `prettier --write` enforces this repo-wide.
 - `pnpm-lock.yaml` is in `.prettierignore` — never let `pnpm run format` reformat it (it caused a huge spurious diff once). Don't commit lockfile changes unless `package.json` actually changed.
 
 ## Lint rules to respect

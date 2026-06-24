@@ -17,7 +17,7 @@ import {
   lessonPath,
   lessonReadingPath,
   type CourseLevel,
-  type Lesson,
+  type Lesson
 } from '@/constants/courses/index.ts';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -28,7 +28,7 @@ import {
   elevatedSurfaceSx,
   interactiveSurfaceSx,
   subtleSurfaceSx,
-  tonalSurfaceSx,
+  tonalSurfaceSx
 } from '@/theme/surfaces.ts';
 import { LessonNotFound } from './shared.tsx';
 
@@ -47,7 +47,7 @@ function VocabularySection({ lesson }: { lesson: Lesson }) {
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-          gap: 1.5,
+          gap: 1.5
         }}
       >
         {lesson.vocab.map((item) => (
@@ -75,8 +75,8 @@ function VocabularySection({ lesson }: { lesson: Lesson }) {
                 display: 'flex',
                 gap: 0.5,
                 alignItems: 'flex-start',
-                cursor: canSpeak ? 'pointer' : undefined,
-              },
+                cursor: canSpeak ? 'pointer' : undefined
+              }
             ]}
           >
             <SpeakButton text={item.kana} />
@@ -160,7 +160,7 @@ function GrammarSection({ lesson }: { lesson: Lesson }) {
                     }
                     sx={[
                       canSpeak ? interactiveSurfaceSx : elevatedSurfaceSx,
-                      { p: 1.5, cursor: canSpeak ? 'pointer' : undefined },
+                      { p: 1.5, cursor: canSpeak ? 'pointer' : undefined }
                     ]}
                   >
                     <Stack direction="row" spacing={0.5} sx={{ alignItems: 'flex-start' }}>
@@ -207,8 +207,8 @@ function PracticePanel({ level, lesson }: { level: CourseLevel; lesson: Lesson }
           flexDirection: { xs: 'column', xl: 'row' },
           alignItems: { xl: 'center' },
           justifyContent: 'space-between',
-          gap: 2,
-        },
+          gap: 2
+        }
       ]}
     >
       <Box>
@@ -332,7 +332,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
                   justifyContent: 'flex-start',
                   width: { xs: '100%', sm: 'auto' },
                   minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 },
+                  maxWidth: { sm: 260 }
                 }}
               >
                 {t('course.previousLesson')}
@@ -350,7 +350,7 @@ function LessonPage({ level }: { level: CourseLevel }) {
                   justifyContent: 'flex-end',
                   width: { xs: '100%', sm: 'auto' },
                   minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 },
+                  maxWidth: { sm: 260 }
                 }}
               >
                 {t('course.nextLesson')}

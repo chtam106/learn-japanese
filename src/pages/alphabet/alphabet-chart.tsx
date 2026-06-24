@@ -11,7 +11,7 @@ import {
   TableRow,
   Typography,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from '@mui/material';
 import { Heading } from '@/components/heading.tsx';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
@@ -50,9 +50,9 @@ function toDisplayRows(rows: AlphabetChartRow[]): DisplayRow[] {
     seion: row.seion,
     voiced: row.seion.map((_, index) => ({
       dakuten: row.dakuten?.[index] ?? null,
-      handakuten: row.handakuten?.[index] ?? null,
+      handakuten: row.handakuten?.[index] ?? null
     })),
-    tall: Boolean(row.handakuten),
+    tall: Boolean(row.handakuten)
   }));
 }
 
@@ -77,7 +77,7 @@ function getCellSx(tall: boolean, cellSize: number, columnCount: number) {
     p: { xs: 0.375, md: 0.5 },
     verticalAlign: 'middle' as const,
     boxSizing: 'border-box' as const,
-    border: 0,
+    border: 0
   };
 }
 
@@ -142,13 +142,13 @@ function PlayableChartCell({ cell, compact = false }: { cell: AlphabetCell; comp
         transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
         '&:hover': {
           bgcolor: 'action.selected',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12)',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12)'
         },
         '&:focus-visible': {
           outline: '2px solid',
           outlineColor: 'primary.main',
-          outlineOffset: 2,
-        },
+          outlineOffset: 2
+        }
       }}
     >
       <ChartCell cell={cell} compact={compact} />
@@ -160,7 +160,7 @@ function VoicedChartCell({
   cell,
   tall,
   cellSize,
-  compact,
+  compact
 }: {
   cell: VoicedCell;
   tall: boolean;
@@ -179,7 +179,7 @@ function VoicedChartCell({
         alignItems: 'center',
         justifyContent: 'center',
         gap: tall ? 0.5 : voicedCompact ? 0.25 : 0,
-        width: '100%',
+        width: '100%'
       }}
     >
       {cell.dakuten && (
@@ -200,7 +200,7 @@ function BaseChartCell({
   cell,
   tall,
   cellSize,
-  compact,
+  compact
 }: {
   cell: AlphabetCell | null;
   tall: boolean;
@@ -215,7 +215,7 @@ function BaseChartCell({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
+        width: '100%'
       }}
     >
       {cell && <PlayableChartCell cell={cell} compact={compact} />}
@@ -226,7 +226,7 @@ function BaseChartCell({
 function AlphabetChartTable({
   rows,
   variant,
-  hideEmptyRows = false,
+  hideEmptyRows = false
 }: {
   rows: DisplayRow[];
   variant: 'seion' | 'voiced';
@@ -250,7 +250,7 @@ function AlphabetChartTable({
         boxSizing: 'border-box',
         boxShadow: 'none',
         overflowX: 'auto',
-        overflowY: 'hidden',
+        overflowY: 'hidden'
       }}
     >
       <Table
@@ -259,7 +259,7 @@ function AlphabetChartTable({
           width: '100%',
           minWidth: columnCount * cellSize,
           borderCollapse: 'separate',
-          borderSpacing: 0,
+          borderSpacing: 0
         }}
       >
         <TableBody>
@@ -317,7 +317,7 @@ const chartSectionHeadingSx = {
   minHeight: 20,
   fontWeight: 600,
   fontSize: { xs: '1rem', md: '1.125rem' },
-  color: 'text.secondary',
+  color: 'text.secondary'
 } as const;
 
 function ChartSectionHeading({ children }: { children: React.ReactNode }) {
@@ -362,7 +362,7 @@ function ChartSection({ chartRows }: { chartRows: AlphabetChartRow[] }) {
         flexDirection: 'row',
         gap: 2,
         alignItems: 'flex-start',
-        width: '100%',
+        width: '100%'
       }}
     >
       <Box sx={{ flex: 1, minWidth: 0, width: '100%' }}>
@@ -382,7 +382,7 @@ export function AlphabetChartPage({
   title,
   description,
   chartRows,
-  yoonChartRows,
+  yoonChartRows
 }: AlphabetChartPageProps) {
   const { t } = useTranslation();
   const sectionLabels = getChartSectionLabels(t);

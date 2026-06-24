@@ -14,7 +14,7 @@ export function SiteFooter() {
         py: 3,
         px: 2,
         textAlign: 'center',
-        boxShadow: '0 -1px 2px rgba(0, 0, 0, 0.06), 0 -2px 8px rgba(0, 0, 0, 0.04)',
+        boxShadow: '0 -1px 2px rgba(0, 0, 0, 0.06), 0 -2px 8px rgba(0, 0, 0, 0.04)'
       }}
     >
       <Container maxWidth="md" disableGutters>

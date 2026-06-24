@@ -11,7 +11,7 @@ import {
   lessonExercisePath,
   lessonListeningPath,
   lessonPath,
-  lessonReadingPath,
+  lessonReadingPath
 } from './levels.ts';
 
 export * from './types.ts';
@@ -25,7 +25,7 @@ export const courses: Record<CourseLevel, Course> = {
   n3: n3Course,
   n2: n2Course,
   n1: n1Course,
-  frontend: frontendCourse,
+  frontend: frontendCourse
 };
 
 export const courseList: Course[] = COURSE_LEVELS.map((level) => courses[level]);
@@ -50,6 +50,6 @@ export const COURSE_SITEMAP_PATHS: string[] = COURSE_LEVELS.flatMap((level) => {
     ...lessons.map((lesson) => lessonPath(level, lesson.id)),
     ...lessons.map((lesson) => lessonExercisePath(level, lesson.id)),
     ...lessons.map((lesson) => lessonListeningPath(level, lesson.id)),
-    ...lessons.filter(lessonHasReading).map((lesson) => lessonReadingPath(level, lesson.id)),
+    ...lessons.filter(lessonHasReading).map((lesson) => lessonReadingPath(level, lesson.id))
   ];
 });

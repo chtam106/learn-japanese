@@ -80,6 +80,6 @@ export function withSequentialNumbers(lessons: Lesson[]): Lesson[] {
   return lessons.map((lesson, index) => ({
     ...lesson,
     number: index + 1,
-    id: `lesson-${index + 1}`,
+    id: `lesson-${index + 1}`
   }));
 }

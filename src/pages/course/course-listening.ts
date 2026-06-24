@@ -46,10 +46,10 @@ function vocabWord(item: { kana: string; kanji?: string }): string {
 function buildOptions(
   correctLabel: string,
   ja: boolean,
-  pool: string[],
+  pool: string[]
 ): { options: ListeningOption[]; correctId: string } {
   const distractors = shuffle(
-    Array.from(new Set(pool.filter((label) => label !== correctLabel))),
+    Array.from(new Set(pool.filter((label) => label !== correctLabel)))
   ).slice(0, OPTION_COUNT - 1);
 
   const labels = shuffle([correctLabel, ...distractors]);
@@ -89,7 +89,7 @@ function buildPools(course: Course, locale: Locale): ListeningPools {
 export function buildLessonListening(
   course: Course,
   lesson: Lesson,
-  locale: Locale,
+  locale: Locale
 ): ListeningQuestion[] {
   const pools = buildPools(course, locale);
   const candidates: ListeningQuestion[] = [];
@@ -108,7 +108,7 @@ export function buildLessonListening(
         optionsJa: false,
         options,
         correctId,
-        reveal,
+        reveal
       });
     } else {
       const { options, correctId } = buildOptions(word, true, pools.words);
@@ -119,7 +119,7 @@ export function buildLessonListening(
         optionsJa: true,
         options,
         correctId,
-        reveal,
+        reveal
       });
     }
   });
@@ -129,7 +129,7 @@ export function buildLessonListening(
       const { options, correctId } = buildOptions(
         example.meaning[locale],
         false,
-        pools.sentenceMeanings,
+        pools.sentenceMeanings
       );
       candidates.push({
         id: `listen-sentence-${pointIndex}-${exampleIndex}`,
@@ -138,7 +138,7 @@ export function buildLessonListening(
         optionsJa: false,
         options,
         correctId,
-        reveal: { jp: example.jp, romaji: example.romaji, meaning: example.meaning[locale] },
+        reveal: { jp: example.jp, romaji: example.romaji, meaning: example.meaning[locale] }
       });
     });
   });

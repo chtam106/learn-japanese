@@ -10,7 +10,7 @@ import {
   LinearProgress,
   Paper,
   Stack,
-  Typography,
+  Typography
 } from '@mui/material';
 import { pink } from '@mui/material/colors';
 import {
@@ -18,7 +18,7 @@ import {
   lessonPath,
   type CourseLevel,
   type Lesson,
-  type ReadingPassage,
+  type ReadingPassage
 } from '@/constants/courses/index.ts';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -119,8 +119,8 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
   const [questions, setQuestions] = useState(() =>
     passage.questions.map((question) => ({
       ...question,
-      choices: shuffle(question.choices),
-    })),
+      choices: shuffle(question.choices)
+    }))
   );
   const [index, setIndex] = useState(0);
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
@@ -261,7 +261,7 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
                     variant="subtitle1"
                     sx={{
                       fontWeight: 600,
-                      color: selectedId === question.correctId ? 'info.main' : pink[500],
+                      color: selectedId === question.correctId ? 'info.main' : pink[500]
                     }}
                   >
                     {selectedId === question.correctId

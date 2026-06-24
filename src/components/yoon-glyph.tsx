@@ -23,7 +23,7 @@ export function YoonGlyph({ base, suffix, compact = false, large = false }: Yoon
         alignItems: 'flex-end',
         justifyContent: 'center',
         lineHeight: 1,
-        fontFamily: FONT_FAMILY_JP,
+        fontFamily: FONT_FAMILY_JP
       }}
     >
       <Typography component="span" variant={baseVariant} sx={kanaFontSx}>
@@ -35,7 +35,7 @@ export function YoonGlyph({ base, suffix, compact = false, large = false }: Yoon
           ...kanaFontSx,
           fontSize: suffixSize,
           mb: suffixMb,
-          ml: '-0.06em',
+          ml: '-0.06em'
         }}
       >
         {suffix}

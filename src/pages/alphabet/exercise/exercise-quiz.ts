@@ -1,7 +1,7 @@
 import {
   getAlphabetItems,
   type AlphabetCell,
-  type ExerciseScope,
+  type ExerciseScope
 } from '@/constants/alphabet-charts.ts';
 
 export type { ExerciseScope };
@@ -40,14 +40,14 @@ function shuffle<T>(items: T[]): T[] {
 
 function findScriptPair(allItems: AlphabetCell[], correctItem: AlphabetCell) {
   return allItems.find(
-    (item) => item.romaji === correctItem.romaji && item.char !== correctItem.char,
+    (item) => item.romaji === correctItem.romaji && item.char !== correctItem.char
   );
 }
 
 function pickOptionItems(
   allItems: AlphabetCell[],
   correctItem: AlphabetCell,
-  includeScriptPair = false,
+  includeScriptPair = false
 ): AlphabetCell[] {
   const paired = includeScriptPair ? findScriptPair(allItems, correctItem) : undefined;
   const otherItems = allItems.filter((item) => item.romaji !== correctItem.romaji);
@@ -56,14 +56,14 @@ function pickOptionItems(
   return shuffle([
     correctItem,
     ...(paired ? [paired] : []),
-    ...shuffle(otherItems).slice(0, distractorCount),
+    ...shuffle(otherItems).slice(0, distractorCount)
   ]);
 }
 
 function getCharacterCorrectAnswers(
   correctItem: AlphabetCell,
   allItems: AlphabetCell[],
-  includeScriptPair: boolean,
+  includeScriptPair: boolean
 ) {
   const paired = includeScriptPair ? findScriptPair(allItems, correctItem) : undefined;
 
@@ -94,7 +94,7 @@ function buildQuestion(
   correctItem: AlphabetCell,
   allItems: AlphabetCell[],
   mode: ExerciseMode,
-  script: ExerciseScript,
+  script: ExerciseScript
 ): QuizQuestion {
   const includeScriptPair = script === 'all' && (mode === 'character' || mode === 'listen');
   const optionItems = pickOptionItems(allItems, correctItem, includeScriptPair);
@@ -104,7 +104,7 @@ function buildQuestion(
       mode,
       correctItem,
       optionItems,
-      correctAnswers: [correctItem.romaji],
+      correctAnswers: [correctItem.romaji]
     };
   }
 
@@ -112,14 +112,14 @@ function buildQuestion(
     mode,
     correctItem,
     optionItems,
-    correctAnswers: getCharacterCorrectAnswers(correctItem, allItems, includeScriptPair),
+    correctAnswers: getCharacterCorrectAnswers(correctItem, allItems, includeScriptPair)
   };
 }
 
 function buildScriptPairQuestion(
   promptRomaji: string,
   scope: ExerciseScope,
-  pairDirection: ScriptPairDirection,
+  pairDirection: ScriptPairDirection
 ): QuizQuestion {
   const resolvedDirection = resolvePairDirection(pairDirection);
   const promptScript = getPromptScript(resolvedDirection);
@@ -139,7 +139,7 @@ function buildScriptPairQuestion(
     correctItem,
     pairDirection: resolvedDirection,
     optionItems: pickOptionItems(allAnswerItems, correctItem),
-    correctAnswers: [correctItem.char],
+    correctAnswers: [correctItem.char]
   };
 }
 
@@ -155,7 +155,7 @@ export function createQuizSession(
   script: ExerciseScript,
   mode: ExerciseMode,
   scope: ExerciseScope = 'all',
-  pairDirection: ScriptPairDirection = 'hiragana-to-katakana',
+  pairDirection: ScriptPairDirection = 'hiragana-to-katakana'
 ): QuizSession {
   const allItems = getSessionItems(script, scope);
   let remaining = shuffle([...allItems]);
@@ -181,7 +181,7 @@ export function createQuizSession(
       }
 
       return buildQuestion(correctItem, allItems, mode, script);
-    },
+    }
   };
 }
 

@@ -6,15 +6,15 @@ export type TranslationParams = Record<string, string | number>;
 
 const en: TranslationTree = {
   app: {
-    title: 'Langwish',
+    title: 'Langwish'
   },
   common: {
-    playAudio: 'Play pronunciation',
+    playAudio: 'Play pronunciation'
   },
   errorBoundary: {
     title: 'Something went wrong',
     body: 'An unexpected error occurred. Please reload the page to continue.',
-    reload: 'Reload page',
+    reload: 'Reload page'
   },
   audio: {
     settings: 'Audio settings',
@@ -22,7 +22,7 @@ const en: TranslationTree = {
     auto: 'Automatic',
     speed: 'Speed',
     test: 'Test voice',
-    noVoices: 'No Japanese voice was found in your browser.',
+    noVoices: 'No Japanese voice was found in your browser.'
   },
   seo: {
     defaultTitle: 'Langwish - Learn Japanese Hiragana, Katakana & Kana Quiz',
@@ -31,7 +31,7 @@ const en: TranslationTree = {
     home: {
       title: 'Learn Japanese Hiragana & Katakana',
       description:
-        'Start learning Japanese kana with interactive hiragana and katakana charts, native audio, and free practice quizzes.',
+        'Start learning Japanese kana with interactive hiragana and katakana charts, native audio, and free practice quizzes.'
     },
     alphabet: {
       title: 'Japanese Alphabet - Hiragana & Katakana',
@@ -40,12 +40,12 @@ const en: TranslationTree = {
       hiragana: {
         title: 'Hiragana Chart & Practice (ひらがな)',
         description:
-          'Learn hiragana with an interactive chart covering seion, dakuten, handakuten, and yoon. Tap any character to hear native audio.',
+          'Learn hiragana with an interactive chart covering seion, dakuten, handakuten, and yoon. Tap any character to hear native audio.'
       },
       katakana: {
         title: 'Katakana Chart & Practice (カタカナ)',
         description:
-          'Master katakana with a full interactive chart, native pronunciation, and practice exercises for loanwords and emphasis.',
+          'Master katakana with a full interactive chart, native pronunciation, and practice exercises for loanwords and emphasis.'
       },
       exercise: {
         title: 'Japanese Kana Exercises & Quizzes',
@@ -54,35 +54,35 @@ const en: TranslationTree = {
         romaji: {
           title: 'Romaji Quiz - Hiragana & Katakana Practice',
           description:
-            'See a kana character and choose the correct romaji. Practice hiragana and katakana reading step by step.',
+            'See a kana character and choose the correct romaji. Practice hiragana and katakana reading step by step.'
         },
         character: {
           title: 'Choose the Kana Character Quiz',
           description:
-            'See romaji and pick the matching hiragana or katakana character. Build kana recognition with instant feedback.',
+            'See romaji and pick the matching hiragana or katakana character. Build kana recognition with instant feedback.'
         },
         listen: {
           title: 'Listen & Choose Kana Quiz',
           description:
-            'Train your ear with native audio and pick the correct hiragana or katakana character.',
+            'Train your ear with native audio and pick the correct hiragana or katakana character.'
         },
         scriptPair: {
           title: 'Hiragana ↔ Katakana Matching Quiz',
           description:
-            'Match hiragana and katakana pairs to strengthen both Japanese syllabaries at once.',
+            'Match hiragana and katakana pairs to strengthen both Japanese syllabaries at once.'
         },
         writing: {
           title: 'Kana Writing Practice with Stroke Order Animation',
           description:
-            'Pick a basic hiragana or katakana character, practice writing by hand, and follow the stroke order animation guide.',
-        },
-      },
-    },
+            'Pick a basic hiragana or katakana character, practice writing by hand, and follow the stroke order animation guide.'
+        }
+      }
+    }
   },
   language: {
     label: 'Language',
     en: 'English',
-    vi: 'Tiếng Việt',
+    vi: 'Tiếng Việt'
   },
   nav: {
     home: 'Home',
@@ -94,7 +94,7 @@ const en: TranslationTree = {
     closeMenu: 'Close menu',
     mainNavigation: 'Main navigation',
     collapse: 'Collapse {{label}}',
-    expand: 'Expand {{label}}',
+    expand: 'Expand {{label}}'
   },
   home: {
     subtitle: 'Start with the alphabet - hiragana and katakana.',
@@ -110,7 +110,7 @@ const en: TranslationTree = {
       'View seion, dakuten ({{dakuten}}), handakuten ({{handakuten}}), and yoon charts for hiragana and katakana.',
     featureAudio: 'Tap any character to hear NHK-style audio pronunciation.',
     featureQuiz:
-      'Practice with quizzes - choose romaji, choose the character, listen and pick, or match hiragana and katakana.',
+      'Practice with quizzes - choose romaji, choose the character, listen and pick, or match hiragana and katakana.'
   },
   alphabet: {
     title: 'Alphabet',
@@ -121,14 +121,14 @@ const en: TranslationTree = {
     hiraganaPageDescription: 'Learn the hiragana alphabet (ひらがな).',
     katakanaPageDescription: 'Learn the katakana alphabet (カタカナ).',
     tapHint: 'Tap a character to hear its pronunciation.',
-    back: 'Back to alphabet',
+    back: 'Back to alphabet'
   },
   chart: {
     seion: 'Seion',
     voiced: 'Dakuten / Handakuten ({{dakuten}} / {{handakuten}})',
     yoon: 'Yoon',
     yoonDescription: 'Combined sounds with small ゃ, ゅ, ょ - e.g. き + ゃ = きゃ (kya).',
-    playAudio: 'Play {{char}}, {{romaji}}',
+    playAudio: 'Play {{char}}, {{romaji}}'
   },
   exercise: {
     title: 'Exercise',
@@ -185,7 +185,7 @@ const en: TranslationTree = {
     rowDefault: 'Row',
     yoonRowDefault: 'Yoon row',
     rowLabel: '{{name}} row ({{char}})',
-    voicedRowLabel: '{{name}} row - {{mark}} ({{char}})',
+    voicedRowLabel: '{{name}} row - {{mark}} ({{char}})'
   },
   course: {
     lessonsHeading: 'Lessons',
@@ -237,8 +237,8 @@ const en: TranslationTree = {
     resultGood: 'Nice progress - review the misses and try again.',
     resultKeepGoing: 'Keep practicing - revisit the lesson and try again.',
     retry: 'Try again',
-    reviewLesson: 'Review lesson',
-  },
+    reviewLesson: 'Review lesson'
+  }
 } satisfies TranslationTree;
 
 type TranslationLeaf = string;
@@ -255,6 +255,6 @@ export function getChartSectionLabels(t: (key: string, params?: TranslationParam
   return {
     seion: t('chart.seion'),
     voiced: t('chart.voiced', { dakuten: DAKUTEN_MARK, handakuten: HANDAKUTEN_MARK }),
-    yoon: t('chart.yoon'),
+    yoon: t('chart.yoon')
   };
 }

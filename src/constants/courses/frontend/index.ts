@@ -9,19 +9,19 @@ export const frontendCourse: Course = {
   name: { en: 'Frontend Japanese Track', vi: 'Lộ trình tiếng Nhật Frontend' },
   subtitle: {
     en: 'Practical Japanese for frontend engineers and product teams.',
-    vi: 'Tiếng Nhật thực chiến cho frontend engineer và team sản phẩm.',
+    vi: 'Tiếng Nhật thực chiến cho frontend engineer và team sản phẩm.'
   },
   intro: {
     en: 'A dedicated frontend-focused course covering architecture, debugging, QA, CI/CD, accessibility, performance, security, design systems, product metrics, agile communication, and technical leadership. Content is structured as a long-form path for real product development scenarios with bilingual explanations and reading practice.',
-    vi: 'Khóa học tách riêng cho frontend, bao gồm kiến trúc, debug, QA, CI/CD, accessibility, hiệu năng, bảo mật, design system, product metrics, giao tiếp agile và leadership kỹ thuật. Nội dung được tổ chức thành lộ trình dài hơi cho ngữ cảnh phát triển sản phẩm thực tế với giải thích song ngữ và bài đọc hiểu.',
+    vi: 'Khóa học tách riêng cho frontend, bao gồm kiến trúc, debug, QA, CI/CD, accessibility, hiệu năng, bảo mật, design system, product metrics, giao tiếp agile và leadership kỹ thuật. Nội dung được tổ chức thành lộ trình dài hơi cho ngữ cảnh phát triển sản phẩm thực tế với giải thích song ngữ và bài đọc hiểu.'
   },
   seoTitle: {
     en: 'Frontend Japanese Track - Vocabulary & Communication',
-    vi: 'Lộ trình tiếng Nhật Frontend - Từ vựng & Giao tiếp',
+    vi: 'Lộ trình tiếng Nhật Frontend - Từ vựng & Giao tiếp'
   },
   seoDescription: {
     en: 'A practical Japanese course for frontend developers. Learn technical vocabulary, project communication patterns, and real workplace expressions with exercises and reading practice.',
-    vi: 'Khóa tiếng Nhật thực hành cho frontend developer. Học từ vựng kỹ thuật, mẫu giao tiếp dự án và cách diễn đạt nơi làm việc với bài tập và đọc hiểu.',
+    vi: 'Khóa tiếng Nhật thực hành cho frontend developer. Học từ vựng kỹ thuật, mẫu giao tiếp dự án và cách diễn đạt nơi làm việc với bài tập và đọc hiểu.'
   },
-  lessons: withSequentialNumbers([...frontendLessonsA, ...frontendLessonsB, ...frontendLessonsC]),
+  lessons: withSequentialNumbers([...frontendLessonsA, ...frontendLessonsB, ...frontendLessonsC])
 };

@@ -11,7 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
+  Typography
 } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { useTranslation } from '@/i18n/use-translation.ts';
@@ -20,7 +20,7 @@ import {
   isNavGroupActive,
   loadCourseLessonNavItems,
   navGroups,
-  type NavItem,
+  type NavItem
 } from '@/constants/nav-items.ts';
 
 function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
@@ -50,8 +50,8 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
   const [loadingLevels, setLoadingLevels] = useState<Partial<Record<CourseLevel, boolean>>>({});
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(
-      navGroups.map((group) => [group.path, isNavGroupActive(group, location.pathname)]),
-    ),
+      navGroups.map((group) => [group.path, isNavGroupActive(group, location.pathname)])
+    )
   );
 
   const ensureCourseChildren = useCallback(
@@ -69,7 +69,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
         setLoadingLevels((previous) => ({ ...previous, [level]: false }));
       }
     },
-    [courseChildrenByLevel, loadingLevels],
+    [courseChildrenByLevel, loadingLevels]
   );
 
   const toggleGroup = (path: string, level?: CourseLevel) => {
@@ -77,7 +77,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
 
     setExpandedGroups((previous) => ({
       ...previous,
-      [path]: !isExpanded,
+      [path]: !isExpanded
     }));
 
     if (!isExpanded && level) {
@@ -112,11 +112,11 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
           '& > .nav-group-item + .nav-group-item': {
             borderTop: `1px solid ${alpha(
               muiTheme.palette.text.primary,
-              muiTheme.palette.mode === 'light' ? 0.08 : 0.16,
+              muiTheme.palette.mode === 'light' ? 0.08 : 0.16
             )}`,
             mt: 0.5,
-            pt: 0.5,
-          },
+            pt: 0.5
+          }
         })}
       >
         {navGroups.map((group) => {
@@ -146,7 +146,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                     alignItems: 'center',
                     borderRadius: 1,
                     bgcolor: 'transparent',
-                    '&:hover': { bgcolor: 'transparent' },
+                    '&:hover': { bgcolor: 'transparent' }
                   }}
                 >
                   <ListItemButton
@@ -161,14 +161,14 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                       '&:hover': {
                         bgcolor: 'transparent',
                         '& .MuiListItemText-primary': { color: 'primary.main' },
-                        '& .MuiListItemIcon-root': { color: 'primary.main' },
+                        '& .MuiListItemIcon-root': { color: 'primary.main' }
                       },
                       '&.Mui-selected': {
                         bgcolor: 'transparent',
                         '& .MuiListItemText-primary': { color: 'primary.main' },
                         '& .MuiListItemIcon-root': { color: 'primary.main' },
-                        '&:hover': { bgcolor: 'transparent' },
-                      },
+                        '&:hover': { bgcolor: 'transparent' }
+                      }
                     }}
                   >
                     <ListItemIcon sx={{ minWidth: 40 }}>
@@ -189,7 +189,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                     sx={{
                       mr: 0.5,
                       bgcolor: 'transparent',
-                      '&:hover': { bgcolor: 'transparent' },
+                      '&:hover': { bgcolor: 'transparent' }
                     }}
                   >
                     {isExpanded && <ExpandLessIcon fontSize="small" />}
@@ -208,14 +208,14 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                     '&:hover': {
                       bgcolor: 'transparent',
                       '& .MuiListItemText-primary': { color: 'primary.main' },
-                      '& .MuiListItemIcon-root': { color: 'primary.main' },
+                      '& .MuiListItemIcon-root': { color: 'primary.main' }
                     },
                     '&.Mui-selected': {
                       bgcolor: 'transparent',
                       '& .MuiListItemText-primary': { color: 'primary.main' },
-                      '& .MuiListItemIcon-root': { color: 'primary.main' },
+                      '& .MuiListItemIcon-root': { color: 'primary.main' }
                     },
-                    '&.Mui-selected:hover': { bgcolor: 'transparent' },
+                    '&.Mui-selected:hover': { bgcolor: 'transparent' }
                   }}
                 >
                   <ListItemIcon sx={{ minWidth: 40 }}>
@@ -234,7 +234,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                       mt: 0.5,
                       pl: 0,
                       '& .MuiListItemButton-root': {
-                        position: 'relative',
+                        position: 'relative'
                       },
                       '& .MuiListItemButton-root + .MuiListItemButton-root::before': {
                         content: '""',
@@ -246,9 +246,9 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                         right: muiTheme.spacing(1),
                         borderTop: `1px solid ${alpha(
                           muiTheme.palette.text.primary,
-                          muiTheme.palette.mode === 'light' ? 0.08 : 0.16,
-                        )}`,
-                      },
+                          muiTheme.palette.mode === 'light' ? 0.08 : 0.16
+                        )}`
+                      }
                     })}
                   >
                     {isLoadingChildren && (
@@ -277,14 +277,14 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                             '&:hover': {
                               bgcolor: 'transparent',
                               '& .MuiListItemText-primary': { color: 'primary.main' },
-                              '& .MuiListItemIcon-root': { color: 'primary.main' },
+                              '& .MuiListItemIcon-root': { color: 'primary.main' }
                             },
                             '&.Mui-selected': {
                               bgcolor: 'transparent',
                               '& .MuiListItemText-primary': { color: 'primary.main' },
-                              '& .MuiListItemIcon-root': { color: 'primary.main' },
+                              '& .MuiListItemIcon-root': { color: 'primary.main' }
                             },
-                            '&.Mui-selected:hover': { bgcolor: 'transparent' },
+                            '&.Mui-selected:hover': { bgcolor: 'transparent' }
                           }}
                         >
                           <ListItemIcon sx={{ minWidth: isAlphabetGroup ? 32 : 40 }}>
@@ -300,9 +300,9 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                                   display: '-webkit-box',
                                   WebkitLineClamp: 2,
                                   WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden',
-                                },
-                              },
+                                  overflow: 'hidden'
+                                }
+                              }
                             }}
                           />
                         </ListItemButton>

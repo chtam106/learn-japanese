@@ -6,11 +6,11 @@ import {
   resolveExerciseScope,
   type ExerciseOverviewScope,
   type ExerciseRowScope,
-  type ExerciseScope,
+  type ExerciseScope
 } from '@/constants/alphabet-charts.ts';
 import {
   persistExercisePreferences,
-  readStoredExercisePreferences,
+  readStoredExercisePreferences
 } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
@@ -31,12 +31,12 @@ export function useExerciseScope() {
 
   const rowScopeOptions = useMemo(
     () => getExerciseRowScopeOptionsForOverview(overviewScope, t),
-    [overviewScope, t],
+    [overviewScope, t]
   );
 
   const allRowsOption = useMemo<RowSelectOption>(
     () => ({ value: ALL_ROWS_VALUE, label: t('exercise.allRows') }),
-    [t],
+    [t]
   );
 
   const showRowRangeControls = rowScopeOptions.length > 1;
@@ -84,7 +84,7 @@ export function useExerciseScope() {
 
   const scope = useMemo(
     () => resolveExerciseScope(overviewScope, effectiveRowFrom, effectiveRowTo, rowScopeOptions),
-    [effectiveRowFrom, effectiveRowTo, overviewScope, rowScopeOptions],
+    [effectiveRowFrom, effectiveRowTo, overviewScope, rowScopeOptions]
   );
 
   const overviewScopeOptions = useMemo(() => getExerciseOverviewScopeOptions(t), [t]);
@@ -148,6 +148,6 @@ export function useExerciseScope() {
     showRowRangeControls,
     handleOverviewScopeChange,
     handleRowFromSelectChange,
-    handleRowToSelectChange,
+    handleRowToSelectChange
   };
 }

@@ -13,18 +13,18 @@ function AlphabetPage() {
     {
       to: routes.alphabet.hiragana,
       title: t('nav.hiragana'),
-      description: t('alphabet.hiraganaDescription'),
+      description: t('alphabet.hiraganaDescription')
     },
     {
       to: routes.alphabet.katakana,
       title: t('nav.katakana'),
-      description: t('alphabet.katakanaDescription'),
+      description: t('alphabet.katakanaDescription')
     },
     {
       to: routes.alphabet.exercise.index,
       title: t('nav.exercise'),
-      description: t('alphabet.exerciseDescription'),
-    },
+      description: t('alphabet.exerciseDescription')
+    }
   ];
 
   return (
@@ -50,7 +50,7 @@ function AlphabetPage() {
                   width: '100%',
                   px: 2,
                   py: 2,
-                  '&:hover': { bgcolor: 'action.hover' },
+                  '&:hover': { bgcolor: 'action.hover' }
                 }}
               >
                 <Heading scale="subsection">{item.title}</Heading>

@@ -23,7 +23,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
         alignItems: 'center',
         minWidth: 0,
         textDecoration: 'none',
-        color: 'inherit',
+        color: 'inherit'
       }}
     >
       {showLogo && (
@@ -38,7 +38,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
             placeItems: 'center',
             color: 'primary.main',
             backgroundColor: (theme) =>
-              alpha(theme.palette.primary.main, theme.palette.mode === 'light' ? 0.12 : 0.24),
+              alpha(theme.palette.primary.main, theme.palette.mode === 'light' ? 0.12 : 0.24)
           }}
         >
           <Typography
@@ -59,7 +59,7 @@ export function Brand({ showTagline = false, showLogo = true }: BrandProps) {
             fontWeight: 700,
             fontSize: '1.2rem',
             lineHeight: 1.1,
-            letterSpacing: '-0.01em',
+            letterSpacing: '-0.01em'
           }}
         >
           {SITE_NAME}

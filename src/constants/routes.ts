@@ -5,22 +5,22 @@ type RouteNode = string | { readonly [key: string]: RouteNode };
 export const routes = {
   home: '/',
   n5: {
-    index: '/n5',
+    index: '/n5'
   },
   n4: {
-    index: '/n4',
+    index: '/n4'
   },
   n3: {
-    index: '/n3',
+    index: '/n3'
   },
   n2: {
-    index: '/n2',
+    index: '/n2'
   },
   n1: {
-    index: '/n1',
+    index: '/n1'
   },
   frontend: {
-    index: '/frontend',
+    index: '/frontend'
   },
   alphabet: {
     index: '/alphabet',
@@ -32,9 +32,9 @@ export const routes = {
       character: '/alphabet/exercise/character',
       listen: '/alphabet/exercise/listen',
       scriptPair: '/alphabet/exercise/script-pair',
-      writing: '/alphabet/exercise/writing',
-    },
-  },
+      writing: '/alphabet/exercise/writing'
+    }
+  }
 } as const satisfies RouteNode;
 
 type RouteEntry = {
@@ -54,7 +54,7 @@ function collectRouteEntries(node: RouteNode, keyPath: string[] = []): RouteEntr
   }
 
   return Object.entries(node).flatMap(([key, value]) =>
-    collectRouteEntries(value, [...keyPath, key]),
+    collectRouteEntries(value, [...keyPath, key])
   );
 }
 

@@ -8,20 +8,20 @@ const HEADING_VARIANT: Record<HeadingScale, 'h3' | 'h4' | 'h5' | 'h6'> = {
   display: 'h3',
   page: 'h4',
   section: 'h5',
-  subsection: 'h6',
+  subsection: 'h6'
 };
 
 const HEADING_SX: Record<HeadingScale, SxProps<Theme>> = {
   display: { fontWeight: 600, lineHeight: 1.2 },
   page: { fontWeight: 600, lineHeight: 1.25 },
   section: { fontWeight: 600, lineHeight: 1.3 },
-  subsection: { fontWeight: 600, lineHeight: 1.35 },
+  subsection: { fontWeight: 600, lineHeight: 1.35 }
 };
 
 const SCALE_FROM_COMPONENT: Record<SemanticHeading, HeadingScale> = {
   h1: 'page',
   h2: 'section',
-  h3: 'subsection',
+  h3: 'subsection'
 };
 
 export type HeadingProps = Omit<TypographyProps, 'variant'> & {

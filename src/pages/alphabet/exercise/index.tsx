@@ -14,28 +14,28 @@ function ExerciseHubPage() {
     {
       to: routes.alphabet.exercise.romaji,
       title: t('exercise.guessRomaji'),
-      description: t('exercise.romajiDescription'),
+      description: t('exercise.romajiDescription')
     },
     {
       to: routes.alphabet.exercise.character,
       title: t('exercise.chooseCharacter'),
-      description: t('exercise.characterDescription'),
+      description: t('exercise.characterDescription')
     },
     {
       to: routes.alphabet.exercise.listen,
       title: t('exercise.listenPickShort'),
-      description: t('exercise.listenDescription'),
+      description: t('exercise.listenDescription')
     },
     {
       to: routes.alphabet.exercise.scriptPair,
       title: t('exercise.scriptPair'),
-      description: t('exercise.scriptPairDescription'),
+      description: t('exercise.scriptPairDescription')
     },
     {
       to: routes.alphabet.exercise.writing,
       title: t('exercise.writing'),
-      description: t('exercise.writingDescription'),
-    },
+      description: t('exercise.writingDescription')
+    }
   ];
 
   return (
@@ -70,7 +70,7 @@ function ExerciseHubPage() {
                   width: '100%',
                   px: 2,
                   py: 2,
-                  '&:hover': { bgcolor: 'action.hover' },
+                  '&:hover': { bgcolor: 'action.hover' }
                 }}
               >
                 <Heading scale="subsection">{item.title}</Heading>

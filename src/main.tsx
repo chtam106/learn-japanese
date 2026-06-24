@@ -13,7 +13,7 @@ import { FONT_FAMILY_UI } from '@/theme/fonts.ts';
 
 const theme = createTheme({
   typography: {
-    fontFamily: FONT_FAMILY_UI,
+    fontFamily: FONT_FAMILY_UI
   },
   components: {
     MuiContainer: {
@@ -28,18 +28,18 @@ const theme = createTheme({
                 paddingRight: muiTheme.spacing(2),
                 [muiTheme.breakpoints.up('sm')]: {
                   paddingLeft: muiTheme.spacing(4),
-                  paddingRight: muiTheme.spacing(4),
+                  paddingRight: muiTheme.spacing(4)
                 },
                 [muiTheme.breakpoints.up('md')]: {
                   paddingTop: muiTheme.spacing(6),
                   paddingBottom: muiTheme.spacing(6),
                   paddingLeft: muiTheme.spacing(6),
-                  paddingRight: muiTheme.spacing(6),
-                },
-              },
-      },
-    },
-  },
+                  paddingRight: muiTheme.spacing(6)
+                }
+              }
+      }
+    }
+  }
 });
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -74,7 +74,7 @@ async function bootstrap() {
           </ErrorBoundary>
         </LanguageProvider>
       </ThemeProvider>
-    </StrictMode>,
+    </StrictMode>
   );
 }
 

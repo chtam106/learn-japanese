@@ -5,7 +5,7 @@ import type { Locale } from '@/i18n/translations.ts';
 
 const locales: { code: Locale; shortLabel: string; labelKey: 'language.en' | 'language.vi' }[] = [
   { code: 'en', shortLabel: 'EN', labelKey: 'language.en' },
-  { code: 'vi', shortLabel: 'VI', labelKey: 'language.vi' },
+  { code: 'vi', shortLabel: 'VI', labelKey: 'language.vi' }
 ];
 
 export function LanguageSwitcher() {
@@ -23,7 +23,7 @@ export function LanguageSwitcher() {
         borderRadius: 999,
         bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.100' : 'action.selected'),
         border: 1,
-        borderColor: 'divider',
+        borderColor: 'divider'
       }}
     >
       <LanguageIcon sx={{ fontSize: 17, ml: 0.75, mr: 0.25, color: 'text.secondary' }} />
@@ -46,8 +46,8 @@ export function LanguageSwitcher() {
               boxShadow: selected ? 1 : 0,
               transition: 'background-color 0.15s, box-shadow 0.15s',
               '&:hover': {
-                bgcolor: selected ? 'background.paper' : 'action.hover',
-              },
+                bgcolor: selected ? 'background.paper' : 'action.hover'
+              }
             }}
           >
             <Typography
@@ -57,7 +57,7 @@ export function LanguageSwitcher() {
                 fontWeight: selected ? 700 : 500,
                 color: selected ? 'text.primary' : 'text.secondary',
                 letterSpacing: 0.4,
-                lineHeight: 1,
+                lineHeight: 1
               }}
             >
               {shortLabel}

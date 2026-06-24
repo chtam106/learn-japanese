@@ -30,26 +30,26 @@ function HomePage() {
       to: routes.alphabet.hiragana,
       title: t('nav.hiragana'),
       symbol: 'あ',
-      description: t('home.hiraganaDescription'),
+      description: t('home.hiraganaDescription')
     },
     {
       to: routes.alphabet.katakana,
       title: t('nav.katakana'),
       symbol: 'ア',
-      description: t('home.katakanaDescription'),
+      description: t('home.katakanaDescription')
     },
     {
       to: routes.alphabet.exercise.index,
       title: t('nav.exercise'),
       icon: QuizOutlinedIcon,
-      description: t('home.exerciseDescription'),
+      description: t('home.exerciseDescription')
     },
     ...COURSE_SUMMARIES.map((course) => ({
       to: coursePath(course.level),
       title: course.name[locale],
       icon: SchoolOutlinedIcon,
-      description: course.subtitle[locale],
-    })),
+      description: course.subtitle[locale]
+    }))
   ];
 
   return (
@@ -87,7 +87,7 @@ function HomePage() {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-            gap: 2,
+            gap: 2
           }}
         >
           {studyCards.map((card) => {

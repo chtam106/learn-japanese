@@ -9,7 +9,7 @@ import {
   Paper,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from '@mui/material';
 import { pink } from '@mui/material/colors';
 import {
@@ -18,7 +18,7 @@ import {
   lessonPath,
   type Course,
   type CourseLevel,
-  type Lesson,
+  type Lesson
 } from '@/constants/courses/index.ts';
 import { Heading } from '@/components/heading.tsx';
 import { PageContainer } from '@/components/page-container.tsx';
@@ -35,7 +35,7 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
   const canSpeak = isSpeechSupported();
 
   const [questions, setQuestions] = useState<QuizQuestion[]>(() =>
-    buildLessonQuiz(course, lesson, locale),
+    buildLessonQuiz(course, lesson, locale)
   );
   const [index, setIndex] = useState(0);
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
@@ -189,7 +189,7 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                   sx={{
                     flex: 1,
                     fontWeight: 600,
-                    cursor: canPlayPromptAudio ? 'pointer' : undefined,
+                    cursor: canPlayPromptAudio ? 'pointer' : undefined
                   }}
                   lang={question.promptJa ? 'ja' : undefined}
                 >
@@ -248,8 +248,8 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
                       htmlInput: {
                         autoCapitalize: 'none',
                         autoCorrect: 'off',
-                        spellCheck: false,
-                      },
+                        spellCheck: false
+                      }
                     }}
                   />
                   <Button

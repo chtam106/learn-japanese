@@ -2,16 +2,16 @@ import { useCallback, useState } from 'react';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import type {
   ExerciseScript,
-  ScriptPairDirection,
+  ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import {
   persistExercisePreferences,
-  readStoredExercisePreferences,
+  readStoredExercisePreferences
 } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 
 export function useExerciseScript() {
   const [script, setScriptState] = useState<ExerciseScript>(
-    () => readStoredExercisePreferences().script,
+    () => readStoredExercisePreferences().script
   );
 
   const setScript = useCallback((next: ExerciseScript) => {
@@ -23,7 +23,7 @@ export function useExerciseScript() {
     (event: SelectChangeEvent<ExerciseScript>) => {
       setScript(event.target.value);
     },
-    [setScript],
+    [setScript]
   );
 
   return { script, setScript, handleScriptChange };
@@ -31,7 +31,7 @@ export function useExerciseScript() {
 
 export function useExercisePairDirection() {
   const [pairDirection, setPairDirectionState] = useState<ScriptPairDirection>(
-    () => readStoredExercisePreferences().pairDirection,
+    () => readStoredExercisePreferences().pairDirection
   );
 
   const setPairDirection = useCallback((next: ScriptPairDirection) => {
@@ -43,7 +43,7 @@ export function useExercisePairDirection() {
     (event: SelectChangeEvent<ScriptPairDirection>) => {
       setPairDirection(event.target.value);
     },
-    [setPairDirection],
+    [setPairDirection]
   );
 
   return { pairDirection, setPairDirection, handlePairDirectionChange };
