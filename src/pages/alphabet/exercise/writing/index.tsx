@@ -179,15 +179,10 @@ function WritingCanvas({ ariaLabel, clearLabel }: { ariaLabel: string; clearLabe
           position: 'absolute',
           top: 8,
           right: 8,
-          zIndex: 1,
-          bgcolor: 'rgba(255, 255, 255, 0.9)',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.14)',
-          '&:hover': {
-            bgcolor: '#ffffff'
-          }
+          zIndex: 1
         }}
       >
-        <CleaningServicesOutlinedIcon fontSize="small" sx={{ transform: 'rotate(30deg)' }} />
+        <CleaningServicesOutlinedIcon fontSize="medium" sx={{ transform: 'rotate(30deg)' }} />
       </IconButton>
       <Box
         component="canvas"
