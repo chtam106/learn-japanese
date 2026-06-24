@@ -163,11 +163,7 @@ export const viTranslations: TranslationTree = {
   },
   course: {
     lessonsHeading: 'Danh sách bài học',
-    coreTrackHeading: 'Lộ trình JLPT cốt lõi',
-    frontendTrackHeading: 'Lộ trình Frontend',
     frontendTrackTag: 'Frontend',
-    frontendTrackDescription:
-      'Các bài thực hành cho kỹ thuật frontend và giao tiếp dự án trong môi trường team sản phẩm thực tế.',
     lessonLabel: 'Bài {{number}}',
     focusLabel: 'Trong bài này',
     vocabulary: 'Từ vựng',
