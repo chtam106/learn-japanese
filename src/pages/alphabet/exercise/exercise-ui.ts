@@ -8,7 +8,7 @@ export function resultBorderSx(state: 'correct' | 'wrong') {
   const getTextColor = (theme: Theme) => (isCorrect ? theme.palette.info.dark : pink[700]);
 
   return {
-    borderWidth: 2,
+    borderWidth: 1,
     bgcolor: (theme: Theme) => alpha(getMainColor(theme), 0.14),
     borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.45),
     color: getTextColor,
@@ -17,7 +17,7 @@ export function resultBorderSx(state: 'correct' | 'wrong') {
       borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.62)
     },
     '&.Mui-disabled': {
-      borderWidth: 2,
+      borderWidth: 1,
       bgcolor: (theme: Theme) => alpha(getMainColor(theme), 0.14),
       borderColor: (theme: Theme) => alpha(getMainColor(theme), 0.45),
       color: getTextColor,

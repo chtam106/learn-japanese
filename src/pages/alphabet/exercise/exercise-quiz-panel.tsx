@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import { Box, Button, IconButton, Paper, Typography } from '@mui/material';
+import { Box, Button, IconButton, Paper, TextField, Typography } from '@mui/material';
 import {
   getOptionValue,
   isQuizAnswerCorrect,
@@ -21,10 +22,118 @@ type ExerciseQuizPanelProps = {
   mode: ExerciseMode;
   scriptLabel: string;
   question: QuizQuestion;
+  questionNumber: number;
   wrongAnswers: string[];
   answeredCorrectly: boolean;
   onAnswer: (answer: string) => void;
 };
+
+/** Map common Kunrei-shiki / typo spellings to the Hepburn romaji used in data. */
+const ROMAJI_ALIASES: Record<string, string> = {
+  si: 'shi',
+  ti: 'chi',
+  tu: 'tsu',
+  hu: 'fu',
+  zi: 'ji',
+  di: 'ji',
+  du: 'zu',
+  sya: 'sha',
+  syu: 'shu',
+  syo: 'sho',
+  tya: 'cha',
+  tyu: 'chu',
+  tyo: 'cho',
+  zya: 'ja',
+  zyu: 'ju',
+  zyo: 'jo',
+  jya: 'ja',
+  jyu: 'ju',
+  jyo: 'jo',
+  cya: 'cha',
+  cyu: 'chu',
+  cyo: 'cho'
+};
+
+function canonicalizeRomaji(value: string) {
+  const normalized = value.trim().toLowerCase();
+  return ROMAJI_ALIASES[normalized] ?? normalized;
+}
+
+/** Free-text romaji answer: type the romaji for the shown kana. */
+function RomajiInputAnswer({
+  answeredCorrectly,
+  wrongAnswers,
+  onAnswer
+}: {
+  answeredCorrectly: boolean;
+  wrongAnswers: string[];
+  onAnswer: (answer: string) => void;
+}) {
+  const { t } = useTranslation();
+  const [value, setValue] = useState('');
+
+  const canonical = canonicalizeRomaji(value);
+  const isWrong = !answeredCorrectly && canonical.length > 0 && wrongAnswers.includes(canonical);
+
+  const handleSubmit = () => {
+    if (answeredCorrectly || canonical.length === 0) {
+      return;
+    }
+
+    onAnswer(canonical);
+  };
+
+  return (
+    <Box
+      component="form"
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleSubmit();
+      }}
+      sx={{ display: 'flex', gap: 1.5, justifyContent: 'center', alignItems: 'center' }}
+    >
+      <TextField
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder={t('exercise.romajiInputPlaceholder')}
+        autoComplete="off"
+        spellCheck={false}
+        autoFocus
+        focused={answeredCorrectly || undefined}
+        color={answeredCorrectly ? 'success' : undefined}
+        error={isWrong}
+        slotProps={{
+          input: { readOnly: answeredCorrectly },
+          htmlInput: {
+            'aria-label': t('exercise.romajiInputPlaceholder'),
+            lang: 'en',
+            autoCapitalize: 'none',
+            autoCorrect: 'off'
+          }
+        }}
+        sx={{
+          maxWidth: 200,
+          '& .MuiOutlinedInput-root': { height: 48 },
+          '& .MuiOutlinedInput-notchedOutline': { borderWidth: 1 },
+          '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderWidth: 1
+          },
+          '& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+            borderWidth: 1
+          }
+        }}
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        disabled={answeredCorrectly}
+        sx={{ height: 48, flexShrink: 0 }}
+      >
+        {t('exercise.check')}
+      </Button>
+    </Box>
+  );
+}
 
 function getQuestionLabel(
   mode: ExerciseMode,
@@ -50,6 +159,7 @@ export function ExerciseQuizPanel({
   mode,
   scriptLabel,
   question,
+  questionNumber,
   wrongAnswers,
   answeredCorrectly,
   onAnswer
@@ -146,41 +256,52 @@ export function ExerciseQuizPanel({
         )}
       </Box>
 
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 2
-        }}
-      >
-        {question.optionItems.map((item) => {
-          const value = getOptionValue(item, mode);
-          const isWrongAnswer = wrongAnswers.includes(value);
-          const isCorrectAnswer = isQuizAnswerCorrect(question, value);
-          const showCorrect = answeredCorrectly && isCorrectAnswer;
-          const showWrong = isWrongAnswer && !answeredCorrectly;
+      {mode === 'romaji' && (
+        <RomajiInputAnswer
+          key={questionNumber}
+          answeredCorrectly={answeredCorrectly}
+          wrongAnswers={wrongAnswers}
+          onAnswer={onAnswer}
+        />
+      )}
 
-          return (
-            <Button
-              key={`${item.romaji}-${item.char}`}
-              variant="outlined"
-              onClick={() => onAnswer(value)}
-              disabled={answeredCorrectly || isWrongAnswer}
+      {mode !== 'romaji' && (
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 2
+          }}
+        >
+          {question.optionItems.map((item) => {
+            const value = getOptionValue(item, mode);
+            const isWrongAnswer = wrongAnswers.includes(value);
+            const isCorrectAnswer = isQuizAnswerCorrect(question, value);
+            const showCorrect = answeredCorrectly && isCorrectAnswer;
+            const showWrong = isWrongAnswer && !answeredCorrectly;
+
+            return (
+              <Button
+                key={`${item.romaji}-${item.char}`}
+                variant="outlined"
+                onClick={() => onAnswer(value)}
+                disabled={answeredCorrectly || isWrongAnswer}
               sx={{
                 py: 2,
                 fontSize: characterOptions ? '1.5rem' : '1rem',
-                borderWidth: 2,
-                '&.Mui-disabled': { borderWidth: 2 },
+                borderWidth: 1,
+                '&.Mui-disabled': { borderWidth: 1 },
                 ...(showCorrect && resultBorderSx('correct')),
                 ...(showWrong && resultBorderSx('wrong'))
               }}
-            >
-              {characterOptions && <KanaDisplay cell={item} variant="option" />}
-              {!characterOptions && item.romaji}
-            </Button>
-          );
-        })}
-      </Box>
+              >
+                {characterOptions && <KanaDisplay cell={item} variant="option" />}
+                {!characterOptions && item.romaji}
+              </Button>
+            );
+          })}
+        </Box>
+      )}
     </Paper>
   );
 }
@@ -212,6 +333,7 @@ export function ExerciseQuiz({
       mode={mode}
       scriptLabel={scriptLabel}
       question={quiz.question}
+      questionNumber={quiz.questionNumber}
       wrongAnswers={quiz.wrongAnswers}
       answeredCorrectly={quiz.answeredCorrectly}
       onAnswer={quiz.handleAnswer}

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   createQuizSession,
-  getOptionValue,
   isQuizAnswerCorrect,
   type ExerciseMode,
   type ExerciseScope,
@@ -10,7 +9,7 @@ import {
   type QuizSession,
   type ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
-import { playKanaAudio, playWrongAnswerSound } from '@/utils/kana-audio.ts';
+import { playKanaAudio } from '@/utils/kana-audio.ts';
 
 type UseExerciseQuizOptions = {
   mode: ExerciseMode;
@@ -35,6 +34,7 @@ export function useExerciseQuiz({
   });
   const sessionRef = useRef<QuizSession>(initialQuiz.session);
   const [question, setQuestion] = useState<QuizQuestion>(initialQuiz.question);
+  const [questionNumber, setQuestionNumber] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState<string[]>([]);
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
 
@@ -53,16 +53,8 @@ export function useExerciseQuiz({
 
     if (isQuizAnswerCorrect(question, answer)) {
       setAnsweredCorrectly(true);
-
-      if (mode !== 'listen') {
-        const matchedItem =
-          question.optionItems.find((item) => getOptionValue(item, mode) === answer) ??
-          question.correctItem;
-        playKanaAudio(matchedItem.romaji, matchedItem.char);
-      }
     } else {
       setWrongAnswers((previous) => [...previous, answer]);
-      playWrongAnswerSound();
     }
   };
 
@@ -73,6 +65,7 @@ export function useExerciseQuiz({
 
     const timer = window.setTimeout(() => {
       setQuestion(sessionRef.current.next());
+      setQuestionNumber((previous) => previous + 1);
       setWrongAnswers([]);
       setAnsweredCorrectly(false);
     }, 1000);
@@ -84,6 +77,7 @@ export function useExerciseQuiz({
 
   return {
     question,
+    questionNumber,
     wrongAnswers,
     answeredCorrectly,
     handleAnswer
