@@ -45,13 +45,15 @@ pnpm test:coverage   # run with coverage / chạy kèm coverage
 
 ### Coverage / Độ phủ
 
-`pnpm test:coverage` prints a summary table in the terminal and writes a full HTML report to `coverage/`. Open it with:
+`pnpm test:coverage` prints a summary table in the terminal and writes a full HTML report to `coverage/unit/`. Open it with:
 
-`pnpm test:coverage` in bảng tóm tắt ở terminal và xuất báo cáo HTML đầy đủ vào `coverage/`. Mở bằng:
+`pnpm test:coverage` in bảng tóm tắt ở terminal và xuất báo cáo HTML đầy đủ vào `coverage/unit/`. Mở bằng:
 
 ```bash
-open coverage/index.html
+open coverage/unit/index.html
 ```
+
+> Output layout / Bố cục output: unit coverage lives in `coverage/unit/`, the Playwright report and its artifacts live in `coverage/e2e/` - kept separate so the two suites never share a folder. / coverage unit nằm ở `coverage/unit/`, báo cáo Playwright và artifact nằm ở `coverage/e2e/` - tách riêng nên hai bộ test không bao giờ chung thư mục.
 
 The provider is V8 (`@vitest/coverage-v8`). Source files are included from `src/`; tests, the `src/test/` setup, and `main.tsx` are excluded (see `vite.config.ts`).
 

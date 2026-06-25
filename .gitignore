@@ -12,10 +12,8 @@ dist
 dist-ssr
 *.local
 
-# Test output
+# Test output (unit -> coverage/unit, e2e -> coverage/e2e)
 coverage
-playwright-report
-test-results
 .playwright
 
 # Editor directories and files

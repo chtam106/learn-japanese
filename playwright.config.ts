@@ -10,7 +10,9 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['list'], ['html', { open: 'never', outputFolder: 'coverage/e2e' }]],
+  // Per-test artifacts (traces, screenshots) live under the e2e folder too.
+  outputDir: 'coverage/e2e/test-results',
   use: {
     baseURL: BASE_URL,
     trace: 'on-first-retry'

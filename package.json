@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:report": "playwright show-report",
+    "test:e2e:report": "playwright show-report coverage/e2e",
     "lint:style": "stylelint \"src/**/*.css\"",
     "lint:style:fix": "stylelint \"src/**/*.css\" --fix",
     "format": "prettier --write .",
