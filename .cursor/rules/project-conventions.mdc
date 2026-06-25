@@ -84,6 +84,11 @@ alwaysApply: true
 ## MUI icons
 - Import by exact file name (often the `Outlined` suffix, e.g. `CheckCircleOutlined` not `CheckCircleOutline`). If unsure, check `node_modules/@mui/icons-material/`.
 
+## Storybook
+- Colocate the story next to its component as `<name>/index.stories.tsx` (folder-based, mirroring `<name>/index.tsx`) — do NOT repeat the component name in the filename (no `footer.stories.tsx`).
+- Title stories generically by folder: `Components/<ComponentName>` for everything under `src/components/`. Don't hand-pick ad-hoc categories (no `Layout/...`).
+- Global providers (MUI theme + `CssBaseline`, `LanguageProvider`, router) live in `.storybook/preview.tsx` decorators; the MUI theme is shared via `src/theme/app-theme.ts` (imported by both `main.tsx` and the preview). A `locale` toolbar global switches en/vi (remount `LanguageProvider` via `key`).
+
 ## Routing & sitemap
 - Routes map to `src/pages/**/index.tsx`. Static routes live in `src/constants/routes.ts`; dynamic param routes are registered in `src/app.tsx`.
 - For dynamic pages, export path arrays from the data file and append them to `SITEMAP_PATHS` in `routes.ts`.
