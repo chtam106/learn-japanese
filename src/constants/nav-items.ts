@@ -2,7 +2,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import type { ComponentType } from 'react';
 import type { SvgIconProps } from '@mui/material';
 import { COURSE_LEVELS, coursePath, lessonPath } from '@/constants/courses/levels.ts';
@@ -41,7 +41,7 @@ const courseSummaryByLevel = Object.fromEntries(
 const courseGroups: NavGroup[] = COURSE_LEVELS.map((level) => ({
   label: courseSummaryByLevel[level].name,
   path: coursePath(level),
-  icon: SchoolOutlinedIcon,
+  icon: HistoryEduOutlinedIcon,
   courseLevel: level,
   children: []
 }));

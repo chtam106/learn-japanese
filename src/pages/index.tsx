@@ -1,4 +1,4 @@
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { Box, Stack, Typography } from '@mui/material';
 import { Heading } from '@/components/heading';
@@ -42,7 +42,7 @@ function HomePage() {
   const courseCards: NavCardItem[] = COURSE_SUMMARIES.map((course) => ({
     to: coursePath(course.level),
     title: course.name[locale],
-    icon: SchoolOutlinedIcon,
+    icon: HistoryEduOutlinedIcon,
     description: course.subtitle[locale]
   }));
 
