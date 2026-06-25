@@ -67,7 +67,7 @@ export const SITEMAP_PATHS = routeEntries.map((entry) => entry.path);
 
 const pathToSeoKey = Object.fromEntries(routeEntries.map((entry) => [entry.path, entry.seoKey]));
 
-export type SeoRouteKey = (typeof routeEntries)[number]['seoKey'];
+export type SeoRouteKey = (typeof routeEntries)[number]['seoKey'] | 'notFound';
 
 export function getSeoRouteKey(pathname: string): SeoRouteKey {
   for (const level of COURSE_LEVELS) {
@@ -76,5 +76,5 @@ export function getSeoRouteKey(pathname: string): SeoRouteKey {
     }
   }
 
-  return (pathToSeoKey[pathname] as SeoRouteKey | undefined) ?? 'home';
+  return (pathToSeoKey[pathname] as SeoRouteKey | undefined) ?? 'notFound';
 }

@@ -146,7 +146,10 @@ export function PageMeta() {
     document.documentElement.lang = locale;
 
     upsertMeta('description', meta.description);
-    upsertMeta('robots', 'index, follow, max-image-preview:large');
+    upsertMeta(
+      'robots',
+      routeKey === 'notFound' ? 'noindex, follow' : 'index, follow, max-image-preview:large'
+    );
     upsertMeta('application-name', SITE_NAME);
     upsertMeta('og:title', meta.title, 'property');
     upsertMeta('og:description', meta.description, 'property');

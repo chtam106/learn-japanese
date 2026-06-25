@@ -27,6 +27,10 @@ export const viTranslations: TranslationTree = {
       description:
         'Ứng dụng học tiếng Nhật tương tác miễn phí - từ hiragana và katakana đến các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình, kèm âm thanh bản xứ, bài kiểm tra và luyện viết.'
     },
+    notFound: {
+      title: 'Không tìm thấy trang (404)',
+      description: 'Không tìm thấy trang bạn yêu cầu.'
+    },
     alphabet: {
       title: 'Bảng chữ cái tiếng Nhật - Hiragana & Katakana',
       description:
@@ -109,6 +113,11 @@ export const viTranslations: TranslationTree = {
     exerciseDescription: 'Tự kiểm tra romaji và chữ kana, có phản hồi âm thanh.',
     alphabetSection: 'Bảng chữ cái & luyện tập',
     coursesSection: 'Khóa học'
+  },
+  notFound: {
+    title: 'Không tìm thấy trang',
+    body: 'Trang bạn tìm không tồn tại hoặc có thể đã được di chuyển. Hãy quay về trang chủ để tiếp tục.',
+    backHome: 'Về trang chủ'
   },
   alphabet: {
     title: 'Bảng chữ cái',

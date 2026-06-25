@@ -24,6 +24,7 @@ const LessonPage = lazy(() => import('@/pages/course/lesson-page'));
 const ExercisePage = lazy(() => import('@/pages/course/exercise-page'));
 const ListeningPage = lazy(() => import('@/pages/course/listening-page'));
 const ReadingPage = lazy(() => import('@/pages/course/reading-page'));
+const NotFoundPage = lazy(() => import('@/pages/not-found'));
 
 function App() {
   return (
@@ -68,6 +69,8 @@ function App() {
           <Route path={routes.alphabet.exercise.scriptPair} element={<ScriptPairExercisePage />} />
           <Route path={routes.alphabet.exercise.writing} element={<WritingExercisePage />} />
           <Route path={routes.alphabet.exercise.sentence} element={<SentenceExercisePage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>

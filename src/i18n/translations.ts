@@ -31,6 +31,10 @@ const en: TranslationTree = {
       description:
         'Free interactive app to learn Japanese - from hiragana and katakana to structured JLPT N5-N1 and frontend courses, with native audio, quizzes, and writing practice.'
     },
+    notFound: {
+      title: 'Page Not Found (404)',
+      description: 'The page you requested could not be found.'
+    },
     alphabet: {
       title: 'Japanese Alphabet - Hiragana & Katakana',
       description:
@@ -115,6 +119,11 @@ const en: TranslationTree = {
     exerciseDescription: 'Quiz yourself on romaji and characters with audio feedback.',
     alphabetSection: 'Alphabet & practice',
     coursesSection: 'Courses'
+  },
+  notFound: {
+    title: 'Page not found',
+    body: "The page you are looking for does not exist or may have been moved. Let's get you back on track.",
+    backHome: 'Back to home'
   },
   alphabet: {
     title: 'Alphabet',
