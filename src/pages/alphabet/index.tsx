@@ -1,8 +1,8 @@
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { Box, Paper, Stack, Typography } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
-import { NavCardGrid, type NavCardItem } from '@/components/nav-card.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { NavCardGrid, type NavCardItem } from '@/components/nav-card';
+import { PageContainer } from '@/components/page-container';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { subtleSurfaceSx } from '@/theme/surfaces.ts';

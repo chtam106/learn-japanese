@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
+import { Heading } from '@/components/heading';
 import type { GridRow } from '@/pages/alphabet/gojuon.ts';
 
 /** Interactive chart cell: a tap/keyboard target that plays audio, with romaji below. */

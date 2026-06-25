@@ -1,9 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { Button, Paper, Stack, Typography } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
+import { Heading } from '@/components/heading';
 import { coursePath, lessonPath, type CourseLevel } from '@/constants/courses/index.ts';
-import { PageContainer } from '@/components/page-container.tsx';
+import { PageContainer } from '@/components/page-container';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 

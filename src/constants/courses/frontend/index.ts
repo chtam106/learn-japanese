@@ -1,7 +1,11 @@
 import { frontendLessonsA } from './lessons-a.ts';
 import { frontendLessonsB } from './lessons-b.ts';
 import { frontendLessonsC } from './lessons-c.ts';
-import { withSequentialNumbers, type Course, type CourseModule } from '../types.ts';
+import {
+  withSequentialNumbers,
+  type Course,
+  type CourseModule
+} from '@/constants/courses/types.ts';
 
 const frontendModules: CourseModule[] = [
   {

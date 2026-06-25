@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Box, Button, Typography } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { PageContainer } from '@/components/page-container';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 

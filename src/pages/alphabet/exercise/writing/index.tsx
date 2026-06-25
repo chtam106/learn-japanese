@@ -21,7 +21,7 @@ import {
   hiraganaChartRows,
   katakanaChartRows
 } from '@/constants/alphabet-charts.ts';
-import { KanaDisplay } from '@/components/kana-display.tsx';
+import { KanaDisplay } from '@/components/kana-display';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
 import type { Script } from '@/pages/alphabet/exercise/exercise-quiz.ts';

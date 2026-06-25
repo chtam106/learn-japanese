@@ -1,9 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Card, CardActionArea, CardContent, Chip, Stack, Typography } from '@mui/material';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
-import { Heading } from '@/components/heading.tsx';
+import { Heading } from '@/components/heading';
 import { getCourse, lessonPath, type CourseLevel, type Lesson } from '@/constants/courses/index.ts';
-import { PageContainer } from '@/components/page-container.tsx';
+import { PageContainer } from '@/components/page-container';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { interactiveSurfaceSx, tonalSurfaceSx } from '@/theme/surfaces.ts';

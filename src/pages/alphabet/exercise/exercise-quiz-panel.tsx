@@ -13,7 +13,7 @@ import {
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import { resultBorderSx } from '@/pages/alphabet/exercise/exercise-ui.ts';
 import { useExerciseQuiz } from '@/pages/alphabet/exercise/use-exercise-quiz.ts';
-import { KanaDisplay } from '@/components/kana-display.tsx';
+import { KanaDisplay } from '@/components/kana-display';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';

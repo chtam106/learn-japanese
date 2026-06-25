@@ -13,8 +13,8 @@ import {
   Typography
 } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
-import { HintText } from '@/components/hint-text.tsx';
-import { SpeakButton } from '@/components/speak-button.tsx';
+import { HintText } from '@/components/hint-text';
+import { SpeakButton } from '@/components/speak-button';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';

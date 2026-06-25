@@ -13,21 +13,21 @@ import {
   useTheme
 } from '@mui/material';
 import { alpha } from '@mui/material/styles';
-import { Brand } from '@/components/brand.tsx';
-import { ErrorBoundary } from '@/components/error-boundary.tsx';
-import { PageMeta } from '@/components/page-meta.tsx';
-import { ScrollToTopButton } from '@/components/scroll-to-top-button.tsx';
-import { SiteFooter } from '@/components/site-footer.tsx';
+import { Brand } from '@/components/brand';
+import { ErrorBoundary } from '@/components/error-boundary';
+import { PageMeta } from '@/components/page-meta';
+import { ScrollToTopButton } from '@/components/scroll-to-top-button';
+import { SiteFooter } from '@/components/site-footer';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { loadJapaneseUiFont } from '@/theme/fonts.ts';
 
 const drawerWidth = 320;
-const AppDrawerContent = lazy(() => import('@/components/app-drawer-content.tsx'));
+const AppDrawerContent = lazy(() => import('@/components/app-drawer-content'));
 const AudioSettings = lazy(() =>
-  import('@/components/audio-settings.tsx').then((module) => ({ default: module.AudioSettings }))
+  import('@/components/audio-settings').then((module) => ({ default: module.AudioSettings }))
 );
 const LanguageSwitcher = lazy(() =>
-  import('@/components/language-switcher.tsx').then((module) => ({
+  import('@/components/language-switcher').then((module) => ({
     default: module.LanguageSwitcher
   }))
 );

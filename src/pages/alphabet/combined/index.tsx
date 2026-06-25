@@ -19,10 +19,10 @@ import {
   type AlphabetChartRow,
   type GridRow
 } from '@/pages/alphabet/gojuon.ts';
-import { Heading } from '@/components/heading.tsx';
-import { HintText } from '@/components/hint-text.tsx';
-import { KanaDisplay } from '@/components/kana-display.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { HintText } from '@/components/hint-text';
+import { KanaDisplay } from '@/components/kana-display';
+import { PageContainer } from '@/components/page-container';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';

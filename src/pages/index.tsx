@@ -1,9 +1,9 @@
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { Box, Stack, Typography } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
-import { NavCardGrid, type NavCardItem } from '@/components/nav-card.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { NavCardGrid, type NavCardItem } from '@/components/nav-card';
+import { PageContainer } from '@/components/page-container';
 import { COURSE_SUMMARIES } from '@/constants/courses/summaries.ts';
 import { coursePath } from '@/constants/courses/levels.ts';
 import { routes } from '@/constants/routes.ts';

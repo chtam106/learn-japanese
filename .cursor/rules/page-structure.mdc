@@ -23,23 +23,32 @@ Routes map to folders under `src/pages/`. The page component file is always `ind
 | `/alphabet/exercise/script-pair` | `src/pages/alphabet/exercise/script-pair/index.tsx` |
 | `/alphabet/exercise/writing` | `src/pages/alphabet/exercise/writing/index.tsx` |
 
-## Course routes (exception: generic, not folder-per-route)
+## Course routes (generic pages, one folder each)
 
-Course pages are shared and parameterized by `level: CourseLevel`, so they do NOT follow the folder-per-route `index.tsx` pattern. They live as flat files in `src/pages/course/` and are registered once in `src/app.tsx` by looping `COURSE_LEVELS` (`n5`–`n1`, `frontend`):
+Course pages are shared and parameterized by `level: CourseLevel` (registered once in `src/app.tsx` by looping `COURSE_LEVELS` (`n5`-`n1`, `frontend`)). Each course page still gets its OWN folder with the page as `index.tsx` (one component = one folder):
 
 | Route | File |
 |-------|------|
-| `/:level` | `src/pages/course/course-page.tsx` |
-| `/:level/lesson/:lessonId` | `src/pages/course/lesson-page.tsx` |
-| `/:level/lesson/:lessonId/exercise` | `src/pages/course/exercise-page.tsx` |
-| `/:level/lesson/:lessonId/listening` | `src/pages/course/listening-page.tsx` |
-| `/:level/lesson/:lessonId/reading` | `src/pages/course/reading-page.tsx` |
+| `/:level` | `src/pages/course/course-page/index.tsx` |
+| `/:level/lesson/:lessonId` | `src/pages/course/lesson-page/index.tsx` |
+| `/:level/lesson/:lessonId/exercise` | `src/pages/course/exercise-page/index.tsx` |
+| `/:level/lesson/:lessonId/listening` | `src/pages/course/listening-page/index.tsx` |
+| `/:level/lesson/:lessonId/reading` | `src/pages/course/reading-page/index.tsx` |
+
+The frontend reference page is `src/pages/course/frontend-reference/index.tsx`.
+
+## One folder per component / page (IMPORTANT)
+
+- Every component and page lives in its own folder, with the component itself as `index.tsx` (e.g. `src/components/speak-button/index.tsx`, `src/pages/course/lesson-page/index.tsx`). Do NOT keep multiple sibling components as flat files in one folder.
+- Import a component/page by its folder, extensionless: `import { SpeakButton } from '@/components/speak-button'` (resolves to `.../speak-button/index.tsx`).
 
 ## Colocation
 
-- Put route-specific helpers next to the page (e.g. `exercise/exercise-quiz.ts`).
+- Put a helper used by only ONE page inside that page's folder (e.g. `course/exercise-page/course-quiz.ts`, `course/listening-page/course-listening.ts`). Reference it relatively as a sibling (`./course-quiz.ts`).
+- A helper/component shared by SIBLING pages gets its own folder in the shared parent (e.g. `course/choice-button/index.tsx`, `course/shared/index.tsx` for `LessonNotFound`/`ResultScreen`), imported via `@/pages/course/...`.
 - Shared code for a route segment stays in that segment folder (e.g. `alphabet/alphabet-chart.tsx` for hiragana + katakana).
-- Reusable UI stays in `src/components/`.
+- Globally reusable UI stays in `src/components/<name>/index.tsx`.
+- Colocate a `*.test.ts(x)` next to the file it tests.
 
 ## New pages
 
@@ -47,4 +56,4 @@ When adding a route `/foo/bar`, create `src/pages/foo/bar/index.tsx` and registe
 
 ## Imports
 
-Prefer `@/pages/...` path aliases. Use relative imports only for siblings in the same route folder.
+Prefer `@/pages/...` and `@/components/...` path aliases (extensionless for folder-based components/pages). Use relative imports only for siblings in the same folder.

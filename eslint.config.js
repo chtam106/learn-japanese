@@ -28,6 +28,20 @@ export default defineConfig([
     rules: {
       semi: ['error', 'always'],
       'react-hooks/set-state-in-effect': 'error',
+      // No parent-relative imports: use the @/ alias for cross-folder imports;
+      // only same-folder './' (and downward) relative imports are allowed.
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['../*', '../**'],
+              message:
+                'Avoid parent-relative imports (..). Use the @/ alias instead; only same-folder ./ imports are allowed.'
+            }
+          ]
+        }
+      ],
       '@stylistic/member-delimiter-style': [
         'error',
         {
