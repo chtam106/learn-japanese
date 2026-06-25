@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import {
   Button,
   FormControl,
@@ -74,7 +74,7 @@ export function AudioSettings() {
         aria-label={t('audio.settings')}
         color="inherit"
       >
-        <RecordVoiceOverOutlinedIcon />
+        <TuneOutlinedIcon />
       </IconButton>
 
       <Popover
