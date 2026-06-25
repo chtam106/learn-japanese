@@ -47,9 +47,21 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
+function isKatakana(char: string) {
+  return /[\u30a0-\u30ff]/.test(char);
+}
+
+// The cross-script partner with the same reading (e.g. じ -> ジ). Prefer the
+// other script so homophones in the SAME script (じ/ぢ, ず/づ, now that both
+// read ji/zu) are not picked instead of the katakana counterpart.
 function findScriptPair(allItems: AlphabetCell[], correctItem: AlphabetCell) {
+  const correctIsKatakana = isKatakana(correctItem.char);
+
   return allItems.find(
-    (item) => item.romaji === correctItem.romaji && item.char !== correctItem.char
+    (item) =>
+      item.romaji === correctItem.romaji &&
+      item.char !== correctItem.char &&
+      isKatakana(item.char) !== correctIsKatakana
   );
 }
 
