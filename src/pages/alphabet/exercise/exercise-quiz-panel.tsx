@@ -59,18 +59,20 @@ function canonicalizeRomaji(value: string) {
   return ROMAJI_ALIASES[normalized] ?? normalized;
 }
 
+type RomajiInputAnswerProps = {
+  correctRomaji: string;
+  answeredCorrectly: boolean;
+  wrongAnswers: string[];
+  onAnswer: (answer: string) => void;
+};
+
 /** Free-text romaji answer: type the romaji for the shown kana. */
 function RomajiInputAnswer({
   correctRomaji,
   answeredCorrectly,
   wrongAnswers,
   onAnswer
-}: {
-  correctRomaji: string;
-  answeredCorrectly: boolean;
-  wrongAnswers: string[];
-  onAnswer: (answer: string) => void;
-}) {
+}: RomajiInputAnswerProps) {
   const { t } = useTranslation();
   const [value, setValue] = useState('');
   const [revealed, setRevealed] = useState(false);

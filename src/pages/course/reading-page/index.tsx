@@ -40,7 +40,11 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
-function PassageCard({ passage }: { passage: ReadingPassage }) {
+type PassageCardProps = {
+  passage: ReadingPassage;
+};
+
+function PassageCard({ passage }: PassageCardProps) {
   const { locale, t } = useTranslation();
   const [showTranslation, setShowTranslation] = useState(false);
   const canSpeak = isSpeechSupported();
@@ -112,7 +116,12 @@ function PassageCard({ passage }: { passage: ReadingPassage }) {
   );
 }
 
-function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) {
+type ReadingQuizProps = {
+  level: CourseLevel;
+  lesson: Lesson;
+};
+
+function ReadingQuiz({ level, lesson }: ReadingQuizProps) {
   const { locale, t } = useTranslation();
   const passage = lesson.reading![0];
 
@@ -281,7 +290,11 @@ function ReadingQuiz({ level, lesson }: { level: CourseLevel; lesson: Lesson }) 
   );
 }
 
-function ReadingPage({ level }: { level: CourseLevel }) {
+type ReadingPageProps = {
+  level: CourseLevel;
+};
+
+function ReadingPage({ level }: ReadingPageProps) {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { locale } = useTranslation();
   const lesson = lessonId ? getLesson(level, lessonId) : undefined;

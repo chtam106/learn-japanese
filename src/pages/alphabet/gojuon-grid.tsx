@@ -3,20 +3,16 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Heading } from '@/components/heading';
 import type { GridRow } from '@/pages/alphabet/gojuon.ts';
 
-/** Interactive chart cell: a tap/keyboard target that plays audio, with romaji below. */
-export function CellButton({
-  ariaLabel,
-  onActivate,
-  romaji,
-  compact,
-  children
-}: {
+type CellButtonProps = {
   ariaLabel: string;
   onActivate: () => void;
   romaji: string;
   compact: boolean;
   children: ReactNode;
-}) {
+};
+
+/** Interactive chart cell: a tap/keyboard target that plays audio, with romaji below. */
+export function CellButton({ ariaLabel, onActivate, romaji, compact, children }: CellButtonProps) {
   return (
     <Box
       role="button"
@@ -70,19 +66,21 @@ const HEADER_LABEL_SX = {
   fontSize: { xs: '1rem', md: '1.2rem' }
 } as const;
 
+type GojuonGridProps<T> = {
+  rows: GridRow<T>[];
+  headers: string[];
+  renderCell: (cell: T, compact: boolean) => ReactNode;
+  minCellWidth?: number;
+  maxCellWidth?: number;
+};
+
 export function GojuonGrid<T>({
   rows,
   headers,
   renderCell,
   minCellWidth = 44,
   maxCellWidth = 96
-}: {
-  rows: GridRow<T>[];
-  headers: string[];
-  renderCell: (cell: T, compact: boolean) => ReactNode;
-  minCellWidth?: number;
-  maxCellWidth?: number;
-}) {
+}: GojuonGridProps<T>) {
   const theme = useTheme();
   const compact = useMediaQuery(theme.breakpoints.down('md'));
   const columnCount = headers.length;
@@ -129,7 +127,12 @@ export function GojuonGrid<T>({
   );
 }
 
-export function ChartBlock({ heading, children }: { heading: string; children: ReactNode }) {
+type ChartBlockProps = {
+  heading: string;
+  children: ReactNode;
+};
+
+export function ChartBlock({ heading, children }: ChartBlockProps) {
   return (
     <Box sx={{ width: '100%' }}>
       <Heading

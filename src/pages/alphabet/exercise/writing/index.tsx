@@ -46,15 +46,13 @@ function configurePen(ctx: CanvasRenderingContext2D) {
   ctx.strokeStyle = '#101828';
 }
 
-function WritingCanvas({
-  ariaLabel,
-  clearLabel,
-  undoLabel
-}: {
+type WritingCanvasProps = {
   ariaLabel: string;
   clearLabel: string;
   undoLabel: string;
-}) {
+};
+
+function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawingRef = useRef(false);
   const historyRef = useRef<ImageData[]>([]);
@@ -253,8 +251,12 @@ function WritingCanvas({
   );
 }
 
+type KanaSampleProps = {
+  cell: AlphabetCell;
+};
+
 /** A reference glyph in the on-screen (gothic) font; tapping plays its audio. */
-function KanaSample({ cell }: { cell: AlphabetCell }) {
+function KanaSample({ cell }: KanaSampleProps) {
   const { t } = useTranslation();
 
   return (
@@ -309,8 +311,13 @@ function pickRandomIndex(length: number, exclude: number) {
   return next;
 }
 
+type RomajiPromptPracticeProps = {
+  script: Script;
+  rowIndex: number | 'all';
+};
+
 /** Show a random romaji prompt and let the user write the kana, then reveal it. */
-function RomajiPromptPractice({ script, rowIndex }: { script: Script; rowIndex: number | 'all' }) {
+function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
   const { t } = useTranslation();
   const items = useMemo(() => {
     if (rowIndex === 'all') {

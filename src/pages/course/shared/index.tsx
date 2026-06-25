@@ -7,7 +7,11 @@ import { PageContainer } from '@/components/page-container';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
-export function LessonNotFound({ level }: { level: CourseLevel }) {
+type LessonNotFoundProps = {
+  level: CourseLevel;
+};
+
+export function LessonNotFound({ level }: LessonNotFoundProps) {
   const { t } = useTranslation();
 
   return (
@@ -25,19 +29,15 @@ export function LessonNotFound({ level }: { level: CourseLevel }) {
   );
 }
 
-export function ResultScreen({
-  score,
-  total,
-  level,
-  lessonId,
-  onRetry
-}: {
+type ResultScreenProps = {
   score: number;
   total: number;
   level: CourseLevel;
   lessonId: string;
   onRetry: () => void;
-}) {
+};
+
+export function ResultScreen({ score, total, level, lessonId, onRetry }: ResultScreenProps) {
   const { t } = useTranslation();
   const ratio = total === 0 ? 0 : score / total;
   const message =

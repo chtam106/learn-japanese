@@ -8,7 +8,11 @@ import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { interactiveSurfaceSx, tonalSurfaceSx } from '@/theme/surfaces.ts';
 
-function CoursePage({ level }: { level: CourseLevel }) {
+type CoursePageProps = {
+  level: CourseLevel;
+};
+
+function CoursePage({ level }: CoursePageProps) {
   const { locale, t } = useTranslation();
   const course = getCourse(level);
 

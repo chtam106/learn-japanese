@@ -81,6 +81,9 @@ alwaysApply: true
 - Keep page-level `h1` typography visually consistent across pages (same size + weight). Use the shared `Heading` component with `component="h1"` and no per-page font-size overrides.
 - Keep heading weights consistent for `h2`/`h3` title text as well (page sections and card/list titles should use `fontWeight: 600` unless there is a deliberate, documented exception).
 
+## Component props typing
+- ALWAYS declare props as a named `type <ComponentName>Props = { ... }` above the component (above its doc comment, if any) and annotate the param with it (e.g. `function Foo({ a, b }: FooProps)`). NEVER inline an object type in the parameter list - not even a single-prop one-liner like `({ level }: { level: CourseLevel })`. For generics use `type FooProps<T> = { ... }` + `function Foo<T>({ ... }: FooProps<T>)`.
+
 ## MUI icons
 - Import by exact file name (often the `Outlined` suffix, e.g. `CheckCircleOutlined` not `CheckCircleOutline`). If unsure, check `node_modules/@mui/icons-material/`.
 

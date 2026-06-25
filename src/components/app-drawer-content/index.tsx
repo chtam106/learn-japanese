@@ -23,7 +23,11 @@ import {
   type NavItem
 } from '@/constants/nav-items.ts';
 
-function NavItemIcon({ item }: { item: Pick<NavItem, 'icon' | 'symbol'> }) {
+type NavItemIconProps = {
+  item: Pick<NavItem, 'icon' | 'symbol'>;
+};
+
+function NavItemIcon({ item }: NavItemIconProps) {
   const Icon = item.icon;
 
   if (Icon) {

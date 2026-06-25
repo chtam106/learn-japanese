@@ -29,7 +29,11 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { subtleSurfaceSx, tonalSurfaceSx } from '@/theme/surfaces.ts';
 import { LessonNotFound } from '@/pages/course/shared';
 
-function VocabularySection({ lesson }: { lesson: Lesson }) {
+type VocabularySectionProps = {
+  lesson: Lesson;
+};
+
+function VocabularySection({ lesson }: VocabularySectionProps) {
   const { locale, t } = useTranslation();
 
   return (
@@ -80,7 +84,11 @@ function VocabularySection({ lesson }: { lesson: Lesson }) {
   );
 }
 
-function GrammarSection({ lesson }: { lesson: Lesson }) {
+type GrammarSectionProps = {
+  lesson: Lesson;
+};
+
+function GrammarSection({ lesson }: GrammarSectionProps) {
   const { t } = useTranslation();
 
   return (
@@ -99,7 +107,12 @@ function GrammarSection({ lesson }: { lesson: Lesson }) {
   );
 }
 
-function PracticePanel({ level, lesson }: { level: CourseLevel; lesson: Lesson }) {
+type PracticePanelProps = {
+  level: CourseLevel;
+  lesson: Lesson;
+};
+
+function PracticePanel({ level, lesson }: PracticePanelProps) {
   const { t } = useTranslation();
   const hasReading = lessonHasReading(lesson);
 
@@ -166,7 +179,11 @@ function PracticePanel({ level, lesson }: { level: CourseLevel; lesson: Lesson }
   );
 }
 
-function LessonPage({ level }: { level: CourseLevel }) {
+type LessonPageProps = {
+  level: CourseLevel;
+};
+
+function LessonPage({ level }: LessonPageProps) {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { locale, t } = useTranslation();
 

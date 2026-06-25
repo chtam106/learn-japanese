@@ -69,7 +69,12 @@ function pairRowsForSection(
   return rows;
 }
 
-function CombinedKanaCell({ cell, compact }: { cell: CombinedCell; compact: boolean }) {
+type CombinedKanaCellProps = {
+  cell: CombinedCell;
+  compact: boolean;
+};
+
+function CombinedKanaCell({ cell, compact }: CombinedKanaCellProps) {
   const { t } = useTranslation();
 
   return (

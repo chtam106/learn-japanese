@@ -31,7 +31,12 @@ import { ChoiceButton } from '@/pages/course/choice-button';
 import { buildLessonListening, type ListeningQuestion } from './course-listening.ts';
 import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
 
-function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
+type ListeningQuizProps = {
+  course: Course;
+  lesson: Lesson;
+};
+
+function ListeningQuiz({ course, lesson }: ListeningQuizProps) {
   const { locale, t } = useTranslation();
 
   const [questions, setQuestions] = useState<ListeningQuestion[]>(() =>
@@ -247,7 +252,12 @@ function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
   );
 }
 
-function SpeechUnavailable({ level, lesson }: { level: CourseLevel; lesson: Lesson }) {
+type SpeechUnavailableProps = {
+  level: CourseLevel;
+  lesson: Lesson;
+};
+
+function SpeechUnavailable({ level, lesson }: SpeechUnavailableProps) {
   const { t } = useTranslation();
 
   return (
@@ -265,7 +275,11 @@ function SpeechUnavailable({ level, lesson }: { level: CourseLevel; lesson: Less
   );
 }
 
-function ListeningPage({ level }: { level: CourseLevel }) {
+type ListeningPageProps = {
+  level: CourseLevel;
+};
+
+function ListeningPage({ level }: ListeningPageProps) {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { locale } = useTranslation();
   const lesson = lessonId ? getLesson(level, lessonId) : undefined;

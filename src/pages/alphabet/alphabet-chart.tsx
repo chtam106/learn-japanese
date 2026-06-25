@@ -55,7 +55,12 @@ function toVoicedRows(rows: AlphabetChartRow[]): GridRow<AlphabetCell>[] {
   return [...dakuten, ...handakuten];
 }
 
-function PlayableCell({ cell, compact }: { cell: AlphabetCell; compact: boolean }) {
+type PlayableCellProps = {
+  cell: AlphabetCell;
+  compact: boolean;
+};
+
+function PlayableCell({ cell, compact }: PlayableCellProps) {
   const { t } = useTranslation();
 
   return (

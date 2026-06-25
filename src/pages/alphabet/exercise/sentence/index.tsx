@@ -36,7 +36,11 @@ function shuffle<T>(items: T[]): T[] {
 
 type AnswerStatus = 'idle' | 'correct' | 'wrong';
 
-function SentenceQuiz({ type }: { type: SentenceType }) {
+type SentenceQuizProps = {
+  type: SentenceType;
+};
+
+function SentenceQuiz({ type }: SentenceQuizProps) {
   const { t } = useTranslation();
   const [order, setOrder] = useState(() => shuffle(SENTENCES[type]));
   const [index, setIndex] = useState(0);

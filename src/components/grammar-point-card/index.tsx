@@ -7,8 +7,12 @@ import { SpeakableSurface } from '@/components/speakable-surface';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
+type GrammarPointCardProps = {
+  point: GrammarPoint;
+};
+
 /** A grammar point: pattern chip, title, explanation, and speakable examples. */
-export function GrammarPointCard({ point }: { point: GrammarPoint }) {
+export function GrammarPointCard({ point }: GrammarPointCardProps) {
   const { locale, t } = useTranslation();
 
   return (

@@ -30,7 +30,12 @@ import { ChoiceButton } from '@/pages/course/choice-button';
 import { buildLessonQuiz, normalizeAnswer, type QuizQuestion } from './course-quiz.ts';
 import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
 
-function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
+type LessonQuizProps = {
+  course: Course;
+  lesson: Lesson;
+};
+
+function LessonQuiz({ course, lesson }: LessonQuizProps) {
   const { locale, t } = useTranslation();
   const canSpeak = isSpeechSupported();
 
@@ -297,7 +302,11 @@ function LessonQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
   );
 }
 
-function ExercisePage({ level }: { level: CourseLevel }) {
+type ExercisePageProps = {
+  level: CourseLevel;
+};
+
+function ExercisePage({ level }: ExercisePageProps) {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { locale } = useTranslation();
   const lesson = lessonId ? getLesson(level, lessonId) : undefined;

@@ -14,15 +14,13 @@ type ErrorBoundaryState = {
   errorInfo: ErrorInfo | null;
 };
 
-function ErrorFallback({
-  error,
-  errorInfo,
-  onReload
-}: {
+type ErrorFallbackProps = {
   error: Error | null;
   errorInfo: ErrorInfo | null;
   onReload: () => void;
-}) {
+};
+
+function ErrorFallback({ error, errorInfo, onReload }: ErrorFallbackProps) {
   const { t } = useTranslation();
   const [showDetails, setShowDetails] = useState(false);
 

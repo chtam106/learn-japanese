@@ -13,14 +13,13 @@ export type NavCardItem = {
   icon?: ComponentType<SvgIconProps>;
 };
 
-/** Responsive 2-column grid of clickable cards linking to a route. */
-export function NavCardGrid({
-  items,
-  titleComponent = 'h2'
-}: {
+type NavCardGridProps = {
   items: NavCardItem[];
   titleComponent?: 'h2' | 'h3';
-}) {
+};
+
+/** Responsive 2-column grid of clickable cards linking to a route. */
+export function NavCardGrid({ items, titleComponent = 'h2' }: NavCardGridProps) {
   return (
     <Box
       sx={{
