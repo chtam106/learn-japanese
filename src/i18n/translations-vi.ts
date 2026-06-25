@@ -25,7 +25,7 @@ export const viTranslations: TranslationTree = {
     home: {
       title: 'Học Hiragana & Katakana tiếng Nhật',
       description:
-        'Bắt đầu học bảng chữ kana với hiragana, katakana, audio bản xứ và bài luyện tập miễn phí.'
+        'Ứng dụng học tiếng Nhật tương tác miễn phí - từ hiragana và katakana đến các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình, kèm âm thanh bản xứ, bài kiểm tra và luyện viết.'
     },
     alphabet: {
       title: 'Bảng chữ cái tiếng Nhật - Hiragana & Katakana',

@@ -29,7 +29,7 @@ const en: TranslationTree = {
     home: {
       title: 'Learn Japanese Hiragana & Katakana',
       description:
-        'Start learning Japanese kana with interactive hiragana and katakana charts, native audio, and free practice quizzes.'
+        'Free interactive app to learn Japanese - from hiragana and katakana to structured JLPT N5-N1 and frontend courses, with native audio, quizzes, and writing practice.'
     },
     alphabet: {
       title: 'Japanese Alphabet - Hiragana & Katakana',
