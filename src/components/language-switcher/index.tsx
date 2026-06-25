@@ -48,6 +48,11 @@ export function LanguageSwitcher() {
               transition: 'background-color 0.15s, box-shadow 0.15s',
               '&:hover': {
                 bgcolor: selected ? 'background.paper' : 'action.hover'
+              },
+              '&.Mui-focusVisible': {
+                outline: '2px solid',
+                outlineColor: 'primary.main',
+                outlineOffset: 2
               }
             }}
           >
