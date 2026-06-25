@@ -1,6 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Card, CardActionArea, CardContent, Chip, Stack, Typography } from '@mui/material';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
+import { AiDisclaimer } from '@/components/ai-disclaimer';
 import { Heading } from '@/components/heading';
 import { getCourse, lessonPath, type CourseLevel, type Lesson } from '@/constants/courses/index.ts';
 import { PageContainer } from '@/components/page-container';
@@ -47,6 +48,8 @@ function CoursePage({ level }: CoursePageProps) {
   return (
     <PageContainer>
       <Stack spacing={4}>
+        <AiDisclaimer text={t('course.aiDisclaimer')} />
+
         <Box>
           <Heading component="h1" gutterBottom>
             {course.name[locale]}
