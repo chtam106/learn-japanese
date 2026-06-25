@@ -1,6 +1,6 @@
 import { Fragment, Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AppLayout from '@/components/app-layout.tsx';
+import AppLayout from '@/components/app-layout';
 import HomePage from '@/pages/index.tsx';
 import { COURSE_LEVELS, coursePath } from '@/constants/courses/levels.ts';
 import { routes } from '@/constants/routes.ts';
@@ -18,12 +18,12 @@ const ScriptPairExercisePage = lazy(
 );
 const WritingExercisePage = lazy(() => import('@/pages/alphabet/exercise/writing/index.tsx'));
 const SentenceExercisePage = lazy(() => import('@/pages/alphabet/exercise/sentence/index.tsx'));
-const CoursePage = lazy(() => import('@/pages/course/course-page.tsx'));
-const FrontendReferencePage = lazy(() => import('@/pages/course/frontend-reference.tsx'));
-const LessonPage = lazy(() => import('@/pages/course/lesson-page.tsx'));
-const ExercisePage = lazy(() => import('@/pages/course/exercise-page.tsx'));
-const ListeningPage = lazy(() => import('@/pages/course/listening-page.tsx'));
-const ReadingPage = lazy(() => import('@/pages/course/reading-page.tsx'));
+const CoursePage = lazy(() => import('@/pages/course/course-page'));
+const FrontendReferencePage = lazy(() => import('@/pages/course/frontend-reference'));
+const LessonPage = lazy(() => import('@/pages/course/lesson-page'));
+const ExercisePage = lazy(() => import('@/pages/course/exercise-page'));
+const ListeningPage = lazy(() => import('@/pages/course/listening-page'));
+const ReadingPage = lazy(() => import('@/pages/course/reading-page'));
 
 function App() {
   return (

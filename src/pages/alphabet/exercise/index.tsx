@@ -7,9 +7,9 @@ import SpellcheckOutlinedIcon from '@mui/icons-material/SpellcheckOutlined';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import { Button, Typography } from '@mui/material';
-import { Heading } from '@/components/heading.tsx';
-import { NavCardGrid, type NavCardItem } from '@/components/nav-card.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { NavCardGrid, type NavCardItem } from '@/components/nav-card';
+import { PageContainer } from '@/components/page-container';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 

@@ -1,4 +1,4 @@
-import type { Bilingual, GrammarPoint, VocabItem } from '../types.ts';
+import type { Bilingual, GrammarPoint, VocabItem } from '@/constants/courses/types.ts';
 
 export type ReferenceVocabGroup = {
   id: string;

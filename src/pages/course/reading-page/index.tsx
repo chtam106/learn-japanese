@@ -20,14 +20,14 @@ import {
   type Lesson,
   type ReadingPassage
 } from '@/constants/courses/index.ts';
-import { Heading } from '@/components/heading.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
-import { SpeakButton } from '@/components/speak-button.tsx';
+import { Heading } from '@/components/heading';
+import { PageContainer } from '@/components/page-container';
+import { SpeakButton } from '@/components/speak-button';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { isSpeechSupported, speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx, subtleSurfaceSx } from '@/theme/surfaces.ts';
-import { ChoiceButton } from './choice-button.tsx';
-import { LessonNotFound, ResultScreen } from './shared.tsx';
+import { ChoiceButton } from '@/pages/course/choice-button';
+import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items];

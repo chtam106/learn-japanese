@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import type { AlphabetCell } from '@/constants/alphabet-charts.ts';
-import { YoonGlyph } from '@/components/yoon-glyph.tsx';
+import { YoonGlyph } from '@/components/yoon-glyph';
 import { FONT_FAMILY_JP } from '@/theme/fonts.ts';
 
 type KanaDisplayProps = {

@@ -10,12 +10,12 @@ import {
   referenceMeetingPhrases,
   referenceVocabGroups
 } from '@/constants/courses/frontend/reference.ts';
-import { GrammarPointCard } from '@/components/grammar-point-card.tsx';
-import { Heading } from '@/components/heading.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
-import { PhoneticsLine } from '@/components/phonetics-line.tsx';
-import { SpeakButton } from '@/components/speak-button.tsx';
-import { SpeakableSurface } from '@/components/speakable-surface.tsx';
+import { GrammarPointCard } from '@/components/grammar-point-card';
+import { Heading } from '@/components/heading';
+import { PageContainer } from '@/components/page-container';
+import { PhoneticsLine } from '@/components/phonetics-line';
+import { SpeakButton } from '@/components/speak-button';
+import { SpeakableSurface } from '@/components/speakable-surface';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 

@@ -5,7 +5,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import './index.css';
 import App from './app.tsx';
-import { ErrorBoundary } from '@/components/error-boundary.tsx';
+import { ErrorBoundary } from '@/components/error-boundary';
 import { LanguageProvider } from '@/i18n/context.tsx';
 import { readStoredLocale } from '@/i18n/language-context.ts';
 import type { TranslationTree } from '@/i18n/translations.ts';

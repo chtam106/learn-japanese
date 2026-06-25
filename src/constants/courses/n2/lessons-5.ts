@@ -1,4 +1,4 @@
-import type { Lesson } from '../types.ts';
+import type { Lesson } from '@/constants/courses/types.ts';
 
 export const n2LessonsE: Lesson[] = [
   {

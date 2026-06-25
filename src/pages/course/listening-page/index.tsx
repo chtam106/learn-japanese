@@ -22,14 +22,14 @@ import {
   type CourseLevel,
   type Lesson
 } from '@/constants/courses/index.ts';
-import { Heading } from '@/components/heading.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
+import { Heading } from '@/components/heading';
+import { PageContainer } from '@/components/page-container';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { cancelSpeech, isSpeechSupported, speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
-import { ChoiceButton } from './choice-button.tsx';
+import { ChoiceButton } from '@/pages/course/choice-button';
 import { buildLessonListening, type ListeningQuestion } from './course-listening.ts';
-import { LessonNotFound, ResultScreen } from './shared.tsx';
+import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
 
 function ListeningQuiz({ course, lesson }: { course: Course; lesson: Lesson }) {
   const { locale, t } = useTranslation();

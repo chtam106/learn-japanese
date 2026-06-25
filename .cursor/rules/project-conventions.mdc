@@ -22,6 +22,10 @@ alwaysApply: true
 - Prettier `trailingComma: "none"` — do NOT add trailing commas after the last element/param/property; `prettier --write` enforces this repo-wide.
 - `pnpm-lock.yaml` is in `.prettierignore` — never let `pnpm run format` reformat it (it caused a huge spurious diff once). Don't commit lockfile changes unless `package.json` actually changed.
 
+## Imports (IMPORTANT)
+- NO parent-relative imports (`../...`). Use the `@/` alias for anything outside the current folder; only same-folder `./...` relative imports are allowed (e.g. a page importing its colocated `./course-quiz.ts`). This is enforced by ESLint `no-restricted-imports` (patterns `../*`, `../**`) in `eslint.config.js`.
+- Components/pages are folder-based (`<name>/index.tsx`), so import them extensionless via the alias: `@/components/speak-button`, `@/pages/course/shared`.
+
 ## Lint rules to respect
 - Prettier runs INSIDE ESLint via `eslint-plugin-prettier` (the `prettier/prettier` rule, wired through `eslint-plugin-prettier/recommended` in `eslint.config.js`). This means formatting problems show up as red ESLint errors in the editor and fail `pnpm run lint` (not just `format:check`). Run `pnpm run lint:fix` (or `prettier --write`) to fix. Note: `@stylistic` alone canNOT replicate Prettier (no print-width line wrapping) — `prettier/prettier` is what enforces full formatting parity.
 - `react-hooks/set-state-in-effect`: do NOT call `setState` inside `useEffect`. To reset component state when a prop/route/locale changes, remount via `key` (e.g. `<Quiz key={`${id}:${locale}`} />`) and reset on user actions in event handlers instead.
@@ -46,7 +50,7 @@ alwaysApply: true
 
 ## Audio / pronunciation
 - Japanese is spoken via the Web Speech API: `speakJapanese(text)` in `src/utils/speech.ts` (lang `ja-JP`). Voice + speed are user-configurable (persisted in localStorage) via `<AudioSettings />` in the header; voices load async (use `subscribeVoices`).
-- Anywhere Japanese text is shown, add `<SpeakButton text={...} />` (`src/components/speak-button.tsx`). Pass kana for single words, full sentence for examples. Do NOT add it to quiz answer options (would leak the answer) or to grammar patterns containing `N` placeholders.
+- Anywhere Japanese text is shown, add `<SpeakButton text={...} />` (`src/components/speak-button/index.tsx`). Pass kana for single words, full sentence for examples. Do NOT add it to quiz answer options (would leak the answer) or to grammar patterns containing `N` placeholders.
 - Do not make audio interaction icon-only. Wherever practical, make the related Japanese text/surface itself clickable (and keyboard-accessible with Enter/Space) so users do not need to tap precisely on the speaker icon.
 - Default voice: prefer the macOS "O-ren" voice when no user choice is stored (`getDefaultJapaneseVoice` in `src/utils/speech.ts`, matches name containing `o-ren`, else first Japanese voice). Only display/play it — do NOT pin it to localStorage so the default stays adaptive per device.
 
@@ -65,13 +69,13 @@ alwaysApply: true
 - Do not show success/error icons inside answer choice buttons; rely on color and text feedback.
 
 ## Hints / annotations
-- Render annotation/hint text (tap-to-play hints, replay hints, etc.) via the shared `<HintText>` component (`src/components/hint-text.tsx`): it prefixes the text with `* ` (the asterisk is nudged down to center on the first line), uses `color="error.main"` (red) and medium weight to stand apart from grey body copy. Pass spacing via `sx`. Do NOT hand-roll hint `Typography`.
+- Render annotation/hint text (tap-to-play hints, replay hints, etc.) via the shared `<HintText>` component (`src/components/hint-text/index.tsx`): it prefixes the text with `* ` (the asterisk is nudged down to center on the first line), uses `color="error.main"` (red) and medium weight to stand apart from grey body copy. Pass spacing via `sx`. Do NOT hand-roll hint `Typography`.
 
 ## Scrollbars
 - Use one unified thin scrollbar style across the app. Global/page scrollbars and local scroll containers (e.g. drawer/menu lists) must use the same `thin-scrollbar` appearance defined in `src/index.css`.
 
 ## Page layout
-- Wrap every page's content in the shared `<PageContainer>` (`src/components/page-container.tsx`) — do NOT use `<Container>` directly in pages. Content width/padding live in `PageContainer` + the `MuiContainer` theme overrides in `main.tsx`, with a global max width of `1200px`.
+- Wrap every page's content in the shared `<PageContainer>` (`src/components/page-container/index.tsx`) — do NOT use `<Container>` directly in pages. Content width/padding live in `PageContainer` + the `MuiContainer` theme overrides in `main.tsx`, with a global max width of `1200px`.
 - On desktop, keep app bar inner content constrained to the same `1200px` max width and gutter alignment as page content.
 - Page headers: put the back button on its own row (wrapped in a `Box`), then the lesson/section chip, then the title — never let the back button and chip share a line.
 - Keep page-level `h1` typography visually consistent across pages (same size + weight). Use the shared `Heading` component with `component="h1"` and no per-page font-size overrides.

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getCourse } from '@/constants/courses/index.ts';
-import { buildLessonQuiz, normalizeAnswer } from '@/pages/course/course-quiz.ts';
+import { buildLessonQuiz, normalizeAnswer } from './course-quiz.ts';
 
 describe('normalizeAnswer', () => {
   it('trims, lowercases, and strips JP/EN punctuation', () => {

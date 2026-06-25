@@ -13,12 +13,12 @@ import {
   Typography
 } from '@mui/material';
 import type { ChouonExample, ChouonRule } from '@/constants/alphabet-charts.ts';
-import { Heading } from '@/components/heading.tsx';
-import { HintText } from '@/components/hint-text.tsx';
+import { Heading } from '@/components/heading';
+import { HintText } from '@/components/hint-text';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
-import { KanaDisplay } from '@/components/kana-display.tsx';
-import { PageContainer } from '@/components/page-container.tsx';
-import { SpeakButton } from '@/components/speak-button.tsx';
+import { KanaDisplay } from '@/components/kana-display';
+import { PageContainer } from '@/components/page-container';
+import { SpeakButton } from '@/components/speak-button';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { CellButton, ChartBlock, GojuonGrid } from '@/pages/alphabet/gojuon-grid.tsx';
 import {

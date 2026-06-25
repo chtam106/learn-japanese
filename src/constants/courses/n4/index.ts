@@ -1,4 +1,4 @@
-import { withSequentialNumbers, type Course } from '../types.ts';
+import { withSequentialNumbers, type Course } from '@/constants/courses/types.ts';
 import { n4LessonsA } from './lessons-1.ts';
 import { n4LessonsB } from './lessons-2.ts';
 import { n4LessonsC } from './lessons-3.ts';
