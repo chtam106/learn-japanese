@@ -2,8 +2,8 @@ import { Box, Container, Link, Typography } from '@mui/material';
 
 // The footer copy stays in English regardless of the selected locale.
 const FOOTER_VIBE = 'Designed by CHT, coded with AI.';
-const REPORT_BUG_EMAIL = 'chtam106@gmail.com';
-const REPORT_BUG_HREF = `mailto:${REPORT_BUG_EMAIL}?subject=Langwish bug report`;
+const CONTACT_EMAIL = 'chtam106@gmail.com';
+const CONTACT_HREF = `mailto:${CONTACT_EMAIL}?subject=Langwish`;
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -24,8 +24,8 @@ export function Footer() {
           {FOOTER_VIBE}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-          <Link href={REPORT_BUG_HREF} color="primary" underline="hover">
-            Report a bug
+          <Link href={CONTACT_HREF} color="primary" underline="hover">
+            Contact us
           </Link>
         </Typography>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
