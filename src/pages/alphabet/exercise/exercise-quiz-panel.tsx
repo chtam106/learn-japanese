@@ -77,7 +77,7 @@ function RomajiInputAnswer({
 
   const canonical = canonicalizeRomaji(value);
   const isWrong = !answeredCorrectly && canonical.length > 0 && wrongAnswers.includes(canonical);
-  const answerShown = revealed || answeredCorrectly;
+  const answerShown = revealed;
 
   const handleSubmit = () => {
     if (answeredCorrectly || canonical.length === 0) {
@@ -114,18 +114,16 @@ function RomajiInputAnswer({
             visibility: answerShown ? 'visible' : 'hidden'
           }}
         >
-          {!answeredCorrectly && (
-            <Link
-              component="button"
-              type="button"
-              variant="body1"
-              underline="hover"
-              onClick={() => setRevealed(false)}
-              sx={{ lineHeight: 1.66 }}
-            >
-              {t('exercise.hideAnswer')}
-            </Link>
-          )}
+          <Link
+            component="button"
+            type="button"
+            variant="body1"
+            underline="hover"
+            onClick={() => setRevealed(false)}
+            sx={{ lineHeight: 1.66 }}
+          >
+            {t('exercise.hideAnswer')}
+          </Link>
           <Typography
             lang="en"
             variant="body1"

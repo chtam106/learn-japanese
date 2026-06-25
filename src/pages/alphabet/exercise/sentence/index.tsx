@@ -50,7 +50,7 @@ function SentenceQuiz({ type }: { type: SentenceType }) {
   const current = order[index];
   const kanaText = current.replace(/\s+/g, '');
   const { display, accepted } = useMemo(() => transliterateSentence(current), [current]);
-  const answerShown = revealed || status === 'correct';
+  const answerShown = revealed;
 
   const handleCheck = () => {
     if (status === 'correct' || value.trim().length === 0) {
@@ -187,18 +187,16 @@ function SentenceQuiz({ type }: { type: SentenceType }) {
                 visibility: answerShown ? 'visible' : 'hidden'
               }}
             >
-              {status !== 'correct' && (
-                <Link
-                  component="button"
-                  type="button"
-                  variant="body1"
-                  underline="hover"
-                  onClick={handleToggleAnswer}
-                  sx={{ lineHeight: 1.66 }}
-                >
-                  {t('exercise.hideAnswer')}
-                </Link>
-              )}
+              <Link
+                component="button"
+                type="button"
+                variant="body1"
+                underline="hover"
+                onClick={handleToggleAnswer}
+                sx={{ lineHeight: 1.66 }}
+              >
+                {t('exercise.hideAnswer')}
+              </Link>
               <Typography
                 lang="en"
                 variant="body1"
