@@ -47,22 +47,36 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
-function isKatakana(char: string) {
-  return /[\u30a0-\u30ff]/.test(char);
+// Hiragana (U+3041-3096) and katakana (U+30A1-30F6) for the same syllable are a
+// fixed 0x60 apart, so convert per character (works for yoon too: きゃ <-> キャ).
+function toKanaCounterpart(text: string) {
+  return [...text]
+    .map((char) => {
+      const code = char.codePointAt(0) ?? 0;
+
+      if (code >= 0x3041 && code <= 0x3096) {
+        return String.fromCodePoint(code + 0x60);
+      }
+
+      if (code >= 0x30a1 && code <= 0x30f6) {
+        return String.fromCodePoint(code - 0x60);
+      }
+
+      return char;
+    })
+    .join('');
 }
 
-// The cross-script partner with the same reading (e.g. じ -> ジ). Prefer the
-// other script so homophones in the SAME script (じ/ぢ, ず/づ, now that both
-// read ji/zu) are not picked instead of the katakana counterpart.
+// The exact cross-script counterpart (e.g. じ -> ジ, ぢ -> ヂ). Matching by the
+// precise character avoids picking a same-reading homophone (じ/ぢ, ず/づ).
 function findScriptPair(allItems: AlphabetCell[], correctItem: AlphabetCell) {
-  const correctIsKatakana = isKatakana(correctItem.char);
+  const counterpart = toKanaCounterpart(correctItem.char);
 
-  return allItems.find(
-    (item) =>
-      item.romaji === correctItem.romaji &&
-      item.char !== correctItem.char &&
-      isKatakana(item.char) !== correctIsKatakana
-  );
+  if (counterpart === correctItem.char) {
+    return undefined;
+  }
+
+  return allItems.find((item) => item.char === counterpart);
 }
 
 function pickOptionItems(
