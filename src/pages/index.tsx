@@ -1,6 +1,7 @@
 import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { Box, Stack, Typography } from '@mui/material';
+import { AiDisclaimer } from '@/components/ai-disclaimer';
 import { Heading } from '@/components/heading';
 import { NavCardGrid, type NavCardItem } from '@/components/nav-card';
 import { PageContainer } from '@/components/page-container';
@@ -69,6 +70,7 @@ function HomePage() {
           <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
             {t('home.coursesSection')}
           </Typography>
+          <AiDisclaimer text={t('course.aiDisclaimer')} />
           <NavCardGrid items={courseCards} titleComponent="h3" />
         </Stack>
       </Stack>
