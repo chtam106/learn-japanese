@@ -149,7 +149,7 @@ function PracticePanel({ level, lesson }: PracticePanelProps) {
         <Button
           component={RouterLink}
           to={lessonExercisePath(level, lesson.id)}
-          variant="contained"
+          variant="outlined"
           size="large"
           startIcon={<FitnessCenterOutlinedIcon />}
         >
@@ -260,13 +260,8 @@ function LessonPage({ level }: LessonPageProps) {
                 component={RouterLink}
                 to={lessonPath(level, previous.id)}
                 startIcon={<ArrowBackIcon />}
-                variant="outlined"
-                sx={{
-                  justifyContent: 'flex-start',
-                  width: { xs: '100%', sm: 'auto' },
-                  minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 }
-                }}
+                variant="text"
+                sx={{ px: 0 }}
               >
                 {t('course.previousLesson')}
               </Button>
@@ -278,13 +273,8 @@ function LessonPage({ level }: LessonPageProps) {
                 component={RouterLink}
                 to={lessonPath(level, next.id)}
                 endIcon={<ArrowForwardIcon />}
-                variant="contained"
-                sx={{
-                  justifyContent: 'flex-end',
-                  width: { xs: '100%', sm: 'auto' },
-                  minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 }
-                }}
+                variant="text"
+                sx={{ px: 0 }}
               >
                 {t('course.nextLesson')}
               </Button>
