@@ -1,11 +1,84 @@
 import { Link as RouterLink } from 'react-router-dom';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { Button, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, Chip, Paper, Stack, Typography } from '@mui/material';
 import { Heading } from '@/components/heading';
-import { coursePath, lessonPath, type CourseLevel } from '@/constants/courses/index.ts';
+import {
+  coursePath,
+  getCourse,
+  lessonPath,
+  type CourseLevel,
+  type Lesson
+} from '@/constants/courses/index.ts';
 import { PageContainer } from '@/components/page-container';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
+
+type LessonQuizHeaderProps = {
+  level: CourseLevel;
+  lesson: Lesson;
+  section: 'exercise' | 'listening' | 'reading';
+};
+
+/**
+ * Shared header for the lesson practice / listening / reading pages: shows the
+ * lesson number, the course code (or Frontend track) and the section as tags
+ * above the lesson title, instead of baking the section into the title text.
+ */
+export function LessonQuizHeader({ level, lesson, section }: LessonQuizHeaderProps) {
+  const { locale, t } = useTranslation();
+  const course = getCourse(level);
+  const sectionLabel =
+    section === 'exercise'
+      ? t('course.exercise')
+      : section === 'listening'
+        ? t('course.listening')
+        : t('course.reading');
+
+  return (
+    <Box>
+      <Stack
+        direction="row"
+        spacing={1}
+        useFlexGap
+        sx={{ mb: 1, flexWrap: 'wrap', alignItems: 'center' }}
+      >
+        {lesson.track === 'frontend' && (
+          <Chip
+            label={t('course.frontendTrackTag')}
+            color="secondary"
+            variant="outlined"
+            size="small"
+            component={RouterLink}
+            to={coursePath(level)}
+            clickable
+          />
+        )}
+        {lesson.track !== 'frontend' && course && (
+          <Chip
+            label={course.code}
+            color="secondary"
+            variant="outlined"
+            size="small"
+            component={RouterLink}
+            to={coursePath(level)}
+            clickable
+          />
+        )}
+        <Chip
+          label={t('course.lessonLabel', { number: lesson.number })}
+          color="primary"
+          variant="outlined"
+          size="small"
+          component={RouterLink}
+          to={lessonPath(level, lesson.id)}
+          clickable
+        />
+        <Chip label={sectionLabel} variant="outlined" size="small" />
+      </Stack>
+      <Heading component="h1">{lesson.title[locale]}</Heading>
+    </Box>
+  );
+}
 
 type LessonNotFoundProps = {
   level: CourseLevel;

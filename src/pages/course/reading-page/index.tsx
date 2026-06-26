@@ -1,20 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useParams } from 'react-router-dom';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import {
-  Box,
-  Button,
-  Chip,
-  Collapse,
-  LinearProgress,
-  Paper,
-  Stack,
-  Typography
-} from '@mui/material';
+import { Box, Button, Collapse, LinearProgress, Paper, Stack, Typography } from '@mui/material';
 import {
   getLesson,
-  lessonPath,
   type CourseLevel,
   type Lesson,
   type ReadingPassage
@@ -26,7 +15,7 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { isSpeechSupported, speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx, subtleSurfaceSx } from '@/theme/surfaces.ts';
 import { ChoiceButton } from '@/pages/course/choice-button';
-import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
+import { LessonNotFound, LessonQuizHeader, ResultScreen } from '@/pages/course/shared';
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
@@ -189,29 +178,7 @@ function ReadingQuiz({ level, lesson }: ReadingQuizProps) {
   return (
     <PageContainer>
       <Stack spacing={3}>
-        <Box>
-          <Box sx={{ mb: 1 }}>
-            <Button
-              component={RouterLink}
-              to={lessonPath(level, lesson.id)}
-              startIcon={<ArrowBackIcon />}
-              size="small"
-              sx={{ ml: -0.5 }}
-            >
-              {t('common.back')}
-            </Button>
-          </Box>
-          <Chip
-            label={t('course.lessonLabel', { number: lesson.number })}
-            color="primary"
-            variant="outlined"
-            size="small"
-            sx={{ mb: 1 }}
-          />
-          <Heading component="h1">
-            {lesson.title[locale]} · {t('course.reading')}
-          </Heading>
-        </Box>
+        <LessonQuizHeader level={level} lesson={lesson} section="reading" />
 
         <PassageCard passage={passage} />
 

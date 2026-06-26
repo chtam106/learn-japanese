@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useParams } from 'react-router-dom';
 import {
   Box,
   Button,
-  Chip,
   LinearProgress,
   Link,
   Paper,
@@ -15,12 +13,10 @@ import {
 import {
   getCourse,
   getLesson,
-  lessonPath,
   type Course,
   type CourseLevel,
   type Lesson
 } from '@/constants/courses/index.ts';
-import { Heading } from '@/components/heading';
 import { PageContainer } from '@/components/page-container';
 import { SpeakButton } from '@/components/speak-button';
 import { useTranslation } from '@/i18n/use-translation.ts';
@@ -28,7 +24,7 @@ import { isSpeechSupported, speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { ChoiceButton } from '@/pages/course/choice-button';
 import { buildLessonQuiz, normalizeAnswer, type QuizQuestion } from './course-quiz.ts';
-import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
+import { LessonNotFound, LessonQuizHeader, ResultScreen } from '@/pages/course/shared';
 
 type LessonQuizProps = {
   course: Course;
@@ -139,29 +135,7 @@ function LessonQuiz({ course, lesson }: LessonQuizProps) {
   return (
     <PageContainer>
       <Stack spacing={3}>
-        <Box>
-          <Box sx={{ mb: 1 }}>
-            <Button
-              component={RouterLink}
-              to={lessonPath(course.level, lesson.id)}
-              startIcon={<ArrowBackIcon />}
-              size="small"
-              sx={{ ml: -0.5 }}
-            >
-              {t('common.back')}
-            </Button>
-          </Box>
-          <Chip
-            label={t('course.lessonLabel', { number: lesson.number })}
-            color="primary"
-            variant="outlined"
-            size="small"
-            sx={{ mb: 1 }}
-          />
-          <Heading component="h1">
-            {lesson.title[locale]} · {t('course.exercise')}
-          </Heading>
-        </Box>
+        <LessonQuizHeader level={course.level} lesson={lesson} section="exercise" />
 
         {finished && (
           <ResultScreen

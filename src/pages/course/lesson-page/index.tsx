@@ -149,7 +149,7 @@ function PracticePanel({ level, lesson }: PracticePanelProps) {
         <Button
           component={RouterLink}
           to={lessonExercisePath(level, lesson.id)}
-          variant="contained"
+          variant="outlined"
           size="large"
           startIcon={<FitnessCenterOutlinedIcon />}
         >
@@ -204,18 +204,6 @@ function LessonPage({ level }: LessonPageProps) {
     <PageContainer>
       <Stack spacing={4}>
         <Box>
-          <Box sx={{ mb: 1.5 }}>
-            <Button
-              component={RouterLink}
-              to={coursePath(level)}
-              startIcon={<ArrowBackIcon />}
-              size="small"
-              sx={{ ml: -0.5 }}
-            >
-              {t('common.back')}
-            </Button>
-          </Box>
-
           <AiDisclaimer text={t('course.aiDisclaimer')} sx={{ mb: 2.5 }} />
 
           <Stack
@@ -224,17 +212,31 @@ function LessonPage({ level }: LessonPageProps) {
             useFlexGap
             sx={{ mb: 1, flexWrap: 'wrap', alignItems: 'center' }}
           >
+            {lesson.track === 'frontend' && (
+              <Chip
+                label={t('course.frontendTrackTag')}
+                color="secondary"
+                variant="outlined"
+                component={RouterLink}
+                to={coursePath(level)}
+                clickable
+              />
+            )}
+            {lesson.track !== 'frontend' && (
+              <Chip
+                label={course.code}
+                color="secondary"
+                variant="outlined"
+                component={RouterLink}
+                to={coursePath(level)}
+                clickable
+              />
+            )}
             <Chip
               label={t('course.lessonLabel', { number: lesson.number })}
               color="primary"
               variant="outlined"
             />
-            {lesson.track === 'frontend' && (
-              <Chip label={t('course.frontendTrackTag')} color="secondary" variant="outlined" />
-            )}
-            {lesson.track !== 'frontend' && (
-              <Chip label={course.code} color="secondary" variant="outlined" />
-            )}
           </Stack>
           <Heading component="h1">{lesson.title[locale]}</Heading>
 
@@ -258,13 +260,8 @@ function LessonPage({ level }: LessonPageProps) {
                 component={RouterLink}
                 to={lessonPath(level, previous.id)}
                 startIcon={<ArrowBackIcon />}
-                variant="outlined"
-                sx={{
-                  justifyContent: 'flex-start',
-                  width: { xs: '100%', sm: 'auto' },
-                  minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 }
-                }}
+                variant="text"
+                sx={{ px: 0 }}
               >
                 {t('course.previousLesson')}
               </Button>
@@ -276,13 +273,8 @@ function LessonPage({ level }: LessonPageProps) {
                 component={RouterLink}
                 to={lessonPath(level, next.id)}
                 endIcon={<ArrowForwardIcon />}
-                variant="contained"
-                sx={{
-                  justifyContent: 'flex-end',
-                  width: { xs: '100%', sm: 'auto' },
-                  minWidth: { sm: 180 },
-                  maxWidth: { sm: 260 }
-                }}
+                variant="text"
+                sx={{ px: 0 }}
               >
                 {t('course.nextLesson')}
               </Button>

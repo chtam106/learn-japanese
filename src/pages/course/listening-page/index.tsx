@@ -1,18 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ReplayIcon from '@mui/icons-material/Replay';
 import VolumeUpIcon from '@mui/icons-material/VolumeUpOutlined';
-import {
-  Box,
-  Button,
-  Chip,
-  IconButton,
-  LinearProgress,
-  Paper,
-  Stack,
-  Typography
-} from '@mui/material';
+import { Box, Button, IconButton, LinearProgress, Paper, Stack, Typography } from '@mui/material';
 import {
   getCourse,
   getLesson,
@@ -28,7 +18,7 @@ import { cancelSpeech, isSpeechSupported, speakJapanese } from '@/utils/speech.t
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { ChoiceButton } from '@/pages/course/choice-button';
 import { buildLessonListening, type ListeningQuestion } from './course-listening.ts';
-import { LessonNotFound, ResultScreen } from '@/pages/course/shared';
+import { LessonNotFound, LessonQuizHeader, ResultScreen } from '@/pages/course/shared';
 
 type ListeningQuizProps = {
   course: Course;
@@ -113,29 +103,7 @@ function ListeningQuiz({ course, lesson }: ListeningQuizProps) {
   return (
     <PageContainer>
       <Stack spacing={3}>
-        <Box>
-          <Box sx={{ mb: 1 }}>
-            <Button
-              component={RouterLink}
-              to={lessonPath(course.level, lesson.id)}
-              startIcon={<ArrowBackIcon />}
-              size="small"
-              sx={{ ml: -0.5 }}
-            >
-              {t('common.back')}
-            </Button>
-          </Box>
-          <Chip
-            label={t('course.lessonLabel', { number: lesson.number })}
-            color="primary"
-            variant="outlined"
-            size="small"
-            sx={{ mb: 1 }}
-          />
-          <Heading component="h1">
-            {lesson.title[locale]} · {t('course.listening')}
-          </Heading>
-        </Box>
+        <LessonQuizHeader level={course.level} lesson={lesson} section="listening" />
 
         {finished && (
           <ResultScreen
