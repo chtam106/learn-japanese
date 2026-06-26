@@ -1,4 +1,5 @@
-import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
+import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import type { GrammarPoint } from '@/constants/courses/types.ts';
 import { Heading } from '@/components/heading';
 import { PhoneticsLine } from '@/components/phonetics-line';
@@ -18,7 +19,25 @@ export function GrammarPointCard({ point }: GrammarPointCardProps) {
   return (
     <Card elevation={0} sx={elevatedSurfaceSx}>
       <CardContent>
-        <Chip label={point.pattern} size="small" sx={{ mb: 1, fontWeight: 600 }} lang="ja" />
+        <Box
+          component="span"
+          lang="ja"
+          sx={(theme) => ({
+            display: 'inline-block',
+            mb: 1.5,
+            px: 1.5,
+            py: 0.75,
+            borderRadius: 2,
+            bgcolor: alpha(theme.palette.error.main, theme.palette.mode === 'light' ? 0.12 : 0.24),
+            color:
+              theme.palette.mode === 'light' ? theme.palette.error.dark : theme.palette.error.light,
+            fontWeight: 700,
+            fontSize: '1.05rem',
+            lineHeight: 1.5
+          })}
+        >
+          {point.pattern}
+        </Box>
         <Heading component="h3" gutterBottom>
           {point.title[locale]}
         </Heading>
