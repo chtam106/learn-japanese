@@ -37,9 +37,7 @@ export function ScrollToTopButton() {
       const footerHeight = footer ? footer.getBoundingClientRect().height : 0;
       setBottom(footerHeight + gap);
       // Reveal only when the user settled after scrolling down past the threshold.
-      setVisible(
-        maxScroll > 0 && lastDirection === 'down' && y / maxScroll >= SHOW_AFTER_PROGRESS
-      );
+      setVisible(maxScroll > 0 && lastDirection === 'down' && y / maxScroll >= SHOW_AFTER_PROGRESS);
     };
 
     const onScroll = () => {
