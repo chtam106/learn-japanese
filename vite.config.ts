@@ -6,6 +6,12 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [react()],
+  server: {
+    // `pnpm dev` opens a browser tab automatically and exposes the server on
+    // the local network (so it is reachable from other devices / phones).
+    open: true,
+    host: true
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
