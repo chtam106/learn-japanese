@@ -1,6 +1,4 @@
-import { Link as RouterLink } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import {
   hiraganaChartRows,
   hiraganaYoonChartRows,
@@ -24,7 +22,6 @@ import { HintText } from '@/components/hint-text';
 import { KanaDisplay } from '@/components/kana-display';
 import { PageContainer } from '@/components/page-container';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
-import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { getChartSectionLabels } from '@/i18n/translations.ts';
 
@@ -115,15 +112,6 @@ function CombinedChartPage() {
 
   return (
     <PageContainer>
-      <Button
-        component={RouterLink}
-        to={routes.alphabet.index}
-        startIcon={<ArrowBackIcon />}
-        sx={{ mb: 2, ml: -1 }}
-      >
-        {t('common.back')}
-      </Button>
-
       <Heading component="h1" gutterBottom>
         {t('nav.combined')}
       </Heading>

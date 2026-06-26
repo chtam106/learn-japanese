@@ -1,8 +1,5 @@
-import { Link as RouterLink } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
   Box,
-  Button,
   Paper,
   Stack,
   Table,
@@ -33,7 +30,6 @@ import {
   type AlphabetChartRow,
   type GridRow
 } from '@/pages/alphabet/gojuon.ts';
-import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { getChartSectionLabels } from '@/i18n/translations.ts';
 
@@ -111,15 +107,6 @@ export function AlphabetChartPage({
 
   return (
     <PageContainer>
-      <Button
-        component={RouterLink}
-        to={routes.alphabet.index}
-        startIcon={<ArrowBackIcon />}
-        sx={{ mb: 2, ml: -1 }}
-      >
-        {t('common.back')}
-      </Button>
-
       <Heading component="h1" gutterBottom>
         {title}
       </Heading>

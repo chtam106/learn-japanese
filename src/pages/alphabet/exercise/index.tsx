@@ -1,12 +1,10 @@
-import { Link as RouterLink } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DrawOutlinedIcon from '@mui/icons-material/DrawOutlined';
 import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
 import NotesOutlinedIcon from '@mui/icons-material/NotesOutlined';
 import SpellcheckOutlinedIcon from '@mui/icons-material/SpellcheckOutlined';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Heading } from '@/components/heading';
 import { NavCardGrid, type NavCardItem } from '@/components/nav-card';
 import { PageContainer } from '@/components/page-container';
@@ -57,15 +55,6 @@ function ExerciseHubPage() {
 
   return (
     <PageContainer>
-      <Button
-        component={RouterLink}
-        to={routes.alphabet.index}
-        startIcon={<ArrowBackIcon />}
-        sx={{ mb: 2, ml: -1 }}
-      >
-        {t('common.back')}
-      </Button>
-
       <Heading component="h1" gutterBottom>
         {t('exercise.title')}
       </Heading>

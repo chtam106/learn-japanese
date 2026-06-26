@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import { Box, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Stack, Tab, Tabs, Typography } from '@mui/material';
 import {
   referenceGrammarPoints,
   referenceMeetingPhrases,
@@ -17,7 +15,6 @@ import { PageContainer } from '@/components/page-container';
 import { PhoneticsLine } from '@/components/phonetics-line';
 import { SpeakButton } from '@/components/speak-button';
 import { SpeakableSurface } from '@/components/speakable-surface';
-import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 function VocabSection() {
@@ -130,18 +127,6 @@ function FrontendReferencePage() {
     <PageContainer>
       <Stack spacing={3}>
         <Box>
-          <Box sx={{ mb: 1.5 }}>
-            <Button
-              component={RouterLink}
-              to={routes.frontend.index}
-              startIcon={<ArrowBackIcon />}
-              size="small"
-              sx={{ ml: -0.5 }}
-            >
-              {t('common.back')}
-            </Button>
-          </Box>
-
           <AiDisclaimer text={t('course.aiDisclaimer')} sx={{ mb: 2.5 }} />
 
           <Heading component="h1" gutterBottom>
