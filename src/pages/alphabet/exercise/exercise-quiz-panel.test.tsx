@@ -2,12 +2,18 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { LanguageProvider } from '@/i18n/context.tsx';
 import { ExerciseQuizPanel } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import type { QuizQuestion } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 
 function renderWithI18n(ui: ReactElement) {
-  return render(<LanguageProvider initialLocale="en">{ui}</LanguageProvider>);
+  // The provider reads its locale from the URL; `/en` selects English.
+  return render(
+    <MemoryRouter initialEntries={['/en']}>
+      <LanguageProvider>{ui}</LanguageProvider>
+    </MemoryRouter>
+  );
 }
 
 const shiQuestion: QuizQuestion = {

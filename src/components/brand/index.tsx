@@ -1,5 +1,5 @@
-import { Link as RouterLink } from 'react-router-dom';
 import { Box, Stack, Typography } from '@mui/material';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import { alpha } from '@mui/material/styles';
 import { routes } from '@/constants/routes.ts';
 import { SITE_NAME } from '@/constants/site.ts';

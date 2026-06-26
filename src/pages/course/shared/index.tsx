@@ -1,5 +1,5 @@
-import { Link as RouterLink } from 'react-router-dom';
 import ReplayIcon from '@mui/icons-material/Replay';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import { Box, Button, Chip, Paper, Stack, Typography } from '@mui/material';
 import { Heading } from '@/components/heading';
 import {

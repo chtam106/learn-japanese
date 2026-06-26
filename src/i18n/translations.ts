@@ -315,7 +315,7 @@ export type TranslationTree = TranslationNode;
 
 export const enTranslations: TranslationTree = en;
 
-export const DEFAULT_LOCALE: Locale = 'en';
+export const DEFAULT_LOCALE: Locale = 'vi';
 
 export const LOCALE_STORAGE_KEY = `${STORAGE_PREFIX}-locale`;
 

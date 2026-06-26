@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ReplayIcon from '@mui/icons-material/Replay';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import VolumeUpIcon from '@mui/icons-material/VolumeUpOutlined';
 import { Box, Button, IconButton, LinearProgress, Paper, Stack, Typography } from '@mui/material';
 import {

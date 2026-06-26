@@ -1,11 +1,13 @@
-import { useCallback, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   LOCALE_STORAGE_KEY,
   enTranslations,
   type Locale,
   type TranslationTree
 } from '@/i18n/translations.ts';
-import { LanguageContext, readStoredLocale, type TranslateFn } from '@/i18n/language-context.ts';
+import { LanguageContext, type TranslateFn } from '@/i18n/language-context.ts';
+import { getLocaleFromPathname, stripLocalePrefix, withLocale } from '@/i18n/locale-routing.ts';
 
 type TranslationMap = Partial<Record<Locale, TranslationTree>>;
 
@@ -43,37 +45,56 @@ function interpolate(template: string, params?: Record<string, string | number>)
 
 type LanguageProviderProps = {
   children: ReactNode;
-  initialLocale?: Locale;
   initialTranslations?: TranslationMap;
 };
 
-export function LanguageProvider({
-  children,
-  initialLocale,
-  initialTranslations
-}: LanguageProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(initialLocale ?? readStoredLocale);
+/**
+ * The active locale is derived from the URL (vi at the root, en under `/en`),
+ * so each language has its own crawlable URL. Switching language navigates to
+ * the equivalent path in the other locale. The choice is mirrored to
+ * localStorage purely as a hint for future visits.
+ */
+export function LanguageProvider({ children, initialTranslations }: LanguageProviderProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const locale = getLocaleFromPathname(location.pathname);
+
   const [translationsByLocale, setTranslationsByLocale] = useState<TranslationMap>(() => ({
     en: enTranslations,
     ...(initialTranslations ?? {})
   }));
 
+  // Vietnamese strings are code-split; load them on demand when first needed.
+  useEffect(() => {
+    if (locale !== 'vi' || translationsByLocale.vi) {
+      return;
+    }
+
+    let active = true;
+
+    void loadViTranslations().then((viTranslations) => {
+      if (active) {
+        setTranslationsByLocale((previous) => ({ ...previous, vi: viTranslations }));
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [locale, translationsByLocale.vi]);
+
+  // Remember the locale (read from the URL) for potential future use.
+  useEffect(() => {
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  }, [locale]);
+
   const setLocale = useCallback(
     (nextLocale: Locale) => {
-      if (nextLocale === 'vi' && !translationsByLocale.vi) {
-        void loadViTranslations().then((viTranslations) => {
-          setTranslationsByLocale((previous) => ({ ...previous, vi: viTranslations }));
-          setLocaleState('vi');
-          window.localStorage.setItem(LOCALE_STORAGE_KEY, 'vi');
-        });
-
-        return;
-      }
-
-      setLocaleState(nextLocale);
-      window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
+      const logicalPath = stripLocalePrefix(location.pathname);
+      const target = `${withLocale(logicalPath, nextLocale)}${location.search}${location.hash}`;
+      navigate(target);
     },
-    [translationsByLocale.vi]
+    [location.pathname, location.search, location.hash, navigate]
   );
 
   const t = useCallback<TranslateFn>(

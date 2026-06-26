@@ -1,5 +1,5 @@
-import { Link as RouterLink } from 'react-router-dom';
 import { Box, Card, CardActionArea, CardContent, Chip, Stack, Typography } from '@mui/material';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 import { AiDisclaimer } from '@/components/ai-disclaimer';
 import { Heading } from '@/components/heading';

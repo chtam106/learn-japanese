@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { LocaleNavLink as NavLink } from '@/components/locale-link';
+import { stripLocalePrefix } from '@/i18n/locale-routing.ts';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
@@ -47,6 +49,7 @@ type AppDrawerContentProps = {
 
 export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
   const location = useLocation();
+  const logicalPathname = stripLocalePrefix(location.pathname);
   const { locale, t } = useTranslation();
   const [courseChildrenByLevel, setCourseChildrenByLevel] = useState<
     Partial<Record<CourseLevel, NavItem[]>>
@@ -54,7 +57,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
   const [loadingLevels, setLoadingLevels] = useState<Partial<Record<CourseLevel, boolean>>>({});
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(
-      navGroups.map((group) => [group.path, isNavGroupActive(group, location.pathname)])
+      navGroups.map((group) => [group.path, isNavGroupActive(group, logicalPathname)])
     )
   );
 
@@ -134,7 +137,7 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
           const isLoadingChildren = group.courseLevel ? loadingLevels[group.courseLevel] : false;
           const GroupIcon = group.icon;
           const isAlphabetGroup = group.labelKey === 'nav.alphabet';
-          const isGroupHighlighted = location.pathname === group.path;
+          const isGroupHighlighted = logicalPathname === group.path;
 
           return (
             <Box
@@ -269,8 +272,8 @@ export function AppDrawerContent({ onNavigate }: AppDrawerContentProps) {
                           component={NavLink}
                           to={child.path}
                           selected={
-                            location.pathname === child.path ||
-                            location.pathname.startsWith(`${child.path}/`)
+                            logicalPathname === child.path ||
+                            logicalPathname.startsWith(`${child.path}/`)
                           }
                           onClick={onNavigate}
                           sx={{

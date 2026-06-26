@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import type { SvgIconProps } from '@mui/material';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import { Box, Card, CardActionArea, CardContent, Stack, Typography } from '@mui/material';
 import { interactiveSurfaceSx } from '@/theme/surfaces.ts';
 
