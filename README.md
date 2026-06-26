@@ -1,6 +1,6 @@
-# Langwish
+# Nihongoes
 
-Langwish is a Japanese learning app focused on both JLPT progression and real-world communication for software teams.
+Nihongoes is a Japanese learning app focused on both JLPT progression and real-world communication for software teams.
 
 The app ships bilingual content (English and Vietnamese), interactive practice, and course-driven routing.
 

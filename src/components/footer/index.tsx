@@ -3,7 +3,7 @@ import { Box, Container, Link, Typography } from '@mui/material';
 // The footer copy stays in English regardless of the selected locale.
 const FOOTER_VIBE = 'Designed by CHT, coded with AI.';
 const CONTACT_EMAIL = 'chtam106@gmail.com';
-const CONTACT_HREF = `mailto:${CONTACT_EMAIL}?subject=Langwish`;
+const CONTACT_HREF = `mailto:${CONTACT_EMAIL}?subject=Nihongoes`;
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -29,7 +29,7 @@ export function Footer() {
           </Link>
         </Typography>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-          © {year} Langwish · All rights not reserved.
+          © {year} Nihongoes · All rights not reserved.
         </Typography>
       </Container>
     </Box>

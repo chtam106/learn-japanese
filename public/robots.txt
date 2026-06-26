@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://langwish.net/sitemap.xml
+Sitemap: https://nihongoes.com/sitemap.xml

@@ -110,7 +110,7 @@ const en: TranslationTree = {
     expand: 'Expand {{label}}'
   },
   home: {
-    title: 'Learn Japanese with Langwish',
+    title: 'Learn Japanese with Nihongoes',
     intro:
       'Read and practice kana step by step, then keep going with structured JLPT N5-N1 and frontend Japanese courses - interactive charts, audio, quizzes, and writing practice.',
     hiraganaDescription: 'Learn the basic syllabary used for native Japanese words.',

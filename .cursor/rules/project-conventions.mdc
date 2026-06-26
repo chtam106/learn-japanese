@@ -1,9 +1,9 @@
 ---
-description: Core dev workflow, i18n, audio and lint conventions for Langwish
+description: Core dev workflow, i18n, audio and lint conventions for Nihongoes
 alwaysApply: true
 ---
 
-# Langwish conventions
+# Nihongoes conventions
 
 ## Courses (N5–N1 + Frontend)
 - Lesson count per level is NOT fixed — author enough lessons to cover the full standard JLPT grammar syllabus for that level; reorder/renumber lessons freely. See the `n5-course` rule for details.
@@ -50,7 +50,7 @@ alwaysApply: true
 - UI chrome text lives in `src/i18n/translations.ts` as nested keys; both `en` and `vi` MUST be kept in sync. Read via `const { t, locale } = useTranslation()`.
 - Bilingual CONTENT data (Japanese + meanings) is stored in data files as `Record<Locale, string>` (type `Bilingual`) and rendered with `value[locale]`, not as translation keys.
 - The header should not show brand logo or slogan; keep only the text brand link in the app bar. The site footer text stays in ENGLISH regardless of locale.
-- On desktop (`md` and up), align the text brand (`Langwish`) with the main content text column (same left gutter alignment), not visual center of the viewport.
+- On desktop (`md` and up), align the text brand (`Nihongoes`) with the main content text column (same left gutter alignment), not visual center of the viewport.
 
 ## Documentation
 - When the user asks for bilingual docs, write the whole document in parallel EN/VI sections (not only one quick-start block), and keep command examples identical across both languages.

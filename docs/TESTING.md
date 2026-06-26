@@ -1,11 +1,11 @@
 # Testing / Kiểm thử
 
-Langwish has two layers of automated tests:
+Nihongoes has two layers of automated tests:
 
 - **Unit & component tests** with [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) (fast, run in `jsdom`).
 - **Browser (end-to-end) tests** with [Playwright](https://playwright.dev) (real Chromium against the dev server).
 
-Langwish có hai lớp kiểm thử tự động:
+Nihongoes có hai lớp kiểm thử tự động:
 
 - **Unit & component** dùng [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) (nhanh, chạy trong `jsdom`).
 - **Browser (end-to-end)** dùng [Playwright](https://playwright.dev) (Chromium thật chạy với dev server).

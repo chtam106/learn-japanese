@@ -104,7 +104,7 @@ export const viTranslations: TranslationTree = {
     expand: 'Mở rộng {{label}}'
   },
   home: {
-    title: 'Học tiếng Nhật cùng Langwish',
+    title: 'Học tiếng Nhật cùng Nihongoes',
     intro:
       'Đọc và luyện kana từng bước, rồi học tiếp với các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình - bảng chữ tương tác, âm thanh, bài kiểm tra và luyện viết.',
     hiraganaDescription: 'Học bảng âm cơ bản dùng cho từ tiếng Nhật thuần.',
