@@ -5,6 +5,7 @@ import { getCourseSeo } from '@/constants/courses/seo.ts';
 import { getSeoRouteKey, type SeoRouteKey } from '@/constants/routes.ts';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/constants/site.ts';
 import type { Locale } from '@/i18n/translations.ts';
+import { stripLocalePrefix, withLocale } from '@/i18n/locale-routing.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type SeoMeta = {
@@ -36,6 +37,21 @@ function upsertLink(rel: string, href: string) {
   element.href = href;
 }
 
+function upsertAlternate(hreflang: string, href: string) {
+  let element = document.head.querySelector<HTMLLinkElement>(
+    `link[rel="alternate"][hreflang="${hreflang}"]`
+  );
+
+  if (!element) {
+    element = document.createElement('link');
+    element.rel = 'alternate';
+    element.hreflang = hreflang;
+    document.head.appendChild(element);
+  }
+
+  element.href = href;
+}
+
 function upsertJsonLd(id: string, data: unknown) {
   let element = document.head.querySelector<HTMLScriptElement>(`script[data-seo-id="${id}"]`);
 
@@ -49,12 +65,10 @@ function upsertJsonLd(id: string, data: unknown) {
   element.textContent = JSON.stringify(data);
 }
 
-function buildCanonicalUrl(pathname: string) {
-  if (pathname === '/') {
-    return `${SITE_URL}/`;
-  }
+function buildUrl(logicalPath: string, locale: Locale) {
+  const path = withLocale(logicalPath, locale);
 
-  return `${SITE_URL}${pathname}`;
+  return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
 }
 
 function getSeoMeta(routeKey: SeoRouteKey, locale: Locale, t: (key: string) => string): SeoMeta {
@@ -137,9 +151,12 @@ export function PageMeta() {
   const { locale, t } = useTranslation();
 
   useEffect(() => {
-    const routeKey = getSeoRouteKey(location.pathname);
+    const logicalPath = stripLocalePrefix(location.pathname);
+    const routeKey = getSeoRouteKey(logicalPath);
     const meta = getSeoMeta(routeKey, locale, t);
-    const canonicalUrl = buildCanonicalUrl(location.pathname);
+    const canonicalUrl = buildUrl(logicalPath, locale);
+    const viUrl = buildUrl(logicalPath, 'vi');
+    const enUrl = buildUrl(logicalPath, 'en');
     const ogLocale = locale === 'vi' ? 'vi_VN' : 'en_US';
 
     document.title = meta.title;
@@ -157,10 +174,14 @@ export function PageMeta() {
     upsertMeta('og:type', 'website', 'property');
     upsertMeta('og:site_name', SITE_NAME, 'property');
     upsertMeta('og:locale', ogLocale, 'property');
+    upsertMeta('og:locale:alternate', locale === 'vi' ? 'en_US' : 'vi_VN', 'property');
     upsertMeta('twitter:card', 'summary');
     upsertMeta('twitter:title', meta.title);
     upsertMeta('twitter:description', meta.description);
     upsertLink('canonical', canonicalUrl);
+    upsertAlternate('vi', viUrl);
+    upsertAlternate('en', enUrl);
+    upsertAlternate('x-default', viUrl);
 
     upsertJsonLd('structured-data', buildStructuredData(routeKey, meta, canonicalUrl));
   }, [location.pathname, locale, t]);

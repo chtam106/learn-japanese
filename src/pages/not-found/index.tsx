@@ -2,7 +2,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import TravelExploreOutlinedIcon from '@mui/icons-material/TravelExploreOutlined';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { alpha } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import { Heading } from '@/components/heading';
 import { PageContainer } from '@/components/page-container';
 import { routes } from '@/constants/routes.ts';

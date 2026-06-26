@@ -6,14 +6,19 @@ import './index.css';
 import App from './app.tsx';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { LanguageProvider } from '@/i18n/context.tsx';
-import { readStoredLocale } from '@/i18n/language-context.ts';
+import { getLocaleFromPathname } from '@/i18n/locale-routing.ts';
 import type { TranslationTree } from '@/i18n/translations.ts';
 import { appTheme } from '@/theme/app-theme.ts';
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 async function bootstrap() {
-  const initialLocale = readStoredLocale();
+  // Derive the locale from the URL so the right strings are ready on first paint.
+  const logicalPathname = routerBasename
+    ? window.location.pathname.replace(new RegExp(`^${routerBasename}`), '')
+    : window.location.pathname;
+  const initialLocale = getLocaleFromPathname(logicalPathname || '/');
+
   let initialViTranslations: TranslationTree | undefined;
 
   if (initialLocale === 'vi') {
@@ -25,16 +30,17 @@ async function bootstrap() {
     <StrictMode>
       <ThemeProvider theme={appTheme}>
         <CssBaseline />
-        <LanguageProvider
-          initialLocale={initialLocale}
-          initialTranslations={initialViTranslations ? { vi: initialViTranslations } : undefined}
-        >
-          <ErrorBoundary>
-            <BrowserRouter basename={routerBasename || undefined}>
+        <ErrorBoundary>
+          <BrowserRouter basename={routerBasename || undefined}>
+            <LanguageProvider
+              initialTranslations={
+                initialViTranslations ? { vi: initialViTranslations } : undefined
+              }
+            >
               <App />
-            </BrowserRouter>
-          </ErrorBoundary>
-        </LanguageProvider>
+            </LanguageProvider>
+          </BrowserRouter>
+        </ErrorBoundary>
       </ThemeProvider>
     </StrictMode>
   );

@@ -13,16 +13,12 @@ const withProviders: Decorator = (Story, context) => {
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
-      {/* Remount on locale change so LanguageProvider re-reads its initial locale. */}
-      <LanguageProvider
-        key={locale}
-        initialLocale={locale}
-        initialTranslations={{ vi: viTranslations }}
-      >
-        <MemoryRouter>
+      {/* The provider derives its locale from the URL; remount on locale change. */}
+      <MemoryRouter key={locale} initialEntries={[locale === 'en' ? '/en' : '/']}>
+        <LanguageProvider initialTranslations={{ vi: viTranslations }}>
           <Story />
-        </MemoryRouter>
-      </LanguageProvider>
+        </LanguageProvider>
+      </MemoryRouter>
     </ThemeProvider>
   );
 };

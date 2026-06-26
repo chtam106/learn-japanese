@@ -1,5 +1,6 @@
-import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { LocaleLink as RouterLink } from '@/components/locale-link';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import FitnessCenterOutlinedIcon from '@mui/icons-material/FitnessCenterOutlined';
 import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined';
