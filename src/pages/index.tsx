@@ -1,3 +1,4 @@
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import HistoryEduOutlinedIcon from '@mui/icons-material/HistoryEduOutlined';
 import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
 import { Box, Stack, Typography } from '@mui/material';
@@ -29,7 +30,7 @@ function HomePage() {
     {
       to: routes.alphabet.combined,
       title: t('nav.combined'),
-      symbol: 'あ/ア',
+      icon: GridViewOutlinedIcon,
       description: t('home.combinedDescription')
     },
     {
