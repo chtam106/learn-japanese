@@ -1,15 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Fab, useMediaQuery, useTheme } from '@mui/material';
+import { Fab, Fade, useMediaQuery, useTheme } from '@mui/material';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 /** Show only once the page is scrolled past this fraction of its scrollable height. */
-const SHOW_AFTER_PROGRESS = 0.2;
+const SHOW_AFTER_PROGRESS = 0.4;
+
+/** Treat scrolling as "stopped" once no scroll event fires for this long (ms). */
+const SCROLL_IDLE_DELAY = 200;
 
 /**
  * Floating "back to top" button, fixed to the bottom-right of the viewport.
- * Only appears on scrollable pages, when scrolling down past a threshold, and
- * hides as soon as the user scrolls up (staying hidden once they stop). On
+ * Stays hidden while the user is actively scrolling; once scrolling settles it
+ * decides whether to show, appearing only when the last movement was downward
+ * and the page is scrolled past a threshold (scrolling up keeps it hidden). On
  * desktop it rests 20px above the footer.
  */
 export function ScrollToTopButton() {
@@ -19,64 +23,71 @@ export function ScrollToTopButton() {
   const gap = isDesktop ? 20 : 16;
   const [visible, setVisible] = useState(false);
   const [bottom, setBottom] = useState(gap);
-  const lastY = useRef(0);
 
   useEffect(() => {
-    lastY.current = window.scrollY;
+    let idleTimer: ReturnType<typeof setTimeout> | undefined;
+    let lastY = window.scrollY;
+    let lastDirection: 'up' | 'down' | null = null;
 
-    const update = () => {
+    // Runs only after scrolling has settled, deciding whether to reveal.
+    const decideOnIdle = () => {
       const y = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const delta = y - lastY.current;
-      lastY.current = y;
-
-      if (maxScroll <= 0) {
-        setVisible(false);
-      } else if (delta > 0) {
-        // Show only while actively scrolling down past the threshold.
-        if (y / maxScroll >= SHOW_AFTER_PROGRESS) {
-          setVisible(true);
-        }
-      } else if (delta < 0) {
-        // Hide as soon as the user scrolls up; stays hidden once they stop.
-        setVisible(false);
-      }
-
       const footer = document.querySelector('footer');
       const footerHeight = footer ? footer.getBoundingClientRect().height : 0;
       setBottom(footerHeight + gap);
+      // Reveal only when the user settled after scrolling down past the threshold.
+      setVisible(
+        maxScroll > 0 && lastDirection === 'down' && y / maxScroll >= SHOW_AFTER_PROGRESS
+      );
     };
 
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastY) {
+        lastDirection = 'down';
+      } else if (y < lastY) {
+        lastDirection = 'up';
+      }
+      lastY = y;
+      // Hide while actively scrolling; re-decide only once it settles.
+      setVisible(false);
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(decideOnIdle, SCROLL_IDLE_DELAY);
+    };
+
+    // Decide once on mount (e.g. when loaded already scrolled) without setting
+    // state directly in the effect body.
+    idleTimer = setTimeout(decideOnIdle, 0);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', decideOnIdle);
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      clearTimeout(idleTimer);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', decideOnIdle);
     };
   }, [gap]);
 
-  if (!visible) {
-    return null;
-  }
-
   return (
-    <Fab
-      size="medium"
-      aria-label={t('common.scrollTop')}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      sx={{
-        position: 'fixed',
-        right: `${gap}px`,
-        bottom: `${bottom}px`,
-        zIndex: (muiTheme) => muiTheme.zIndex.fab,
-        bgcolor: 'background.paper',
-        color: 'text.primary',
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.14)',
-        transition: 'bottom 0.15s ease',
-        '&:hover': { bgcolor: 'background.paper' }
-      }}
-    >
-      <KeyboardArrowUpIcon />
-    </Fab>
+    <Fade in={visible} unmountOnExit>
+      <Fab
+        size="medium"
+        aria-label={t('common.scrollTop')}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        sx={{
+          position: 'fixed',
+          right: `${gap}px`,
+          bottom: `${bottom}px`,
+          zIndex: (muiTheme) => muiTheme.zIndex.fab,
+          bgcolor: 'background.paper',
+          color: 'text.primary',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.14)',
+          '&:hover': { bgcolor: 'background.paper' }
+        }}
+      >
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </Fade>
   );
 }
