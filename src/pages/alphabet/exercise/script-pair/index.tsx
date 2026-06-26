@@ -3,6 +3,7 @@ import type { ScriptPairDirection } from '@/pages/alphabet/exercise/exercise-qui
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
 import { ExerciseQuiz } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-controls.tsx';
+import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
 import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
 import { useExercisePairDirection } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
@@ -16,6 +17,7 @@ function ScriptPairExercisePage() {
     <ExercisePageLayout
       title={t('exercise.scriptPair')}
       subtitle={t('exercise.scriptPairDescription')}
+      note={<ExerciseScopeHint />}
       controls={
         <>
           <FormControl fullWidth>

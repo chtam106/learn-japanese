@@ -1,6 +1,7 @@
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
 import { ExerciseQuiz } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-controls.tsx';
+import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
 import { ExerciseScriptSelect } from '@/pages/alphabet/exercise/exercise-script-select.tsx';
 import { getScriptLabel } from '@/pages/alphabet/exercise/exercise-script-label.ts';
 import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
@@ -17,6 +18,7 @@ function ListenExercisePage() {
     <ExercisePageLayout
       title={t('exercise.listenPickShort')}
       subtitle={t('exercise.listenDescription')}
+      note={<ExerciseScopeHint />}
       controls={
         <>
           <ExerciseScriptSelect script={script} onChange={handleScriptChange} />

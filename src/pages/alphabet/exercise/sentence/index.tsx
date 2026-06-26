@@ -248,15 +248,15 @@ function SentenceQuiz({ type }: SentenceQuizProps) {
             }}
           />
 
-          <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'flex-end' }}>
-            <Button
-              type="submit"
-              variant="contained"
-              disabled={status === 'correct' || value.trim().length === 0}
-            >
-              {t('exercise.check')}
-            </Button>
-          </Stack>
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            disabled={status === 'correct' || value.trim().length === 0}
+            sx={{ height: 56 }}
+          >
+            {t('exercise.check')}
+          </Button>
         </Stack>
       </Box>
     </Paper>

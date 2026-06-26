@@ -42,7 +42,7 @@ const en: TranslationTree = {
       hiragana: {
         title: 'Hiragana Chart & Practice (ひらがな)',
         description:
-          'Learn hiragana with an interactive chart covering seion, dakuten, handakuten, and yoon. Tap any character to hear native audio.'
+          'Learn hiragana with an interactive chart covering seion, tenten, maru, and yoon. Tap any character to hear native audio.'
       },
       katakana: {
         title: 'Katakana Chart & Practice (カタカナ)',
@@ -142,7 +142,7 @@ const en: TranslationTree = {
     combinedDescription: 'See hiragana and katakana side by side in one chart',
     exerciseDescription: 'Practice hiragana and katakana',
     hiraganaPageDescription:
-      'Hiragana is the foundation of written Japanese. Its 46 basic sounds (seion) spell grammar particles, verb and adjective endings, and native words. Voicing marks (dakuten and handakuten) and the small ゃ/ゅ/ょ of yoon extend the same set to cover every Japanese sound.',
+      'Hiragana is the foundation of written Japanese. Its 46 basic sounds (seion) spell grammar particles, verb and adjective endings, and native words. Voicing marks (tenten and maru) and the small ゃ/ゅ/ょ of yoon extend the same set to cover every Japanese sound.',
     katakanaPageDescription:
       'Katakana shares the exact same sounds as hiragana but uses sharper, more angular strokes. It is reserved for loanwords, foreign names, onomatopoeia, scientific terms, and words written for emphasis. Learning it alongside hiragana lets you read signs, menus, and product names.',
     combinedPageDescription:
@@ -151,9 +151,9 @@ const en: TranslationTree = {
   },
   chart: {
     seion: 'Seion',
-    voiced: 'Dakuten / Handakuten ({{dakuten}} / {{handakuten}})',
+    voiced: 'Tenten / Maru ({{dakuten}} / {{handakuten}})',
     voicedDescription:
-      'Add the dakuten mark ({{dakuten}}) to voice a sound: k→g, s→z, t→d, h→b. The handakuten mark ({{handakuten}}) turns h→p. e.g. {{base}} ({{baseRomaji}}) + {{dakuten}} = {{voiced}} ({{voicedRomaji}}).',
+      'Add the tenten mark ({{dakuten}}) to voice a sound: k→g, s→z, t→d, h→b. The maru mark ({{handakuten}}) turns h→p. e.g. {{base}} ({{baseRomaji}}) + {{dakuten}} = {{voiced}} ({{voicedRomaji}}).',
     yoon: 'Yoon',
     yoonDescription:
       'Combined sounds with small {{small1}}, {{small2}}, {{small3}} - e.g. {{base}} + {{small1}} = {{result}} ({{romaji}}).',
@@ -200,8 +200,8 @@ const en: TranslationTree = {
       'Particles are read by their sound (は=wa, へ=e, を=o); typing the literal spelling works too.',
     sentenceHint3: 'You can type with or without spaces between words.',
     sentenceType: 'Sentence type',
-    sentenceTypeHiragana: 'All hiragana',
-    sentenceTypeKatakana: 'All katakana',
+    sentenceTypeHiragana: 'Only hiragana',
+    sentenceTypeKatakana: 'Only katakana',
     sentenceTypeMixed: 'Mixed',
     sentenceProgress: 'Sentence {{current}} / {{total}}',
     sentenceScore: 'Correct: {{correct}} / {{total}}',
@@ -236,9 +236,11 @@ const en: TranslationTree = {
     questionCharacter: 'What is the {{script}} character?',
     scopeAll: 'All characters',
     scopeSeion: 'Seion',
-    scopeDakuten: 'Dakuten ({{mark}})',
-    scopeHandakuten: 'Handakuten ({{mark}})',
+    scopeDakuten: 'Tenten ({{mark}})',
+    scopeHandakuten: 'Maru ({{mark}})',
     scopeYoon: 'Yoon',
+    scopeLegend:
+      'Scope: Seion = the 46 basic kana; Tenten ({{dakuten}}) and Maru ({{handakuten}}) = voiced-sound marks; Yoon = small ゃ/ゅ/ょ blends.',
     groupSeionRows: 'Seion rows',
     groupYoonRows: 'Yoon rows',
     rowDefault: 'Row',
