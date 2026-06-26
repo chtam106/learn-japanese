@@ -1,8 +1,9 @@
 import { useState, type SyntheticEvent } from 'react';
-import { Tab, Tabs } from '@mui/material';
+import { Stack, Tab, Tabs } from '@mui/material';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
 import { ExerciseQuiz } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-controls.tsx';
+import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
 import { ExerciseScriptSelect } from '@/pages/alphabet/exercise/exercise-script-select.tsx';
 import { getScriptLabel } from '@/pages/alphabet/exercise/exercise-script-label.ts';
 import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
@@ -27,10 +28,13 @@ function CharacterExercisePage() {
       title={t('exercise.chooseCharacter')}
       subtitle={t('exercise.characterDescription')}
       note={
-        <Tabs value={direction} onChange={handleDirectionChange} variant="fullWidth">
-          <Tab value="character" label={t('exercise.characterTabChooseKana')} />
-          <Tab value="kana-romaji" label={t('exercise.characterTabChooseRomaji')} />
-        </Tabs>
+        <Stack spacing={1.5}>
+          <ExerciseScopeHint />
+          <Tabs value={direction} onChange={handleDirectionChange} variant="fullWidth">
+            <Tab value="character" label={t('exercise.characterTabChooseKana')} />
+            <Tab value="kana-romaji" label={t('exercise.characterTabChooseRomaji')} />
+          </Tabs>
+        </Stack>
       }
       controls={
         <>
