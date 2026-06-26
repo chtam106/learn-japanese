@@ -1,10 +1,11 @@
 import type { ExerciseOverviewScope, ExerciseRowScope } from '@/constants/alphabet-charts.ts';
+import { STORAGE_PREFIX } from '@/constants/site.ts';
 import type {
   ExerciseScript,
   ScriptPairDirection
 } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 
-export const EXERCISE_PREFS_STORAGE_KEY = 'langwish.exercise-preferences';
+export const EXERCISE_PREFS_STORAGE_KEY = `${STORAGE_PREFIX}.exercise-preferences`;
 
 export type StoredExercisePreferences = {
   script: ExerciseScript;

@@ -1,5 +1,7 @@
-const VOICE_STORAGE_KEY = 'langwish-voice';
-const RATE_STORAGE_KEY = 'langwish-rate';
+import { STORAGE_PREFIX } from '@/constants/site.ts';
+
+const VOICE_STORAGE_KEY = `${STORAGE_PREFIX}-voice`;
+const RATE_STORAGE_KEY = `${STORAGE_PREFIX}-rate`;
 const DEFAULT_RATE = 0.9;
 
 export function isSpeechSupported(): boolean {

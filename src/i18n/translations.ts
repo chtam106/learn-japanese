@@ -1,4 +1,5 @@
 import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
+import { STORAGE_PREFIX } from '@/constants/site.ts';
 
 export type Locale = 'en' | 'vi';
 
@@ -316,7 +317,7 @@ export const enTranslations: TranslationTree = en;
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
-export const LOCALE_STORAGE_KEY = 'langwish-locale';
+export const LOCALE_STORAGE_KEY = `${STORAGE_PREFIX}-locale`;
 
 export function getChartSectionLabels(t: (key: string, params?: TranslationParams) => string) {
   return {
