@@ -33,6 +33,9 @@ alwaysApply: true
 - Enforce semicolons for code style: keep Prettier `semi: true` and ESLint `semi: ['error', 'always']` (for `ts`/`tsx` and `scripts/**/*.mjs`). The core `semi` rule does NOT cover TS type/interface member delimiters — those are enforced separately by `@stylistic/member-delimiter-style` (from `@stylistic/eslint-plugin`), configured to `semi` (multiline `requireLast: true`, singleline) to match Prettier.
 - For conditional JSX *content* rendering, always use `&&`, never the `? :` ternary — including when there is an else branch. Split a two-branch render into two guards: `{cond && (<A />)}{!cond && (<B />)}`. This applies to `: null` cases too. Exception: keep `? :` for non-JSX *value* selection (prop values like `color={x ? 'a' : 'b'}`, `state={a ? 'x' : 'y'}`, string pickers like `{cond ? t('a') : t('b')}`) since `&&` cannot express those.
 
+## Kana terminology (UI labels)
+- In UI labels prefer the colloquial mark names the user expects: call dakuten "Tenten" and handakuten "Maru" (e.g. exercise scope dropdown `scopeDakuten`/`scopeHandakuten`, the `exercise.scopeLegend` hint). Long educational/chart explanatory copy may still use the formal terms (dakuten/handakuten/seion/yoon).
+
 ## Text & typography (IMPORTANT)
 - Use ONLY US-keyboard ASCII punctuation in non-Japanese text (UI strings, EN/VI content, code, comments, docs). NEVER use em dash (`—`) or en dash (`–`); use a hyphen `-` (as a separator write ` - `, for ranges write `N5-N1` not `N5–N1`). Avoid other "smart"/typographic unicode (curly quotes `“”‘’`, ellipsis `…`) too: use `"`, `'`, `...`.
 - Japanese CONTENT may use Japanese punctuation (`、。「」〜・` etc.); the rule only applies to the non-Japanese parts of a string.
