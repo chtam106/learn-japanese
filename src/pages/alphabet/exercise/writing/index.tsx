@@ -612,7 +612,6 @@ function WritingExercisePage() {
               </Stack>
 
               <WritingCanvas
-                key={script}
                 ariaLabel={t('exercise.writingCanvasAria')}
                 clearLabel={t('exercise.writingClear')}
                 undoLabel={t('exercise.writingUndo')}
