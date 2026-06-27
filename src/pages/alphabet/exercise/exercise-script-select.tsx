@@ -1,7 +1,6 @@
 import { type MouseEvent } from 'react';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import type { ExerciseScript } from '@/pages/alphabet/exercise/exercise-quiz.ts';
-import { compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type ExerciseScriptSelectProps = {
@@ -26,7 +25,7 @@ export function ExerciseScriptSelect({ script, onChange }: ExerciseScriptSelectP
       value={script}
       onChange={handleChange}
       aria-label={t('exercise.script')}
-      sx={[compactToggleSx, { gridColumn: { xs: '1 / -1', lg: 'span 2' } }]}
+      sx={{ gridColumn: { xs: '1 / -1', lg: 'span 2' } }}
     >
       <ToggleButton value="hiragana">{t('nav.hiragana')}</ToggleButton>
       <ToggleButton value="katakana">{t('nav.katakana')}</ToggleButton>

@@ -5,7 +5,6 @@ import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layo
 import { ExerciseQuiz } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-controls.tsx';
 import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
-import { compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useScriptPairExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
@@ -36,7 +35,7 @@ function ScriptPairExercisePage() {
             value={pairDirection}
             onChange={handlePairDirectionChange}
             aria-label={t('exercise.pairDirection')}
-            sx={[compactToggleSx, { gridColumn: { xs: '1 / -1', lg: 'span 2' } }]}
+            sx={{ gridColumn: { xs: '1 / -1', lg: 'span 2' } }}
           >
             <ToggleButton
               value="hiragana-to-katakana"

@@ -8,7 +8,7 @@ import {
   ToggleButtonGroup
 } from '@mui/material';
 import type { ExerciseOverviewScope } from '@/constants/alphabet-charts.ts';
-import { compactSelectSx, compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
+import { buttonSizedSelectSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import type { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
 
@@ -64,10 +64,7 @@ export function ExerciseScopeControls({
         value={overviewScope}
         onChange={handleOverviewToggle}
         aria-label={t('exercise.scope')}
-        sx={[
-          compactToggleSx,
-          { gridColumn: overviewFullWidth ? '1 / -1' : { xs: '1 / -1', lg: 'span 2' } }
-        ]}
+        sx={{ gridColumn: overviewFullWidth ? '1 / -1' : { xs: '1 / -1', lg: 'span 2' } }}
       >
         {overviewScopeOptions.map((option) => (
           <ToggleButton key={option.value} value={option.value as ExerciseOverviewScope}>
@@ -79,7 +76,7 @@ export function ExerciseScopeControls({
       <FormControl
         fullWidth
         disabled={!showRowRangeControls}
-        sx={[compactSelectSx, { gridColumn: { lg: 'span 2' } }]}
+        sx={[buttonSizedSelectSx, { gridColumn: { lg: 'span 2' } }]}
       >
         <InputLabel id="row-from-select-label">{t('exercise.rowFrom')}</InputLabel>
         <Select<string>
@@ -102,7 +99,7 @@ export function ExerciseScopeControls({
       <FormControl
         fullWidth
         disabled={rowToDisabled}
-        sx={[compactSelectSx, { gridColumn: { lg: 'span 2' } }]}
+        sx={[buttonSizedSelectSx, { gridColumn: { lg: 'span 2' } }]}
       >
         <InputLabel id="row-to-select-label">{t('exercise.rowTo')}</InputLabel>
         <Select<string>

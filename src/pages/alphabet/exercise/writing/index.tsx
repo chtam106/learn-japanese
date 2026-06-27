@@ -35,7 +35,7 @@ import {
 import { KanaDisplay } from '@/components/kana-display';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
-import { compactSelectSx, compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
+import { buttonSizedSelectSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import type { Script } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import type { WritingMode } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useWritingExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
@@ -519,7 +519,6 @@ function WritingExercisePage() {
             value={mode}
             onChange={handleModeChange}
             aria-label={t('exercise.writingMode')}
-            sx={compactToggleSx}
           >
             <ToggleButton value="row">{t('exercise.writingModeRow')}</ToggleButton>
             <ToggleButton value="romaji">{t('exercise.writingModeRomaji')}</ToggleButton>
@@ -532,14 +531,13 @@ function WritingExercisePage() {
             value={script}
             onChange={handleScriptChange}
             aria-label={t('exercise.script')}
-            sx={compactToggleSx}
           >
             <ToggleButton value="hiragana">{t('nav.hiragana')}</ToggleButton>
             <ToggleButton value="katakana">{t('nav.katakana')}</ToggleButton>
           </ToggleButtonGroup>
 
           {mode === 'row' && (
-            <FormControl fullWidth sx={compactSelectSx}>
+            <FormControl fullWidth sx={buttonSizedSelectSx}>
               <InputLabel id="writing-row-select-label">{t('exercise.writingRow')}</InputLabel>
               <Select<number>
                 labelId="writing-row-select-label"
@@ -556,7 +554,7 @@ function WritingExercisePage() {
             </FormControl>
           )}
           {mode === 'romaji' && (
-            <FormControl fullWidth sx={compactSelectSx}>
+            <FormControl fullWidth sx={buttonSizedSelectSx}>
               <InputLabel id="writing-romaji-row-select-label">
                 {t('exercise.writingRow')}
               </InputLabel>

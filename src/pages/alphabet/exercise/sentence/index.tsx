@@ -16,7 +16,6 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
-import { compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useSentenceExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { SENTENCES, type SentenceType } from '@/pages/alphabet/exercise/sentence/sentences.ts';
 import {
@@ -307,7 +306,7 @@ function SentenceExercisePage() {
           value={type}
           onChange={handleTypeChange}
           aria-label={t('exercise.sentenceType')}
-          sx={[compactToggleSx, { mb: 3 }]}
+          sx={{ mb: 3 }}
         >
           {SENTENCE_TYPES.map((value) => (
             <ToggleButton key={value} value={value}>
