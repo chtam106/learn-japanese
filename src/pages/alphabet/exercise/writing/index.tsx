@@ -56,7 +56,6 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawingRef = useRef(false);
   const historyRef = useRef<ImageData[]>([]);
-  const [canUndo, setCanUndo] = useState(false);
 
   const redrawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -81,7 +80,6 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
     configurePen(ctx);
 
     historyRef.current = [];
-    setCanUndo(false);
   }, []);
 
   const undoStroke = useCallback(() => {
@@ -92,7 +90,6 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
     }
 
     ctx.putImageData(snapshot, 0, 0);
-    setCanUndo(historyRef.current.length > 0);
   }, []);
 
   useEffect(() => {
@@ -147,7 +144,6 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
       if (historyRef.current.length > 50) {
         historyRef.current.shift();
       }
-      setCanUndo(true);
 
       canvas.setPointerCapture(event.pointerId);
       isDrawingRef.current = true;
@@ -201,7 +197,6 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
         <IconButton
           aria-label={undoLabel}
           size="small"
-          disabled={!canUndo}
           onClick={undoStroke}
           sx={{ touchAction: 'manipulation' }}
         >
