@@ -39,7 +39,8 @@ import { buttonSizedSelectSx } from '@/pages/alphabet/exercise/control-styles.ts
 import type { Script } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import type { WritingMode } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useWritingExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
-import { speakJapanese } from '@/utils/speech.ts';
+import { StrokeOrderDialog } from '@/components/stroke-order-dialog';
+import { HintText } from '@/components/hint-text';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
 function drawCanvasGuides(ctx: CanvasRenderingContext2D, width: number, height: number) {
@@ -290,10 +291,11 @@ function WritingCanvas({ ariaLabel, clearLabel, undoLabel }: WritingCanvasProps)
 
 type KanaSampleProps = {
   cell: AlphabetCell;
+  onSelect: (cell: AlphabetCell) => void;
 };
 
-/** A reference glyph in the on-screen (gothic) font; tapping plays its audio. */
-function KanaSample({ cell }: KanaSampleProps) {
+/** A reference glyph in the on-screen (gothic) font; tapping shows its stroke order. */
+function KanaSample({ cell, onSelect }: KanaSampleProps) {
   const { t } = useTranslation();
 
   return (
@@ -301,12 +303,12 @@ function KanaSample({ cell }: KanaSampleProps) {
       <Box
         role="button"
         tabIndex={0}
-        aria-label={t('common.playAudio')}
-        onClick={() => speakJapanese(cell.char)}
+        aria-label={t('exercise.strokeOrderTitle')}
+        onClick={() => onSelect(cell)}
         onKeyDown={(event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            speakJapanese(cell.char);
+            onSelect(cell);
           }
         }}
         sx={{
@@ -366,6 +368,7 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
   });
   const [revealed, setRevealed] = useState(false);
   const [round, setRound] = useState(0);
+  const [strokeOpen, setStrokeOpen] = useState(false);
 
   const cell = items[draw.index];
 
@@ -403,7 +406,28 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
         <Box sx={{ position: 'relative' }}>
           <Typography
             component="p"
-            sx={{ fontSize: { xs: 48, sm: 56 }, lineHeight: 1, fontWeight: 600 }}
+            role="button"
+            tabIndex={0}
+            aria-label={t('exercise.strokeOrderTitle')}
+            onClick={() => setStrokeOpen(true)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                setStrokeOpen(true);
+              }
+            }}
+            sx={{
+              fontSize: { xs: 48, sm: 56 },
+              lineHeight: 1,
+              fontWeight: 600,
+              cursor: 'pointer',
+              borderRadius: 1,
+              '&:focus-visible': {
+                outline: '2px solid',
+                outlineColor: 'primary.main',
+                outlineOffset: 2
+              }
+            }}
           >
             {cell.romaji}
           </Typography>
@@ -413,16 +437,16 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
             role="button"
             tabIndex={revealed ? 0 : -1}
             aria-hidden={!revealed}
-            aria-label={t('common.playAudio')}
+            aria-label={t('exercise.strokeOrderTitle')}
             onClick={() => {
               if (revealed) {
-                speakJapanese(cell.char);
+                setStrokeOpen(true);
               }
             }}
             onKeyDown={(event) => {
               if (revealed && (event.key === 'Enter' || event.key === ' ')) {
                 event.preventDefault();
-                speakJapanese(cell.char);
+                setStrokeOpen(true);
               }
             }}
             sx={{
@@ -463,6 +487,8 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
           {t('exercise.writingNext')}
         </Button>
       </Stack>
+
+      <StrokeOrderDialog cell={cell} open={strokeOpen} onClose={() => setStrokeOpen(false)} />
     </Stack>
   );
 }
@@ -470,6 +496,7 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
 function WritingExercisePage() {
   const { t } = useTranslation();
   const { mode, setMode, script, setScript, row, setRow } = useWritingExercisePreferences();
+  const [strokeCell, setStrokeCell] = useState<AlphabetCell | null>(null);
 
   const rows = useMemo(
     () => (script === 'hiragana' ? hiraganaChartRows : katakanaChartRows),
@@ -509,7 +536,11 @@ function WritingExercisePage() {
   };
 
   return (
-    <ExercisePageLayout title={t('exercise.writing')} subtitle={t('exercise.writingDescription')}>
+    <ExercisePageLayout
+      title={t('exercise.writing')}
+      subtitle={t('exercise.writingDescription')}
+      note={<HintText>{t('exercise.strokeOrderNote')}</HintText>}
+    >
       <Box sx={{ width: '100%', maxWidth: { xs: '100%', sm: 380, md: 420 }, mx: 'auto' }}>
         <Stack spacing={2}>
           <ToggleButtonGroup
@@ -598,7 +629,11 @@ function WritingExercisePage() {
                   }}
                 >
                   {cells.map((cell) => (
-                    <KanaSample key={`${script}:${cell.char}`} cell={cell} />
+                    <KanaSample
+                      key={`${script}:${cell.char}`}
+                      cell={cell}
+                      onSelect={setStrokeCell}
+                    />
                   ))}
                 </Stack>
                 <IconButton
@@ -624,6 +659,12 @@ function WritingExercisePage() {
           )}
         </Stack>
       </Box>
+
+      <StrokeOrderDialog
+        cell={strokeCell}
+        open={Boolean(strokeCell)}
+        onClose={() => setStrokeCell(null)}
+      />
     </ExercisePageLayout>
   );
 }

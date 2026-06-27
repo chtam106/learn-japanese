@@ -197,6 +197,11 @@ const en: TranslationTree = {
     writingReveal: 'Show answer',
     writingHideAnswer: 'Hide answer',
     writingNext: 'Next character',
+    strokeOrderTitle: 'Stroke order',
+    strokeOrderReplay: 'Tap the character to replay the stroke order.',
+    strokeOrderUnavailable: 'Stroke order is not available for this character yet.',
+    strokeOrderNote:
+      'Tap a character to play its stroke order. Strokes use a handwriting style, so they may not match the printed font shown on screen.',
     sentence: 'Sentence transcription',
     sentenceTitle: 'Read the sentence, type the romaji',
     sentenceDescription: 'Read a kana sentence and type its romaji.',
