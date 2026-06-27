@@ -1,6 +1,17 @@
 import { Component, useState, type ErrorInfo, type ReactNode } from 'react';
 import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
-import { Box, Button, Collapse, Stack, Typography } from '@mui/material';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Stack,
+  Typography
+} from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { subtleSurfaceSx } from '@/theme/surfaces.ts';
@@ -23,11 +34,24 @@ type ErrorFallbackProps = {
 
 function ErrorFallback({ error, errorInfo, onReload }: ErrorFallbackProps) {
   const { t } = useTranslation();
-  const [showDetails, setShowDetails] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const details = [error?.stack ?? error?.message, errorInfo?.componentStack]
     .filter(Boolean)
     .join('\n\n');
+
+  const closeDetails = () => {
+    setDetailsOpen(false);
+    setCopied(false);
+  };
+
+  const handleCopy = () => {
+    void navigator.clipboard?.writeText(details).then(() => {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <Box
@@ -79,29 +103,26 @@ function ErrorFallback({ error, errorInfo, onReload }: ErrorFallbackProps) {
             {t('errorBoundary.reload')}
           </Button>
           {details.length > 0 && (
-            <Button
-              size="large"
-              variant="outlined"
-              onClick={() => setShowDetails((previous) => !previous)}
-            >
-              {showDetails ? t('errorBoundary.hideDetails') : t('errorBoundary.showDetails')}
+            <Button size="large" variant="outlined" onClick={() => setDetailsOpen(true)}>
+              {t('errorBoundary.showDetails')}
             </Button>
           )}
         </Stack>
+      </Stack>
 
-        {details.length > 0 && (
-          <Collapse in={showDetails} sx={{ width: '100%' }}>
+      {details.length > 0 && (
+        <Dialog open={detailsOpen} onClose={closeDetails} maxWidth="md" fullWidth>
+          <DialogTitle>{t('errorBoundary.detailsTitle')}</DialogTitle>
+          <DialogContent dividers>
             <Box
               component="pre"
               sx={[
                 subtleSurfaceSx,
                 {
-                  mt: 1,
+                  m: 0,
                   p: 2,
                   borderRadius: 2,
                   textAlign: 'left',
-                  overflow: 'auto',
-                  maxHeight: 280,
                   fontSize: 12,
                   lineHeight: 1.5,
                   whiteSpace: 'pre-wrap',
@@ -112,9 +133,20 @@ function ErrorFallback({ error, errorInfo, onReload }: ErrorFallbackProps) {
             >
               {details}
             </Box>
-          </Collapse>
-        )}
-      </Stack>
+          </DialogContent>
+          <DialogActions sx={{ px: 3, pb: 2 }}>
+            <Button
+              onClick={handleCopy}
+              startIcon={copied ? <CheckOutlinedIcon /> : <ContentCopyOutlinedIcon />}
+            >
+              {copied ? t('errorBoundary.copied') : t('errorBoundary.copy')}
+            </Button>
+            <Button onClick={closeDetails} variant="contained">
+              {t('errorBoundary.close')}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
     </Box>
   );
 }
