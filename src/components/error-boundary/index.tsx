@@ -123,8 +123,6 @@ function ErrorFallback({ error, errorInfo, onReload }: ErrorFallbackProps) {
                   p: 2,
                   borderRadius: 2,
                   textAlign: 'left',
-                  overflow: 'auto',
-                  maxHeight: '60vh',
                   fontSize: 12,
                   lineHeight: 1.5,
                   whiteSpace: 'pre-wrap',
