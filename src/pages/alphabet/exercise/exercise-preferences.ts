@@ -25,7 +25,8 @@ export const EXERCISE_STORAGE_KEYS = {
 
 export type CharacterDirection = 'character' | 'kana-romaji';
 export type WritingMode = 'row' | 'romaji';
-export type WritingRomajiRow = number | 'all';
+/** A writing-exercise row selection, shared across both modes ("All" or an index). */
+export type WritingRow = number | 'all';
 
 export type ScopeSelection = {
   overviewScope: ExerciseOverviewScope;
@@ -48,8 +49,7 @@ export type ScriptPairPreferences = ScopeSelection & {
 export type WritingPreferences = {
   mode: WritingMode;
   script: Script;
-  rowIndex: number;
-  romajiRow: WritingRomajiRow;
+  row: WritingRow;
 };
 
 export type SentencePreferences = {
@@ -128,8 +128,7 @@ export const DEFAULT_SCRIPT_PAIR_PREFERENCES: ScriptPairPreferences = {
 export const DEFAULT_WRITING_PREFERENCES: WritingPreferences = {
   mode: 'row',
   script: 'hiragana',
-  rowIndex: 0,
-  romajiRow: 'all'
+  row: 'all'
 };
 
 export const DEFAULT_SENTENCE_PREFERENCES: SentencePreferences = {
@@ -164,9 +163,12 @@ export function sanitizeScriptPairPreferences(value: unknown): ScriptPairPrefere
   };
 }
 
+function isWritingRow(value: unknown): value is WritingRow {
+  return value === 'all' || (typeof value === 'number' && Number.isInteger(value) && value >= 0);
+}
+
 export function sanitizeWritingPreferences(value: unknown): WritingPreferences {
   const record = asRecord(value);
-  const romajiRow = record.romajiRow;
   return {
     mode: WRITING_MODES.has(record.mode as WritingMode)
       ? (record.mode as WritingMode)
@@ -174,16 +176,7 @@ export function sanitizeWritingPreferences(value: unknown): WritingPreferences {
     script: WRITING_SCRIPTS.has(record.script as Script)
       ? (record.script as Script)
       : DEFAULT_WRITING_PREFERENCES.script,
-    rowIndex:
-      typeof record.rowIndex === 'number' &&
-      Number.isInteger(record.rowIndex) &&
-      record.rowIndex >= 0
-        ? record.rowIndex
-        : DEFAULT_WRITING_PREFERENCES.rowIndex,
-    romajiRow:
-      romajiRow === 'all' || (typeof romajiRow === 'number' && Number.isInteger(romajiRow))
-        ? (romajiRow as WritingRomajiRow)
-        : DEFAULT_WRITING_PREFERENCES.romajiRow
+    row: isWritingRow(record.row) ? record.row : DEFAULT_WRITING_PREFERENCES.row
   };
 }
 

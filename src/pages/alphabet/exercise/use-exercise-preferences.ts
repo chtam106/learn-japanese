@@ -21,7 +21,7 @@ import {
   type CharacterDirection,
   type ScopeSelection,
   type WritingMode,
-  type WritingRomajiRow
+  type WritingRow
 } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
 import { usePersistentState } from '@/utils/use-persistent-state.ts';
@@ -133,13 +133,8 @@ export function useWritingExercisePreferences() {
     [setPrefs]
   );
 
-  const setRowIndex = useCallback(
-    (rowIndex: number) => setPrefs((previous) => ({ ...previous, rowIndex })),
-    [setPrefs]
-  );
-
-  const setRomajiRow = useCallback(
-    (romajiRow: WritingRomajiRow) => setPrefs((previous) => ({ ...previous, romajiRow })),
+  const setRow = useCallback(
+    (row: WritingRow) => setPrefs((previous) => ({ ...previous, row })),
     [setPrefs]
   );
 
@@ -148,10 +143,8 @@ export function useWritingExercisePreferences() {
     setMode,
     script: prefs.script,
     setScript,
-    rowIndex: prefs.rowIndex,
-    setRowIndex,
-    romajiRow: prefs.romajiRow,
-    setRomajiRow
+    row: prefs.row,
+    setRow
   };
 }
 

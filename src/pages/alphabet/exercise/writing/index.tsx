@@ -458,14 +458,15 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
 
 function WritingExercisePage() {
   const { t } = useTranslation();
-  const { mode, setMode, script, setScript, rowIndex, setRowIndex, romajiRow, setRomajiRow } =
-    useWritingExercisePreferences();
+  const { mode, setMode, script, setScript, row, setRow } = useWritingExercisePreferences();
 
   const rows = useMemo(
     () => (script === 'hiragana' ? hiraganaChartRows : katakanaChartRows),
     [script]
   );
-  const safeRowIndex = Math.min(rowIndex, rows.length - 1);
+  // Row mode needs a concrete row; the shared "All" maps to the first row here.
+  const rowModeIndex = row === 'all' ? 0 : row;
+  const safeRowIndex = Math.min(rowModeIndex, rows.length - 1);
   const cells = useMemo(
     () => (rows[safeRowIndex]?.seion ?? []).filter((cell): cell is AlphabetCell => cell !== null),
     [rows, safeRowIndex]
@@ -473,13 +474,12 @@ function WritingExercisePage() {
 
   const handleScriptChange = (event: SelectChangeEvent<Script>) => {
     setScript(event.target.value as Script);
-    setRowIndex(0);
   };
   const handleRowChange = (event: SelectChangeEvent<number>) => {
-    setRowIndex(Number(event.target.value));
+    setRow(Number(event.target.value));
   };
-  const goToPreviousRow = () => setRowIndex(Math.max(0, safeRowIndex - 1));
-  const goToNextRow = () => setRowIndex(Math.min(rows.length - 1, safeRowIndex + 1));
+  const goToPreviousRow = () => setRow(Math.max(0, safeRowIndex - 1));
+  const goToNextRow = () => setRow(Math.min(rows.length - 1, safeRowIndex + 1));
 
   const rowLabel = (rowCells: (AlphabetCell | null)[]) => {
     const first = rowCells.find((cell): cell is AlphabetCell => cell !== null);
@@ -544,9 +544,9 @@ function WritingExercisePage() {
                 </InputLabel>
                 <Select<number | 'all'>
                   labelId="writing-romaji-row-select-label"
-                  value={romajiRow}
+                  value={row}
                   label={t('exercise.writingRow')}
-                  onChange={(event) => setRomajiRow(event.target.value as number | 'all')}
+                  onChange={(event) => setRow(event.target.value as number | 'all')}
                 >
                   <MenuItem value="all">{t('exercise.allRows')}</MenuItem>
                   {rows.map((row, index) => (
@@ -606,11 +606,7 @@ function WritingExercisePage() {
           )}
 
           {mode === 'romaji' && (
-            <RomajiPromptPractice
-              key={`${script}:${romajiRow}`}
-              script={script}
-              rowIndex={romajiRow}
-            />
+            <RomajiPromptPractice key={`${script}:${row}`} script={script} rowIndex={row} />
           )}
         </Stack>
       </Box>
