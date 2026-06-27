@@ -524,8 +524,8 @@ export const n5Course: Course = {
           pattern: 'この / その / あの ＋ N',
           title: { en: 'this/that + noun', vi: 'this/that + danh từ' },
           explanation: {
-            en: 'Use この/その/あの directly before a noun: この本 = "this book". Never use これ before a noun.',
-            vi: 'Dùng この/その/あの ngay trước danh từ: この本 = "quyển sách này". Không dùng これ trước danh từ.'
+            en: 'この/その/あの always come with a noun right after them, like "this/that + noun": この本 = "this book". This is different from これ/それ/あれ, which stand alone (no noun). So say この本, never これ本.',
+            vi: 'この/その/あの luôn đi kèm một danh từ ngay sau, giống "này/đó/kia" trong tiếng Việt: この本 = "quyển sách này". Khác với これ/それ/あれ (đứng một mình, không có danh từ). Vì vậy nói この本, không nói これ本.'
           },
           examples: [
             {
