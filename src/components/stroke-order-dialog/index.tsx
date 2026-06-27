@@ -67,45 +67,55 @@ export function StrokeOrderDialog({
             </Typography>
           </Stack>
 
-          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', width: '100%' }}>
+          <Box
+            sx={{ position: 'relative', width: '100%', display: 'flex', justifyContent: 'center' }}
+          >
             {canNavigate && (
               <IconButton
                 aria-label={t('exercise.strokeOrderPrevious')}
                 onClick={goToPrevious}
-                sx={{ visibility: currentIndex <= 0 ? 'hidden' : 'visible' }}
+                sx={{
+                  position: 'absolute',
+                  left: { xs: -12, sm: 0 },
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  visibility: currentIndex <= 0 ? 'hidden' : 'visible'
+                }}
               >
                 <ChevronLeftIcon sx={{ fontSize: 30 }} />
               </IconButton>
             )}
-            <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-              {cell && hasStrokes && (
-                <KanaStrokeOrder
-                  char={cell.char}
-                  size={{ xs: 200, sm: 240 }}
-                  ariaLabel={cell.romaji}
-                />
-              )}
-              {cell && !hasStrokes && (
-                <Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
-                  <KanaDisplay cell={cell} variant="prompt" />
-                  <HintText sx={{ justifyContent: 'center' }}>
-                    {t('exercise.strokeOrderUnavailable')}
-                  </HintText>
-                </Stack>
-              )}
-            </Box>
+            {cell && hasStrokes && (
+              <KanaStrokeOrder
+                char={cell.char}
+                size={{ xs: 160, sm: 200 }}
+                ariaLabel={cell.romaji}
+              />
+            )}
+            {cell && !hasStrokes && (
+              <Stack spacing={1} sx={{ alignItems: 'center', py: 2 }}>
+                <KanaDisplay cell={cell} variant="prompt" />
+                <HintText sx={{ justifyContent: 'center' }}>
+                  {t('exercise.strokeOrderUnavailable')}
+                </HintText>
+              </Stack>
+            )}
             {canNavigate && (
               <IconButton
                 aria-label={t('exercise.strokeOrderNext')}
                 onClick={goToNext}
                 sx={{
+                  position: 'absolute',
+                  right: { xs: -12, sm: 0 },
+                  top: '50%',
+                  transform: 'translateY(-50%)',
                   visibility: cells && currentIndex < cells.length - 1 ? 'visible' : 'hidden'
                 }}
               >
                 <ChevronRightIcon sx={{ fontSize: 30 }} />
               </IconButton>
             )}
-          </Stack>
+          </Box>
 
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <Typography lang="ja" sx={{ fontSize: '1.5rem', lineHeight: 1, fontWeight: 600 }}>
