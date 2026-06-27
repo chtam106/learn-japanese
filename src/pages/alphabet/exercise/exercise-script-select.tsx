@@ -1,30 +1,36 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import type { SelectChangeEvent } from '@mui/material/Select';
+import { type MouseEvent } from 'react';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import type { ExerciseScript } from '@/pages/alphabet/exercise/exercise-quiz.ts';
+import { compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 type ExerciseScriptSelectProps = {
   script: ExerciseScript;
-  onChange: (event: SelectChangeEvent<ExerciseScript>) => void;
+  onChange: (script: ExerciseScript) => void;
 };
 
 export function ExerciseScriptSelect({ script, onChange }: ExerciseScriptSelectProps) {
   const { t } = useTranslation();
 
+  const handleChange = (_event: MouseEvent<HTMLElement>, value: ExerciseScript | null) => {
+    if (value) {
+      onChange(value);
+    }
+  };
+
   return (
-    <FormControl fullWidth>
-      <InputLabel id="script-select-label">{t('exercise.script')}</InputLabel>
-      <Select<ExerciseScript>
-        labelId="script-select-label"
-        id="script-select"
-        value={script}
-        label={t('exercise.script')}
-        onChange={onChange}
-      >
-        <MenuItem value="all">{t('exercise.scriptAll')}</MenuItem>
-        <MenuItem value="hiragana">{t('nav.hiragana')}</MenuItem>
-        <MenuItem value="katakana">{t('nav.katakana')}</MenuItem>
-      </Select>
-    </FormControl>
+    <ToggleButtonGroup
+      exclusive
+      fullWidth
+      color="primary"
+      value={script}
+      onChange={handleChange}
+      aria-label={t('exercise.script')}
+      sx={[compactToggleSx, { gridColumn: { xs: '1 / -1', lg: 'span 2' } }]}
+    >
+      <ToggleButton value="hiragana">{t('nav.hiragana')}</ToggleButton>
+      <ToggleButton value="katakana">{t('nav.katakana')}</ToggleButton>
+      <ToggleButton value="all">{t('exercise.scriptAll')}</ToggleButton>
+    </ToggleButtonGroup>
   );
 }

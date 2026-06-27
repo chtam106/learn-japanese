@@ -1,15 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type MouseEvent } from 'react';
 import {
   Box,
   Button,
-  FormControl,
-  InputLabel,
   Link,
-  MenuItem,
   Paper,
-  Select,
   Stack,
   TextField,
+  ToggleButton,
+  ToggleButtonGroup,
   Typography
 } from '@mui/material';
 import { HintText } from '@/components/hint-text';
@@ -18,12 +16,20 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
+import { compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useSentenceExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { SENTENCES, type SentenceType } from '@/pages/alphabet/exercise/sentence/sentences.ts';
 import {
   isSentenceAnswerCorrect,
   transliterateSentence
 } from '@/pages/alphabet/exercise/sentence/transliterate.ts';
+
+// Skip auto-focus on touch devices so changing the sentence type doesn't pop
+// the on-screen keyboard each time the quiz remounts.
+const SUPPORTS_FINE_POINTER =
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(pointer: fine)').matches;
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items];
@@ -232,7 +238,7 @@ function SentenceQuiz({ type }: SentenceQuizProps) {
             placeholder={t('exercise.sentenceInputPlaceholder')}
             autoComplete="off"
             spellCheck={false}
-            autoFocus
+            autoFocus={SUPPORTS_FINE_POINTER}
             fullWidth
             focused={status === 'correct' || undefined}
             color={status === 'correct' ? 'success' : undefined}
@@ -273,7 +279,13 @@ const SENTENCE_TYPES: SentenceType[] = ['hiragana', 'katakana', 'mixed'];
 
 function SentenceExercisePage() {
   const { t } = useTranslation();
-  const { type, handleTypeChange } = useSentenceExercisePreferences();
+  const { type, setType } = useSentenceExercisePreferences();
+
+  const handleTypeChange = (_event: MouseEvent<HTMLElement>, value: SentenceType | null) => {
+    if (value) {
+      setType(value);
+    }
+  };
 
   return (
     <ExercisePageLayout
@@ -288,22 +300,21 @@ function SentenceExercisePage() {
       }
     >
       <Box sx={{ maxWidth: { xs: '100%', sm: 560 }, mx: 'auto' }}>
-        <FormControl fullWidth sx={{ mb: 3 }}>
-          <InputLabel id="sentence-type-select-label">{t('exercise.sentenceType')}</InputLabel>
-          <Select<SentenceType>
-            labelId="sentence-type-select-label"
-            id="sentence-type-select"
-            value={type}
-            label={t('exercise.sentenceType')}
-            onChange={handleTypeChange}
-          >
-            {SENTENCE_TYPES.map((value) => (
-              <MenuItem key={value} value={value}>
-                {t(SENTENCE_TYPE_LABEL_KEYS[value])}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <ToggleButtonGroup
+          exclusive
+          fullWidth
+          color="primary"
+          value={type}
+          onChange={handleTypeChange}
+          aria-label={t('exercise.sentenceType')}
+          sx={[compactToggleSx, { mb: 3 }]}
+        >
+          {SENTENCE_TYPES.map((value) => (
+            <ToggleButton key={value} value={value}>
+              {t(SENTENCE_TYPE_LABEL_KEYS[value])}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
         <SentenceQuiz key={type} type={type} />
       </Box>
     </ExercisePageLayout>

@@ -91,7 +91,7 @@ function pickScript(value: unknown, fallback: ExerciseScript): ExerciseScript {
 function pickOverviewScope(value: unknown): ExerciseOverviewScope {
   return OVERVIEW_SCOPES.has(value as ExerciseOverviewScope)
     ? (value as ExerciseOverviewScope)
-    : 'all';
+    : 'seion';
 }
 
 function pickRowScope(value: unknown): ExerciseRowScope | '' {
@@ -107,20 +107,20 @@ function pickScope(record: Record<string, unknown>): ScopeSelection {
 }
 
 export const DEFAULT_SCRIPT_SCOPE_PREFERENCES: ScriptScopePreferences = {
-  script: 'all',
-  overviewScope: 'all',
+  script: 'hiragana',
+  overviewScope: 'seion',
   rowFrom: '',
   rowTo: ''
 };
 
 export const DEFAULT_CHARACTER_PREFERENCES: CharacterPreferences = {
   ...DEFAULT_SCRIPT_SCOPE_PREFERENCES,
-  direction: 'character'
+  direction: 'kana-romaji'
 };
 
 export const DEFAULT_SCRIPT_PAIR_PREFERENCES: ScriptPairPreferences = {
   pairDirection: 'hiragana-to-katakana',
-  overviewScope: 'all',
+  overviewScope: 'seion',
   rowFrom: '',
   rowTo: ''
 };

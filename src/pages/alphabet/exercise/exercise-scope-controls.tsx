@@ -1,5 +1,14 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { type MouseEvent } from 'react';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  ToggleButton,
+  ToggleButtonGroup
+} from '@mui/material';
 import type { ExerciseOverviewScope } from '@/constants/alphabet-charts.ts';
+import { compactSelectSx, compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import type { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
 
@@ -16,7 +25,10 @@ type ExerciseScopeControlsProps = Pick<
   | 'handleOverviewScopeChange'
   | 'handleRowFromSelectChange'
   | 'handleRowToSelectChange'
->;
+> & {
+  /** When true the scope picker spans the whole controls row instead of half on desktop. */
+  overviewFullWidth?: boolean;
+};
 
 export function ExerciseScopeControls({
   overviewScope,
@@ -29,30 +41,46 @@ export function ExerciseScopeControls({
   rowToDisabled,
   handleOverviewScopeChange,
   handleRowFromSelectChange,
-  handleRowToSelectChange
+  handleRowToSelectChange,
+  overviewFullWidth = false
 }: ExerciseScopeControlsProps) {
   const { t } = useTranslation();
 
+  const handleOverviewToggle = (
+    _event: MouseEvent<HTMLElement>,
+    value: ExerciseOverviewScope | null
+  ) => {
+    if (value) {
+      handleOverviewScopeChange(value);
+    }
+  };
+
   return (
     <>
-      <FormControl fullWidth>
-        <InputLabel id="scope-select-label">{t('exercise.scope')}</InputLabel>
-        <Select<ExerciseOverviewScope>
-          labelId="scope-select-label"
-          id="scope-select"
-          value={overviewScope}
-          label={t('exercise.scope')}
-          onChange={handleOverviewScopeChange}
-        >
-          {overviewScopeOptions.map((option) => (
-            <MenuItem key={option.value} value={option.value as ExerciseOverviewScope}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <ToggleButtonGroup
+        exclusive
+        fullWidth
+        color="primary"
+        value={overviewScope}
+        onChange={handleOverviewToggle}
+        aria-label={t('exercise.scope')}
+        sx={[
+          compactToggleSx,
+          { gridColumn: overviewFullWidth ? '1 / -1' : { xs: '1 / -1', lg: 'span 2' } }
+        ]}
+      >
+        {overviewScopeOptions.map((option) => (
+          <ToggleButton key={option.value} value={option.value as ExerciseOverviewScope}>
+            {option.label}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
 
-      <FormControl fullWidth disabled={!showRowRangeControls}>
+      <FormControl
+        fullWidth
+        disabled={!showRowRangeControls}
+        sx={[compactSelectSx, { gridColumn: { lg: 'span 2' } }]}
+      >
         <InputLabel id="row-from-select-label">{t('exercise.rowFrom')}</InputLabel>
         <Select<string>
           key={`${overviewScope}-from`}
@@ -71,7 +99,11 @@ export function ExerciseScopeControls({
         </Select>
       </FormControl>
 
-      <FormControl fullWidth disabled={rowToDisabled}>
+      <FormControl
+        fullWidth
+        disabled={rowToDisabled}
+        sx={[compactSelectSx, { gridColumn: { lg: 'span 2' } }]}
+      >
         <InputLabel id="row-to-select-label">{t('exercise.rowTo')}</InputLabel>
         <Select<string>
           key={`${overviewScope}-to-${rowFromSelectValue}`}

@@ -115,8 +115,8 @@ export function useExerciseScope(
 
   const overviewScopeOptions = useMemo(() => getExerciseOverviewScopeOptions(t), [t]);
 
-  const handleOverviewScopeChange = (event: SelectChangeEvent<ExerciseOverviewScope>) => {
-    onSelectionChange({ overviewScope: event.target.value, rowFrom: '', rowTo: '' });
+  const handleOverviewScopeChange = (value: ExerciseOverviewScope) => {
+    onSelectionChange({ overviewScope: value, rowFrom: '', rowTo: '' });
   };
 
   const handleRowFromSelectChange = (event: SelectChangeEvent<string>) => {

@@ -9,7 +9,7 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 
 function RomajiExercisePage() {
   const { t } = useTranslation();
-  const { script, handleScriptChange, scopeState } = useRomajiExercisePreferences();
+  const { script, setScript, scopeState } = useRomajiExercisePreferences();
   const scriptLabel = getScriptLabel(script, t);
 
   return (
@@ -19,7 +19,7 @@ function RomajiExercisePage() {
       note={<ExerciseScopeHint />}
       controls={
         <>
-          <ExerciseScriptSelect script={script} onChange={handleScriptChange} />
+          <ExerciseScriptSelect script={script} onChange={setScript} />
           <ExerciseScopeControls {...scopeState} />
         </>
       }

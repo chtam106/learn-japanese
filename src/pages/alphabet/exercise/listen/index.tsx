@@ -9,7 +9,7 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 
 function ListenExercisePage() {
   const { t } = useTranslation();
-  const { script, handleScriptChange, scopeState } = useListenExercisePreferences();
+  const { script, setScript, scopeState } = useListenExercisePreferences();
   const scriptLabel = getScriptLabel(script, t);
 
   return (
@@ -19,7 +19,7 @@ function ListenExercisePage() {
       note={<ExerciseScopeHint />}
       controls={
         <>
-          <ExerciseScriptSelect script={script} onChange={handleScriptChange} />
+          <ExerciseScriptSelect script={script} onChange={setScript} />
           <ExerciseScopeControls {...scopeState} />
         </>
       }

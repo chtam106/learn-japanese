@@ -19,6 +19,15 @@ import { useTranslation } from '@/i18n/use-translation.ts';
 import { playKanaAudio } from '@/utils/kana-audio.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
+// On touch devices auto-focusing the answer field on the first question would
+// pop the on-screen keyboard whenever filters change (the quiz remounts). We
+// still auto-focus on later questions so answering correctly keeps the keyboard
+// up for the next one. Devices with a fine pointer (mouse) always auto-focus.
+const SUPPORTS_FINE_POINTER =
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(pointer: fine)').matches;
+
 type ExerciseQuizPanelProps = {
   mode: ExerciseMode;
   scriptLabel: string;
@@ -33,6 +42,7 @@ type RomajiInputAnswerProps = {
   correctRomaji: string;
   answeredCorrectly: boolean;
   wrongAnswers: string[];
+  autoFocus: boolean;
   onAnswer: (answer: string) => void;
 };
 
@@ -41,6 +51,7 @@ function RomajiInputAnswer({
   correctRomaji,
   answeredCorrectly,
   wrongAnswers,
+  autoFocus,
   onAnswer
 }: RomajiInputAnswerProps) {
   const { t } = useTranslation();
@@ -120,7 +131,7 @@ function RomajiInputAnswer({
           placeholder={t('exercise.romajiInputPlaceholder')}
           autoComplete="off"
           spellCheck={false}
-          autoFocus
+          autoFocus={autoFocus}
           focused={answeredCorrectly || undefined}
           color={answeredCorrectly ? 'success' : undefined}
           error={isWrong}
@@ -285,6 +296,7 @@ export function ExerciseQuizPanel({
           correctRomaji={question.correctItem.romaji}
           answeredCorrectly={answeredCorrectly}
           wrongAnswers={wrongAnswers}
+          autoFocus={SUPPORTS_FINE_POINTER || questionNumber > 0}
           onAnswer={onAnswer}
         />
       )}

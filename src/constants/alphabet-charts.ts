@@ -1,5 +1,4 @@
 import type { AlphabetCell, AlphabetChartRow } from '@/pages/alphabet/alphabet-chart.tsx';
-import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
 import type { TranslateFn } from '@/i18n/language-context.ts';
 import { getYoonDisplayParts } from '@/utils/yoon-display.ts';
 
@@ -462,11 +461,11 @@ function formatYoonVoicedRowLabel(
 
 export function getExerciseOverviewScopeOptions(t: TranslateFn): AlphabetRowOption[] {
   return [
-    { value: 'all', label: t('exercise.scopeAll') },
     { value: 'seion', label: t('exercise.scopeSeion') },
-    { value: 'dakuten', label: t('exercise.scopeDakuten', { mark: DAKUTEN_MARK }) },
-    { value: 'handakuten', label: t('exercise.scopeHandakuten', { mark: HANDAKUTEN_MARK }) },
-    { value: 'yoon', label: t('exercise.scopeYoon') }
+    { value: 'dakuten', label: t('exercise.scopeDakuten') },
+    { value: 'handakuten', label: t('exercise.scopeHandakuten') },
+    { value: 'yoon', label: t('exercise.scopeYoon') },
+    { value: 'all', label: t('exercise.scopeAll') }
   ];
 }
 

@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import type { SelectChangeEvent } from '@mui/material/Select';
 import type {
   ExerciseScript,
   Script,
@@ -42,13 +41,12 @@ function useScriptScopeExercise(exercise: ScriptScopeExercise) {
 
   const scopeState = useExerciseScope(prefs, handleScopeChange);
 
-  const handleScriptChange = useCallback(
-    (event: SelectChangeEvent<ExerciseScript>) =>
-      setPrefs((previous) => ({ ...previous, script: event.target.value })),
+  const setScript = useCallback(
+    (script: ExerciseScript) => setPrefs((previous) => ({ ...previous, script })),
     [setPrefs]
   );
 
-  return { script: prefs.script, handleScriptChange, scopeState };
+  return { script: prefs.script, setScript, scopeState };
 }
 
 export function useRomajiExercisePreferences() {
@@ -73,9 +71,8 @@ export function useCharacterExercisePreferences() {
 
   const scopeState = useExerciseScope(prefs, handleScopeChange);
 
-  const handleScriptChange = useCallback(
-    (event: SelectChangeEvent<ExerciseScript>) =>
-      setPrefs((previous) => ({ ...previous, script: event.target.value })),
+  const setScript = useCallback(
+    (script: ExerciseScript) => setPrefs((previous) => ({ ...previous, script })),
     [setPrefs]
   );
 
@@ -86,7 +83,7 @@ export function useCharacterExercisePreferences() {
 
   return {
     script: prefs.script,
-    handleScriptChange,
+    setScript,
     direction: prefs.direction,
     setDirection,
     scopeState
@@ -107,13 +104,13 @@ export function useScriptPairExercisePreferences() {
 
   const scopeState = useExerciseScope(prefs, handleScopeChange);
 
-  const handlePairDirectionChange = useCallback(
-    (event: SelectChangeEvent<ScriptPairDirection>) =>
-      setPrefs((previous) => ({ ...previous, pairDirection: event.target.value })),
+  const setPairDirection = useCallback(
+    (pairDirection: ScriptPairDirection) =>
+      setPrefs((previous) => ({ ...previous, pairDirection })),
     [setPrefs]
   );
 
-  return { pairDirection: prefs.pairDirection, handlePairDirectionChange, scopeState };
+  return { pairDirection: prefs.pairDirection, setPairDirection, scopeState };
 }
 
 export function useWritingExercisePreferences() {
@@ -155,10 +152,7 @@ export function useSentenceExercisePreferences() {
     sanitizeSentencePreferences
   );
 
-  const handleTypeChange = useCallback(
-    (event: SelectChangeEvent<SentenceType>) => setPrefs({ type: event.target.value }),
-    [setPrefs]
-  );
+  const setType = useCallback((type: SentenceType) => setPrefs({ type }), [setPrefs]);
 
-  return { type: prefs.type, handleTypeChange };
+  return { type: prefs.type, setType };
 }

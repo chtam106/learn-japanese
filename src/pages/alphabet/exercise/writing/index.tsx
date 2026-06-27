@@ -1,4 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent,
+  type PointerEvent
+} from 'react';
 import {
   Box,
   Button,
@@ -8,6 +16,8 @@ import {
   MenuItem,
   Select,
   Stack,
+  ToggleButton,
+  ToggleButtonGroup,
   Typography
 } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
@@ -25,6 +35,7 @@ import {
 import { KanaDisplay } from '@/components/kana-display';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
+import { compactSelectSx, compactToggleSx } from '@/pages/alphabet/exercise/control-styles.ts';
 import type { Script } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 import type { WritingMode } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useWritingExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
@@ -472,8 +483,15 @@ function WritingExercisePage() {
     [rows, safeRowIndex]
   );
 
-  const handleScriptChange = (event: SelectChangeEvent<Script>) => {
-    setScript(event.target.value as Script);
+  const handleModeChange = (_event: MouseEvent<HTMLElement>, value: WritingMode | null) => {
+    if (value) {
+      setMode(value);
+    }
+  };
+  const handleScriptChange = (_event: MouseEvent<HTMLElement>, value: Script | null) => {
+    if (value) {
+      setScript(value);
+    }
   };
   const handleRowChange = (event: SelectChangeEvent<number>) => {
     setRow(Number(event.target.value));
@@ -494,70 +512,69 @@ function WritingExercisePage() {
     <ExercisePageLayout title={t('exercise.writing')} subtitle={t('exercise.writingDescription')}>
       <Box sx={{ width: '100%', maxWidth: { xs: '100%', sm: 380, md: 420 }, mx: 'auto' }}>
         <Stack spacing={2}>
-          <FormControl fullWidth>
-            <InputLabel id="writing-mode-select-label">{t('exercise.writingMode')}</InputLabel>
-            <Select<WritingMode>
-              labelId="writing-mode-select-label"
-              value={mode}
-              label={t('exercise.writingMode')}
-              onChange={(event) => setMode(event.target.value as WritingMode)}
-            >
-              <MenuItem value="row">{t('exercise.writingModeRow')}</MenuItem>
-              <MenuItem value="romaji">{t('exercise.writingModeRomaji')}</MenuItem>
-            </Select>
-          </FormControl>
+          <ToggleButtonGroup
+            exclusive
+            fullWidth
+            color="primary"
+            value={mode}
+            onChange={handleModeChange}
+            aria-label={t('exercise.writingMode')}
+            sx={compactToggleSx}
+          >
+            <ToggleButton value="row">{t('exercise.writingModeRow')}</ToggleButton>
+            <ToggleButton value="romaji">{t('exercise.writingModeRomaji')}</ToggleButton>
+          </ToggleButtonGroup>
 
-          <Stack direction="row" spacing={2}>
-            <FormControl fullWidth>
-              <InputLabel id="writing-script-select-label">{t('exercise.script')}</InputLabel>
-              <Select<Script>
-                labelId="writing-script-select-label"
-                value={script}
-                label={t('exercise.script')}
-                onChange={handleScriptChange}
+          <ToggleButtonGroup
+            exclusive
+            fullWidth
+            color="primary"
+            value={script}
+            onChange={handleScriptChange}
+            aria-label={t('exercise.script')}
+            sx={compactToggleSx}
+          >
+            <ToggleButton value="hiragana">{t('nav.hiragana')}</ToggleButton>
+            <ToggleButton value="katakana">{t('nav.katakana')}</ToggleButton>
+          </ToggleButtonGroup>
+
+          {mode === 'row' && (
+            <FormControl fullWidth sx={compactSelectSx}>
+              <InputLabel id="writing-row-select-label">{t('exercise.writingRow')}</InputLabel>
+              <Select<number>
+                labelId="writing-row-select-label"
+                value={safeRowIndex}
+                label={t('exercise.writingRow')}
+                onChange={handleRowChange}
               >
-                <MenuItem value="hiragana">{t('nav.hiragana')}</MenuItem>
-                <MenuItem value="katakana">{t('nav.katakana')}</MenuItem>
+                {rows.map((row, index) => (
+                  <MenuItem key={index} value={index} lang="ja">
+                    {rowLabel(row.seion)}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
-            {mode === 'row' && (
-              <FormControl fullWidth>
-                <InputLabel id="writing-row-select-label">{t('exercise.writingRow')}</InputLabel>
-                <Select<number>
-                  labelId="writing-row-select-label"
-                  value={safeRowIndex}
-                  label={t('exercise.writingRow')}
-                  onChange={handleRowChange}
-                >
-                  {rows.map((row, index) => (
-                    <MenuItem key={index} value={index} lang="ja">
-                      {rowLabel(row.seion)}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-            {mode === 'romaji' && (
-              <FormControl fullWidth>
-                <InputLabel id="writing-romaji-row-select-label">
-                  {t('exercise.writingRow')}
-                </InputLabel>
-                <Select<number | 'all'>
-                  labelId="writing-romaji-row-select-label"
-                  value={row}
-                  label={t('exercise.writingRow')}
-                  onChange={(event) => setRow(event.target.value as number | 'all')}
-                >
-                  <MenuItem value="all">{t('exercise.allRows')}</MenuItem>
-                  {rows.map((row, index) => (
-                    <MenuItem key={index} value={index} lang="ja">
-                      {rowLabel(row.seion)}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          </Stack>
+          )}
+          {mode === 'romaji' && (
+            <FormControl fullWidth sx={compactSelectSx}>
+              <InputLabel id="writing-romaji-row-select-label">
+                {t('exercise.writingRow')}
+              </InputLabel>
+              <Select<number | 'all'>
+                labelId="writing-romaji-row-select-label"
+                value={row}
+                label={t('exercise.writingRow')}
+                onChange={(event) => setRow(event.target.value as number | 'all')}
+              >
+                <MenuItem value="all">{t('exercise.allRows')}</MenuItem>
+                {rows.map((row, index) => (
+                  <MenuItem key={index} value={index} lang="ja">
+                    {rowLabel(row.seion)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
 
           {mode === 'row' && (
             <>
