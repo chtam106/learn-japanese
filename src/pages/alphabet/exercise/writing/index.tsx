@@ -474,16 +474,15 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
         undoLabel={t('exercise.writingUndo')}
       />
 
-      <Stack
-        direction="row"
-        spacing={1.5}
-        sx={{ justifyContent: 'center', flexWrap: 'wrap' }}
-        useFlexGap
-      >
-        <Button variant="outlined" onClick={() => setRevealed((previous) => !previous)}>
+      <Stack direction="row" spacing={1.5} sx={{ width: '100%' }}>
+        <Button
+          variant="outlined"
+          onClick={() => setRevealed((previous) => !previous)}
+          sx={{ flex: 1 }}
+        >
           {revealed ? t('exercise.writingHideAnswer') : t('exercise.writingReveal')}
         </Button>
-        <Button variant="contained" onClick={handleNext}>
+        <Button variant="contained" onClick={handleNext} sx={{ flex: 1 }}>
           {t('exercise.writingNext')}
         </Button>
       </Stack>
