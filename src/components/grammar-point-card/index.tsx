@@ -3,6 +3,7 @@ import { alpha } from '@mui/material/styles';
 import type { GrammarPoint } from '@/constants/courses/types.ts';
 import { Heading } from '@/components/heading';
 import { PhoneticsLine } from '@/components/phonetics-line';
+import { TranslationLine } from '@/components/translation-line';
 import { SpeakButton } from '@/components/speak-button';
 import { SpeakableSurface } from '@/components/speakable-surface';
 import { useTranslation } from '@/i18n/use-translation.ts';
@@ -58,9 +59,7 @@ export function GrammarPointCard({ point }: GrammarPointCardProps) {
                     {example.jp}
                   </Typography>
                   <PhoneticsLine romaji={example.romaji} />
-                  <Typography variant="body2" sx={{ mt: 0.25 }}>
-                    {example.meaning[locale]}
-                  </Typography>
+                  <TranslationLine translation={example.meaning[locale]} />
                 </Box>
               </Stack>
             </SpeakableSurface>
