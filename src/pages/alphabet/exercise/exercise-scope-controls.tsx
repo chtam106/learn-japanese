@@ -12,6 +12,7 @@ type ExerciseScopeControlsProps = Pick<
   | 'rowFromSelectValue'
   | 'rowToSelectValue'
   | 'showRowRangeControls'
+  | 'rowToDisabled'
   | 'handleOverviewScopeChange'
   | 'handleRowFromSelectChange'
   | 'handleRowToSelectChange'
@@ -25,6 +26,7 @@ export function ExerciseScopeControls({
   rowFromSelectValue,
   rowToSelectValue,
   showRowRangeControls,
+  rowToDisabled,
   handleOverviewScopeChange,
   handleRowFromSelectChange,
   handleRowToSelectChange
@@ -69,7 +71,7 @@ export function ExerciseScopeControls({
         </Select>
       </FormControl>
 
-      <FormControl fullWidth disabled={!showRowRangeControls}>
+      <FormControl fullWidth disabled={rowToDisabled}>
         <InputLabel id="row-to-select-label">{t('exercise.rowTo')}</InputLabel>
         <Select<string>
           key={`${overviewScope}-to-${rowFromSelectValue}`}

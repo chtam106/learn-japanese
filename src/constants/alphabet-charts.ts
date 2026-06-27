@@ -1,5 +1,5 @@
 import type { AlphabetCell, AlphabetChartRow } from '@/pages/alphabet/alphabet-chart.tsx';
-import { DAKUTEN_MARK, HANDAKUTEN_MARK, voicedVariantMark } from '@/constants/kana-terminology.ts';
+import { DAKUTEN_MARK, HANDAKUTEN_MARK } from '@/constants/kana-terminology.ts';
 import type { TranslateFn } from '@/i18n/language-context.ts';
 import { getYoonDisplayParts } from '@/utils/yoon-display.ts';
 
@@ -408,6 +408,15 @@ function formatRowLabel(row: BilingualChartRow, t: TranslateFn): string {
   return t('exercise.rowLabel', { name, char: first.hiragana });
 }
 
+/** Title-case the leading romaji of a row's first cell (e.g. "ga" -> "Ga"). */
+function cellRowName(cell: BilingualCell | undefined) {
+  if (!cell) {
+    return null;
+  }
+
+  return cell.romaji.charAt(0).toUpperCase() + cell.romaji.slice(1);
+}
+
 function formatVoicedRowLabel(
   row: BilingualChartRow,
   variant: 'dakuten' | 'handakuten',
@@ -415,18 +424,13 @@ function formatVoicedRowLabel(
 ): string {
   const cells = variant === 'dakuten' ? row.dakuten : row.handakuten;
   const first = cells?.find((cell): cell is BilingualCell => cell !== null);
-  const name = getRowName(row);
-  const mark = voicedVariantMark(variant);
+  const name = cellRowName(first);
 
-  if (!name) {
+  if (!first || !name) {
     return t('exercise.rowDefault');
   }
 
-  return t('exercise.voicedRowLabel', {
-    name,
-    mark,
-    char: first?.hiragana ?? ''
-  });
+  return t('exercise.rowLabel', { name, char: first.hiragana });
 }
 
 function formatYoonRowLabel(row: BilingualChartRow, t: TranslateFn): string {
@@ -447,18 +451,13 @@ function formatYoonVoicedRowLabel(
 ): string {
   const cells = variant === 'dakuten' ? row.dakuten : row.handakuten;
   const first = cells?.find((cell): cell is BilingualCell => cell !== null);
-  const name = getRowName(row);
-  const mark = voicedVariantMark(variant);
+  const name = cellRowName(first);
 
-  if (!name) {
+  if (!first || !name) {
     return t('exercise.yoonRowDefault');
   }
 
-  return t('exercise.voicedRowLabel', {
-    name,
-    mark,
-    char: first?.hiragana ?? ''
-  });
+  return t('exercise.rowLabel', { name, char: first.hiragana });
 }
 
 export function getExerciseOverviewScopeOptions(t: TranslateFn): AlphabetRowOption[] {

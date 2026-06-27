@@ -242,8 +242,7 @@ export const viTranslations: TranslationTree = {
     groupYoonRows: 'Hàng yoon',
     rowDefault: 'Hàng',
     yoonRowDefault: 'Hàng yoon',
-    rowLabel: 'Hàng {{name}} ({{char}})',
-    voicedRowLabel: 'Hàng {{name}} - {{mark}} ({{char}})'
+    rowLabel: 'Hàng {{name}} ({{char}})'
   },
   course: {
     lessonsHeading: 'Danh sách bài học',

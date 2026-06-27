@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import {
   getExerciseOverviewScopeOptions,
@@ -8,10 +8,7 @@ import {
   type ExerciseRowScope,
   type ExerciseScope
 } from '@/constants/alphabet-charts.ts';
-import {
-  persistExercisePreferences,
-  readStoredExercisePreferences
-} from '@/pages/alphabet/exercise/exercise-preferences.ts';
+import type { ScopeSelection } from '@/pages/alphabet/exercise/exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 export const ALL_ROWS_VALUE = '__all-rows__' as const;
@@ -22,12 +19,16 @@ function isValidRowScope(value: ExerciseRowScope | '', options: RowSelectOption[
   return !value || options.some((option) => option.value === value);
 }
 
-export function useExerciseScope() {
+/**
+ * Controlled scope picker: the selection lives in the caller (so it can be
+ * persisted per exercise) and every change is reported via `onSelectionChange`.
+ */
+export function useExerciseScope(
+  selection: ScopeSelection,
+  onSelectionChange: (next: ScopeSelection) => void
+) {
   const { t } = useTranslation();
-  const stored = readStoredExercisePreferences();
-  const [overviewScope, setOverviewScope] = useState<ExerciseOverviewScope>(stored.overviewScope);
-  const [rowFrom, setRowFrom] = useState<ExerciseRowScope | ''>(stored.rowFrom);
-  const [rowTo, setRowTo] = useState<ExerciseRowScope | ''>(stored.rowTo);
+  const { overviewScope, rowFrom, rowTo } = selection;
 
   const rowScopeOptions = useMemo(
     () => getExerciseRowScopeOptionsForOverview(overviewScope, t),
@@ -40,14 +41,6 @@ export function useExerciseScope() {
   );
 
   const showRowRangeControls = rowScopeOptions.length > 1;
-
-  const rowSelectOptions = useMemo<RowSelectOption[]>(() => {
-    if (!showRowRangeControls) {
-      return rowScopeOptions;
-    }
-
-    return [allRowsOption, ...rowScopeOptions];
-  }, [allRowsOption, rowScopeOptions, showRowRangeControls]);
 
   const effectiveRowFrom = useMemo((): ExerciseRowScope | '' => {
     if (!rowFrom || !isValidRowScope(rowFrom, rowScopeOptions)) {
@@ -67,20 +60,49 @@ export function useExerciseScope() {
 
   const rowFromSelectValue = effectiveRowFrom || (showRowRangeControls ? ALL_ROWS_VALUE : '');
   const rowFromIndex = rowScopeOptions.findIndex((option) => option.value === effectiveRowFrom);
+  const rowToIndex = rowScopeOptions.findIndex((option) => option.value === effectiveRowTo);
+
+  // From can't start after To: cap the From list at the chosen To row so the
+  // range never inverts (e.g. picking "Ta" as To hides "Ya" from the From list).
+  const rowFromSelectOptions = useMemo<RowSelectOption[]>(() => {
+    if (!showRowRangeControls) {
+      return rowScopeOptions;
+    }
+
+    if (rowToIndex === -1) {
+      return [allRowsOption, ...rowScopeOptions];
+    }
+
+    return [allRowsOption, ...rowScopeOptions.slice(0, rowToIndex + 1)];
+  }, [allRowsOption, rowScopeOptions, rowToIndex, showRowRangeControls]);
+
+  // "From = All rows" means the whole set, so a "To" bound is meaningless then:
+  // the To picker is locked to All and disabled until a concrete From is chosen.
+  const rowToDisabled = !showRowRangeControls || !effectiveRowFrom;
 
   const rowToSelectOptions = useMemo<RowSelectOption[]>(() => {
     if (!showRowRangeControls) {
-      return rowSelectOptions;
+      return rowScopeOptions;
     }
 
     if (rowFromIndex === -1) {
-      return rowSelectOptions;
+      return [allRowsOption];
     }
 
     return [allRowsOption, ...rowScopeOptions.slice(rowFromIndex)];
-  }, [allRowsOption, rowFromIndex, rowScopeOptions, rowSelectOptions, showRowRangeControls]);
+  }, [allRowsOption, rowFromIndex, rowScopeOptions, showRowRangeControls]);
 
-  const rowToSelectValue = effectiveRowTo || (showRowRangeControls ? ALL_ROWS_VALUE : '');
+  const rowToSelectValue = (() => {
+    if (!showRowRangeControls) {
+      return effectiveRowTo || '';
+    }
+
+    if (!effectiveRowFrom) {
+      return ALL_ROWS_VALUE;
+    }
+
+    return effectiveRowTo || ALL_ROWS_VALUE;
+  })();
 
   const scope = useMemo(
     () => resolveExerciseScope(overviewScope, effectiveRowFrom, effectiveRowTo, rowScopeOptions),
@@ -90,51 +112,39 @@ export function useExerciseScope() {
   const overviewScopeOptions = useMemo(() => getExerciseOverviewScopeOptions(t), [t]);
 
   const handleOverviewScopeChange = (event: SelectChangeEvent<ExerciseOverviewScope>) => {
-    const value = event.target.value;
-    setOverviewScope(value);
-    setRowFrom('');
-    setRowTo('');
-    persistExercisePreferences({ overviewScope: value, rowFrom: '', rowTo: '' });
+    onSelectionChange({ overviewScope: event.target.value, rowFrom: '', rowTo: '' });
   };
 
   const handleRowFromSelectChange = (event: SelectChangeEvent<string>) => {
     const value = event.target.value;
 
     if (value === ALL_ROWS_VALUE) {
-      setRowFrom('');
-      setRowTo('');
-      persistExercisePreferences({ rowFrom: '', rowTo: '' });
+      onSelectionChange({ overviewScope, rowFrom: '', rowTo: '' });
       return;
     }
 
     const nextRowFrom = value as ExerciseRowScope;
-    setRowFrom(nextRowFrom);
-
-    if (
+    const rowToBeforeFrom =
       rowTo &&
       rowScopeOptions.findIndex((option) => option.value === rowTo) <
-        rowScopeOptions.findIndex((option) => option.value === nextRowFrom)
-    ) {
-      setRowTo('');
-      persistExercisePreferences({ rowFrom: nextRowFrom, rowTo: '' });
-      return;
-    }
+        rowScopeOptions.findIndex((option) => option.value === nextRowFrom);
 
-    persistExercisePreferences({ rowFrom: nextRowFrom });
+    onSelectionChange({
+      overviewScope,
+      rowFrom: nextRowFrom,
+      rowTo: rowToBeforeFrom ? '' : rowTo
+    });
   };
 
   const handleRowToSelectChange = (event: SelectChangeEvent<string>) => {
     const value = event.target.value;
 
     if (value === ALL_ROWS_VALUE) {
-      setRowTo('');
-      persistExercisePreferences({ rowTo: '' });
+      onSelectionChange({ overviewScope, rowFrom, rowTo: '' });
       return;
     }
 
-    const nextRowTo = value as ExerciseRowScope;
-    setRowTo(nextRowTo);
-    persistExercisePreferences({ rowTo: nextRowTo });
+    onSelectionChange({ overviewScope, rowFrom, rowTo: value as ExerciseRowScope });
   };
 
   return {
@@ -143,9 +153,10 @@ export function useExerciseScope() {
     overviewScopeOptions,
     rowFromSelectValue,
     rowToSelectValue,
-    rowFromSelectOptions: rowSelectOptions,
+    rowFromSelectOptions,
     rowToSelectOptions,
     showRowRangeControls,
+    rowToDisabled,
     handleOverviewScopeChange,
     handleRowFromSelectChange,
     handleRowToSelectChange

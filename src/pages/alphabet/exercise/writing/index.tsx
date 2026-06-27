@@ -26,6 +26,8 @@ import { KanaDisplay } from '@/components/kana-display';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
 import type { Script } from '@/pages/alphabet/exercise/exercise-quiz.ts';
+import type { WritingMode } from '@/pages/alphabet/exercise/exercise-preferences.ts';
+import { useWritingExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 
@@ -317,8 +319,6 @@ function KanaSample({ cell }: KanaSampleProps) {
   );
 }
 
-type WritingMode = 'row' | 'romaji';
-
 /** A shuffled list of all indices 0..length-1 (a fresh deck to draw from). */
 function shuffledIndices(length: number): number[] {
   const order = Array.from({ length }, (_, i) => i);
@@ -458,10 +458,8 @@ function RomajiPromptPractice({ script, rowIndex }: RomajiPromptPracticeProps) {
 
 function WritingExercisePage() {
   const { t } = useTranslation();
-  const [mode, setMode] = useState<WritingMode>('row');
-  const [script, setScript] = useState<Script>('hiragana');
-  const [rowIndex, setRowIndex] = useState(0);
-  const [romajiRow, setRomajiRow] = useState<number | 'all'>('all');
+  const { mode, setMode, script, setScript, rowIndex, setRowIndex, romajiRow, setRomajiRow } =
+    useWritingExercisePreferences();
 
   const rows = useMemo(
     () => (script === 'hiragana' ? hiraganaChartRows : katakanaChartRows),
@@ -480,8 +478,8 @@ function WritingExercisePage() {
   const handleRowChange = (event: SelectChangeEvent<number>) => {
     setRowIndex(Number(event.target.value));
   };
-  const goToPreviousRow = () => setRowIndex((previous) => Math.max(0, previous - 1));
-  const goToNextRow = () => setRowIndex((previous) => Math.min(rows.length - 1, previous + 1));
+  const goToPreviousRow = () => setRowIndex(Math.max(0, safeRowIndex - 1));
+  const goToNextRow = () => setRowIndex(Math.min(rows.length - 1, safeRowIndex + 1));
 
   const rowLabel = (rowCells: (AlphabetCell | null)[]) => {
     const first = rowCells.find((cell): cell is AlphabetCell => cell !== null);

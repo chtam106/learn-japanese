@@ -4,14 +4,13 @@ import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layo
 import { ExerciseQuiz } from '@/pages/alphabet/exercise/exercise-quiz-panel.tsx';
 import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-controls.tsx';
 import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
-import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
-import { useExercisePairDirection } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
+import { useScriptPairExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 function ScriptPairExercisePage() {
   const { t } = useTranslation();
-  const { pairDirection, handlePairDirectionChange } = useExercisePairDirection();
-  const scopeState = useExerciseScope();
+  const { pairDirection, handlePairDirectionChange, scopeState } =
+    useScriptPairExercisePreferences();
 
   return (
     <ExercisePageLayout

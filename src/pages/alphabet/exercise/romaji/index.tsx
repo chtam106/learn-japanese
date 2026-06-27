@@ -4,14 +4,12 @@ import { ExerciseScopeControls } from '@/pages/alphabet/exercise/exercise-scope-
 import { ExerciseScopeHint } from '@/pages/alphabet/exercise/exercise-scope-hint.tsx';
 import { ExerciseScriptSelect } from '@/pages/alphabet/exercise/exercise-script-select.tsx';
 import { getScriptLabel } from '@/pages/alphabet/exercise/exercise-script-label.ts';
-import { useExerciseScope } from '@/pages/alphabet/exercise/use-exercise-scope.ts';
-import { useExerciseScript } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
+import { useRomajiExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 
 function RomajiExercisePage() {
   const { t } = useTranslation();
-  const { script, handleScriptChange } = useExerciseScript();
-  const scopeState = useExerciseScope();
+  const { script, handleScriptChange, scopeState } = useRomajiExercisePreferences();
   const scriptLabel = getScriptLabel(script, t);
 
   return (

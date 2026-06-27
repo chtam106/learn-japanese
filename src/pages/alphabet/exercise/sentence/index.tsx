@@ -12,13 +12,13 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import type { SelectChangeEvent } from '@mui/material/Select';
 import { HintText } from '@/components/hint-text';
 import { SpeakButton } from '@/components/speak-button';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { speakJapanese } from '@/utils/speech.ts';
 import { elevatedSurfaceSx } from '@/theme/surfaces.ts';
 import { ExercisePageLayout } from '@/pages/alphabet/exercise/exercise-page-layout.tsx';
+import { useSentenceExercisePreferences } from '@/pages/alphabet/exercise/use-exercise-preferences.ts';
 import { SENTENCES, type SentenceType } from '@/pages/alphabet/exercise/sentence/sentences.ts';
 import {
   isSentenceAnswerCorrect,
@@ -273,11 +273,7 @@ const SENTENCE_TYPES: SentenceType[] = ['hiragana', 'katakana', 'mixed'];
 
 function SentenceExercisePage() {
   const { t } = useTranslation();
-  const [type, setType] = useState<SentenceType>('hiragana');
-
-  const handleTypeChange = (event: SelectChangeEvent<SentenceType>) => {
-    setType(event.target.value as SentenceType);
-  };
+  const { type, handleTypeChange } = useSentenceExercisePreferences();
 
   return (
     <ExercisePageLayout
