@@ -473,7 +473,6 @@ function WritingExercisePage() {
 
   const handleScriptChange = (event: SelectChangeEvent<Script>) => {
     setScript(event.target.value as Script);
-    setRowIndex(0);
   };
   const handleRowChange = (event: SelectChangeEvent<number>) => {
     setRowIndex(Number(event.target.value));
