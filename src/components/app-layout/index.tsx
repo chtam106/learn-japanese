@@ -6,7 +6,6 @@ import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Menu } from '@/components/menu';
 import { PageMeta } from '@/components/page-meta';
-import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 import { loadJapaneseUiFont } from '@/theme/fonts.ts';
 
 const drawerWidth = 320;
@@ -57,8 +56,6 @@ function AppLayout() {
         </ErrorBoundary>
         <Footer />
       </Box>
-
-      <ScrollToTopButton />
     </Box>
   );
 }

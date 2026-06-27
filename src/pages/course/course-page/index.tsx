@@ -5,6 +5,7 @@ import { AiDisclaimer } from '@/components/ai-disclaimer';
 import { Heading } from '@/components/heading';
 import { getCourse, lessonPath, type CourseLevel, type Lesson } from '@/constants/courses/index.ts';
 import { PageContainer } from '@/components/page-container';
+import { ScrollToTopButton } from '@/components/scroll-to-top-button';
 import { routes } from '@/constants/routes.ts';
 import { useTranslation } from '@/i18n/use-translation.ts';
 import { interactiveSurfaceSx, tonalSurfaceSx } from '@/theme/surfaces.ts';
@@ -109,6 +110,8 @@ function CoursePage({ level }: CoursePageProps) {
           {!course.modules && <Stack spacing={1.5}>{course.lessons.map(renderLessonCard)}</Stack>}
         </Box>
       </Stack>
+
+      <ScrollToTopButton />
     </PageContainer>
   );
 }
