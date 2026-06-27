@@ -40,6 +40,13 @@ export function useExerciseScope(
     [t]
   );
 
+  // Same sentinel as "All rows" but, in the To picker once From is set, it
+  // reads as "through the last row" rather than the whole set.
+  const toLastOption = useMemo<RowSelectOption>(
+    () => ({ value: ALL_ROWS_VALUE, label: t('exercise.rowToLast') }),
+    [t]
+  );
+
   const showRowRangeControls = rowScopeOptions.length > 1;
 
   const effectiveRowFrom = useMemo((): ExerciseRowScope | '' => {
@@ -60,26 +67,23 @@ export function useExerciseScope(
 
   const rowFromSelectValue = effectiveRowFrom || (showRowRangeControls ? ALL_ROWS_VALUE : '');
   const rowFromIndex = rowScopeOptions.findIndex((option) => option.value === effectiveRowFrom);
-  const rowToIndex = rowScopeOptions.findIndex((option) => option.value === effectiveRowTo);
 
-  // From can't start after To: cap the From list at the chosen To row so the
-  // range never inverts (e.g. picking "Ta" as To hides "Ya" from the From list).
+  // From is freely selectable across every row; the To picker is what adapts to
+  // stay valid (see handleRowFromSelectChange resetting it to "To the end").
   const rowFromSelectOptions = useMemo<RowSelectOption[]>(() => {
     if (!showRowRangeControls) {
       return rowScopeOptions;
     }
 
-    if (rowToIndex === -1) {
-      return [allRowsOption, ...rowScopeOptions];
-    }
-
-    return [allRowsOption, ...rowScopeOptions.slice(0, rowToIndex + 1)];
-  }, [allRowsOption, rowScopeOptions, rowToIndex, showRowRangeControls]);
+    return [allRowsOption, ...rowScopeOptions];
+  }, [allRowsOption, rowScopeOptions, showRowRangeControls]);
 
   // "From = All rows" means the whole set, so a "To" bound is meaningless then:
   // the To picker is locked to All and disabled until a concrete From is chosen.
   const rowToDisabled = !showRowRangeControls || !effectiveRowFrom;
 
+  // Once From is a concrete row, the open-ended option means "through the last
+  // row" (labelled accordingly), alongside the concrete rows from From onward.
   const rowToSelectOptions = useMemo<RowSelectOption[]>(() => {
     if (!showRowRangeControls) {
       return rowScopeOptions;
@@ -89,8 +93,8 @@ export function useExerciseScope(
       return [allRowsOption];
     }
 
-    return [allRowsOption, ...rowScopeOptions.slice(rowFromIndex)];
-  }, [allRowsOption, rowFromIndex, rowScopeOptions, showRowRangeControls]);
+    return [toLastOption, ...rowScopeOptions.slice(rowFromIndex)];
+  }, [allRowsOption, toLastOption, rowFromIndex, rowScopeOptions, showRowRangeControls]);
 
   const rowToSelectValue = (() => {
     if (!showRowRangeControls) {
@@ -124,6 +128,8 @@ export function useExerciseScope(
     }
 
     const nextRowFrom = value as ExerciseRowScope;
+    // Keep To when it's still valid (From at or before To, including the
+    // open-ended "to the end"); otherwise snap To back level with From.
     const rowToBeforeFrom =
       rowTo &&
       rowScopeOptions.findIndex((option) => option.value === rowTo) <
@@ -132,7 +138,7 @@ export function useExerciseScope(
     onSelectionChange({
       overviewScope,
       rowFrom: nextRowFrom,
-      rowTo: rowToBeforeFrom ? '' : rowTo
+      rowTo: rowToBeforeFrom ? nextRowFrom : rowTo
     });
   };
 
