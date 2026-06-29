@@ -36,7 +36,7 @@ const urls = logicalPaths
     const alternates = [
       `    <xhtml:link rel="alternate" hreflang="vi" href="${viUrl}"/>`,
       `    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>`,
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${viUrl}"/>`
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>`
     ].join('\n');
 
     return [viUrl, enUrl].map(

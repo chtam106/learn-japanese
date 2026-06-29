@@ -8,9 +8,9 @@ import { ExerciseQuizPanel } from '@/pages/alphabet/exercise/exercise-quiz-panel
 import type { QuizQuestion } from '@/pages/alphabet/exercise/exercise-quiz.ts';
 
 function renderWithI18n(ui: ReactElement) {
-  // The provider reads its locale from the URL; `/en` selects English.
+  // The provider reads its locale from the URL; the root path selects English.
   return render(
-    <MemoryRouter initialEntries={['/en']}>
+    <MemoryRouter initialEntries={['/']}>
       <LanguageProvider>{ui}</LanguageProvider>
     </MemoryRouter>
   );

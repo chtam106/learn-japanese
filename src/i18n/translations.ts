@@ -32,18 +32,17 @@ const en: TranslationTree = {
   },
   seo: {
     home: {
-      title: 'Learn Japanese Hiragana & Katakana',
       description:
-        'Free interactive app to learn Japanese - from hiragana and katakana to structured JLPT N5-N1 and frontend courses, with native audio, quizzes, and writing practice.'
+        'Learn the Japanese alphabet - hiragana and katakana - with full charts, native audio, and plenty of exercises to help you memorize every Japanese character easily.'
     },
     notFound: {
       title: 'Page Not Found (404)',
       description: 'The page you requested could not be found.'
     },
     alphabet: {
-      title: 'Japanese Alphabet - Hiragana & Katakana',
+      title: 'Learn the Japanese Alphabet - Hiragana and Katakana',
       description:
-        'Explore hiragana and katakana writing systems with complete charts, pronunciation audio, and guided exercises.',
+        'Learn the Japanese alphabet - hiragana and katakana - with full charts, native audio, and plenty of exercises to help you memorize every Japanese character easily.',
       hiragana: {
         title: 'Hiragana Chart & Practice (ひらがな)',
         description:
@@ -328,7 +327,7 @@ export type TranslationTree = TranslationNode;
 
 export const enTranslations: TranslationTree = en;
 
-export const DEFAULT_LOCALE: Locale = 'vi';
+export const DEFAULT_LOCALE: Locale = 'en';
 
 export const LOCALE_STORAGE_KEY = `${STORAGE_PREFIX}-locale`;
 

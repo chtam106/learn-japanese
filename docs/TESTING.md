@@ -37,11 +37,11 @@ pnpm test:coverage   # run with coverage / chạy kèm coverage
 
 - Test files live next to the code as `*.test.ts` / `*.test.tsx`.
 - Config lives in the `test` block of `vite.config.ts`; global setup is `src/test/setup.ts`.
-- Component tests render React with Testing Library; the locale comes from the URL, so wrap UI in `<MemoryRouter initialEntries={['/en']}><LanguageProvider>...</LanguageProvider></MemoryRouter>` (use `['/']` for Vietnamese) so `useTranslation()` works.
+- Component tests render React with Testing Library; the locale comes from the URL, so wrap UI in `<MemoryRouter initialEntries={['/']}><LanguageProvider>...</LanguageProvider></MemoryRouter>` (use `['/vi']` for Vietnamese) so `useTranslation()` works.
 
 - File test đặt cạnh code dưới dạng `*.test.ts` / `*.test.tsx`.
 - Cấu hình nằm trong khối `test` của `vite.config.ts`; setup chung là `src/test/setup.ts`.
-- Test component render React bằng Testing Library; locale lấy từ URL, nên bọc UI trong `<MemoryRouter initialEntries={['/en']}><LanguageProvider>...</LanguageProvider></MemoryRouter>` (dùng `['/']` cho tiếng Việt) để `useTranslation()` hoạt động.
+- Test component render React bằng Testing Library; locale lấy từ URL, nên bọc UI trong `<MemoryRouter initialEntries={['/']}><LanguageProvider>...</LanguageProvider></MemoryRouter>` (dùng `['/vi']` cho tiếng Việt) để `useTranslation()` hoạt động.
 
 ### Coverage / Độ phủ
 

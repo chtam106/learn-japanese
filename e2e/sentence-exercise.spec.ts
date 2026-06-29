@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 
-// English UI lives under the `/en` locale prefix (Vietnamese is the default at the root).
-const SENTENCE_EXERCISE_PATH = '/en/alphabet/exercise/sentence';
+// English UI is the default at the root (Vietnamese lives under the `/vi` locale prefix).
+const SENTENCE_EXERCISE_PATH = '/alphabet/exercise/sentence';
 
 // The romaji answer text lives in the polite live region; it stays in the DOM
 // but is hidden via CSS until the learner asks for it.

@@ -187,7 +187,7 @@ export function PageMeta() {
     upsertLink('canonical', canonicalUrl);
     upsertAlternate('vi', viUrl);
     upsertAlternate('en', enUrl);
-    upsertAlternate('x-default', viUrl);
+    upsertAlternate('x-default', enUrl);
 
     upsertJsonLd('structured-data', buildStructuredData(routeKey, meta, canonicalUrl));
   }, [location.pathname, locale, t]);

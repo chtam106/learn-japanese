@@ -27,18 +27,17 @@ export const viTranslations: TranslationTree = {
   },
   seo: {
     home: {
-      title: 'Học Hiragana & Katakana tiếng Nhật',
       description:
-        'Ứng dụng học tiếng Nhật tương tác miễn phí - từ hiragana và katakana đến các khóa JLPT N5-N1 và tiếng Nhật frontend có lộ trình, kèm âm thanh bản xứ, bài kiểm tra và luyện viết.'
+        'Học bảng chữ cái tiếng Nhật - hiragana và katakana - với bảng chữ đầy đủ, phát âm chuẩn và nhiều bài tập giúp bạn ghi nhớ từng chữ tiếng Nhật dễ dàng.'
     },
     notFound: {
       title: 'Không tìm thấy trang (404)',
       description: 'Không tìm thấy trang bạn yêu cầu.'
     },
     alphabet: {
-      title: 'Bảng chữ cái tiếng Nhật - Hiragana & Katakana',
+      title: 'Bảng chữ cái tiếng Nhật - Hiragana và Katakana',
       description:
-        'Khám phá hiragana và katakana với bảng chữ đầy đủ, phát âm chuẩn và bài tập có hướng dẫn.',
+        'Học bảng chữ cái tiếng Nhật - hiragana và katakana - với bảng chữ đầy đủ, phát âm chuẩn và nhiều bài tập giúp bạn ghi nhớ từng chữ tiếng Nhật dễ dàng.',
       hiragana: {
         title: 'Bảng Hiragana & Luyện tập (ひらがな)',
         description:

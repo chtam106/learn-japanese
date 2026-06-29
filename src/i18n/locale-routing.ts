@@ -1,13 +1,13 @@
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/translations.ts';
 
-export const LOCALES: readonly Locale[] = ['vi', 'en'];
+export const LOCALES: readonly Locale[] = ['en', 'vi'];
 
 /**
- * The default locale (Vietnamese) lives at the root (`/...`); the other locale
- * is carried as a URL path prefix (`/en/...`). This keeps existing URLs stable
- * and gives each language a distinct, crawlable URL for SEO.
+ * The default locale (English) lives at the root (`/...`); the other locale
+ * is carried as a URL path prefix (`/vi/...`). This gives each language a
+ * distinct, crawlable URL for SEO.
  */
-export const PREFIXED_LOCALE: Locale = 'en';
+export const PREFIXED_LOCALE: Locale = 'vi';
 const LOCALE_PREFIX = `/${PREFIXED_LOCALE}`;
 
 /** Derive the active locale from a (basename-stripped) pathname. */
@@ -32,7 +32,7 @@ export function stripLocalePrefix(pathname: string): string {
   return pathname;
 }
 
-/** Prefix a logical path for the given locale (vi stays at root, en gets `/en`). */
+/** Prefix a logical path for the given locale (en stays at root, vi gets `/vi`). */
 export function withLocale(logicalPath: string, locale: Locale): string {
   const path = logicalPath.startsWith('/') ? logicalPath : `/${logicalPath}`;
 

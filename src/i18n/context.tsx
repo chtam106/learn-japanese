@@ -49,7 +49,7 @@ type LanguageProviderProps = {
 };
 
 /**
- * The active locale is derived from the URL (vi at the root, en under `/en`),
+ * The active locale is derived from the URL (en at the root, vi under `/vi`),
  * so each language has its own crawlable URL. Switching language navigates to
  * the equivalent path in the other locale. The choice is mirrored to
  * localStorage purely as a hint for future visits.
