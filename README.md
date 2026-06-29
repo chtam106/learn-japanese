@@ -1,42 +1,45 @@
 # Nihongoes
 
-Nihongoes is a Japanese learning app focused on both JLPT progression and real-world communication for software teams.
+A free Japanese alphabet learning app.
 
-The app ships bilingual content (English and Vietnamese), interactive practice, and course-driven routing.
+Bilingual content (English and Vietnamese), interactive exercises, native audio via the Web Speech API, and course-driven routing.
 
-## Main Learning Tracks
+## Learning Tracks
 
-- JLPT tracks: `N5`, `N4`, `N3`, `N2`, `N1`
-- Frontend track: `/frontend`
-  - Covers practical frontend communication
-  - Includes HTML/CSS/JavaScript bug-report vocabulary
-  - Includes BRSE-focused modules (requirements, specs, meetings, risk/escalation, handover)
+- **Alphabet** - learn and memorize hiragana and katakana with full charts, native audio, and exercises
+- **JLPT** - structured courses from N5 to N1
+- **Frontend** - practical Japanese for software teams (BRSE vocabulary, bug reports, specs, meetings, risk/escalation, handover)
 
-## Core Features
+## Alphabet Exercises
 
-- Bilingual lesson content (`en` / `vi`)
-- Lesson practice surfaces:
-  - lesson page
-  - exercise
-  - listening
-  - reading (when available)
-- Japanese pronunciation support via Web Speech API
-- Alphabet learning pages (Hiragana, Katakana, exercise modes)
+| Exercise               | Description                                                                 |
+| ---------------------- | --------------------------------------------------------------------------- |
+| Romaji quiz            | See a kana character, choose the correct romaji                             |
+| Character quiz         | See romaji, pick the matching hiragana/katakana                             |
+| Listening quiz         | Hear native audio, pick the correct character                               |
+| Script-pair quiz       | Match hiragana and katakana equivalents                                     |
+| Writing practice       | Trace kana by row or write from a romaji prompt, with animated stroke-order |
+| Sentence transcription | Read a kana sentence, type its romaji                                       |
+
+## Course Features (JLPT + Frontend)
+
+- Vocabulary with kanji, kana, romaji, and meaning
+- Grammar points with pattern chips and speakable examples
+- Pronunciation via Web Speech API (configurable voice and speed)
+- Exercise, listening, and reading quizzes per lesson
+- Show/hide translation and phonetics toggles on example sentences
 
 ## Tech Stack
 
-- React 19
-- TypeScript
-- Vite
-- MUI
+- React 19, TypeScript, Vite
+- MUI (Material UI)
 - React Router
+- Vitest + Testing Library (unit), Playwright (e2e)
 
 ## Requirements
 
-- Node.js 24 (required by this repo)
+- Node.js 24 (`.nvmrc` pinned)
 - `pnpm` (see `packageManager` in `package.json`)
-
-If you use `nvm`:
 
 ```bash
 nvm use 24
@@ -49,37 +52,50 @@ pnpm install
 pnpm dev
 ```
 
-Open the app at `http://localhost:5173`.
+Open at `http://localhost:5173`.
 
 ## Available Scripts
 
-- `pnpm dev` - run dev server
-- `pnpm build` - typecheck + build + generate sitemap
-- `pnpm preview` - preview production build
-- `pnpm typecheck` - run TypeScript build checks
-- `pnpm lint` - run ESLint
-- `pnpm lint:style` - run Stylelint for CSS
-- `pnpm format` - run Prettier write
-- `pnpm format:check` - verify formatting
-- `pnpm check` - run typecheck + lint + stylelint + format check
-- `pnpm download:audio` - download kana audio assets
-- `pnpm download:audio:force` - force refresh kana audio assets
+| Script                | Description                                 |
+| --------------------- | ------------------------------------------- |
+| `pnpm dev`            | Dev server                                  |
+| `pnpm build`          | Typecheck + build + generate sitemap        |
+| `pnpm preview`        | Preview production build                    |
+| `pnpm check`          | Typecheck + lint + stylelint + format check |
+| `pnpm typecheck`      | TypeScript build check                      |
+| `pnpm lint`           | ESLint                                      |
+| `pnpm lint:fix`       | ESLint with auto-fix                        |
+| `pnpm lint:style`     | Stylelint for CSS                           |
+| `pnpm format`         | Prettier write                              |
+| `pnpm format:check`   | Verify formatting                           |
+| `pnpm test`           | Vitest unit tests                           |
+| `pnpm test:e2e`       | Playwright e2e tests                        |
+| `pnpm storybook`      | Storybook dev server                        |
+| `pnpm download:audio` | Download kana audio assets                  |
 
-## Performance Audits
+## Project Structure
 
-- Lighthouse auditing workflow (mobile/desktop commands, reporting, before/after notes):
-  - `LIGHTHOUSE.md`
+```
+src/
+  constants/courses/   course and lesson content (n5-n1, frontend)
+  pages/               route pages
+  components/          shared UI components
+  i18n/                translations and locale routing (en default, vi under /vi)
+  utils/speech.ts      Japanese Web Speech API helpers
+  theme/               MUI theme and surface helpers
+scripts/
+  generate-sitemap.ts  sitemap generation
+```
 
-## Project Structure (high level)
+## Routing
 
-- `src/constants/courses/` - course and lesson content
-- `src/pages/` - route pages
-- `src/i18n/` - translation and locale context
-- `src/utils/speech.ts` - Japanese speech utilities
-- `scripts/generate-sitemap.ts` - sitemap generation
+- Default locale (English) at root: `/`, `/alphabet`, `/n5`, ...
+- Vietnamese locale: `/vi/`, `/vi/alphabet`, `/vi/n5`, ...
+- Course indexes: `/<level>` (e.g. `/n3`, `/frontend`)
+- Lesson route: `/<level>/lesson/<lesson-id>`
+- Exercise/listening/reading: derived from the lesson route
 
-## Routing Notes
+## Further Docs
 
-- Course indexes: `/<level>` (for example: `/n3`, `/frontend`)
-- Lesson route pattern: `/<level>/lesson/<lesson-id>`
-- Exercise/listening/reading routes are derived from the lesson route.
+- Performance auditing: `LIGHTHOUSE.md`
+- Testing guide: `docs/TESTING.md`
