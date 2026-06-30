@@ -16,12 +16,23 @@ function AppLayout() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [globalError, setGlobalError] = useState(false);
 
   useEffect(() => {
     if (location.pathname !== '/') {
       void loadJapaneseUiFont();
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    const handleError = () => setGlobalError(true);
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleError);
+    return () => {
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleError);
+    };
+  }, []);
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -53,7 +64,7 @@ function AppLayout() {
       >
         <Toolbar />
         <Sentry.ErrorBoundary fallback={() => <ErrorFallback />}>
-          <Outlet />
+          {globalError ? <ErrorFallback /> : <Outlet />}
         </Sentry.ErrorBoundary>
         <Footer />
       </Box>
