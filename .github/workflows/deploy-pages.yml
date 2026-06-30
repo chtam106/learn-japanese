@@ -37,6 +37,7 @@ jobs:
         run: pnpm run build
         env:
           VITE_BASE_PATH: /
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Setup SPA fallback for client-side routing
         run: cp dist/index.html dist/404.html

@@ -1,11 +1,29 @@
 import path from 'node:path';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vite.dev/config/ and https://vitest.dev/config/
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? '/',
-  plugins: [react()],
+  build: {
+    sourcemap: true
+  },
+  plugins: [
+    react(),
+    sentryVitePlugin({
+      org: 'cht',
+      project: 'nihongoes',
+      // Auth token read from SENTRY_AUTH_TOKEN env var (set in CI / .env.local)
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      // Upload source maps only on production builds; delete them from dist after upload
+      sourcemaps: {
+        filesToDeleteAfterUpload: ['./dist/**/*.map']
+      },
+      // Only run when building for production (not during `vite dev` or Vitest)
+      disable: process.env.NODE_ENV !== 'production'
+    })
+  ],
   server: {
     // `pnpm dev` opens a browser tab automatically and exposes the server on
     // the local network (so it is reachable from other devices / phones).

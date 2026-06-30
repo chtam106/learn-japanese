@@ -5,6 +5,7 @@ import HomePage from '@/pages/index.tsx';
 import { COURSE_LEVELS, coursePath } from '@/constants/courses/levels.ts';
 import { routes } from '@/constants/routes.ts';
 import { PREFIXED_LOCALE } from '@/i18n/locale-routing.ts';
+import * as Sentry from '@sentry/react';
 
 const AlphabetPage = lazy(() => import('@/pages/alphabet/index.tsx'));
 const HiraganaPage = lazy(() => import('@/pages/alphabet/hiragana/index.tsx'));
@@ -107,6 +108,16 @@ function localeRoutes(prefix: string) {
       />
     </Fragment>
   );
+}
+
+if (import.meta.env.PROD) {
+  Sentry.init({
+    dsn: 'https://bf3133d22cc666760ff3802a937d83e4@o4511653477548032.ingest.us.sentry.io/4511653482004480',
+    integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
+    tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0
+  });
 }
 
 function App() {

@@ -4,11 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import './index.css';
 import App from './app.tsx';
-import { ErrorBoundary } from '@/components/error-boundary';
 import { LanguageProvider } from '@/i18n/context.tsx';
 import { getLocaleFromPathname } from '@/i18n/locale-routing.ts';
 import type { TranslationTree } from '@/i18n/translations.ts';
 import { appTheme } from '@/theme/app-theme.ts';
+import * as Sentry from '@sentry/react';
+import { ErrorFallback } from './components/error-fallback/index.tsx';
 
 const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -30,7 +31,7 @@ async function bootstrap() {
     <StrictMode>
       <ThemeProvider theme={appTheme}>
         <CssBaseline />
-        <ErrorBoundary>
+        <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
           <BrowserRouter basename={routerBasename || undefined}>
             <LanguageProvider
               initialTranslations={
@@ -40,7 +41,7 @@ async function bootstrap() {
               <App />
             </LanguageProvider>
           </BrowserRouter>
-        </ErrorBoundary>
+        </Sentry.ErrorBoundary>
       </ThemeProvider>
     </StrictMode>
   );
