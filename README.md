@@ -34,6 +34,7 @@ Bilingual content (English and Vietnamese), interactive exercises, native audio 
 - React 19, TypeScript, Vite
 - MUI (Material UI)
 - React Router
+- Sentry (error monitoring, production only)
 - Vitest + Testing Library (unit), Playwright (e2e)
 
 ## Requirements
@@ -56,22 +57,23 @@ Open at `http://localhost:5173`.
 
 ## Available Scripts
 
-| Script                | Description                                 |
-| --------------------- | ------------------------------------------- |
-| `pnpm dev`            | Dev server                                  |
-| `pnpm build`          | Typecheck + build + generate sitemap        |
-| `pnpm preview`        | Preview production build                    |
-| `pnpm check`          | Typecheck + lint + stylelint + format check |
-| `pnpm typecheck`      | TypeScript build check                      |
-| `pnpm lint`           | ESLint                                      |
-| `pnpm lint:fix`       | ESLint with auto-fix                        |
-| `pnpm lint:style`     | Stylelint for CSS                           |
-| `pnpm format`         | Prettier write                              |
-| `pnpm format:check`   | Verify formatting                           |
-| `pnpm test`           | Vitest unit tests                           |
-| `pnpm test:e2e`       | Playwright e2e tests                        |
-| `pnpm storybook`      | Storybook dev server                        |
-| `pnpm download:audio` | Download kana audio assets                  |
+| Script                | Description                                                          |
+| --------------------- | -------------------------------------------------------------------- |
+| `pnpm dev`            | Dev server                                                           |
+| `pnpm build`          | Typecheck + build + generate sitemap (uploads source maps to Sentry) |
+| `pnpm build:maps`     | Build without Sentry plugin - source map files kept in `dist/`       |
+| `pnpm preview`        | Preview production build                                             |
+| `pnpm check`          | Typecheck + lint + stylelint + format check                          |
+| `pnpm typecheck`      | TypeScript build check                                               |
+| `pnpm lint`           | ESLint                                                               |
+| `pnpm lint:fix`       | ESLint with auto-fix                                                 |
+| `pnpm lint:style`     | Stylelint for CSS                                                    |
+| `pnpm format`         | Prettier write                                                       |
+| `pnpm format:check`   | Verify formatting                                                    |
+| `pnpm test`           | Vitest unit tests                                                    |
+| `pnpm test:e2e`       | Playwright e2e tests                                                 |
+| `pnpm storybook`      | Storybook dev server                                                 |
+| `pnpm download:audio` | Download kana audio assets                                           |
 
 ## Project Structure
 
@@ -94,6 +96,14 @@ scripts/
 - Course indexes: `/<level>` (e.g. `/n3`, `/frontend`)
 - Lesson route: `/<level>/lesson/<lesson-id>`
 - Exercise/listening/reading: derived from the lesson route
+
+## Error Monitoring (Sentry)
+
+Sentry is active in production builds only (`import.meta.env.PROD`). It is not initialized during `pnpm dev`.
+
+To enable source map upload in CI, set the `SENTRY_AUTH_TOKEN` secret in GitHub repository settings (Settings > Secrets and variables > Actions). The deploy workflow passes it to `pnpm build`, which uploads source maps to Sentry and removes them from `dist/` automatically.
+
+Required token permissions: **Project - Admin**, **Release - Admin**, **Organization - Read**.
 
 ## Further Docs
 

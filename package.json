@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && tsx scripts/generate-sitemap.ts",
+    "build:maps": "tsc -b && NODE_ENV=development vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
