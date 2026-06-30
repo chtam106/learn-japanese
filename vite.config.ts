@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [
     react(),
     sentryVitePlugin({
-      org: 'cht',
+      org: 'cht-n3',
       project: 'nihongoes',
       // Auth token read from SENTRY_AUTH_TOKEN env var (set in CI / .env.local)
       authToken: process.env.SENTRY_AUTH_TOKEN,
