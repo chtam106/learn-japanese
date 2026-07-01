@@ -26,7 +26,7 @@ function AppLayout({ children }: AppLayoutProps) {
   }, [location.pathname]);
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', minHeight: '100svh' }}>
       <PageMeta />
 
       <Header

@@ -7,7 +7,7 @@ function SentryTestPage() {
   return (
     <Box
       sx={{
-        height: '100%',
+        flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
