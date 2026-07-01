@@ -1,5 +1,11 @@
 import { Component, type ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ErrorFallback } from '@/components/error-fallback';
+
+type ErrorBoundaryClassProps = {
+  children: ReactNode;
+  resetKey: string;
+};
 
 type ErrorBoundaryProps = {
   children: ReactNode;
@@ -9,7 +15,7 @@ type ErrorBoundaryState = {
   hasError: boolean;
 };
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundaryClass extends Component<ErrorBoundaryClassProps, ErrorBoundaryState> {
   state: ErrorBoundaryState = { hasError: false };
 
   static getDerivedStateFromError(): Partial<ErrorBoundaryState> {
@@ -23,13 +29,20 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     window.addEventListener('unhandledrejection', this.handleError);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('error', this.handleError);
+    window.removeEventListener('unhandledrejection', this.handleError);
+  }
+
+  componentDidUpdate(prevProps: ErrorBoundaryClassProps) {
+    if (prevProps.resetKey !== this.props.resetKey && this.state.hasError) {
+      this.setState({ hasError: false });
+    }
+  }
+
   componentDidCatch() {
     this.setState({ hasError: true });
   }
-
-  handleReload = () => {
-    window.location.reload();
-  };
 
   render() {
     if (this.state.hasError) {
@@ -38,4 +51,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
     return this.props.children;
   }
+}
+
+/** Clears a prior page error when the route changes without remounting the app tree. */
+export function ErrorBoundary({ children }: ErrorBoundaryProps) {
+  const location = useLocation();
+  const resetKey = `${location.pathname}${location.search}`;
+
+  return <ErrorBoundaryClass resetKey={resetKey}>{children}</ErrorBoundaryClass>;
 }
